@@ -13,7 +13,7 @@ export function CTASection() {
                 <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className="text-center">
                     <h2 className="font-display text-5xl md:text-6xl lg:text-8xl font-bold leading-tight mb-8" style={{ color: "var(--t-text)" }}>
                         Let&apos;s talk about
-                        <br />your{" "}
+                        your{" "}
                         <span className="italic" style={{ color: "var(--t-accent)" }}>project.</span>
                     </h2>
                     <p className="text-lg md:text-xl max-w-lg mx-auto mb-12" style={{ color: "var(--t-text-muted)" }}>
