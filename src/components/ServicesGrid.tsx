@@ -35,7 +35,7 @@ export function ServicesGrid() {
     };
 
     return (
-        <section className="w-full bg-canvas py-24 md:py-32 relative overflow-hidden">
+        <section className="w-full bg-canvas py-[60px] md:py-[60px] relative overflow-hidden">
 
             {/* Background Decorators */}
             <div className="absolute -left-40 top-40 w-96 h-96 bg-svaan-blue/5 rounded-full blur-[100px] pointer-events-none" />

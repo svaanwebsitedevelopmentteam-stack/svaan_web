@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function AboutSection() {
     return (
-        <section id="about" className="py-32 relative overflow-hidden">
+        <section id="about" className="py-[60px] relative overflow-hidden">
             <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[500px] h-[500px] rounded-full blur-[200px] pointer-events-none"
                 style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
 

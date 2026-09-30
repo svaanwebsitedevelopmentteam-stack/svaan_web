@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function Testimonial() {
     return (
-        <section className="py-32 relative overflow-hidden">
+        <section className="py-[60px] relative overflow-hidden">
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}

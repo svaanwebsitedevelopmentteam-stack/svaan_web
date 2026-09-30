@@ -27,7 +27,7 @@ export function TechStack() {
     ];
 
     return (
-        <section className="w-full bg-white py-24 md:py-32">
+        <section className="w-full bg-white py-[60px] md:py-[60px]">
             <div className="max-w-7xl mx-auto px-6 mb-16 md:mb-24">
                 <h2 className="font-display text-4xl md:text-5xl font-bold text-slate max-w-3xl leading-tight mb-6">
                     The technology depends on the problem.

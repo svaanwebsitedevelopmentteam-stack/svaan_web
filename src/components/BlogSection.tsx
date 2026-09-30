@@ -11,7 +11,7 @@ const posts = [
 
 export function BlogSection() {
     return (
-        <section className="py-32">
+        <section className="py-[60px]">
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }}
                     className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">

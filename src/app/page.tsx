@@ -20,7 +20,7 @@ export default function Home() {
       <StatsSection />
       <AboutSection />
       <CapabilitiesGrid />
-      <BlogSection />
+      {/* <BlogSection /> */}
       <CTASection />
     </main>
   );

@@ -3,13 +3,13 @@ import Image from "next/image";
 
 export function Footer() {
     return (
-        <footer className="pt-20 pb-8" style={{ borderTop: "1px solid var(--t-border)" }}>
+        <footer className="py-[60px]" style={{ borderTop: "1px solid var(--t-border)" }}>
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
                     <div className="lg:col-span-1">
-                        <Link href="/" className="inline-block relative w-32 h-10 mb-6 group">
+                        <Link href="/" className="inline-block relative w-[180px] h-[45px] mb-6 group">
                             <Image
-                                src="/svaan_logo.webp"
+                                src="/Primary_logo.svg"
                                 alt="SVaaN"
                                 fill
                                 className="object-contain object-left transition-opacity group-hover:opacity-80"
@@ -23,9 +23,14 @@ export function Footer() {
                     <div>
                         <h4 className="text-xs font-semibold uppercase tracking-widest mb-6" style={{ color: "var(--t-text-muted)" }}>Navigate</h4>
                         <ul className="space-y-3">
-                            {["Approach", "Services", "Work", "Contact"].map((link) => (
-                                <li key={link}>
-                                    <Link href={`/${link.toLowerCase()}`} className="text-sm transition-colors hover:text-[var(--t-accent)]" style={{ color: "var(--t-text-secondary)" }}>{link}</Link>
+                            {[
+                                { label: "Approach", href: "/approach" },
+                                { label: "Capabilities", href: "/services" },
+                                { label: "Work", href: "/work" },
+                                { label: "Contact", href: "/contact" }
+                            ].map((link) => (
+                                <li key={link.label}>
+                                    <Link href={link.href} className="text-sm transition-colors hover:text-[var(--t-accent)]" style={{ color: "var(--t-text-secondary)" }}>{link.label}</Link>
                                 </li>
                             ))}
                         </ul>
@@ -34,9 +39,14 @@ export function Footer() {
                     <div>
                         <h4 className="text-xs font-semibold uppercase tracking-widest mb-6" style={{ color: "var(--t-text-muted)" }}>Company</h4>
                         <ul className="space-y-3">
-                            {["About Us", "Leadership", "Privacy", "Terms"].map((link) => (
-                                <li key={link}>
-                                    <Link href={`/${link.toLowerCase().replace(/\s+/g, "-")}`} className="text-sm transition-colors hover:text-[var(--t-accent)]" style={{ color: "var(--t-text-secondary)" }}>{link === "Privacy" ? "Privacy Policy" : link}</Link>
+                            {[
+                                { label: "About Us", href: "/about" },
+                                { label: "Leadership", href: "/leadership" }, // Leadership is part of the About page content natively
+                                { label: "Privacy Policy", href: "/privacy" },
+                                { label: "Terms", href: "/terms" }
+                            ].map((link) => (
+                                <li key={link.label}>
+                                    <Link href={link.href} className="text-sm transition-colors hover:text-[var(--t-accent)]" style={{ color: "var(--t-text-secondary)" }}>{link.label}</Link>
                                 </li>
                             ))}
                         </ul>

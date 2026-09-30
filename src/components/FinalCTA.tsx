@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function FinalCTA() {
     return (
-        <section className="w-full bg-white py-32 md:py-48">
+        <section className="w-full bg-white py-[60px] md:py-48">
             <div className="max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
                 <h2 className="font-display text-5xl md:text-7xl font-bold text-slate tracking-tight mb-8">
                     Have a challenge worth solving?

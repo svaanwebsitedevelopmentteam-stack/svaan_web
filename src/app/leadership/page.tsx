@@ -28,7 +28,7 @@ const leaders = [
 
 export default function LeadershipPage() {
     return (
-        <main className="min-h-screen pt-32 pb-0 relative">
+        <main className="min-h-screen pt-[140px] pb-0 relative">
             {/* Background Orbs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 max-h-[80vh]">
                 <motion.div
@@ -46,7 +46,7 @@ export default function LeadershipPage() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="pb-24 lg:pb-32 pt-8 w-full md:w-[80%]"
+                    className="pb-[60px] lg:pb-[60px] pt-8 w-full md:w-[80%]"
                 >
                     <div className="inline-flex items-center gap-4 mb-8">
                         <div className="h-[1px] w-12" style={{ backgroundColor: "var(--t-accent)" }} />

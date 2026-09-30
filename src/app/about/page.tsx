@@ -51,7 +51,7 @@ const leaders = [
 
 export default function CompanyPage() {
     return (
-        <main className="min-h-screen pt-32 pb-0 relative bg-[var(--t-bg)] border-t border-[var(--t-border)]">
+        <main className="min-h-screen pt-[140px] pb-0 relative bg-[var(--t-bg)] border-t border-[var(--t-border)]">
             {/* Abstract Grid background to simulate a highly structured blueprint feel */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]" />
 
@@ -62,7 +62,7 @@ export default function CompanyPage() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="pb-24 lg:pb-32 pt-8 w-full md:w-[80%]"
+                    className="pb-[60px] lg:pb-[60px] pt-8 w-full md:w-[80%]"
                 >
                     <div className="inline-flex items-center gap-4 mb-8">
                         <div className="h-[1px] w-12" style={{ backgroundColor: "var(--t-accent)" }} />
@@ -111,7 +111,7 @@ export default function CompanyPage() {
                 </div>
 
                 {/* What We Believe - Asymmetrical Masonry List */}
-                <div className="mb-40 border-t pt-24" style={{ borderColor: "var(--t-border)" }}>
+                <div className="mb-40 border-t pt-[60px]" style={{ borderColor: "var(--t-border)" }}>
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
                         <div className="lg:col-span-4">

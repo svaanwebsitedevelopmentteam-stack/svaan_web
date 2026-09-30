@@ -59,7 +59,7 @@ export function HowWeWork() {
     };
 
     return (
-        <section className="w-full bg-canvas py-24 md:py-40 relative overflow-hidden">
+        <section className="w-full bg-canvas py-[60px] md:py-40 relative overflow-hidden">
 
             {/* Decorative SVG Orbit */}
             <motion.svg

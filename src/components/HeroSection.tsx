@@ -22,7 +22,7 @@ export function HeroSection() {
                 />
             </div>
 
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-32 pb-20 relative z-10 text-center">
+            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-[140px] pb-[60px] relative z-10 text-center">
                 {/* Eyebrow */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -120,7 +120,7 @@ export function HeroSection() {
             </div>
 
             {/* Bento nav cards */}
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pb-20 relative z-10">
+            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pb-[60px] relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}

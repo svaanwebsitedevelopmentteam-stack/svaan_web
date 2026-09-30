@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function CTASection() {
     return (
-        <section className="py-32 relative overflow-hidden">
+        <section className="py-[60px] relative overflow-hidden">
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[200px] pointer-events-none"
                 style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
 

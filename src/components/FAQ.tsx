@@ -33,7 +33,7 @@ export function FAQ() {
     };
 
     return (
-        <section className="w-full bg-canvas py-24 md:py-32">
+        <section className="w-full bg-canvas py-[60px] md:py-[60px]">
             <div className="max-w-4xl mx-auto px-6">
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-slate mb-12 text-center">
                     Frequently Asked Questions

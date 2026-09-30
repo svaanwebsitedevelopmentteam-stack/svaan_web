@@ -5,7 +5,7 @@ import { CTASection } from "@/components/CTASection";
 
 export default function PrivacyPage() {
     return (
-        <main className="min-h-screen pt-32 pb-0 relative bg-[var(--t-bg)]">
+        <main className="min-h-screen pt-[140px] pb-0 relative bg-[var(--t-bg)]">
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
 
                 {/* Hero */}
@@ -13,7 +13,7 @@ export default function PrivacyPage() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="pb-20 lg:pb-28 pt-8 w-full md:w-[80%]"
+                    className="pb-[60px] lg:pb-28 pt-8 w-full md:w-[80%]"
                 >
                     <div className="inline-flex items-center gap-4 mb-8">
                         <div className="h-[1px] w-12" style={{ backgroundColor: "var(--t-accent)" }} />

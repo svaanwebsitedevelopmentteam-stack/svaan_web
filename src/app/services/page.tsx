@@ -4,13 +4,14 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 
-const services = [
+const categories = [
     {
-        slug: "strategy-advisory",
         num: "01",
         title: "Strategy & Advisory",
         desc: "We define direction by connecting business objectives, market context, and technology opportunities into a clear, practical path forward.",
-        points: ["Digital Transformation Roadmap", "Technology Modernization", "Product Strategy", "Technical Due Diligence"],
+        services: [
+            { label: "POC Development", slug: "poc-development", desc: "Validate the idea before making the larger investment." }
+        ],
         icon: (
             <motion.svg className="w-8 h-8 drop-shadow-md" viewBox="0 0 24 24" fill="none"
                 animate={{ rotate: [0, -3, 3, 0], scale: [1, 1.05, 1] }}
@@ -26,11 +27,13 @@ const services = [
         )
     },
     {
-        slug: "product-design",
         num: "02",
-        title: "Product & Design",
+        title: "Product & Experience",
         desc: "We shape digital products and experiences around real user needs, creating interfaces that are intuitive, accessible, and visually compelling.",
-        points: ["UX/UI Design", "Design Systems", "Interactive Prototyping", "User Research & Testing"],
+        services: [
+            { label: "UI/UX Design", slug: "ui-ux-design", desc: "Design connecting user needs with product requirements." },
+            { label: "MVP Development", slug: "mvp-development", desc: "Turn a product idea into something real enough to learn from." }
+        ],
         icon: (
             <motion.svg className="w-8 h-8 drop-shadow-md" viewBox="0 0 24 24" fill="none"
                 animate={{ y: [0, 2, -2, 0], scale: [1, 1.03, 1] }}
@@ -46,11 +49,13 @@ const services = [
         )
     },
     {
-        slug: "software-engineering",
         num: "03",
-        title: "Software Engineering",
+        title: "Software & Technology",
         desc: "We build production-grade applications through disciplined engineering, modern architectures, and continuous delivery practices.",
-        points: ["Custom Web Applications", "Mobile App Development", "Enterprise Architecture", "API Integration"],
+        services: [
+            { label: "Software Product Development", slug: "software-product-development", desc: "Build software around the way your business needs to work." },
+            { label: "Enterprise Software Development", slug: "enterprise-software-development", desc: "Build technology that supports complex business operations." }
+        ],
         icon: (
             <motion.svg className="w-8 h-8 drop-shadow-md" viewBox="0 0 24 24" fill="none"
                 animate={{ y: [0, -3, 0], scale: [1, 1.05, 1] }}
@@ -66,11 +71,12 @@ const services = [
         )
     },
     {
-        slug: "ai-automation",
         num: "04",
         title: "AI & Automation",
         desc: "We integrate AI where it creates clear business value — from intelligent workflows and decision support to automated operations.",
-        points: ["Large Language Models (LLMs)", "Predictive Analytics", "Process Automation", "Custom Machine Learning"],
+        services: [
+            { label: "AI Software Development", slug: "ai-software-development", desc: "Apply AI to real business problems securely and efficiently." }
+        ],
         icon: (
             <motion.svg className="w-8 h-8 drop-shadow-md" viewBox="0 0 24 24" fill="none"
                 animate={{ scale: [1, 0.95, 1], rotate: [0, 3, 0] }}
@@ -86,11 +92,38 @@ const services = [
         )
     },
     {
-        slug: "cloud-devops",
         num: "05",
-        title: "Cloud & DevOps",
-        desc: "We architect, migrate, and manage cloud infrastructure across AWS, Azure, and GCP with CI/CD pipelines and container orchestration.",
-        points: ["Cloud Migration", "Kubernetes & Containers", "CI/CD Deployment", "Infrastructure as Code"],
+        title: "Engineering & Delivery",
+        desc: "We build confidence into every release through disciplined assurance practices and reliable delivery pipelines.",
+        services: [
+            { label: "Quality Assurance", slug: "quality-assurance", desc: "Build confidence into every release ensuring software behaves as expected." }
+        ],
+        icon: (
+            <motion.svg className="w-8 h-8 drop-shadow-md" viewBox="0 0 24 24" fill="none"
+                animate={{ rotate: [0, 4, -4, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+                <defs>
+                    <linearGradient id="grad-eng" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#cbd5e1" />
+                        <stop offset="100%" stopColor="#64748b" />
+                    </linearGradient>
+                </defs>
+                <path stroke="url(#grad-eng)" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </motion.svg>
+        )
+    },
+    {
+        num: "06",
+        title: "Managed Technology Services",
+        desc: "We architect, migrate, and actively manage your infrastructure. From end-user support to complex cloud orchestration.",
+        services: [
+            { label: "Helpdesk / Support", slug: "helpdesk-support", desc: "Keep people productive when technology gets in the way." },
+            { label: "Application Support", slug: "application-support", desc: "Keep business-critical applications stable and useful." },
+            { label: "Infrastructure Support", slug: "infrastructure-support", desc: "Keep the technology foundation dependable." },
+            { label: "Production Support", slug: "production-support", desc: "Protect the reliability of live environments." },
+            { label: "DevOps Support", slug: "devops-support", desc: "Make software delivery more consistent and efficient." },
+            { label: "Cloud Managed Services", slug: "cloud-managed-services", desc: "Manage environments for performance and growth." }
+        ],
         icon: (
             <motion.svg className="w-8 h-8 drop-shadow-md" viewBox="0 0 24 24" fill="none"
                 animate={{ rotate: [0, 5, -5, 0] }}
@@ -109,7 +142,7 @@ const services = [
 
 export default function ServicesPage() {
     return (
-        <main className="min-h-screen pt-32 pb-0 relative">
+        <main className="min-h-screen pt-[140px] pb-0 relative">
             {/* Background Orbs */}
             <div className="absolute top-0 left-0 right-0 h-screen pointer-events-none overflow-hidden z-0">
                 <motion.div
@@ -127,7 +160,7 @@ export default function ServicesPage() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="pb-24 lg:pb-32 pt-8 w-full md:w-[80%]"
+                    className="pb-[60px] lg:pb-[60px] pt-8 w-full md:w-[80%]"
                 >
                     <div className="inline-flex items-center gap-4 mb-8">
                         <div className="h-[1px] w-12" style={{ backgroundColor: "var(--t-accent)" }} />
@@ -145,9 +178,9 @@ export default function ServicesPage() {
                 </motion.div>
 
                 {/* Deep Dive Services List (Sticky Scroll Layout) */}
-                <div className="flex flex-col gap-32 pb-32">
-                    {services.map((service, i) => (
-                        <div key={service.num} className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+                <div className="flex flex-col gap-32 pb-[60px]">
+                    {categories.map((category, i) => (
+                        <div key={category.num} className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
                             {/* Left Column - Sticky Info */}
                             <motion.div
@@ -162,28 +195,18 @@ export default function ServicesPage() {
                                         className="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300"
                                         style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}
                                     >
-                                        {service.icon}
+                                        {category.icon}
                                     </div>
                                     <span className="font-display text-4xl lg:text-5xl font-bold opacity-30" style={{ color: "var(--t-text)" }}>
-                                        {service.num}
+                                        {category.num}
                                     </span>
                                 </div>
                                 <h2 className="font-display text-4xl lg:text-5xl font-bold leading-tight mb-6" style={{ color: "var(--t-text)" }}>
-                                    {service.title}
+                                    {category.title}
                                 </h2>
                                 <p className="text-lg leading-relaxed mb-8" style={{ color: "var(--t-text-muted)" }}>
-                                    {service.desc}
+                                    {category.desc}
                                 </p>
-                                <Link
-                                    href={`/services/${service.slug}`}
-                                    className="group inline-flex items-center gap-3 font-semibold hover:gap-4 transition-all duration-300"
-                                    style={{ color: "var(--t-accent)" }}
-                                >
-                                    Explore Capability
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
-                                </Link>
                             </motion.div>
 
                             {/* Right Column - Deep Details & Benefits */}
@@ -195,27 +218,34 @@ export default function ServicesPage() {
                                 className="lg:col-span-7"
                             >
                                 <div
-                                    className="rounded-3xl p-10 mt-4 lg:mt-0 relative overflow-hidden h-full"
+                                    className="rounded-3xl p-8 lg:p-10 relative overflow-hidden h-full flex flex-col gap-4"
                                     style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                                 >
                                     <div className="absolute inset-0 opacity-100 pointer-events-none"
                                         style={{ background: "linear-gradient(135deg, var(--t-gradient-from), transparent)" }} />
 
-                                    <div className="relative z-10">
-                                        <h3 className="text-xl font-bold mb-8" style={{ color: "var(--t-text)" }}>Core Focus Areas</h3>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                            {service.points.map((point) => (
-                                                <div key={point} className="flex items-start gap-4">
-                                                    <span
-                                                        className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
-                                                        style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-accent)" }}
-                                                    >
-                                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                                        </svg>
-                                                    </span>
-                                                    <span className="text-lg font-medium" style={{ color: "var(--t-text-secondary)" }}>{point}</span>
-                                                </div>
+                                    <div className="relative z-10 flex flex-col gap-4">
+                                        <h3 className="text-base font-bold uppercase tracking-widest mb-4" style={{ color: "var(--t-text-muted)" }}>Specific Services</h3>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            {category.services.map((service) => (
+                                                <Link
+                                                    key={service.slug}
+                                                    href={`/services/${service.slug}`}
+                                                    className="group flex flex-col gap-2 p-5 rounded-2xl transition-all duration-300 relative overflow-hidden"
+                                                    style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)" }}
+                                                >
+                                                    <div className="flex items-center justify-between">
+                                                        <span className="text-lg font-bold" style={{ color: "var(--t-text)" }}>
+                                                            {service.label}
+                                                        </span>
+                                                        <span className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110" style={{ backgroundColor: "var(--t-bg-card)", color: "var(--t-accent)" }}>
+                                                            <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                    <span className="text-sm leading-relaxed" style={{ color: "var(--t-text-muted)" }}>{service.desc}</span>
+                                                </Link>
                                             ))}
                                         </div>
                                     </div>
@@ -226,7 +256,7 @@ export default function ServicesPage() {
                 </div>
 
                 {/* Engagement Models */}
-                <div className="py-24 border-t" style={{ borderColor: "var(--t-border)" }}>
+                <div className="py-[60px] border-t" style={{ borderColor: "var(--t-border)" }}>
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}

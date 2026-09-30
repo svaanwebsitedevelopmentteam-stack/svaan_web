@@ -41,7 +41,7 @@ const challenges = [
 
 export function BusinessChallenges() {
     return (
-        <section className="relative w-full bg-slate text-white py-24 md:py-32 overflow-hidden">
+        <section className="relative w-full bg-slate text-white py-[60px] md:py-[60px] overflow-hidden">
 
             {/* Dynamic Background Noise/Gradient */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-svaan-blue/20 via-slate to-slate pointer-events-none" />

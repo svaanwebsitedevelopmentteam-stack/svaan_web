@@ -73,7 +73,7 @@ export function WorkShowcase() {
     };
 
     return (
-        <section className="py-32 relative">
+        <section className="py-[60px] relative">
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -91,21 +91,26 @@ export function WorkShowcase() {
                             craft solutions that create real, measurable business impact.
                         </p>
                     </div>
-                    {/* Pagination Dots (Desktop Top Right) */}
+                    {/* Arrow Pagination (Desktop Top Right) */}
                     <div className="hidden md:flex items-center gap-3">
-                        {projects.map((_, i) => (
-                            <button
-                                key={`dot-top-${i}`}
-                                onClick={() => scrollTo(i)}
-                                className="transition-all duration-300 rounded-full"
-                                style={{
-                                    width: activeIndex === i ? "24px" : "8px",
-                                    height: "8px",
-                                    backgroundColor: activeIndex === i ? "var(--t-accent)" : "var(--t-border)"
-                                }}
-                                aria-label={`Scroll to project ${i + 1}`}
-                            />
-                        ))}
+                        <button
+                            onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
+                            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--t-bg-surface)]"
+                            style={{ border: "1px solid var(--t-border)", color: "var(--t-text)" }}
+                            disabled={activeIndex === 0}
+                            aria-label="Previous project"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                        </button>
+                        <button
+                            onClick={() => scrollTo(Math.min(projects.length - 1, activeIndex + 1))}
+                            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--t-bg-surface)]"
+                            style={{ border: "1px solid var(--t-border)", color: "var(--t-text)" }}
+                            disabled={activeIndex === projects.length - 1 || (projects.length > 3 && activeIndex >= projects.length - 2)}
+                            aria-label="Next project"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                        </button>
                     </div>
                 </motion.div>
 
@@ -123,7 +128,7 @@ export function WorkShowcase() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.6, delay: i * 0.1 }}
-                            className="flex-none w-[90%] md:w-[65%] lg:w-[45%] snap-start"
+                            className="flex-none w-[90%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] snap-start"
                         >
                             <Link
                                 href={project.href}
@@ -132,7 +137,7 @@ export function WorkShowcase() {
                                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
                                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
                             >
-                                <div className="relative h-64 md:h-80 flex-shrink-0 overflow-hidden">
+                                <div className="relative h-56 md:h-64 flex-shrink-0 overflow-hidden">
                                     <img
                                         src={project.image}
                                         alt={project.title}
@@ -140,14 +145,16 @@ export function WorkShowcase() {
                                     />
                                     <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-80 group-hover:opacity-40 transition-opacity duration-700`} />
                                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.08),transparent)]" />
-                                    <div className="absolute bottom-6 left-8 right-8">
-                                        <span className="text-xs font-medium tracking-wider uppercase" style={{ color: "var(--t-text-muted)" }}>
-                                            {project.tags}
-                                        </span>
-                                    </div>
                                 </div>
                                 <div className="p-8 flex-grow flex flex-col justify-between">
                                     <div>
+                                        <div className="mb-4 flex flex-wrap gap-2">
+                                            {project.tags.split(',').map((tag) => (
+                                                <span key={tag} className="text-[10px] sm:text-xs font-semibold tracking-wider uppercase px-3 py-1.5 rounded-full" style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-text-muted)", border: "1px solid var(--t-border)" }}>
+                                                    {tag.trim()}
+                                                </span>
+                                            ))}
+                                        </div>
                                         <h3 className="font-display text-2xl md:text-3xl font-bold mb-3 group-hover:text-[var(--t-accent)] transition-colors duration-300" style={{ color: "var(--t-text)" }}>
                                             {project.title}
                                         </h3>
@@ -166,21 +173,26 @@ export function WorkShowcase() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-between mt-12 gap-8">
-                    {/* Pagination Dots (Mobile Bottom Left) */}
+                    {/* Arrow Pagination (Mobile Bottom Left) */}
                     <div className="flex md:hidden items-center gap-3">
-                        {projects.map((_, i) => (
-                            <button
-                                key={`dot-bottom-${i}`}
-                                onClick={() => scrollTo(i)}
-                                className="transition-all duration-300 rounded-full"
-                                style={{
-                                    width: activeIndex === i ? "24px" : "8px",
-                                    height: "8px",
-                                    backgroundColor: activeIndex === i ? "var(--t-accent)" : "var(--t-border)"
-                                }}
-                                aria-label={`Scroll to project ${i + 1}`}
-                            />
-                        ))}
+                        <button
+                            onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
+                            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
+                            style={{ border: "1px solid var(--t-border)", color: "var(--t-text)" }}
+                            disabled={activeIndex === 0}
+                            aria-label="Previous project"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                        </button>
+                        <button
+                            onClick={() => scrollTo(Math.min(projects.length - 1, activeIndex + 1))}
+                            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
+                            style={{ border: "1px solid var(--t-border)", color: "var(--t-text)" }}
+                            disabled={activeIndex === projects.length - 1}
+                            aria-label="Next project"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                        </button>
                     </div>
 
                     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>

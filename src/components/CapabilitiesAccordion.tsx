@@ -46,7 +46,7 @@ export function CapabilitiesAccordion() {
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <section className="w-full bg-white py-24 md:py-32 overflow-hidden">
+        <section className="w-full bg-white py-[60px] md:py-[60px] overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 mb-16">
                 <h2 className="font-display text-4xl md:text-5xl font-bold text-slate max-w-3xl leading-tight">
                     Capabilities connected around your challenge.

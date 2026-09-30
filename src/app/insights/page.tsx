@@ -57,7 +57,7 @@ const insights = [
 
 export default function InsightsPage() {
     return (
-        <main className="min-h-screen pt-32 pb-0 relative bg-[var(--t-bg)]">
+        <main className="min-h-screen pt-[140px] pb-0 relative bg-[var(--t-bg)]">
             {/* Background Orbs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 max-h-[80vh]">
                 <motion.div
@@ -75,7 +75,7 @@ export default function InsightsPage() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="pb-16 lg:pb-24 pt-8 border-b w-full md:w-[80%]"
+                    className="pb-16 lg:pb-[60px] pt-8 border-b w-full md:w-[80%]"
                     style={{ borderColor: "var(--t-border)" }}
                 >
                     <div className="inline-flex items-center gap-4 mb-8">

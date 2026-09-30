@@ -14,7 +14,7 @@ const industries = [
 
 export function Industries() {
     return (
-        <section className="w-full bg-slate text-white py-24 md:py-32">
+        <section className="w-full bg-slate text-white py-[60px] md:py-[60px]">
             <div className="max-w-7xl mx-auto px-6 mb-16 md:mb-24 flex flex-col md:flex-row md:justify-between items-start md:items-end gap-10">
                 <div className="max-w-2xl">
                     <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">

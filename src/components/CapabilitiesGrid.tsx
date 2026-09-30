@@ -112,7 +112,7 @@ export function CapabilitiesGrid() {
     const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } };
 
     return (
-        <section className="py-32">
+        <section className="py-[60px]">
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }} className="text-center mb-20">
                     <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "var(--t-text)" }}>Our capabilities</h2>
