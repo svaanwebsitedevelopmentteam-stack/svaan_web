@@ -1,25 +1,77 @@
 "use client";
 
+import React, { useEffect } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function HeroSection() {
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    const springX = useSpring(mouseX, { stiffness: 40, damping: 20 });
+    const springY = useSpring(mouseY, { stiffness: 40, damping: 20 });
+
+    const springX2 = useSpring(mouseX, { stiffness: 20, damping: 30 });
+    const springY2 = useSpring(mouseY, { stiffness: 20, damping: 30 });
+
+    useEffect(() => {
+        mouseX.set(typeof window !== 'undefined' ? window.innerWidth / 2 : 500);
+        mouseY.set(typeof window !== 'undefined' ? window.innerHeight / 2 : 500);
+    }, [mouseX, mouseY]);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+        mouseX.set(e.clientX);
+        mouseY.set(e.clientY);
+    };
+
     return (
-        <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
-            {/* Animated gradient orbs */}
+        <section
+            onMouseMove={handleMouseMove}
+            className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+        >
+            {/* Dynamic Interactive Background from homeClone */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <motion.div
-                    animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-[10%] right-[20%] w-[500px] h-[500px] rounded-full blur-[150px]"
-                    style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }}
+                {/* Subtle Grid Background */}
+                <div
+                    className="absolute inset-0 opacity-[0.05]"
+                    style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }}
                 />
+
+                {/* Primary Glow that directly follows the mouse cursor */}
                 <motion.div
-                    animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
-                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                    className="absolute bottom-[10%] left-[20%] w-[400px] h-[400px] rounded-full blur-[120px]"
-                    style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }}
+                    className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full blur-[120px]"
+                    style={{
+                        backgroundColor: "var(--t-accent)",
+                        opacity: "calc(var(--t-orb-opacity) + 0.1)",
+                        x: springX,
+                        y: springY,
+                        translateX: "-50%",
+                        translateY: "-50%",
+                    }}
                 />
+
+                {/* Secondary Glow that trails behind slowly */}
+                <motion.div
+                    className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-[150px]"
+                    style={{
+                        backgroundColor: "var(--t-accent)",
+                        opacity: "var(--t-orb-opacity)",
+                        x: springX2,
+                        y: springY2,
+                        translateX: "-30%",
+                        translateY: "-30%",
+                    }}
+                />
+
+                {/* Ambient static glows so corners aren't entirely empty */}
+                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] opacity-20 blur-[120px] rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+
+                {/* Soft grain texture */}
+                <div className="absolute inset-0 opacity-[0.25]"
+                // style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}
+                >
+
+                </div>
             </div>
 
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-[140px] pb-[60px] relative z-10 text-center">
@@ -121,7 +173,7 @@ export function HeroSection() {
 
             {/* Bento nav cards */}
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pb-[60px] relative z-10">
-                <motion.div
+                {/* <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.7 }}
@@ -159,7 +211,7 @@ export function HeroSection() {
                             </div>
                         </Link>
                     ))}
-                </motion.div>
+                </motion.div> */}
             </div>
         </section>
     );
