@@ -70,7 +70,7 @@ export function CapabilitiesGrid() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.7, delay: idx * 0.1 }}
-                            className="group rounded-[1.5rem] p-8 relative overflow-hidden flex flex-col justify-between min-h-[350px] transition-all duration-500"
+                            className="group rounded-[1.5rem] p-8 relative overflow-hidden flex flex-col transition-all duration-500"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-accent)"; }}
                             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-border)"; }}
@@ -97,18 +97,18 @@ export function CapabilitiesGrid() {
                             {/* Content Layer (Using native theme text variables) */}
                             <div className="relative z-20">
                                 <motion.div
-                                    className="w-20 h-20 rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 group-hover:-translate-y-1 shadow-sm"
+                                    className="w-[70px] h-[70px] rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 group-hover:-translate-y-1 shadow-sm"
                                     style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}
                                 >
                                     {cap.icon}
                                 </motion.div>
                             </div>
 
-                            <div className="relative z-20 mt-auto transition-all duration-300 transform group-hover:translate-x-1">
-                                <h3 className="font-display text-2xl font-bold mb-3 transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                            <div className="relative z-20 flex flex-col flex-grow">
+                                <h3 className="font-display text-2xl font-bold mb-4" style={{ color: "var(--t-text)" }}>
                                     {cap.title}
                                 </h3>
-                                <p className="text-sm md:text-base leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                                <p className="leading-relaxed opacity-90" style={{ color: "var(--t-text-muted)" }}>
                                     {cap.desc}
                                 </p>
                             </div>
