@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   title: "SVaaN Global Tech — Technology & Strategy Partner",
   description:
     "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' }
+    ]
+  }
 };
 
 export default function RootLayout({
