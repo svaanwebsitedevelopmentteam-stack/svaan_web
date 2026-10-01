@@ -23,6 +23,29 @@ export const metadata: Metadata = {
   title: "SVaaN Global Tech — Technology & Strategy Partner",
   description:
     "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
+  metadataBase: new URL("https://svaan-web.vercel.app"),
+  openGraph: {
+    title: "SVaaN Global Tech — Technology & Strategy Partner",
+    description: "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
+    url: "https://svaan-web.vercel.app",
+    siteName: "SVaaN Global Tech",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/herosection.png",
+        width: 1200,
+        height: 630,
+        alt: "SVaaN Global Tech",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SVaaN Global Tech — Technology & Strategy Partner",
+    description: "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
+    images: ["/herosection.png"],
+  },
   icons: {
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' }
