@@ -1,51 +1,44 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Cloud, Database, Cpu, Terminal, Layers, Globe, Code, Server, Shield, Smartphone } from "lucide-react";
+import { Icons3D } from "@/components/ui/Icons3D";
 
 export function TechStack() {
-    // We will use an array of animated bento cards
     const technologies = [
         {
             category: "Frontend & Mobile",
             desc: "Next.js, React, React Native, Vue",
-            icon: Smartphone,
-            color: "text-blue-500",
+            icon: <Icons3D.Mobile className="w-10 h-10" />,
             bg: "bg-blue-500/10"
         },
         {
             category: "Backend & Systems",
             desc: "Node.js, Python, Java, Go",
-            icon: Server,
-            color: "text-indigo-500",
+            icon: <Icons3D.Backend className="w-10 h-10" />,
             bg: "bg-indigo-500/10"
         },
         {
             category: "Cloud Infrastructure",
             desc: "AWS, Google Cloud, Azure",
-            icon: Cloud,
-            color: "text-sky-500",
+            icon: <Icons3D.CloudInfra className="w-10 h-10" />,
             bg: "bg-sky-500/10"
         },
         {
             category: "Data & ML",
             desc: "PostgreSQL, MongoDB, TensorFlow",
-            icon: Database,
-            color: "text-purple-500",
+            icon: <Icons3D.DataTree className="w-10 h-10" />,
             bg: "bg-purple-500/10"
         },
         {
             category: "DevOps & Security",
             desc: "Kubernetes, Docker, CI/CD",
-            icon: Shield,
-            color: "text-emerald-500",
+            icon: <Icons3D.DevOps className="w-10 h-10" />,
             bg: "bg-emerald-500/10"
         },
         {
             category: "Architecture",
             desc: "Microservices, Serverless, APIs",
-            icon: Layers,
-            color: "text-rose-500",
+            icon: <Icons3D.Microservices className="w-10 h-10" />,
             bg: "bg-rose-500/10"
         }
     ];
@@ -99,15 +92,15 @@ export function TechStack() {
                             className="group relative p-8 rounded-3xl shadow-sm hover:shadow-xl hover:shadow-indigo-900/5 transition-all duration-300"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                         >
-                            <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-10 transition-opacity">
-                                <tech.icon size={120} className={tech.color} />
+                            <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-10 transition-opacity transform scale-150 z-0 pointer-events-none grayscale">
+                                {tech.icon}
                             </div>
 
-                            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${tech.bg} ${tech.color}`}>
-                                <tech.icon size={28} strokeWidth={2} />
+                            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-sm border ${tech.bg} relative z-10 transition-transform duration-500 group-hover:scale-110`} style={{ borderColor: 'var(--t-border)' }}>
+                                {tech.icon}
                             </div>
-                            <h3 className="text-xl font-bold mb-3" style={{ color: "var(--t-text)" }}>{tech.category}</h3>
-                            <p className="font-medium leading-relaxed" style={{ color: "var(--t-text-muted)" }}>{tech.desc}</p>
+                            <h3 className="text-xl font-bold mb-3 relative z-10" style={{ color: "var(--t-text)" }}>{tech.category}</h3>
+                            <p className="font-medium leading-relaxed relative z-10" style={{ color: "var(--t-text-muted)" }}>{tech.desc}</p>
                         </motion.div>
                     ))}
                 </div>

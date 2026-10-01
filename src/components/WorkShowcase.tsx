@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
+import { Illustrations } from "@/components/ui/Illustrations";
 
 const projects = [
     {
@@ -10,23 +11,23 @@ const projects = [
         tags: "AI Software Development, Strategy",
         desc: "Built around intelligent automation and data-driven decision support, this platform redefines how financial services operate at scale with precision and speed.",
         href: "/work/fintech-platform",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
-        gradient: "from-blue-600/60 to-purple-800/60",
+        Illustration: Illustrations.FinTech,
+        gradient: "from-indigo-600/60 to-blue-900/60",
     },
     {
         title: "Healthcare Digital Transformation",
         tags: "Enterprise Software, UX Design",
         desc: "A comprehensive digital overhaul connecting patient experience, clinical operations, and administrative workflows into a unified, modern platform.",
         href: "/work/healthcare-transformation",
-        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200",
-        gradient: "from-emerald-500/60 to-teal-800/60",
+        Illustration: Illustrations.Healthcare,
+        gradient: "from-emerald-600/60 to-teal-900/60",
     },
     {
         title: "PropTech Management Suite",
         tags: "Product Development, Cloud",
         desc: "End-to-end property management digitization with real-time analytics, tenant portals, and automated compliance reporting across geographies.",
         href: "/work/proptech-suite",
-        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200",
+        Illustration: Illustrations.PropTech,
         gradient: "from-orange-500/60 to-amber-800/60",
     },
     {
@@ -34,8 +35,8 @@ const projects = [
         tags: "MVP Development, DevOps",
         desc: "Scalable commerce infrastructure handling millions of transactions with intelligent inventory management and personalized customer experiences.",
         href: "/work/ecommerce-infra",
-        image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=1200",
-        gradient: "from-pink-500/60 to-rose-800/60",
+        Illustration: Illustrations.Ecommerce,
+        gradient: "from-pink-600/60 to-rose-900/60",
     }
 ];
 
@@ -137,14 +138,10 @@ export function WorkShowcase() {
                                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
                                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
                             >
-                                <div className="relative h-56 md:h-64 flex-shrink-0 overflow-hidden">
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="absolute inset-0 w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-700"
-                                    />
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-80 group-hover:opacity-40 transition-opacity duration-700`} />
-                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.08),transparent)]" />
+                                <div className="relative h-56 md:h-64 flex-shrink-0 overflow-hidden bg-[var(--t-bg-card)]">
+                                    <project.Illustration className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-60 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none`} />
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.08),transparent)] pointer-events-none" />
                                 </div>
                                 <div className="p-8 flex-grow flex flex-col justify-between">
                                     <div>
@@ -155,10 +152,10 @@ export function WorkShowcase() {
                                                 </span>
                                             ))}
                                         </div>
-                                        <h3 className="font-display text-2xl md:text-3xl font-bold mb-3 group-hover:text-[var(--t-accent)] transition-colors duration-300" style={{ color: "var(--t-text)" }}>
+                                        <h3 className="font-display text-2xl md:text-3xl font-bold mb-3 group-hover:text-[var(--t-accent)] transition-colors duration-300 line-clamp-2" style={{ color: "var(--t-text)" }}>
                                             {project.title}
                                         </h3>
-                                        <p className="text-base leading-relaxed mb-6" style={{ color: "var(--t-text-muted)" }}>{project.desc}</p>
+                                        <p className="text-base leading-relaxed mb-6 line-clamp-2" style={{ color: "var(--t-text-muted)" }}>{project.desc}</p>
                                     </div>
                                     <div className="inline-flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all duration-300" style={{ color: "var(--t-accent)" }}>
                                         View Project
