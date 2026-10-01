@@ -9,7 +9,7 @@ export interface ServiceData {
     cta: string;
 }
 
-export const servicesData: Record<string, ServiceData> = {
+export const capabilitiesData: Record<string, ServiceData> = {
     "poc-development": {
         id: "poc-development",
         capability: "Strategy & Advisory",

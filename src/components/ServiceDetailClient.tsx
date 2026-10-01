@@ -4,8 +4,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
-import { ServiceData } from "@/data/servicesData";
+import { ServiceData } from "@/data/capabilitiesData";
 import { Icons3D } from "@/components/ui/Icons3D";
+import { Illustrations } from "@/components/ui/Illustrations";
 
 export function ServiceDetailClient({ service }: { service: ServiceData }) {
     const journeySteps = service.journey.split('→').map(s => s.trim());
@@ -18,6 +19,15 @@ export function ServiceDetailClient({ service }: { service: ServiceData }) {
         if (name.includes("build")) return Icons3D.ProcessBuild;
         if (name.includes("evolve")) return Icons3D.Support;
         return Icons3D.Software; // Fallback
+    };
+
+    const getHeroIllustration = (capability: string) => {
+        const cat = capability.toLowerCase();
+        if (cat.includes("strategy") || cat.includes("software")) return Illustrations.FinTech;
+        if (cat.includes("design") || cat.includes("experience") || cat.includes("product")) return Illustrations.Ecommerce;
+        if (cat.includes("ai") || cat.includes("automation")) return Illustrations.Healthcare;
+        if (cat.includes("cloud") || cat.includes("devops") || cat.includes("engineering")) return Illustrations.PropTech;
+        return Illustrations.FinTech; // Default
     };
 
     // Smart parser to break markdown-style intos into rich UI block components
@@ -36,46 +46,79 @@ export function ServiceDetailClient({ service }: { service: ServiceData }) {
         }
     });
 
-    return (
-        <main className="min-h-screen pt-[140px] pb-0 relative">
+    const HeroIllustrationComponent = getHeroIllustration(service.capability);
 
-            {/* Background Orbs (Matching Work page exact styles) */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 max-h-screen">
-                <motion.div
-                    animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
-                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-[15%] right-[15%] w-[500px] h-[500px] rounded-full blur-[180px]"
-                    style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }}
-                />
+    return (
+        <main className="min-h-screen pt-[70px] pb-0 relative overflow-x-clip">
+
+            {/* 1. HERO SECTION (2-Column split: Content & Illustration Context + Background Orbs) */}
+            <div className="relative w-full overflow-hidden">
+                {/* Background Orbs (Scoped STRICTLY to Hero section) */}
+                <div className="absolute inset-0 pointer-events-none z-0">
+                    <motion.div
+                        animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
+                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                        className="absolute top-[15%] right-[15%] w-[500px] h-[500px] rounded-full blur-[180px]"
+                        style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }}
+                    />
+                </div>
+
+                <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
+                    <div className="pb-[40px] lg:pb-[80px] pt-8 w-full mt-10">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+
+                            {/* Left Side: Content */}
+                            <motion.div
+                                initial={{ opacity: 0, x: -30 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.8 }}
+                                className="lg:col-span-6 xl:col-span-7"
+                            >
+                                <div className="inline-flex items-center gap-4 mb-8">
+                                    <div className="h-[1px] w-12" style={{ backgroundColor: "var(--t-accent)" }} />
+                                    <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>
+                                        {service.capability}
+                                    </span>
+                                </div>
+
+                                <h1 className="font-display text-[clamp(1.75rem,4vw,3.5rem)] font-bold leading-[1.12] tracking-tight mb-8" style={{ color: "var(--t-text)" }}>
+                                    {service.title}
+                                </h1>
+
+                                <div className="text-lg leading-relaxed max-w-2xl space-y-6" style={{ color: "var(--t-text-muted)" }}>
+                                    {paragraphs.map((paragraph, i) => (
+                                        <p key={i}>{paragraph}</p>
+                                    ))}
+                                </div>
+                            </motion.div>
+
+                            {/* Right Side: Animated SVG Illustration relating to the service */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 30 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.8, delay: 0.1 }}
+                                className="lg:col-span-6 xl:col-span-5 relative"
+                            >
+                                <div className="relative w-full aspect-video lg:aspect-[16/11] max-h-[350px] lg:max-h-[400px] rounded-[2rem] overflow-hidden shadow-2xl group" style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
+                                    {/* Soft glow behind graphic */}
+                                    <div className="absolute inset-0 opacity-20 group-hover:opacity-40 blur-3xl transition-opacity duration-700 pointer-events-none" style={{ backgroundColor: "var(--t-accent)" }} />
+
+                                    <div className="absolute inset-0 w-full h-full opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 origin-center bg-black">
+                                        <HeroIllustrationComponent className="w-full h-full object-cover" />
+                                    </div>
+
+                                    {/* Surface gradient to blend beautifully into the theme radially */}
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-[var(--t-bg)]/80 via-transparent to-transparent pointer-events-none" />
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.02),transparent)] pointer-events-none" />
+                                </div>
+                            </motion.div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
-
-                {/* 1. HERO SECTION (Editorial, Left-aligned, unboxed) */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="pb-[60px] lg:pb-[60px] pt-8 w-full md:w-[85%]"
-                >
-                    <div className="inline-flex items-center gap-4 mb-8">
-                        <div className="h-[1px] w-12" style={{ backgroundColor: "var(--t-accent)" }} />
-                        <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>
-                            {service.capability}
-                        </span>
-                    </div>
-
-                    <h1 className="font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-10" style={{ color: "var(--t-text)" }}>
-                        {service.title}
-                    </h1>
-
-                    <div className="text-lg md:text-xl leading-relaxed max-w-3xl space-y-6" style={{ color: "var(--t-text-muted)" }}>
-                        {paragraphs.map((paragraph, i) => (
-                            <p key={i}>{paragraph}</p>
-                        ))}
-                    </div>
-                </motion.div>
-
                 {/* 2. "WHEN IT HELPS" (Editorial List, Unboxed) */}
                 {listItems.length > 0 && (
                     <motion.div

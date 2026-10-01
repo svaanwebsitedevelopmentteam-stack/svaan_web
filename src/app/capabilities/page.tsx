@@ -160,7 +160,7 @@ export default function ServicesPage() {
                                             {category.services.map((service) => (
                                                 <Link
                                                     key={service.slug}
-                                                    href={`/services/${service.slug}`}
+                                                    href={`/capabilities/${service.slug}`}
                                                     className="group flex flex-col gap-2 p-5 rounded-2xl transition-all duration-300 relative overflow-hidden"
                                                     style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)" }}
                                                 >

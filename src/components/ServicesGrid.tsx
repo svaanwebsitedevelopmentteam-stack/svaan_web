@@ -59,7 +59,7 @@ export function ServicesGrid() {
                         </p>
                     </div>
                     <Link
-                        href="/services"
+                        href="/capabilities"
                         className="group hidden sm:inline-flex items-center justify-center rounded-full bg-white text-slate border border-slate/10 px-8 h-14 font-medium shadow-sm transition-all hover:bg-slate hover:text-white hover:border-slate hover:-translate-y-1 hover:shadow-xl"
                     >
                         Explore all services
@@ -79,7 +79,7 @@ export function ServicesGrid() {
                     {services.map((service) => (
                         <motion.div variants={item} key={service}>
                             <Link
-                                href={`/services/${service.toLowerCase().replace(/\s*\/\s*/g, "-").replace(/\s+/g, "-")}`}
+                                href={`/capabilities/${service.toLowerCase().replace(/\s*\/\s*/g, "-").replace(/\s+/g, "-")}`}
                                 className="group relative bg-white rounded-2xl p-6 md:p-8 border border-transparent shadow-sm hover:shadow-2xl hover:shadow-slate/10 transition-all duration-300 flex items-center justify-between overflow-hidden block"
                             >
                                 {/* 2px SVaaN Blue keyline marker on left edge revealed on hover */}
@@ -105,7 +105,7 @@ export function ServicesGrid() {
                     className="mt-12 flex justify-center sm:hidden"
                 >
                     <Link
-                        href="/services"
+                        href="/capabilities"
                         className="group inline-flex w-full items-center justify-center rounded-full bg-slate text-white border border-slate/10 px-8 h-14 font-medium transition-all"
                     >
                         Explore all services

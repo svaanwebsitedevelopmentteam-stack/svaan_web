@@ -10,43 +10,43 @@ const menuItems = [
     { label: "Approach", href: "/approach" },
     {
         label: "Capabilities",
-        href: "/services",
+        href: "/capabilities",
         megaMenu: [
             {
                 category: "Strategy & Advisory",
-                items: [{ label: "POC Development", href: "/services/poc-development" }]
+                items: [{ label: "POC Development", href: "/capabilities/poc-development" }]
             },
             {
                 category: "Product & Experience",
                 items: [
-                    { label: "UI/UX Design", href: "/services/ui-ux-design" },
-                    { label: "MVP Development", href: "/services/mvp-development" }
+                    { label: "UI/UX Design", href: "/capabilities/ui-ux-design" },
+                    { label: "MVP Development", href: "/capabilities/mvp-development" }
                 ]
             },
             {
                 category: "Software & Technology",
                 items: [
-                    { label: "Software Product", href: "/services/software-product-development" },
-                    { label: "Enterprise Software", href: "/services/enterprise-software-development" }
+                    { label: "Software Product", href: "/capabilities/software-product-development" },
+                    { label: "Enterprise Software", href: "/capabilities/enterprise-software-development" }
                 ]
             },
             {
                 category: "AI & Automation",
-                items: [{ label: "AI Development", href: "/services/ai-software-development" }]
+                items: [{ label: "AI Development", href: "/capabilities/ai-software-development" }]
             },
             {
                 category: "Engineering Group",
-                items: [{ label: "Quality Assurance", href: "/services/quality-assurance" }]
+                items: [{ label: "Quality Assurance", href: "/capabilities/quality-assurance" }]
             },
             {
                 category: "Managed Tech",
                 items: [
-                    { label: "Helpdesk Support", href: "/services/helpdesk-support" },
-                    { label: "App Support", href: "/services/application-support" },
-                    { label: "Infra Support", href: "/services/infrastructure-support" },
-                    { label: "Production Support", href: "/services/production-support" },
-                    { label: "DevOps Support", href: "/services/devops-support" },
-                    { label: "Cloud Services", href: "/services/cloud-managed-services" },
+                    { label: "Helpdesk Support", href: "/capabilities/helpdesk-support" },
+                    { label: "App Support", href: "/capabilities/application-support" },
+                    { label: "Infra Support", href: "/capabilities/infrastructure-support" },
+                    { label: "Production Support", href: "/capabilities/production-support" },
+                    { label: "DevOps Support", href: "/capabilities/devops-support" },
+                    { label: "Cloud Services", href: "/capabilities/cloud-managed-services" },
                 ]
             }
         ]
@@ -143,7 +143,7 @@ export function Header() {
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, y: 10, transition: { duration: 0.1 } }}
                                             transition={{ duration: 0.2 }}
-                                            className="absolute top-[72px] left-1/2 -translate-x-1/2 min-w-[240px] rounded-[1.5rem] shadow-2xl p-2 border"
+                                            className="absolute top-[72px] left-1/2 -translate-x-1/2 min-w-[240px] rounded-[10px] shadow-2xl p-2 border"
                                             style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                                             onMouseLeave={() => setHoveredCategory(null)}
                                         >
@@ -153,7 +153,7 @@ export function Header() {
                                                     key={sub.label}
                                                     href={sub.href}
                                                     onClick={() => setHoveredMenu(null)}
-                                                    className="block px-4 py-3 text-[15px] font-medium rounded-xl hover:bg-[var(--t-bg-surface)] transition-all duration-300"
+                                                    className="block px-4 py-3 text-[15px] font-medium rounded-lg hover:bg-[var(--t-bg-surface)] transition-all duration-300"
                                                     style={{ color: "var(--t-text)" }}
                                                 >
                                                     {sub.label}
@@ -167,7 +167,7 @@ export function Header() {
                                                     className="relative"
                                                     onMouseEnter={() => setHoveredCategory(category.category)}
                                                 >
-                                                    <div className="flex items-center justify-between px-4 py-3 text-[15px] font-medium rounded-xl transition-colors hover:bg-[var(--t-bg-surface)] cursor-default" style={{ color: "var(--t-text)" }}>
+                                                    <div className="flex items-center justify-between px-4 py-3 text-[15px] font-medium rounded-lg transition-colors hover:bg-[var(--t-bg-surface)] cursor-default" style={{ color: "var(--t-text)" }}>
                                                         <span>{category.category}</span>
                                                         <svg className={`w-4 h-4 transition-transform ${hoveredCategory === category.category ? 'translate-x-1 text-[var(--t-accent)]' : 'text-[var(--t-text-muted)]'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -182,7 +182,7 @@ export function Header() {
                                                                 animate={{ opacity: 1, x: 0 }}
                                                                 exit={{ opacity: 0, x: -10, transition: { duration: 0.1 } }}
                                                                 transition={{ duration: 0.2 }}
-                                                                className="absolute top-0 left-[calc(100%+8px)] min-w-[240px] rounded-[1.5rem] shadow-2xl p-2 border"
+                                                                className="absolute top-0 left-[calc(100%+8px)] min-w-[240px] rounded-[10px] shadow-2xl p-2 border"
                                                                 style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                                                             >
                                                                 {category.items.map(item => (
@@ -193,7 +193,7 @@ export function Header() {
                                                                             setHoveredMenu(null);
                                                                             setHoveredCategory(null);
                                                                         }}
-                                                                        className="block px-4 py-3 text-[15px] font-medium rounded-xl hover:bg-[var(--t-bg-surface)] transition-all duration-300"
+                                                                        className="block px-4 py-3 text-[15px] font-medium rounded-lg hover:bg-[var(--t-bg-surface)] transition-all duration-300"
                                                                         style={{ color: "var(--t-text)" }}
                                                                     >
                                                                         {item.label}

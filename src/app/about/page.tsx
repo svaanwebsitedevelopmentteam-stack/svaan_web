@@ -133,25 +133,57 @@ export default function CompanyPage() {
                     </div>
                 </div>
 
-                {/* How We Work Ribbon */}
-                <div className="mb-40 py-20 rounded-[3rem] overflow-hidden relative text-center px-6" style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 pointer-events-none" />
-                    <h2 className="font-display text-3xl font-bold mb-8 relative z-10" style={{ color: "var(--t-text)" }}>Our work follows a simple principle:</h2>
+                {/* How We Work Ribbon (Cinematic Pipeline) */}
+                <div className="mb-40 py-24 rounded-[3rem] overflow-hidden relative border" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.03),transparent)] pointer-events-none" />
 
-                    <div className="relative z-10 flex flex-wrap justify-center items-center gap-4 md:gap-8 font-display text-xl md:text-3xl font-bold" style={{ color: "var(--t-accent)" }}>
-                        <span>Understand</span>
-                        <svg className="w-5 h-5 mx-0 md:mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                        <span>Strategize</span>
-                        <svg className="w-5 h-5 mx-0 md:mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                        <span>Design</span>
-                        <svg className="w-5 h-5 mx-0 md:mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                        <span>Build</span>
-                        <svg className="w-5 h-5 mx-0 md:mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                        <span>Evolve</span>
+                    <div className="text-center mb-20 relative z-10 px-6">
+                        <h2 className="font-display text-4xl md:text-5xl font-bold mb-6" style={{ color: "var(--t-text)" }}>Our work follows a simple principle</h2>
+                        <p className="mt-4 text-xl max-w-2xl mx-auto" style={{ color: "var(--t-text-muted)" }}>
+                            We use this journey to connect strategic thinking with practical technology delivery.
+                        </p>
                     </div>
-                    <p className="mt-8 text-lg max-w-2xl mx-auto relative z-10" style={{ color: "var(--t-text-muted)" }}>
-                        We use this journey to connect strategic thinking with practical technology delivery.
-                    </p>
+
+                    <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between px-10 xl:px-20 gap-10 lg:gap-4 font-display">
+                        {/* Horizontal Connection Line (Desktop isolated) */}
+                        {/* <div className="hidden lg:block absolute top-[30%] left-[30px] right-[30px] h-[2px] -translate-y-1/2 opacity-20" style={{ backgroundColor: "var(--t-accent)" }} /> */}
+
+                        {[
+                            { name: "Understand", icon: Icons3D.ProcessDiscover },
+                            { name: "Strategize", icon: Icons3D.ProcessShape },
+                            { name: "Design", icon: Icons3D.ProcessPrototype },
+                            { name: "Build", icon: Icons3D.ProcessBuild },
+                            { name: "Evolve", icon: Icons3D.Support },
+                        ].map((step, i) => (
+                            <motion.div
+                                key={step.name}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.6, delay: i * 0.1 }}
+                                className="group relative flex flex-col items-center w-full lg:w-48 bg-transparent"
+                            >
+                                {/* 3D Icon Card */}
+                                <div className="w-28 h-28 md:w-32 md:h-32 rounded-[2rem] flex items-center justify-center mb-8 relative transition-all duration-500 ease-out group-hover:-translate-y-4 shadow-xl group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] backdrop-blur-3xl" style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
+                                    <div className="absolute inset-0 opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-500" style={{ backgroundColor: "var(--t-accent)" }} />
+                                    <step.icon className="w-14 h-14 md:w-16 md:h-16 relative z-10" />
+                                </div>
+
+                                {/* Typography */}
+                                <div className="flex flex-col items-center bg-[var(--t-bg-surface)] px-4 py-2 relative z-10">
+                                    <span className="text-xs font-bold uppercase tracking-widest opacity-40 mb-2 transition-opacity group-hover:opacity-100" style={{ color: "var(--t-accent)" }}>
+                                        Step 0{i + 1}
+                                    </span>
+                                    <h3 className="text-2xl md:text-3xl font-bold transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                        {step.name}
+                                    </h3>
+                                </div>
+
+                                {/* Flow Node indicator (anchors to line) */}
+                                <div className="hidden lg:block absolute top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-150 z-20" style={{ backgroundColor: "var(--t-bg)", borderColor: "var(--t-accent)" }} />
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
 
 

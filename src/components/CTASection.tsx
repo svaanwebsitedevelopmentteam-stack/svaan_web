@@ -30,7 +30,7 @@ export function CTASection() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
                         </svg>
                     </Link>
-                    <p className="text-sm mt-8 italic" style={{ color: "var(--t-text-muted)" }}>and make it real together</p>
+                    {/* <p className="text-sm mt-8 italic" style={{ color: "var(--t-text-muted)" }}>and make it real together</p> */}
                 </motion.div>
             </div>
         </section>
