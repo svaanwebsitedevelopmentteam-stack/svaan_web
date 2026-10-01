@@ -15,6 +15,7 @@ export function CustomCursor() {
     const cursorY = useSpring(0, springConfig);
 
     const [isPointer, setIsPointer] = useState(false);
+    const [isSolidMode, setIsSolidMode] = useState(false);
 
     useEffect(() => {
         // Only show custom cursor on non-touch devices
@@ -31,11 +32,17 @@ export function CustomCursor() {
 
         const handleMouseOver = (e: MouseEvent) => {
             const target = e.target as HTMLElement;
+
+            // Check if we are hovering a logo that shouldn't be inverted
+            const solidTarget = target.closest('[data-cursor-solid="true"]');
+            setIsSolidMode(!!solidTarget);
+
             // Expand cursor when hovering over clickable elements
             if (
                 window.getComputedStyle(target).cursor === 'pointer' ||
                 target.tagName.toLowerCase() === 'a' ||
-                target.tagName.toLowerCase() === 'button'
+                target.tagName.toLowerCase() === 'button' ||
+                !!solidTarget
             ) {
                 setIsPointer(true);
             } else {
@@ -57,7 +64,7 @@ export function CustomCursor() {
     return (
         <>
             <motion.div
-                className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] hidden md:flex items-center justify-center mix-blend-difference"
+                className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9999] hidden md:flex items-center justify-center transition-colors duration-300 ${isSolidMode ? 'mix-blend-normal' : 'mix-blend-difference'}`}
                 animate={{
                     width: isPointer ? 64 : 16,
                     height: isPointer ? 64 : 16,
@@ -67,7 +74,9 @@ export function CustomCursor() {
                     height: { duration: 0.3, ease: [0.25, 1, 0.5, 1] }
                 }}
                 style={{
-                    backgroundColor: "white", // Must be white for difference blending to work nicely on light and dark mode!
+                    backgroundColor: isSolidMode ? "transparent" : "white",
+                    border: isSolidMode ? "1px solid white" : "none",
+                    backdropFilter: isSolidMode ? "blur(2px)" : "none",
                     x: cursorX,
                     y: cursorY,
                     translateX: "-50%",

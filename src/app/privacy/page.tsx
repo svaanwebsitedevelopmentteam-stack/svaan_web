@@ -5,7 +5,7 @@ import { CTASection } from "@/components/CTASection";
 
 export default function PrivacyPage() {
     return (
-        <main className="min-h-screen pt-[140px] pb-0 relative bg-[var(--t-bg)]">
+        <main className="min-h-screen pt-[140px] pb-0 relative bg-[var(--t-bg)] overflow-x-clip">
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
 
                 {/* Hero */}

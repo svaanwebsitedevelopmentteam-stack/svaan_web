@@ -3,47 +3,54 @@
 import { motion } from "framer-motion";
 import { CTASection } from "@/components/CTASection";
 
+import { Icons3D } from "@/components/ui/Icons3D";
+
 const methodologies = [
     {
         num: "01",
         title: "Understand",
         subtitle: "Understand before deciding.",
         desc: "We clarify the business challenge, users, context, constraints, and desired progress.",
-        deliverables: ["Discovery", "Stakeholder discussions", "Problem framing", "Current-state review", "Requirement analysis", "Opportunity identification"]
+        deliverables: ["Discovery", "Stakeholder discussions", "Problem framing", "Current-state review", "Requirement analysis", "Opportunity identification"],
+        icon: Icons3D.ProcessDiscover
     },
     {
         num: "02",
         title: "Strategize",
         subtitle: "Turn complexity into direction.",
         desc: "We identify priorities, opportunities, and the direction that makes sense for the situation.",
-        deliverables: ["Prioritization", "Product and technology direction", "Transformation planning", "Solution options", "Roadmap definition"]
+        deliverables: ["Prioritization", "Product and technology direction", "Transformation planning", "Solution options", "Roadmap definition"],
+        icon: Icons3D.ProcessShape
     },
     {
         num: "03",
         title: "Design",
         subtitle: "Make the solution useful before making it real.",
         desc: "We translate direction into experiences, products, workflows, and solution concepts.",
-        deliverables: ["User experience design", "Product definition", "Prototyping", "Interface design", "Solution design"]
+        deliverables: ["User experience design", "Product definition", "Prototyping", "Interface design", "Solution design"],
+        icon: Icons3D.ProcessPrototype
     },
     {
         num: "04",
         title: "Build",
         subtitle: "Turn direction into working technology.",
         desc: "We engineer and deliver the solution with appropriate technology, quality practices, and collaboration.",
-        deliverables: ["Application development", "Integration", "Quality assurance", "Deployment", "Delivery management"]
+        deliverables: ["Application development", "Integration", "Quality assurance", "Deployment", "Delivery management"],
+        icon: Icons3D.ProcessBuild
     },
     {
         num: "05",
         title: "Evolve",
         subtitle: "Improve as the business changes.",
         desc: "We support, monitor, learn from, and improve technology after launch.",
-        deliverables: ["Application support", "Infrastructure support", "Production support", "Cloud management", "Performance improvement", "Continuous enhancement"]
+        deliverables: ["Application support", "Infrastructure support", "Production support", "Cloud management", "Performance improvement", "Continuous enhancement"],
+        icon: Icons3D.Support
     }
 ];
 
 export default function ApproachPage() {
     return (
-        <main className="min-h-screen pt-[140px] pb-0 relative bg-[var(--t-bg)]">
+        <main className="min-h-screen pt-[140px] pb-0 relative bg-[var(--t-bg)] overflow-x-clip">
             {/* Background Orbs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 max-h-[80vh]">
                 <motion.div
@@ -146,8 +153,13 @@ export default function ApproachPage() {
                                     className="rounded-[2rem] p-10 md:p-14"
                                     style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                                 >
-                                    <div className="flex items-center justify-between mb-10">
-                                        <h3 className="font-display text-3xl font-bold" style={{ color: "var(--t-text)" }}>{step.title}</h3>
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6">
+                                        <div className="flex items-center gap-6">
+                                            <div className="w-16 h-16 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}>
+                                                <step.icon className="w-10 h-10 drop-shadow-md" />
+                                            </div>
+                                            <h3 className="font-display text-3xl font-bold" style={{ color: "var(--t-text)" }}>{step.title}</h3>
+                                        </div>
                                         <span className="font-display text-5xl font-bold opacity-10" style={{ color: "var(--t-text)" }}>{step.num}</span>
                                     </div>
 

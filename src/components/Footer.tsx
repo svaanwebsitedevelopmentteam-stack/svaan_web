@@ -3,11 +3,22 @@ import Image from "next/image";
 
 export function Footer() {
     return (
-        <footer className="py-[60px]" style={{ borderTop: "1px solid var(--t-border)" }}>
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+        <footer className="dark py-[100px] pb-10 relative overflow-hidden z-0" style={{ backgroundColor: "var(--t-bg)", borderTop: "1px solid var(--t-border)", backgroundImage: "linear-gradient(to bottom, var(--t-bg), color-mix(in srgb, var(--t-accent) 10%, var(--t-bg)))" }}>
+            {/* Ambient Background Glow */}
+            <div className="absolute bottom-[-200px] left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full blur-[200px] pointer-events-none z-[-2]"
+                style={{ backgroundColor: "var(--t-accent)", opacity: "calc(var(--t-orb-opacity) * 0.4)" }} />
+
+            {/* Massive Background Typography */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none z-[-1] select-none opacity-[0.02] mix-blend-overlay">
+                <span className="font-display font-black text-[25vw] leading-none tracking-tighter whitespace-nowrap" style={{ color: "var(--t-text)" }}>
+                    SVAAN
+                </span>
+            </div>
+
+            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
                     <div className="lg:col-span-1">
-                        <Link href="/" className="inline-block relative w-[180px] h-[45px] mb-6 group">
+                        <Link href="/" className="inline-block relative w-[180px] h-[45px] mb-6 group" data-cursor-solid="true">
                             <Image
                                 src="/Primary_logo.svg"
                                 alt="SVaaN"

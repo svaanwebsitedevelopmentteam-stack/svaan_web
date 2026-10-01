@@ -57,7 +57,7 @@ const insights = [
 
 export default function InsightsPage() {
     return (
-        <main className="min-h-screen pt-[140px] pb-0 relative bg-[var(--t-bg)]">
+        <main className="min-h-screen pt-[140px] pb-0 relative bg-[var(--t-bg)] overflow-x-clip">
             {/* Background Orbs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 max-h-[80vh]">
                 <motion.div

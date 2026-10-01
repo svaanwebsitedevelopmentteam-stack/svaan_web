@@ -4,13 +4,15 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 
+import { Illustrations } from "@/components/ui/Illustrations";
+
 const allProjects = [
     {
         title: "AI-Powered FinTech Platform",
         client: "Global Financial Services",
         tags: ["AI Development", "Strategy"],
         href: "/work/fintech-platform",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
+        Illustration: Illustrations.FinTech,
         gradient: "from-blue-600/60 to-purple-800/60"
     },
     {
@@ -18,7 +20,7 @@ const allProjects = [
         client: "Enterprise Health Network",
         tags: ["Enterprise Software", "UX Design"],
         href: "/work/healthcare",
-        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200",
+        Illustration: Illustrations.Healthcare,
         gradient: "from-emerald-500/60 to-teal-800/60"
     },
     {
@@ -26,7 +28,7 @@ const allProjects = [
         client: "Global Real Estate",
         tags: ["Product Development", "Cloud"],
         href: "/work/proptech",
-        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200",
+        Illustration: Illustrations.PropTech,
         gradient: "from-orange-500/60 to-amber-800/60"
     },
     {
@@ -34,7 +36,7 @@ const allProjects = [
         client: "Retail Enterprise",
         tags: ["Architecture", "DevOps"],
         href: "/work/ecommerce",
-        image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=1200",
+        Illustration: Illustrations.Ecommerce,
         gradient: "from-pink-500/60 to-rose-800/60"
     },
     {
@@ -42,7 +44,7 @@ const allProjects = [
         client: "National Freight Co.",
         tags: ["Machine Learning", "IoT"],
         href: "/work/logistics-tracker",
-        image: "https://images.unsplash.com/photo-1586528116311-ad8ed7c80a30?auto=format&fit=crop&q=80&w=1200",
+        Illustration: Illustrations.PropTech,
         gradient: "from-indigo-500/60 to-fuchsia-800/60"
     },
     {
@@ -50,14 +52,14 @@ const allProjects = [
         client: "Government Agency",
         tags: ["Cybersecurity", "Architecture"],
         href: "/work/identity-portal",
-        image: "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format&fit=crop&q=80&w=1200",
+        Illustration: Illustrations.FinTech,
         gradient: "from-cyan-500/60 to-sky-800/60"
     }
 ];
 
 export default function WorkPage() {
     return (
-        <main className="min-h-screen pt-[140px] pb-0 relative">
+        <main className="min-h-screen pt-[140px] pb-0 relative overflow-x-clip">
             {/* Background Orbs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 max-h-screen">
                 <motion.div
@@ -109,13 +111,12 @@ export default function WorkPage() {
                                     className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden mb-8 group"
                                     style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                                 >
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="absolute inset-0 w-full h-full object-cover grayscale-[30%] transition-transform duration-[1.2s] ease-out group-hover:scale-[1.05]"
-                                    />
+                                    {/* Embedded Custom SVG Illustration */}
+                                    <div className="absolute inset-0 w-full h-full pointer-events-none group-hover:scale-[1.03] transition-transform duration-[1.5s] ease-out">
+                                        <project.Illustration className="w-full h-full object-cover" />
+                                    </div>
                                     <motion.div
-                                        className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay transition-opacity duration-[1.2s] ease-out opacity-80 group-hover:opacity-40`}
+                                        className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay transition-opacity duration-[1.2s] ease-out opacity-60 group-hover:opacity-20`}
                                     />
 
                                     {/* Hover Icon Over Image */}

@@ -3,26 +3,33 @@
 import { motion } from "framer-motion";
 import { CTASection } from "@/components/CTASection";
 
+import { Icons3D } from "@/components/ui/Icons3D";
+
 const beliefs = [
     {
         title: "Think beyond the requirement.",
-        desc: "The stated requirement is often only the starting point. We look for the business problem behind it."
+        desc: "The stated requirement is often only the starting point. We look for the business problem behind it.",
+        icon: Icons3D.Strategy
     },
     {
         title: "Connect business and technology.",
-        desc: "Technology decisions should support business direction, customer needs, and operational realities."
+        desc: "Technology decisions should support business direction, customer needs, and operational realities.",
+        icon: Icons3D.Software
     },
     {
         title: "Make complexity easier to navigate.",
-        desc: "Good collaboration starts with making complex situations easier to understand."
+        desc: "Good collaboration starts with making complex situations easier to understand.",
+        icon: Icons3D.DataTree
     },
     {
         title: "Design for long-term value",
-        desc: "Solutions should be useful beyond launch and able to evolve with the organization."
+        desc: "Solutions should be useful beyond launch and able to evolve with the organization.",
+        icon: Icons3D.Design
     },
     {
         title: "Keep evolving",
-        desc: "Technology, markets, and business needs change. Our way of working should evolve with them."
+        desc: "Technology, markets, and business needs change. Our way of working should evolve with them.",
+        icon: Icons3D.DevOps
     }
 ];
 
@@ -30,7 +37,7 @@ const beliefs = [
 
 export default function CompanyPage() {
     return (
-        <main className="min-h-screen pt-[140px] pb-0 relative bg-[var(--t-bg)] border-t border-[var(--t-border)]">
+        <main className="min-h-screen pt-[140px] pb-0 relative bg-[var(--t-bg)] border-t border-[var(--t-border)] overflow-x-clip">
             {/* Abstract Grid background to simulate a highly structured blueprint feel */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]" />
 
@@ -108,9 +115,14 @@ export default function CompanyPage() {
                                     className="p-8 md:p-12 rounded-3xl group transition-all duration-300"
                                     style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)" }}
                                 >
-                                    <h3 className="font-display text-2xl md:text-3xl font-bold mb-4 transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
-                                        {belief.title}
-                                    </h3>
+                                    <div className="flex flex-col md:flex-row md:items-center gap-6 mb-4">
+                                        <div className="w-16 h-16 shrink-0 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}>
+                                            <belief.icon className="w-10 h-10 drop-shadow-md" />
+                                        </div>
+                                        <h3 className="font-display text-2xl md:text-3xl font-bold transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                            {belief.title}
+                                        </h3>
+                                    </div>
                                     <p className="text-xl leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
                                         {belief.desc}
                                     </p>

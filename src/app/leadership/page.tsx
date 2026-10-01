@@ -5,8 +5,20 @@ import { CTASection } from "@/components/CTASection";
 
 const leaders = [
     {
+        name: "Dinesh Natarajan",
+        role: "Founder",
+        image: "/dinesh.webp",
+        bio: [
+            "Dinesh Natarajan founded SVaaN Global Tech with a focus on building a technology partner that remains accountable beyond go-live. With 17+ years of experience across network engineering, systems, IT service management, project management, technical support, and DevOps, he has worked across the technology lifecycle from infrastructure and operations to software delivery and support.",
+            "SVaaN began with a single US application-support engagement in 2021 and has grown to a 60+ person team serving clients across the US, UAE, UK, and Canada. Dinesh's experience has shaped SVaaN's emphasis on application and helpdesk support, custom software development, AI integration, POC and MVP development, DevOps, and cloud-managed services.",
+            "His approach is grounded in a simple principle: technology should not stop being owned when it goes live. SVaaN's role is to support, optimize, and scale the systems businesses depend on."
+        ],
+        linkedin: "https://www.linkedin.com/in/dineshnatarajan-"
+    },
+    {
         name: "Sai Ramamurthy",
         role: "Chief Executive Officer",
+        image: "/Sai.jpg",
         bio: [
             "Sai Ramamurthy leads SVaaN Global Tech with a focus on business transformation, organizational design, and building systems that allow businesses to evolve beyond founder dependency. His approach begins with understanding the patterns, misalignments, and dependencies within a business before deciding what should be systemized, automated, or made autonomous.",
             "Before joining SVaaN as CEO, Sai built experience across business development, market analysis, financial planning, partner management, and organizational growth. He also founded NO TOXIC®, where he continues to focus on building systems around a clear set of principles.",
@@ -14,21 +26,11 @@ const leaders = [
         ],
         linkedin: "https://www.linkedin.com/in/sairamamurthy"
     },
-    {
-        name: "Dinesh Natarajan",
-        role: "Founder",
-        bio: [
-            "Dinesh Natarajan founded SVaaN Global Tech with a focus on building a technology partner that remains accountable beyond go-live. With 17+ years of experience across network engineering, systems, IT service management, project management, technical support, and DevOps, he has worked across the technology lifecycle from infrastructure and operations to software delivery and support.",
-            "SVaaN began with a single US application-support engagement in 2021 and has grown to a 60+ person team serving clients across the US, UAE, UK, and Canada. Dinesh's experience has shaped SVaaN's emphasis on application and helpdesk support, custom software development, AI integration, POC and MVP development, DevOps, and cloud-managed services.",
-            "His approach is grounded in a simple principle: technology should not stop being owned when it goes live. SVaaN's role is to support, optimize, and scale the systems businesses depend on."
-        ],
-        linkedin: "https://www.linkedin.com/in/dineshnatarajan-"
-    }
 ];
 
 export default function LeadershipPage() {
     return (
-        <main className="min-h-screen pt-[140px] pb-0 relative">
+        <main className="min-h-screen pt-[140px] pb-0 relative overflow-x-clip">
             {/* Background Orbs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 max-h-[80vh]">
                 <motion.div
@@ -76,7 +78,7 @@ export default function LeadershipPage() {
                                 <div className="aspect-[4/5] rounded-[2rem] overflow-hidden mb-8 relative"
                                     style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
                                     <img
-                                        src={index === 0 ? "/Sai.jpg" : "/dinesh.webp"}
+                                        src={leader.image}
                                         alt={leader.name}
                                         className="w-full h-full object-cover filter grayscale-[30%] contrast-[1.1] hover:grayscale-0 transition-all duration-700"
                                     />

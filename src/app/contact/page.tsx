@@ -16,7 +16,7 @@ export default function ContactPage() {
     };
 
     return (
-        <main className="min-h-screen pt-[140px] pb-[60px] relative overflow-hidden">
+        <main className="min-h-screen pt-[140px] pb-[60px] relative overflow-hidden overflow-x-clip">
             {/* Background Orbs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
                 <motion.div

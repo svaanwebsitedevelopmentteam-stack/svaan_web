@@ -101,7 +101,7 @@ export function Header() {
             >
                 <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between relative z-50">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-3 group relative w-[180px] h-[45px] flex-shrink-0" onClick={() => setMobileOpen(false)}>
+                    <Link href="/" className="flex items-center gap-3 group relative w-[180px] h-[45px] flex-shrink-0" onClick={() => setMobileOpen(false)} data-cursor-solid="true">
                         <Image
                             src="/Primary_logo.svg"
                             alt="SVaaN"

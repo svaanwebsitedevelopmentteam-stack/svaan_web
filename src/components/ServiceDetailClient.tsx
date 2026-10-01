@@ -1,12 +1,24 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 import { ServiceData } from "@/data/servicesData";
+import { Icons3D } from "@/components/ui/Icons3D";
 
 export function ServiceDetailClient({ service }: { service: ServiceData }) {
     const journeySteps = service.journey.split('→').map(s => s.trim());
+
+    const getJourneyIcon = (stepName: string) => {
+        const name = stepName.toLowerCase();
+        if (name.includes("understand")) return Icons3D.ProcessDiscover;
+        if (name.includes("strategize")) return Icons3D.ProcessShape;
+        if (name.includes("design")) return Icons3D.ProcessPrototype;
+        if (name.includes("build")) return Icons3D.ProcessBuild;
+        if (name.includes("evolve")) return Icons3D.Support;
+        return Icons3D.Software; // Fallback
+    };
 
     // Smart parser to break markdown-style intos into rich UI block components
     const introLines = service.intro.split('\n').map(l => l.trim()).filter(Boolean);
@@ -96,96 +108,161 @@ export function ServiceDetailClient({ service }: { service: ServiceData }) {
                     </motion.div>
                 )}
 
-                {/* 3. CAPABILITIES / CORE FOCUS (Editorial Clean Typography Grid) */}
-                <div className="py-[60px] border-t" style={{ borderColor: "var(--t-border)" }}>
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7 }}
-                        className="mb-16"
-                    >
-                        <h2 className="font-display text-4xl lg:text-5xl font-bold" style={{ color: "var(--t-text)" }}>Core Focus Areas</h2>
-                    </motion.div>
+                {/* 3. CAPABILITIES / CORE FOCUS (Editorial Split Layout) */}
+                <div className="py-[80px] border-t" style={{ borderColor: "var(--t-border)" }}>
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+                        {/* Left Side: Sticky Title & Context */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7 }}
+                            className="lg:col-span-5 lg:sticky top-32 h-fit"
+                        >
+                            <h2 className="font-display text-4xl lg:text-5xl font-bold mb-6" style={{ color: "var(--t-text)" }}>
+                                Core Focus Areas
+                            </h2>
+                            <p className="text-lg leading-relaxed md:max-w-md" style={{ color: "var(--t-text-muted)" }}>
+                                We isolate the critical domains that dictate the success or failure of a technical initiative.
+                                By focusing our expertise strictly within these boundaries, we deliver precision where it matters most.
+                            </p>
+                        </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
-                        {service.helpsWith.map((item, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.5, delay: i * 0.1 }}
-                                className="group flex flex-col items-start cursor-default"
-                            >
-                                <div className="text-sm font-bold tracking-widest mb-4 opacity-50" style={{ color: "var(--t-text-muted)" }}>
-                                    {(i + 1).toString().padStart(2, '0')}
-                                </div>
-                                <span className="font-display font-medium text-2xl md:text-3xl leading-tight transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
-                                    {item}
-                                </span>
-                                <div className="w-12 h-[2px] mt-8 transition-all duration-300 group-hover:w-full group-hover:bg-[var(--t-accent)]" style={{ backgroundColor: "var(--t-border)" }} />
-                            </motion.div>
-                        ))}
+                        {/* Right Side: Stacked Typography List (Borderless with 3D Icons) */}
+                        <div className="lg:col-span-7 flex flex-col">
+                            {service.helpsWith.map((item, i) => {
+                                const coreFocusIcons = [
+                                    Icons3D.Strategy,
+                                    Icons3D.Software,
+                                    Icons3D.Design,
+                                    Icons3D.Database,
+                                    Icons3D.Cloud,
+                                    Icons3D.Backend,
+                                    Icons3D.AI,
+                                    Icons3D.Support,
+                                ];
+                                const FocusIcon = coreFocusIcons[i % coreFocusIcons.length];
+
+                                return (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-50px" }}
+                                        transition={{ duration: 0.5, delay: i * 0.05 }}
+                                        className="group flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 py-5 transition-all duration-300 hover:bg-black/5 dark:hover:bg-white/5 px-6 -mx-6 rounded-3xl cursor-default"
+                                    >
+                                        <div className="w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center transition-transform duration-500 ease-out group-hover:scale-110 shadow-sm relative overflow-hidden" style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
+                                            <div className="absolute inset-0 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" style={{ backgroundColor: "var(--t-accent)" }} />
+                                            <FocusIcon className="w-8 h-8 drop-shadow-md relative z-10" />
+                                        </div>
+                                        <span className="font-display font-medium text-2xl lg:text-3xl leading-tight transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                            {item}
+                                        </span>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
 
-                {/* 4. DELIVERABLES & JOURNEY (Unboxed Split) */}
-                <div className="py-[60px] border-t mb-20" style={{ borderColor: "var(--t-border)" }}>
-                    <div className="grid grid-cols-1 xl:grid-cols-12 gap-16 lg:gap-24">
+                {/* 4. EXECUTION & OUTCOMES (Merged Journey + Deliverables with 3D Icons) */}
+                <div className="py-[100px] border-t mb-20" style={{ borderColor: "var(--t-border)" }}>
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
 
-                        {/* Deliverables */}
+                        {/* Left Side: PROJECT JOURNEY with 3D Icons Timeline */}
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.7 }}
-                            className="xl:col-span-5"
+                            className="lg:col-span-5 flex flex-col lg:sticky top-32 h-fit"
                         >
-                            <h2 className="font-display text-3xl font-bold mb-10" style={{ color: "var(--t-text)" }}>Typical Deliverables</h2>
-                            <ul className="flex flex-col gap-6">
-                                {service.deliverables.map((item, i) => (
-                                    <li key={i} className="flex items-center gap-5 text-xl font-light" style={{ color: "var(--t-text-muted)" }}>
-                                        <svg className="w-5 h-5 flex-shrink-0" style={{ color: "var(--t-accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                        </svg>
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
+                            <h2 className="font-display text-4xl lg:text-5xl font-bold mb-12" style={{ color: "var(--t-text)" }}>
+                                How We Execute
+                            </h2>
+                            <div className="relative flex flex-col gap-10 lg:pl-4">
+                                {/* Vertical connection line track */}
+                                <div className="absolute left-[36px] lg:left-[52px] top-10 bottom-10 w-[2px] opacity-10" style={{ backgroundColor: "var(--t-text-muted)" }} />
+
+                                {journeySteps.map((step, i) => {
+                                    const StepIcon = getJourneyIcon(step);
+                                    return (
+                                        <motion.div
+                                            key={i}
+                                            initial={{ opacity: 0, x: -20, scale: 0.95 }}
+                                            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                                            viewport={{ once: true, margin: "-50px" }}
+                                            transition={{ duration: 0.5, delay: i * 0.15 }}
+                                            className="relative z-10 flex items-center gap-6 md:gap-8 group"
+                                        >
+                                            <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-[1.25rem] flex items-center justify-center transition-all duration-500 ease-out group-hover:scale-110 group-hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)] relative overflow-hidden"
+                                                style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
+                                                {/* Ambient back-glow on hover */}
+                                                <div className="absolute inset-0 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" style={{ backgroundColor: "var(--t-accent)" }} />
+                                                <StepIcon className="w-10 h-10 md:w-12 md:h-12 drop-shadow-md relative z-10" />
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <span className="text-xs font-bold uppercase tracking-widest opacity-50 mb-1" style={{ color: "var(--t-accent)" }}>Step 0{i + 1}</span>
+                                                <span className="font-display text-2xl md:text-3xl font-bold transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                                    {step}
+                                                </span>
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
+                            </div>
                         </motion.div>
 
-                        {/* Journey & CTA */}
+                        {/* Right Side: TYPICAL DELIVERABLES & CTA (Bento List Layout) */}
                         <motion.div
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.7 }}
-                            className="xl:col-span-7 flex flex-col gap-16"
+                            className="lg:col-span-7 flex flex-col justify-between"
                         >
                             <div>
-                                <h3 className="text-sm font-bold uppercase tracking-widest mb-10 opacity-50" style={{ color: "var(--t-text)" }}>Project Journey</h3>
-
-                                <div className="flex flex-wrap items-center gap-4 md:gap-6">
-                                    {journeySteps.map((step, index) => (
-                                        <div key={index} className="flex items-center gap-4 md:gap-6">
-                                            <div className="font-display text-2xl lg:text-3xl font-bold" style={{ color: "var(--t-text)" }}>
-                                                {step}
-                                            </div>
-                                            {index < journeySteps.length - 1 && (
-                                                <svg className="w-6 h-6 opacity-30" style={{ color: "var(--t-text)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                <h2 className="font-display text-3xl md:text-4xl font-bold mb-10 mt-2 lg:mt-0" style={{ color: "var(--t-text)" }}>
+                                    Typical Deliverables
+                                </h2>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                                    {service.deliverables.map((item, i) => (
+                                        <motion.div
+                                            key={i}
+                                            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                                            whileHover={{ scale: 1.03, y: -4 }}
+                                            viewport={{ once: true, margin: "-50px" }}
+                                            transition={{ duration: 0.4, delay: i * 0.08, type: "spring", stiffness: 100 }}
+                                            className="group flex p-6 md:p-8 rounded-[1.5rem] items-start gap-4 transition-all duration-300 shadow-sm hover:shadow-xl"
+                                            style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", boxShadow: "inset 0 0 40px rgba(255,255,255,0.01)" }}
+                                        >
+                                            <div className="mt-1 w-6 h-6 rounded-full flex shrink-0 items-center justify-center opacity-30 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300" style={{ backgroundColor: "var(--t-accent)" }}>
+                                                <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                                                 </svg>
-                                            )}
-                                        </div>
+                                            </div>
+                                            <span className="font-medium text-lg leading-snug transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                                {item}
+                                            </span>
+                                        </motion.div>
                                     ))}
                                 </div>
                             </div>
 
-                            <Link href="/contact" className="inline-flex max-w-max items-center gap-3 justify-center px-10 py-5 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl" style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}>
-                                {service.cta}
-                            </Link>
-
+                            {/* Integrated Call to Action anchored to the deliverables */}
+                            <div className="mt-16 pt-8 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-8 sm:gap-6" style={{ borderColor: "var(--t-border)" }}>
+                                <p className="text-sm font-bold uppercase tracking-widest opacity-60" style={{ color: "var(--t-text-muted)" }}>
+                                    Ready to shape your journey?
+                                </p>
+                                <Link href="/contact" className="inline-flex max-w-max items-center gap-3 justify-center px-10 py-4 lg:py-5 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)]" style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}>
+                                    {service.cta}
+                                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </Link>
+                            </div>
                         </motion.div>
                     </div>
                 </div>

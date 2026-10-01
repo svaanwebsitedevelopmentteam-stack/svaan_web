@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 
+import { Icons3D } from "@/components/ui/Icons3D";
+
 const categories = [
     {
         num: "01",
@@ -12,19 +14,7 @@ const categories = [
         services: [
             { label: "POC Development", slug: "poc-development", desc: "Validate the idea before making the larger investment." }
         ],
-        icon: (
-            <motion.svg className="w-8 h-8 drop-shadow-md" viewBox="0 0 24 24" fill="none"
-                animate={{ rotate: [0, -3, 3, 0], scale: [1, 1.05, 1] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
-                <defs>
-                    <linearGradient id="grad-strat" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#818cf8" />
-                        <stop offset="100%" stopColor="#c084fc" />
-                    </linearGradient>
-                </defs>
-                <path stroke="url(#grad-strat)" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5" />
-            </motion.svg>
-        )
+        icon: <Icons3D.Strategy className="w-16 h-16 drop-shadow-xl" />
     },
     {
         num: "02",
@@ -34,19 +24,7 @@ const categories = [
             { label: "UI/UX Design", slug: "ui-ux-design", desc: "Design connecting user needs with product requirements." },
             { label: "MVP Development", slug: "mvp-development", desc: "Turn a product idea into something real enough to learn from." }
         ],
-        icon: (
-            <motion.svg className="w-8 h-8 drop-shadow-md" viewBox="0 0 24 24" fill="none"
-                animate={{ y: [0, 2, -2, 0], scale: [1, 1.03, 1] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}>
-                <defs>
-                    <linearGradient id="grad-prod" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#34d399" />
-                        <stop offset="100%" stopColor="#2dd4bf" />
-                    </linearGradient>
-                </defs>
-                <path stroke="url(#grad-prod)" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
-            </motion.svg>
-        )
+        icon: <Icons3D.Design className="w-16 h-16 drop-shadow-xl" />
     },
     {
         num: "03",
@@ -56,19 +34,7 @@ const categories = [
             { label: "Software Product Development", slug: "software-product-development", desc: "Build software around the way your business needs to work." },
             { label: "Enterprise Software Development", slug: "enterprise-software-development", desc: "Build technology that supports complex business operations." }
         ],
-        icon: (
-            <motion.svg className="w-8 h-8 drop-shadow-md" viewBox="0 0 24 24" fill="none"
-                animate={{ y: [0, -3, 0], scale: [1, 1.05, 1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
-                <defs>
-                    <linearGradient id="grad-ai" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#fff" />
-                        <stop offset="100%" stopColor="var(--t-accent)" />
-                    </linearGradient>
-                </defs>
-                <path stroke="url(#grad-ai)" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </motion.svg>
-        )
+        icon: <Icons3D.Software className="w-16 h-16 drop-shadow-xl" />
     },
     {
         num: "04",
@@ -77,19 +43,7 @@ const categories = [
         services: [
             { label: "AI Software Development", slug: "ai-software-development", desc: "Apply AI to real business problems securely and efficiently." }
         ],
-        icon: (
-            <motion.svg className="w-8 h-8 drop-shadow-md" viewBox="0 0 24 24" fill="none"
-                animate={{ scale: [1, 0.95, 1], rotate: [0, 3, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
-                <defs>
-                    <linearGradient id="grad-mvp" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#34d399" />
-                        <stop offset="100%" stopColor="#fbbf24" />
-                    </linearGradient>
-                </defs>
-                <path stroke="url(#grad-mvp)" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </motion.svg>
-        )
+        icon: <Icons3D.AI className="w-16 h-16 drop-shadow-xl" />
     },
     {
         num: "05",
@@ -98,19 +52,7 @@ const categories = [
         services: [
             { label: "Quality Assurance", slug: "quality-assurance", desc: "Build confidence into every release ensuring software behaves as expected." }
         ],
-        icon: (
-            <motion.svg className="w-8 h-8 drop-shadow-md" viewBox="0 0 24 24" fill="none"
-                animate={{ rotate: [0, 4, -4, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-                <defs>
-                    <linearGradient id="grad-eng" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#cbd5e1" />
-                        <stop offset="100%" stopColor="#64748b" />
-                    </linearGradient>
-                </defs>
-                <path stroke="url(#grad-eng)" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </motion.svg>
-        )
+        icon: <Icons3D.ProcessBuild className="w-16 h-16 drop-shadow-xl" />
     },
     {
         num: "06",
@@ -124,25 +66,13 @@ const categories = [
             { label: "DevOps Support", slug: "devops-support", desc: "Make software delivery more consistent and efficient." },
             { label: "Cloud Managed Services", slug: "cloud-managed-services", desc: "Manage environments for performance and growth." }
         ],
-        icon: (
-            <motion.svg className="w-8 h-8 drop-shadow-md" viewBox="0 0 24 24" fill="none"
-                animate={{ rotate: [0, 5, -5, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-                <defs>
-                    <linearGradient id="grad-poc" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#818cf8" />
-                        <stop offset="100%" stopColor="var(--t-accent)" />
-                    </linearGradient>
-                </defs>
-                <path stroke="url(#grad-poc)" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-            </motion.svg>
-        )
+        icon: <Icons3D.CloudInfra className="w-16 h-16 drop-shadow-xl" />
     }
 ];
 
 export default function ServicesPage() {
     return (
-        <main className="min-h-screen pt-[140px] pb-0 relative">
+        <main className="min-h-screen pt-[140px] pb-0 relative overflow-x-clip">
             {/* Background Orbs */}
             <div className="absolute top-0 left-0 right-0 h-screen pointer-events-none overflow-hidden z-0">
                 <motion.div
