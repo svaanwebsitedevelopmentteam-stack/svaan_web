@@ -336,5 +336,117 @@ export const Icons3D = {
                 <IsoBlock x={63} y={45} size={10} h={12} colorTop="url(#ms-t)" colorLeft="url(#ms-l)" colorRight="url(#ms-r)" style={{ animation: "i3d-float1 3.5s ease-in-out infinite 0.6s" }} />
             </g>
         </svg>
+    ),
+
+    // ==========================================
+    // PROCESS SECTION EXCLUSIVE ICONS
+    // ==========================================
+
+    // 14. Problem Framing (Isometric Target / Discovery)
+    ProcessDiscover: ({ className = "w-10 h-10" }) => (
+        <svg viewBox="0 0 100 100" className={`overflow-visible ${className}`}>
+            <AnimationStyles />
+            <defs>
+                <linearGradient id="pd-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#818cf8" stopOpacity="0.4" /><stop offset="100%" stopColor="#312e81" stopOpacity="0.8" /></linearGradient>
+                <radialGradient id="pd-core" cx="30%" cy="30%" r="70%"><stop offset="0%" stopColor="#fbbf24" /><stop offset="100%" stopColor="#d97706" /></radialGradient>
+            </defs>
+            <g className="i3d-f1">
+                {/* Floating Puzzle / Problem block */}
+                <g className="i3d-p">
+                    <IsoBlock x={50} y={45} size={12} h={12} colorTop="url(#pd-core)" colorLeft="#b45309" colorRight="#92400e" />
+                </g>
+
+                {/* Hovering isometric magnifying lens */}
+                <g className="i3d-f3" style={{ animationDelay: "1s" }}>
+                    <ellipse cx="45" cy="25" rx="20" ry="10" fill="none" stroke="#60a5fa" strokeWidth="3" filter="drop-shadow(0 5px 5px rgba(96,165,250,0.5))" />
+                    <ellipse cx="45" cy="25" rx="18" ry="8" fill="url(#pd-glass)" />
+                    {/* Handle */}
+                    <path d="M 60 30 L 80 45" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
+                    <path d="M 60 30 L 80 45" stroke="#cbd5e1" strokeWidth="2" strokeLinecap="round" />
+                </g>
+            </g>
+        </svg>
+    ),
+
+    // 15. Shaping the Direction (Converging Isometric Paths)
+    ProcessShape: ({ className = "w-10 h-10" }) => (
+        <svg viewBox="0 0 100 100" className={`overflow-visible ${className}`}>
+            <AnimationStyles />
+            <defs>
+                <linearGradient id="ps-path" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#34d399" /><stop offset="100%" stopColor="#059669" /></linearGradient>
+                <linearGradient id="ps-node" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#38bdf8" /><stop offset="100%" stopColor="#0284c7" /></linearGradient>
+            </defs>
+            {/* Base platform */}
+            <IsoBlock x={50} y={60} size={25} h={4} colorTop="transparent" colorLeft="#1e293b" colorRight="#0f172a" />
+
+            <g className="i3d-f2">
+                {/* Converging arrows in 3D perspective */}
+                <path d="M 20 40 L 45 55 L 45 45 Z" fill="url(#ps-path)" className="i3d-pf" style={{ animationDelay: "0s" }} />
+                <path d="M 80 40 L 55 55 L 55 45 Z" fill="url(#ps-path)" className="i3d-pf" style={{ animationDelay: "0.5s" }} />
+
+                {/* Central shaped block (The decided direction) */}
+                <IsoBlock x={50} y={30} size={8} h={15} colorTop="url(#ps-node)" colorLeft="#0369a1" colorRight="#075985" style={{ animation: "i3d-float1 2s ease-in-out infinite" }} />
+
+                {/* Upward trajectory */}
+                <path d="M 50 30 L 50 -10 M 45 -5 L 50 -10 L 55 -5" stroke="#38bdf8" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="i3d-flow" />
+            </g>
+        </svg>
+    ),
+
+    // 16. Design & Prototype (Floating Wireframe Layers)
+    ProcessPrototype: ({ className = "w-10 h-10" }) => (
+        <svg viewBox="0 0 100 100" className={`overflow-visible ${className}`}>
+            <AnimationStyles />
+            <defs>
+                <linearGradient id="pp-base" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#f472b6" stopOpacity="0.4" /><stop offset="100%" stopColor="#be185d" stopOpacity="0.6" /></linearGradient>
+                <linearGradient id="pp-pop" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#fbbf24" /><stop offset="100%" stopColor="#d97706" /></linearGradient>
+            </defs>
+            <g className="i3d-f3">
+                {/* Layer 1 (Base Device) */}
+                <IsoTop x={50} y={40} size={25} fill="url(#pp-base)" />
+                <path d="M 50 40 L 93.3 65 L 50 90 L 6.7 65 Z" stroke="#f472b6" strokeWidth="1" fill="none" />
+
+                {/* Layer 2 (The prototype UI breaking out) */}
+                <g className="i3d-fu" style={{ animationDelay: "1s" }}>
+                    <IsoBlock x={50} y={25} size={15} h={4} colorTop="url(#pp-pop)" colorLeft="#b45309" colorRight="#92400e" className="i3d-p" />
+                    <IsoBlock x={40} y={15} size={8} h={4} colorTop="#38bdf8" colorLeft="#0284c7" colorRight="#075985" />
+
+                    {/* Floating prototype connection lines */}
+                    <path d="M 50 25 L 50 40" stroke="#fbcfe8" strokeWidth="1" strokeDasharray="2 2" className="i3d-s" />
+                    <path d="M 40 15 L 40 50" stroke="#fbcfe8" strokeWidth="1" strokeDasharray="2 2" className="i3d-s" />
+                </g>
+            </g>
+        </svg>
+    ),
+
+    // 17. Build & Deliver (Isometric Package / Deployment Box)
+    ProcessBuild: ({ className = "w-10 h-10" }) => (
+        <svg viewBox="0 0 100 100" className={`overflow-visible ${className}`}>
+            <AnimationStyles />
+            <defs>
+                <linearGradient id="pb-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#c084fc" /><stop offset="100%" stopColor="#7e22ce" /></linearGradient>
+                <linearGradient id="pb-left" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#9333ea" /><stop offset="100%" stopColor="#6b21a8" /></linearGradient>
+                <linearGradient id="pb-right" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#7e22ce" /><stop offset="100%" stopColor="#581c87" /></linearGradient>
+            </defs>
+            <g className="i3d-f1">
+                {/* Box Base */}
+                <IsoBlock x={50} y={35} size={20} h={25} colorTop="url(#pb-top)" colorLeft="url(#pb-left)" colorRight="url(#pb-right)" />
+
+                {/* Open Flaps (Isometric polygons to fake flaps) */}
+                <g className="i3d-p" style={{ transformOrigin: "50px 35px", animationDuration: "4s" }}>
+                    {/* Left flap */}
+                    <polygon points="15.3,55 50,35 30,22 -4.7,42" fill="url(#pb-left)" opacity="0.8" />
+                    {/* Right flap */}
+                    <polygon points="50,35 84.7,55 104.7,42 70,22" fill="url(#pb-right)" opacity="0.8" />
+                </g>
+
+                {/* Delivered object flying out */}
+                <g className="i3d-fu" style={{ animationDelay: "1.5s" }}>
+                    <IsoBlock x={50} y={10} size={8} h={8} colorTop="#34d399" colorLeft="#059669" colorRight="#047857" style={{ animation: "i3d-float3 2s ease-in-out infinite" }} />
+                    {/* Sparkles / Delivery magical lines */}
+                    <path d="M 50 10 L 50 -10 M 35 5 L 25 -5 M 65 5 L 75 -5" stroke="#34d399" strokeWidth="2" strokeLinecap="round" className="i3d-pf" />
+                </g>
+            </g>
+        </svg>
     )
 };
