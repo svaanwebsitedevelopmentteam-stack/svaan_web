@@ -76,7 +76,7 @@ export default function LeadershipPage() {
                                 <div className="aspect-[4/5] rounded-[2rem] overflow-hidden mb-8 relative"
                                     style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
                                     <img
-                                        src={index === 0 ? "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800" : "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800"}
+                                        src={index === 0 ? "/Sai.jpg" : "/dinesh.webp"}
                                         alt={leader.name}
                                         className="w-full h-full object-cover filter grayscale-[30%] contrast-[1.1] hover:grayscale-0 transition-all duration-700"
                                     />

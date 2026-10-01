@@ -92,15 +92,15 @@ export default function WorkPage() {
                     </p>
                 </motion.div>
 
-                {/* Structured 2-Column Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-20 pb-40">
+                {/* Structured 3-Column Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 pb-40">
                     {allProjects.map((project, i) => (
                         <motion.div
                             key={project.title}
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6, delay: (i % 2) * 0.1 }}
+                            transition={{ duration: 0.6, delay: (i % 3) * 0.1 }}
                         >
                             <Link href={project.href} className="group block w-full outline-none">
 
@@ -131,22 +131,22 @@ export default function WorkPage() {
 
                                 {/* Clean Meta & Typography Below */}
                                 <div className="flex flex-col gap-3 px-2">
-                                    <div className="flex items-center gap-4">
-                                        <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>
+                                    <div className="flex flex-wrap items-center gap-2 lg:gap-3">
+                                        <span className="text-xs lg:text-sm font-bold uppercase tracking-widest truncate max-w-[200px]" style={{ color: "var(--t-text-muted)" }}>
                                             {project.client}
                                         </span>
-                                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
-                                        <div className="flex gap-2">
+                                        <span className="w-1.5 h-1.5 flex-shrink-0 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+                                        <div className="flex flex-wrap gap-2">
                                             {project.tags.map(tag => (
-                                                <span key={tag} className="text-sm font-medium" style={{ color: "var(--t-text-muted)" }}>
+                                                <span key={tag} className="text-xs lg:text-sm font-medium whitespace-nowrap" style={{ color: "var(--t-text-muted)" }}>
                                                     {tag}
                                                 </span>
                                             ))}
                                         </div>
                                     </div>
 
-                                    <div className="flex items-center justify-between">
-                                        <h2 className="font-display text-3xl font-bold transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                    <div className="flex items-start justify-between gap-4">
+                                        <h2 className="font-display text-2xl xl:text-3xl font-bold transition-colors duration-300 group-hover:text-[var(--t-accent)] leading-tight" style={{ color: "var(--t-text)" }}>
                                             {project.title}
                                         </h2>
 
