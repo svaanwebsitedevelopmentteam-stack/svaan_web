@@ -1,18 +1,38 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactPage() {
-    const [formState, setFormState] = useState<"idle" | "submitting" | "success">("idle");
+    const router = useRouter();
+    const [formState, setFormState] = useState<"idle" | "submitting">("idle");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setFormState("submitting");
-        // Simulate API call
-        setTimeout(() => {
-            setFormState("success");
-        }, 1500);
+
+        const formData = new FormData(e.currentTarget);
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/sureshkumarmr2004@gmail.com", {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: formData
+            });
+
+            if (response.ok) {
+                router.push("/thank-you");
+            } else {
+                setFormState("idle");
+                alert("Something went wrong. Please try again.");
+            }
+        } catch (error) {
+            setFormState("idle");
+            alert("Something went wrong. Please try again.");
+        }
     };
 
     return (
@@ -165,156 +185,121 @@ export default function ContactPage() {
                         style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                     >
                         <AnimatePresence mode="wait">
-                            {formState === "success" ? (
-                                /* Success State */
-                                <motion.div
-                                    key="success-state"
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.5 }}
-                                    className="h-full flex flex-col items-center justify-center text-center py-10"
-                                >
-                                    <div
-                                        className="w-24 h-24 rounded-full flex items-center justify-center mb-8"
-                                        style={{ backgroundColor: "var(--t-gradient-from)", color: "var(--t-accent)" }}
-                                    >
-                                        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                        </svg>
-                                    </div>
-                                    <h3 className="font-display font-bold text-3xl mb-4" style={{ color: "var(--t-text)" }}>Message Received!</h3>
-                                    <p className="text-lg leading-relaxed max-w-md mx-auto mb-10" style={{ color: "var(--t-text-muted)" }}>
-                                        Thank you for reaching out to SVaaN Global Tech. We&apos;re reviewing your inquiry and will connect with you via email within <span style={{ color: "var(--t-text)" }} className="font-semibold">24-48 business hours.</span>
-                                    </p>
-                                    <button
-                                        onClick={() => setFormState("idle")}
-                                        className="inline-flex items-center gap-2 h-12 px-8 rounded-full font-semibold transition-all duration-300"
-                                        style={{ border: "1px solid var(--t-border)", color: "var(--t-text)", backgroundColor: "var(--t-bg-surface)" }}
-                                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
-                                    >
-                                        Send another message
-                                    </button>
-                                </motion.div>
-                            ) : (
-                                /* Form State */
-                                <motion.form
-                                    key="form-state"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.5 }}
-                                    className="space-y-6"
-                                    onSubmit={handleSubmit}
-                                >
-                                    <div>
-                                        <h2 className="font-display font-bold text-2xl mb-2" style={{ color: "var(--t-text)" }}>Drop us a line</h2>
-                                        <p className="text-sm mb-8" style={{ color: "var(--t-text-muted)" }}>Fields marked with an asterisk (*) are required.</p>
-                                    </div>
+                            <motion.form
+                                key="form-state"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="space-y-6"
+                                onSubmit={handleSubmit}
+                            >
+                                <div>
+                                    <h2 className="font-display font-bold text-2xl mb-2" style={{ color: "var(--t-text)" }}>Drop us a line</h2>
+                                    <p className="text-sm mb-8" style={{ color: "var(--t-text-muted)" }}>Fields marked with an asterisk (*) are required.</p>
+                                </div>
 
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                        <div>
-                                            <label htmlFor="name" className="block text-sm font-semibold mb-1" style={{ color: "var(--t-text)" }}>Name *</label>
-                                            <p className="text-xs mb-3" style={{ color: "var(--t-text-muted)" }}>Tell us who we should speak with.</p>
-                                            <input required type="text" id="name"
-                                                className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300"
-                                                placeholder="John Doe"
-                                                style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
-                                                onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                                onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
-                                            />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="email" className="block text-sm font-semibold mb-1" style={{ color: "var(--t-text)" }}>Work email *</label>
-                                            <p className="text-xs mb-3" style={{ color: "var(--t-text-muted)" }}>Use your business email where possible.</p>
-                                            <input required type="email" id="email"
-                                                className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300"
-                                                placeholder="john@example.com"
-                                                style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
-                                                onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                                onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
-                                            />
-                                        </div>
-                                    </div>
-
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                     <div>
-                                        <label htmlFor="company" className="block text-sm font-semibold mb-1" style={{ color: "var(--t-text)" }}>Company</label>
-                                        <p className="text-xs mb-3" style={{ color: "var(--t-text-muted)" }}>Tell us about the organization or team.</p>
-                                        <input type="text" id="company"
+                                        <label htmlFor="name" className="block text-sm font-semibold mb-1" style={{ color: "var(--t-text)" }}>Name *</label>
+                                        <p className="text-xs mb-3" style={{ color: "var(--t-text-muted)" }}>Tell us who we should speak with.</p>
+                                        <input required type="text" id="name" name="name"
                                             className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300"
-                                            placeholder="Example Corp"
+                                            placeholder="John Doe"
                                             style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
                                             onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
                                             onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
                                         />
                                     </div>
-
                                     <div>
-                                        <label htmlFor="interest" className="block text-sm font-semibold mb-2" style={{ color: "var(--t-text)" }}>How can we help? *</label>
-                                        <select required id="interest"
-                                            className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300 appearance-none"
-                                            style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
-                                            onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                            onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
-                                        >
-                                            <option value="" disabled selected>Select an area of interest...</option>
-                                            <option value="strategy">Strategy & Advisory</option>
-                                            <option value="engineering">Software Engineering</option>
-                                            <option value="design">Product & Design</option>
-                                            <option value="ai">AI & Automation</option>
-                                            <option value="other">Other Inquiry</option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="message" className="block text-sm font-semibold mb-2" style={{ color: "var(--t-text)" }}>Project Details</label>
-                                        <textarea id="message" rows={4}
-                                            className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300 resize-none"
-                                            placeholder="Tell us a bit about what you're looking to build or solve..."
+                                        <label htmlFor="email" className="block text-sm font-semibold mb-1" style={{ color: "var(--t-text)" }}>Work email *</label>
+                                        <p className="text-xs mb-3" style={{ color: "var(--t-text-muted)" }}>Use your business email where possible.</p>
+                                        <input required type="email" id="email" name="email"
+                                            className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300"
+                                            placeholder="john@example.com"
                                             style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
                                             onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
                                             onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
                                         />
                                     </div>
+                                </div>
 
-                                    <div className="pt-2">
-                                        <button
-                                            type="submit"
-                                            disabled={formState === "submitting"}
-                                            className="w-full group inline-flex items-center justify-center gap-3 h-14 rounded-xl font-bold transition-all duration-300 shadow-xl disabled:opacity-70 disabled:cursor-not-allowed"
-                                            style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}
-                                            onMouseEnter={(e) => {
-                                                if (formState === "submitting") return;
-                                                e.currentTarget.style.backgroundColor = "var(--t-accent)";
-                                                e.currentTarget.style.color = "#fff";
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                if (formState === "submitting") return;
-                                                e.currentTarget.style.backgroundColor = "var(--t-btn-bg)";
-                                                e.currentTarget.style.color = "var(--t-btn-text)";
-                                            }}
-                                        >
-                                            {formState === "submitting" ? (
-                                                <span className="flex items-center gap-3">
-                                                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
-                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                                    </svg>
-                                                    Processsing...
-                                                </span>
-                                            ) : (
-                                                <>
-                                                    Send Message
-                                                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                                                    </svg>
-                                                </>
-                                            )}
-                                        </button>
-                                    </div>
-                                </motion.form>
-                            )}
+                                <div>
+                                    <label htmlFor="company" className="block text-sm font-semibold mb-1" style={{ color: "var(--t-text)" }}>Company</label>
+                                    <p className="text-xs mb-3" style={{ color: "var(--t-text-muted)" }}>Tell us about the organization or team.</p>
+                                    <input type="text" id="company" name="company"
+                                        className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300"
+                                        placeholder="Example Corp"
+                                        style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
+                                        onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
+                                        onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="interest" className="block text-sm font-semibold mb-2" style={{ color: "var(--t-text)" }}>How can we help? *</label>
+                                    <select required id="interest" name="interest"
+                                        className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300 appearance-none"
+                                        style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
+                                        onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
+                                        onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
+                                    >
+                                        <option value="" disabled selected>Select an area of interest...</option>
+                                        <option value="strategy">Strategy & Advisory</option>
+                                        <option value="engineering">Software Engineering</option>
+                                        <option value="design">Product & Design</option>
+                                        <option value="ai">AI & Automation</option>
+                                        <option value="other">Other Inquiry</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="message" className="block text-sm font-semibold mb-2" style={{ color: "var(--t-text)" }}>Project Details</label>
+                                    <textarea id="message" name="message" rows={4}
+                                        className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300 resize-none"
+                                        placeholder="Tell us a bit about what you're looking to build or solve..."
+                                        style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
+                                        onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
+                                        onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
+                                    />
+                                </div>
+
+                                <div className="pt-2">
+                                    <button
+                                        type="submit"
+                                        disabled={formState === "submitting"}
+                                        className="w-full group inline-flex items-center justify-center gap-3 h-14 rounded-xl font-bold transition-all duration-300 shadow-xl disabled:opacity-70 disabled:cursor-not-allowed"
+                                        style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}
+                                        onMouseEnter={(e) => {
+                                            if (formState === "submitting") return;
+                                            e.currentTarget.style.backgroundColor = "var(--t-accent)";
+                                            e.currentTarget.style.color = "#fff";
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            if (formState === "submitting") return;
+                                            e.currentTarget.style.backgroundColor = "var(--t-btn-bg)";
+                                            e.currentTarget.style.color = "var(--t-btn-text)";
+                                        }}
+                                    >
+                                        {formState === "submitting" ? (
+                                            <span className="flex items-center gap-3">
+                                                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                </svg>
+                                                Processsing...
+                                            </span>
+                                        ) : (
+                                            <>
+                                                Send Message
+                                                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                                </svg>
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
+                            </motion.form>
                         </AnimatePresence>
                     </motion.div>
                 </div>

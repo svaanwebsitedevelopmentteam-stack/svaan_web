@@ -175,7 +175,7 @@ export function HeroSection() {
                     </motion.div>
                 </div>
 
-                {/* Right Side: Image */}
+                {/* Right Side: Image / Video */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
