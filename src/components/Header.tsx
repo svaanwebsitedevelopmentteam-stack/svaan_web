@@ -73,7 +73,8 @@ export function Header() {
 
     useEffect(() => {
         const onScroll = () => setIsScrolled(window.scrollY > 50);
-        window.addEventListener("scroll", onScroll);
+        onScroll(); // Initialize state on mount
+        window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
