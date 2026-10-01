@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function HeroSection() {
@@ -74,101 +75,122 @@ export function HeroSection() {
                 </div>
             </div>
 
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-[140px] pb-[60px] relative z-10 text-center">
-                {/* Eyebrow */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="flex items-center justify-center gap-3 mb-10"
-                >
-                    <span
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
-                        style={{
-                            backgroundColor: "var(--t-bg-surface)",
-                            border: "1px solid var(--t-border)",
-                            color: "var(--t-text-muted)",
-                        }}
+            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-[140px] pb-[60px] relative z-10 grid grid-cols-1 lg:grid-cols-[6fr_4fr] gap-12 lg:gap-8 items-center">
+
+                {/* Left Side: Content */}
+                <div className="text-left flex flex-col items-start pt-6 lg:pt-0">
+                    {/* Eyebrow */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="flex items-center gap-3 mb-8"
                     >
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                        Available for new projects
-                    </span>
+                        <span
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
+                            style={{
+                                backgroundColor: "var(--t-bg-surface)",
+                                border: "1px solid var(--t-border)",
+                                color: "var(--t-text-muted)",
+                            }}
+                        >
+                            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                            Available for new projects
+                        </span>
+                    </motion.div>
+
+                    {/* Main heading */}
+                    <motion.h1
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.15 }}
+                        className="font-display text-[clamp(2.5rem,5.5vw,5rem)] font-bold leading-[1.05] tracking-tight mb-8"
+                        style={{ color: "var(--t-text)" }}
+                    >
+                        We build technology
+                        <br />
+                        that moves{" "}
+                        <span className="italic" style={{ color: "var(--t-accent)" }}>business</span>
+                        <br />
+                        forward.
+                    </motion.h1>
+
+                    {/* Subtext */}
+                    <motion.p
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.35 }}
+                        className="text-lg md:text-xl max-w-lg leading-relaxed mb-12"
+                        style={{ color: "var(--t-text-muted)" }}
+                    >
+                        SVaaN Global Tech connects strategy, design, and engineering to help
+                        organizations solve complex challenges and build practical digital
+                        solutions.
+                    </motion.p>
+
+                    {/* CTAs */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.5 }}
+                        className="flex flex-wrap items-center gap-4"
+                    >
+                        <Link
+                            href="/contact"
+                            className="group inline-flex items-center gap-3 h-14 px-8 rounded-full font-semibold text-base transition-all duration-300 shadow-xl"
+                            style={{
+                                backgroundColor: "var(--t-btn-bg)",
+                                color: "var(--t-btn-text)",
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.backgroundColor = "var(--t-accent)";
+                                e.currentTarget.style.color = "#fff";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor = "var(--t-btn-bg)";
+                                e.currentTarget.style.color = "var(--t-btn-text)";
+                            }}
+                        >
+                            Start a project
+                            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </Link>
+                        <Link
+                            href="/work"
+                            className="inline-flex items-center gap-2 h-14 px-8 rounded-full font-medium text-base transition-all duration-300"
+                            style={{
+                                border: "1px solid var(--t-border)",
+                                color: "var(--t-text)",
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.backgroundColor = "var(--t-bg-surface)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor = "transparent";
+                            }}
+                        >
+                            View our work
+                        </Link>
+                    </motion.div>
+                </div>
+
+                {/* Right Side: Image */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                    className="relative w-full h-[350px] md:h-[500px] lg:h-[600px] mt-10 lg:mt-0"
+                >
+                    <Image
+                        src="/herosection.png"
+                        alt="SVaaN Hero"
+                        fill
+                        className="object-contain lg:object-right object-center"
+                        priority
+                    />
                 </motion.div>
 
-                {/* Main heading */}
-                <motion.h1
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.15 }}
-                    className="font-display text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.05] tracking-tight mx-auto max-w-5xl mb-8"
-                    style={{ color: "var(--t-text)" }}
-                >
-                    We build technology
-                    <br />
-                    that moves{" "}
-                    <span className="italic" style={{ color: "var(--t-accent)" }}>business</span>
-                    <br />
-                    forward.
-                </motion.h1>
-
-                {/* Subtext */}
-                <motion.p
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.35 }}
-                    className="text-lg md:text-xl max-w-xl leading-relaxed mb-12 mx-auto"
-                    style={{ color: "var(--t-text-muted)" }}
-                >
-                    SVaaN Global Tech connects strategy, design, and engineering to help
-                    organizations solve complex challenges and build practical digital
-                    solutions.
-                </motion.p>
-
-                {/* CTAs */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.5 }}
-                    className="flex flex-wrap items-center justify-center gap-4"
-                >
-                    <Link
-                        href="/contact"
-                        className="group inline-flex items-center gap-3 h-14 px-8 rounded-full font-semibold text-base transition-all duration-300 shadow-xl"
-                        style={{
-                            backgroundColor: "var(--t-btn-bg)",
-                            color: "var(--t-btn-text)",
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = "var(--t-accent)";
-                            e.currentTarget.style.color = "#fff";
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = "var(--t-btn-bg)";
-                            e.currentTarget.style.color = "var(--t-btn-text)";
-                        }}
-                    >
-                        Start a project
-                        <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
-                        </svg>
-                    </Link>
-                    <Link
-                        href="/work"
-                        className="inline-flex items-center gap-2 h-14 px-8 rounded-full font-medium text-base transition-all duration-300"
-                        style={{
-                            border: "1px solid var(--t-border)",
-                            color: "var(--t-text)",
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = "var(--t-bg-surface)";
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = "transparent";
-                        }}
-                    >
-                        View our work
-                    </Link>
-                </motion.div>
             </div>
 
             {/* Bento nav cards */}
