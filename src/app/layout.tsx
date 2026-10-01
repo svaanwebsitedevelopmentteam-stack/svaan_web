@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CustomCursor } from "@/components/CustomCursor";
+import { GlobalFloatActions } from "@/components/GlobalFloatActions";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -42,6 +43,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <GlobalFloatActions />
         </ThemeProvider>
       </body>
     </html>

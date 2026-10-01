@@ -295,29 +295,31 @@ export function Header() {
             <AnimatePresence>
                 {mobileOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-40 flex flex-col pt-28 px-6 pb-12 overflow-y-auto"
-                        style={{ backgroundColor: "var(--t-bg)" }}
+                        className="fixed inset-0 z-40 flex flex-col pt-24 px-6 pb-6 overflow-y-auto backdrop-blur-2xl"
+                        style={{ backgroundColor: "color-mix(in srgb, var(--t-bg) 95%, transparent)" }}
                     >
-                        <div className="flex flex-col gap-6 w-full max-w-lg mx-auto">
+                        <div className="flex flex-col w-full max-w-lg mx-auto mt-4">
                             {menuItems.map((link, i) => (
-                                <motion.div key={link.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}>
+                                <motion.div key={link.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
 
                                     {(link.megaMenu || link.subMenu) ? (
                                         // Parent item with toggle
-                                        <div>
+                                        <div className="border-b" style={{ borderColor: "var(--t-border)" }}>
                                             <button
-                                                className="w-full flex items-center justify-between text-2xl font-display font-bold py-2 transition-colors"
+                                                className="w-full flex items-center justify-between text-3xl font-display font-medium py-5 transition-colors"
                                                 style={{ color: "var(--t-text)" }}
                                                 onClick={() => setExpandedMobile(expandedMobile === link.label ? null : link.label)}
                                             >
                                                 {link.label}
-                                                <svg className={`w-6 h-6 transition-transform duration-300 ${expandedMobile === link.label ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                                </svg>
+                                                <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-transform duration-300 ${expandedMobile === link.label ? 'rotate-180 bg-[var(--t-bg-surface)]' : 'border border-[var(--t-border)] opacity-60'}`}>
+                                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </div>
                                             </button>
 
                                             {/* Mobile Expanded List */}
@@ -329,37 +331,44 @@ export function Header() {
                                                         exit={{ opacity: 0, height: 0 }}
                                                         className="overflow-hidden"
                                                     >
-                                                        <div className="flex flex-col gap-6 pl-4 py-6 border-l-2 ml-2" style={{ borderColor: "var(--t-border)" }}>
+                                                        <div className="flex flex-col gap-4 pt-2 pb-6 px-1">
                                                             {link.megaMenu && link.megaMenu.map(category => (
-                                                                <div key={category.category}>
-                                                                    <div className="text-xs font-bold uppercase tracking-widest mb-3 opacity-50" style={{ color: "var(--t-text)" }}>{category.category}</div>
-                                                                    <div className="flex flex-col gap-4">
+                                                                <div key={category.category} className="bg-[var(--t-bg-surface)] rounded-2xl p-5 border border-[var(--t-border)]">
+                                                                    <div className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50" style={{ color: "var(--t-text)" }}>{category.category}</div>
+                                                                    <div className="flex flex-col gap-3">
                                                                         {category.items.map(item => (
                                                                             <Link
                                                                                 key={item.label}
                                                                                 href={item.href}
                                                                                 onClick={() => setMobileOpen(false)}
-                                                                                className="text-lg font-medium hover:text-[var(--t-accent)] transition-colors"
-                                                                                style={{ color: "var(--t-text-muted)" }}
+                                                                                className="text-lg font-medium transition-colors hover:text-[var(--t-accent)] flex items-center justify-between group"
+                                                                                style={{ color: "var(--t-text)" }}
                                                                             >
                                                                                 {item.label}
+                                                                                <svg className="w-4 h-4 opacity-0 transition-opacity group-hover:opacity-50 text-[var(--t-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                                                </svg>
                                                                             </Link>
                                                                         ))}
                                                                     </div>
                                                                 </div>
                                                             ))}
 
-                                                            {link.subMenu && link.subMenu.map(sub => (
-                                                                <Link
-                                                                    key={sub.label}
-                                                                    href={sub.href}
-                                                                    onClick={() => setMobileOpen(false)}
-                                                                    className="text-xl font-medium hover:text-[var(--t-accent)] transition-colors"
-                                                                    style={{ color: "var(--t-text-muted)" }}
-                                                                >
-                                                                    {sub.label}
-                                                                </Link>
-                                                            ))}
+                                                            {link.subMenu && (
+                                                                <div className="flex flex-col gap-2">
+                                                                    {link.subMenu.map(sub => (
+                                                                        <Link
+                                                                            key={sub.label}
+                                                                            href={sub.href}
+                                                                            onClick={() => setMobileOpen(false)}
+                                                                            className="text-xl font-medium px-4 py-3 rounded-xl transition-colors hover:bg-[var(--t-bg-surface)]"
+                                                                            style={{ color: "var(--t-text)" }}
+                                                                        >
+                                                                            {sub.label}
+                                                                        </Link>
+                                                                    ))}
+                                                                </div>
+                                                            )}
                                                         </div>
                                                     </motion.div>
                                                 )}
@@ -367,19 +376,38 @@ export function Header() {
                                         </div>
                                     ) : (
                                         // Standard Link
-                                        <Link
-                                            href={link.href}
-                                            onClick={() => setMobileOpen(false)}
-                                            className="text-2xl font-display font-bold py-2 block transition-colors"
-                                            style={{ color: "var(--t-text)" }}
-                                        >
-                                            {link.label}
-                                        </Link>
+                                        <div className="border-b" style={{ borderColor: "var(--t-border)" }}>
+                                            <Link
+                                                href={link.href}
+                                                onClick={() => setMobileOpen(false)}
+                                                className="flex items-center justify-between text-3xl font-display font-medium py-5 w-full transition-colors group"
+                                                style={{ color: "var(--t-text)" }}
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        </div>
                                     )}
 
                                 </motion.div>
                             ))}
                         </div>
+
+                        {/* Mobile Footer / CTA */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4 }}
+                            className="w-full max-w-lg mx-auto mt-auto pt-12 flex flex-col gap-4"
+                        >
+                            <Link
+                                href="/contact"
+                                onClick={() => setMobileOpen(false)}
+                                className="w-full h-14 rounded-full flex items-center justify-center text-lg font-semibold transition-transform active:scale-95 shadow-lg"
+                                style={{ backgroundColor: "var(--t-text)", color: "var(--t-bg)" }}
+                            >
+                                Let&apos;s Talk
+                            </Link>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
