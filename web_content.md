@@ -16,7 +16,7 @@ Company facts, leadership details, client names, case-study outcomes, metrics, c
 
 Technology & Strategy Partner
 
-SVaaN Global Tech helps organizations understand complex challenges, define the right direction, and turn strategy into practical technology-driven outcomes.
+SVaaN Global Tech helps. organizations understand complex challenges, define the right direction, and turn strategy into practical technology-driven outcomes.
 
 ## **Core journey**
 

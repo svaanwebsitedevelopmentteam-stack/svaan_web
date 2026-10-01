@@ -75,7 +75,7 @@ export function HeroSection() {
                 </div>
             </div>
 
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-[140px] pb-[60px] relative z-10 grid grid-cols-1 lg:grid-cols-[6fr_4fr] gap-12 lg:gap-8 items-center">
+            <div className="w-full px-[40px] pt-[70px] pb-[60px] relative z-10 grid grid-cols-1 lg:grid-cols-[6fr_4fr] gap-12 lg:gap-8 items-center">
 
                 {/* Left Side: Content */}
                 <div className="text-left flex flex-col items-start pt-6 lg:pt-0">
@@ -104,7 +104,7 @@ export function HeroSection() {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.15 }}
-                        className="font-display text-[clamp(2.5rem,5.5vw,5rem)] font-bold leading-[1.05] tracking-tight mb-8"
+                        className="font-display text-[40px] lg:text-[60px] font-bold leading-[1.1] tracking-tight mb-6"
                         style={{ color: "var(--t-text)" }}
                     >
                         We build technology
@@ -194,8 +194,8 @@ export function HeroSection() {
             </div>
 
             {/* Bento nav cards */}
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pb-[60px] relative z-10">
-                {/* <motion.div
+            {/* <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pb-[60px] relative z-10">
+                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.7 }}
@@ -233,8 +233,8 @@ export function HeroSection() {
                             </div>
                         </Link>
                     ))}
-                </motion.div> */}
-            </div>
+                </motion.div> 
+            </div> */}
         </section>
     );
 }
