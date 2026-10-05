@@ -8,60 +8,28 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/components/ThemeProvider";
 
 const menuItems = [
-    { label: "Approach", href: "/approach" },
     {
-        label: "Capabilities",
-        href: "/capabilities",
-        megaMenu: [
-            {
-                category: "Strategy & Advisory",
-                items: [{ label: "POC Development", href: "/capabilities/poc-development" }]
-            },
-            {
-                category: "Product & Experience",
-                items: [
-                    { label: "UI/UX Design", href: "/capabilities/ui-ux-design" },
-                    { label: "MVP Development", href: "/capabilities/mvp-development" }
-                ]
-            },
-            {
-                category: "Software & Technology",
-                items: [
-                    { label: "Software Product", href: "/capabilities/software-product-development" },
-                    { label: "Enterprise Software", href: "/capabilities/enterprise-software-development" }
-                ]
-            },
-            {
-                category: "AI & Automation",
-                items: [{ label: "AI Development", href: "/capabilities/ai-software-development" }]
-            },
-            {
-                category: "Engineering Group",
-                items: [{ label: "Quality Assurance", href: "/capabilities/quality-assurance" }]
-            },
-            {
-                category: "Managed Tech",
-                items: [
-                    { label: "Helpdesk Support", href: "/capabilities/helpdesk-support" },
-                    { label: "App Support", href: "/capabilities/application-support" },
-                    { label: "Infra Support", href: "/capabilities/infrastructure-support" },
-                    { label: "Production Support", href: "/capabilities/production-support" },
-                    { label: "DevOps Support", href: "/capabilities/devops-support" },
-                    { label: "Cloud Services", href: "/capabilities/cloud-managed-services" },
-                ]
-            }
-        ]
+        label: "Solutions",
+        href: "/solutions/build", // Fallback to first item or a general page
+        subMenu: [
+            { label: "Build", href: "/solutions/build" },
+            { label: "Modernize", href: "/solutions/modernize" },
+            { label: "Operate", href: "/solutions/operate" },
+            { label: "Evolve", href: "/solutions/evolve" },
+        ],
     },
-    { label: "Work", href: "/work" },
+    { label: "Client Stories", href: "/work" },
+    { label: "Why SVaaN", href: "/why-svaan" },
+    { label: "Approach", href: "/approach" },
     {
         label: "Company",
         href: "/about",
         subMenu: [
-            { label: "About Us", href: "/about" },
-            { label: "Leadership", href: "/leadership" }
-        ]
+            { label: "About", href: "/about" },
+            { label: "Leadership", href: "/leadership" },
+            { label: "Insights", href: "/insights" },
+        ],
     },
-    { label: "Contact", href: "/contact" },
 ];
 
 export function Header() {
@@ -69,7 +37,6 @@ export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
-    const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
     const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
     const { theme, toggleTheme } = useTheme();
 
@@ -88,6 +55,19 @@ export function Header() {
             document.body.style.overflow = "auto";
         }
     }, [mobileOpen]);
+
+    const isItemActive = (link: (typeof menuItems)[number]) => {
+        if (!pathname) return false;
+        if (pathname === link.href) return true;
+        if (link.href !== "/" && pathname.startsWith(`${link.href}/`)) return true;
+        if (link.label === "Solutions" && pathname.startsWith("/solutions")) return true;
+        if (link.subMenu) {
+            return link.subMenu.some(
+                (sub) => pathname === sub.href || pathname.startsWith(`${sub.href}/`)
+            );
+        }
+        return false;
+    };
 
     return (
         <>
@@ -121,9 +101,7 @@ export function Header() {
                     {/* Desktop Nav */}
                     <nav className="hidden lg:flex items-center gap-1.5 h-full">
                         {menuItems.map((link) => {
-                            const isActive =
-                                pathname === link.href ||
-                                (link.href !== "/" && pathname.startsWith(link.href));
+                            const isActive = isItemActive(link);
 
                             return (
                                 <div
@@ -147,7 +125,7 @@ export function Header() {
                                         }}
                                     >
                                         {link.label}
-                                        {(link.megaMenu || link.subMenu) && (
+                                        {link.subMenu && (
                                             <svg
                                                 className={`w-3.5 h-3.5 transition-transform duration-300 ${
                                                     hoveredMenu === link.label ? "rotate-180" : ""
@@ -169,143 +147,45 @@ export function Header() {
                                         )}
                                     </Link>
 
-                                    {/* Cascading Submenus */}
+                                    {/* Submenu Dropdown */}
                                     <AnimatePresence>
-                                        {hoveredMenu === link.label &&
-                                            (link.subMenu || link.megaMenu) && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, y: 10 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                    exit={{
-                                                        opacity: 0,
-                                                        y: 10,
-                                                        transition: { duration: 0.1 },
-                                                    }}
-                                                    transition={{ duration: 0.2 }}
-                                                    className="absolute top-[72px] left-1/2 -translate-x-1/2 min-w-[240px] rounded-[var(--t-radius-md)] shadow-xl p-2 border"
-                                                    style={{
-                                                        backgroundColor: "var(--t-bg-card)",
-                                                        borderColor: "var(--t-border)",
-                                                    }}
-                                                    onMouseLeave={() => setHoveredCategory(null)}
-                                                >
-                                                    {/* Simple SubMenu mode (Company) */}
-                                                    {link.subMenu &&
-                                                        link.subMenu.map((sub) => (
-                                                            <Link
-                                                                key={sub.label}
-                                                                href={sub.href}
-                                                                onClick={() => setHoveredMenu(null)}
-                                                                className="block px-4 py-2.5 text-sm font-medium rounded-[var(--t-radius-md)] hover:bg-[var(--t-bg-surface)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
-                                                                style={{ color: "var(--t-text)" }}
-                                                            >
-                                                                {sub.label}
-                                                            </Link>
-                                                        ))}
-
-                                                    {/* Cascading MegaMenu mode (Capabilities) */}
-                                                    {link.megaMenu &&
-                                                        link.megaMenu.map((category) => (
-                                                            <div
-                                                                key={category.category}
-                                                                className="relative"
-                                                                onMouseEnter={() =>
-                                                                    setHoveredCategory(
-                                                                        category.category
-                                                                    )
-                                                                }
-                                                            >
-                                                                <div
-                                                                    className="flex items-center justify-between px-4 py-2.5 text-sm font-medium rounded-[var(--t-radius-md)] transition-colors hover:bg-[var(--t-bg-surface)] cursor-default"
-                                                                    style={{
-                                                                        color: "var(--t-text)",
-                                                                    }}
-                                                                >
-                                                                    <span>{category.category}</span>
-                                                                    <svg
-                                                                        className={`w-4 h-4 transition-transform ${
-                                                                            hoveredCategory ===
-                                                                            category.category
-                                                                                ? "translate-x-1 text-[var(--t-accent)]"
-                                                                                : "text-[var(--t-text-muted)]"
-                                                                        }`}
-                                                                        fill="none"
-                                                                        viewBox="0 0 24 24"
-                                                                        stroke="currentColor"
-                                                                    >
-                                                                        <path
-                                                                            strokeLinecap="round"
-                                                                            strokeLinejoin="round"
-                                                                            strokeWidth={2}
-                                                                            d="M9 5l7 7-7 7"
-                                                                        />
-                                                                    </svg>
-                                                                </div>
-
-                                                                {/* Side Flyout level 3 */}
-                                                                <AnimatePresence>
-                                                                    {hoveredCategory ===
-                                                                        category.category && (
-                                                                        <motion.div
-                                                                            initial={{
-                                                                                opacity: 0,
-                                                                                x: -10,
-                                                                            }}
-                                                                            animate={{
-                                                                                opacity: 1,
-                                                                                x: 0,
-                                                                            }}
-                                                                            exit={{
-                                                                                opacity: 0,
-                                                                                x: -10,
-                                                                                transition: {
-                                                                                    duration: 0.1,
-                                                                                },
-                                                                            }}
-                                                                            transition={{
-                                                                                duration: 0.2,
-                                                                            }}
-                                                                            className="absolute top-0 left-[calc(100%+8px)] min-w-[240px] rounded-[var(--t-radius-md)] shadow-xl p-2 border"
-                                                                            style={{
-                                                                                backgroundColor:
-                                                                                    "var(--t-bg-card)",
-                                                                                borderColor:
-                                                                                    "var(--t-border)",
-                                                                            }}
-                                                                        >
-                                                                            {category.items.map(
-                                                                                (item) => (
-                                                                                    <Link
-                                                                                        key={
-                                                                                            item.label
-                                                                                        }
-                                                                                        href={
-                                                                                            item.href
-                                                                                        }
-                                                                                        onClick={() => {
-                                                                                            setHoveredMenu(
-                                                                                                null
-                                                                                            );
-                                                                                            setHoveredCategory(
-                                                                                                null
-                                                                                            );
-                                                                                        }}
-                                                                                        className="block px-4 py-2.5 text-sm font-medium rounded-[var(--t-radius-md)] hover:bg-[var(--t-bg-surface)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
-                                                                                        style={{
-                                                                                            color: "var(--t-text)",
-                                                                                        }}
-                                                                                    >
-                                                                                        {item.label}
-                                                                                    </Link>
-                                                                                )
-                                                                            )}
-                                                                        </motion.div>
-                                                                    )}
-                                                                </AnimatePresence>
-                                                            </div>
-                                                        ))}
-                                                </motion.div>
-                                            )}
+                                        {hoveredMenu === link.label && link.subMenu && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                exit={{
+                                                    opacity: 0,
+                                                    y: 10,
+                                                    transition: { duration: 0.1 },
+                                                }}
+                                                transition={{ duration: 0.2 }}
+                                                className="absolute top-[72px] left-1/2 -translate-x-1/2 min-w-[240px] rounded-[var(--t-radius-md)] shadow-xl p-2 border"
+                                                style={{
+                                                    backgroundColor: "var(--t-bg-card)",
+                                                    borderColor: "var(--t-border)",
+                                                }}
+                                            >
+                                                {link.subMenu.map((sub) => {
+                                                    const isSubActive =
+                                                        pathname === sub.href ||
+                                                        (sub.href !== "/" && pathname.startsWith(`${sub.href}/`));
+                                                    return (
+                                                        <Link
+                                                            key={sub.label}
+                                                            href={sub.href}
+                                                            onClick={() => setHoveredMenu(null)}
+                                                            className={`block px-4 py-2.5 text-sm font-medium rounded-[var(--t-radius-md)] hover:bg-[var(--t-bg-surface)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 ${
+                                                                isSubActive
+                                                                    ? "text-[var(--t-accent)] font-semibold bg-[var(--t-bg-surface)]"
+                                                                    : "text-[var(--t-text)]"
+                                                            }`}
+                                                        >
+                                                            {sub.label}
+                                                        </Link>
+                                                    );
+                                                })}
+                                            </motion.div>
+                                        )}
                                     </AnimatePresence>
                                 </div>
                             );
@@ -405,9 +285,10 @@ export function Header() {
                             )}
                         </button>
                         <button
-                            className="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-full"
+                            className="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-[var(--t-radius-md)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
                             style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)" }}
                             onClick={() => setMobileOpen(!mobileOpen)}
+                            aria-label="Toggle mobile menu"
                         >
                             <motion.span animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }} className="block w-4 h-[2px] origin-center" style={{ backgroundColor: "var(--t-text)" }} />
                             <motion.span animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }} className="block w-4 h-[2px]" style={{ backgroundColor: "var(--t-text)" }} />
@@ -415,10 +296,9 @@ export function Header() {
                         </button>
                     </div>
                 </div>
-                {/* Global Mega Menu Block entirely removed in favor of side-floating dropdown system above! */}
             </header>
 
-            {/* Fullscreen Mobile Menu Menu */}
+            {/* Fullscreen Mobile Menu */}
             <AnimatePresence>
                 {mobileOpen && (
                     <motion.div
@@ -430,93 +310,80 @@ export function Header() {
                         style={{ backgroundColor: "color-mix(in srgb, var(--t-bg) 95%, transparent)" }}
                     >
                         <div className="flex flex-col w-full max-w-lg mx-auto mt-4">
-                            {menuItems.map((link, i) => (
-                                <motion.div key={link.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
+                            {menuItems.map((link, i) => {
+                                const isActive = isItemActive(link);
+                                return (
+                                    <motion.div key={link.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
 
-                                    {(link.megaMenu || link.subMenu) ? (
-                                        // Parent item with toggle
-                                        <div className="border-b" style={{ borderColor: "var(--t-border)" }}>
-                                            <button
-                                                className="w-full flex items-center justify-between text-3xl font-display font-medium py-5 transition-colors"
-                                                style={{ color: "var(--t-text)" }}
-                                                onClick={() => setExpandedMobile(expandedMobile === link.label ? null : link.label)}
-                                            >
-                                                {link.label}
-                                                <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-transform duration-300 ${expandedMobile === link.label ? 'rotate-180 bg-[var(--t-bg-surface)]' : 'border border-[var(--t-border)] opacity-60'}`}>
-                                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-                                                    </svg>
-                                                </div>
-                                            </button>
+                                        {link.subMenu ? (
+                                            // Parent item with toggle
+                                            <div className="border-b" style={{ borderColor: "var(--t-border)" }}>
+                                                <button
+                                                    className="w-full flex items-center justify-between text-3xl font-display font-medium py-5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-md)]"
+                                                    style={{ color: isActive ? "var(--t-accent)" : "var(--t-text)" }}
+                                                    onClick={() => setExpandedMobile(expandedMobile === link.label ? null : link.label)}
+                                                >
+                                                    <span>{link.label}</span>
+                                                    <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-transform duration-300 ${expandedMobile === link.label ? 'rotate-180 bg-[var(--t-bg-surface)]' : 'border border-[var(--t-border)] opacity-60'}`}>
+                                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                                                        </svg>
+                                                    </div>
+                                                </button>
 
-                                            {/* Mobile Expanded List */}
-                                            <AnimatePresence>
-                                                {expandedMobile === link.label && (
-                                                    <motion.div
-                                                        initial={{ opacity: 0, height: 0 }}
-                                                        animate={{ opacity: 1, height: "auto" }}
-                                                        exit={{ opacity: 0, height: 0 }}
-                                                        className="overflow-hidden"
-                                                    >
-                                                        <div className="flex flex-col gap-4 pt-2 pb-6 px-1">
-                                                            {link.megaMenu && link.megaMenu.map(category => (
-                                                                <div key={category.category} className="bg-[var(--t-bg-surface)] rounded-2xl p-5 border border-[var(--t-border)]">
-                                                                    <div className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50" style={{ color: "var(--t-text)" }}>{category.category}</div>
-                                                                    <div className="flex flex-col gap-3">
-                                                                        {category.items.map(item => (
-                                                                            <Link
-                                                                                key={item.label}
-                                                                                href={item.href}
-                                                                                onClick={() => setMobileOpen(false)}
-                                                                                className="text-lg font-medium transition-colors hover:text-[var(--t-accent)] flex items-center justify-between group"
-                                                                                style={{ color: "var(--t-text)" }}
-                                                                            >
-                                                                                {item.label}
-                                                                                <svg className="w-4 h-4 opacity-0 transition-opacity group-hover:opacity-50 text-[var(--t-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                                                                </svg>
-                                                                            </Link>
-                                                                        ))}
-                                                                    </div>
-                                                                </div>
-                                                            ))}
-
-                                                            {link.subMenu && (
+                                                {/* Mobile Expanded List */}
+                                                <AnimatePresence>
+                                                    {expandedMobile === link.label && (
+                                                        <motion.div
+                                                            initial={{ opacity: 0, height: 0 }}
+                                                            animate={{ opacity: 1, height: "auto" }}
+                                                            exit={{ opacity: 0, height: 0 }}
+                                                            className="overflow-hidden"
+                                                        >
+                                                            <div className="flex flex-col gap-4 pt-2 pb-6 px-1">
                                                                 <div className="flex flex-col gap-2">
-                                                                    {link.subMenu.map(sub => (
-                                                                        <Link
-                                                                            key={sub.label}
-                                                                            href={sub.href}
-                                                                            onClick={() => setMobileOpen(false)}
-                                                                            className="text-xl font-medium px-4 py-3 rounded-xl transition-colors hover:bg-[var(--t-bg-surface)]"
-                                                                            style={{ color: "var(--t-text)" }}
-                                                                        >
-                                                                            {sub.label}
-                                                                        </Link>
-                                                                    ))}
+                                                                    {link.subMenu.map((sub) => {
+                                                                        const isSubActive =
+                                                                            pathname === sub.href ||
+                                                                            (sub.href !== "/" && pathname.startsWith(`${sub.href}/`));
+                                                                        return (
+                                                                            <Link
+                                                                                key={sub.label}
+                                                                                href={sub.href}
+                                                                                onClick={() => setMobileOpen(false)}
+                                                                                className={`text-xl font-medium px-4 py-3 rounded-[var(--t-radius-md)] transition-colors hover:bg-[var(--t-bg-surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 ${
+                                                                                    isSubActive
+                                                                                        ? "text-[var(--t-accent)] bg-[var(--t-bg-surface)]"
+                                                                                        : "text-[var(--t-text)]"
+                                                                                }`}
+                                                                            >
+                                                                                {sub.label}
+                                                                            </Link>
+                                                                        );
+                                                                    })}
                                                                 </div>
-                                                            )}
-                                                        </div>
-                                                    </motion.div>
-                                                )}
-                                            </AnimatePresence>
-                                        </div>
-                                    ) : (
-                                        // Standard Link
-                                        <div className="border-b" style={{ borderColor: "var(--t-border)" }}>
-                                            <Link
-                                                href={link.href}
-                                                onClick={() => setMobileOpen(false)}
-                                                className="flex items-center justify-between text-3xl font-display font-medium py-5 w-full transition-colors group"
-                                                style={{ color: "var(--t-text)" }}
-                                            >
-                                                {link.label}
-                                            </Link>
-                                        </div>
-                                    )}
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+                                                </AnimatePresence>
+                                            </div>
+                                        ) : (
+                                            // Standard Link
+                                            <div className="border-b" style={{ borderColor: "var(--t-border)" }}>
+                                                <Link
+                                                    href={link.href}
+                                                    onClick={() => setMobileOpen(false)}
+                                                    className="flex items-center justify-between text-3xl font-display font-medium py-5 w-full transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-md)]"
+                                                    style={{ color: isActive ? "var(--t-accent)" : "var(--t-text)" }}
+                                                >
+                                                    {link.label}
+                                                </Link>
+                                            </div>
+                                        )}
 
-                                </motion.div>
-                            ))}
+                                    </motion.div>
+                                );
+                            })}
                         </div>
 
                         {/* Mobile Footer / CTA */}
