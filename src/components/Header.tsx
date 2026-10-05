@@ -105,7 +105,7 @@ export function Header() {
 
                                 {/* Cascading Submenus */}
                                 <AnimatePresence>
-                                    {hoveredMenu === link.label && (link.subMenu || link.megaMenu) && (
+                                    {hoveredMenu === link.label && (link.subMenu) && (
                                         <motion.div
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
