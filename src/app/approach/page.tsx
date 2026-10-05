@@ -210,7 +210,7 @@ export default function ApproachPage() {
                                 className="py-10 md:py-12 md:px-8 first:pt-10 first:md:pl-0 last:pb-10 last:md:pr-0 flex flex-col items-start group"
                                 style={{ borderColor: "var(--t-border)" }}
                             >
-                                <span className="font-mono text-sm font-semibold tracking-widest mb-12 opacity-40 group-hover:opacity-100 transition-opacity" style={{ color: "var(--t-accent)" }}>
+                                <span className="font-sans text-sm font-semibold tracking-widest mb-12 opacity-40 group-hover:opacity-100 transition-opacity" style={{ color: "var(--t-accent)" }}>
                                     {m.step}
                                 </span>
                                 <h3 className="type-h3 mb-4" style={{ color: "var(--t-text)" }}>

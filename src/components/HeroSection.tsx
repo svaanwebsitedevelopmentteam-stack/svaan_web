@@ -104,7 +104,7 @@ export function HeroSection() {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.15 }}
-                        className="font-display text-[40px] lg:text-[60px] font-bold leading-[1.1] tracking-tight mb-6"
+                        className="type-display mb-6"
                         style={{ color: "var(--t-text)" }}
                     >
                         We build technology
@@ -207,10 +207,10 @@ export function HeroSection() {
                                 style={{ background: "linear-gradient(135deg, var(--t-gradient-from), transparent)" }}
                             />
                             <div className="relative z-10">
-                                <h3 className="font-display font-bold text-xl mb-3 group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>
+                                <h3 className="type-h3 mb-3 group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>
                                     {card.title}
                                 </h3>
-                                <p className="text-sm leading-relaxed" style={{ color: "var(--t-text-muted)" }}>{card.desc}</p>
+                                <p className="type-body-sm leading-relaxed" style={{ color: "var(--t-text-muted)" }}>{card.desc}</p>
                             </div>
                             <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
                                 <svg className="w-5 h-5" style={{ color: "var(--t-accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -70,12 +70,12 @@ export function ProcessSection() {
                                 style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                             >
                                 <div className="flex items-start justify-between mb-6">
-                                    <h3 className="font-display text-xl md:text-2xl font-bold group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>{step.title}</h3>
+                                    <h3 className="type-h3 group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>{step.title}</h3>
                                     <div className="flex items-center justify-center w-12 h-12 rounded-[var(--t-radius-md)] transition-colors duration-300" style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-accent)" }}>
                                         {step.icon}
                                     </div>
                                 </div>
-                                <p className="leading-relaxed" style={{ color: "var(--t-text-muted)" }}>{step.desc}</p>
+                                <p className="type-body-sm leading-relaxed" style={{ color: "var(--t-text-muted)" }}>{step.desc}</p>
                             </motion.div>
                         ))}
                     </div>

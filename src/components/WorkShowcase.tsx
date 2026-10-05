@@ -145,17 +145,17 @@ export function WorkShowcase() {
                                     <div>
                                         <div className="mb-4 flex flex-wrap gap-2">
                                             {project.tags.split(',').map((tag) => (
-                                                <span key={tag} className="text-[10px] sm:text-xs font-semibold tracking-wider uppercase px-2.5 py-1 rounded-[var(--t-radius-sm)]" style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-text-muted)", border: "1px solid var(--t-border)" }}>
+                                                <span key={tag} className="type-caption px-2.5 py-1 rounded-[var(--t-radius-sm)]" style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-text-muted)", border: "1px solid var(--t-border)" }}>
                                                     {tag.trim()}
                                                 </span>
                                             ))}
                                         </div>
-                                        <h3 className="font-display text-2xl md:text-3xl font-bold mb-3 group-hover:text-[var(--t-accent)] transition-colors duration-300 line-clamp-2" style={{ color: "var(--t-text)" }}>
+                                        <h3 className="type-h3 mb-3 group-hover:text-[var(--t-accent)] transition-colors duration-300 line-clamp-2" style={{ color: "var(--t-text)" }}>
                                             {project.title}
                                         </h3>
-                                        <p className="text-base leading-relaxed mb-6 line-clamp-2" style={{ color: "var(--t-text-muted)" }}>{project.desc}</p>
+                                        <p className="type-body-sm mb-6 line-clamp-2" style={{ color: "var(--t-text-muted)" }}>{project.desc}</p>
                                     </div>
-                                    <div className="inline-flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all duration-300" style={{ color: "var(--t-accent)" }}>
+                                    <div className="inline-flex items-center gap-2 type-body-sm font-semibold group-hover:gap-3 transition-all duration-300" style={{ color: "var(--t-accent)" }}>
                                         View Project
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />

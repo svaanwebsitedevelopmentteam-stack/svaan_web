@@ -171,10 +171,10 @@ export default function CompanyPage() {
 
                                 {/* Typography */}
                                 <div className="flex flex-col items-center bg-[var(--t-bg-surface)] px-4 py-2 relative z-10">
-                                    <span className="text-xs font-bold uppercase tracking-widest opacity-40 mb-2 transition-opacity group-hover:opacity-100" style={{ color: "var(--t-accent)" }}>
+                                    <span className="type-caption opacity-60 mb-2 transition-opacity group-hover:opacity-100" style={{ color: "var(--t-accent)" }}>
                                         Step 0{i + 1}
                                     </span>
-                                    <h3 className="text-2xl md:text-3xl font-bold transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                    <h3 className="type-h3 transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
                                         {step.name}
                                     </h3>
                                 </div>

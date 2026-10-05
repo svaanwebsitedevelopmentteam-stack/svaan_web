@@ -141,7 +141,7 @@ export function ServiceDetailClient({ service }: { service: ServiceData }) {
                                         <div className="w-8 h-8 rounded-full flex shrink-0 items-center justify-center mt-1 z-10 transition-colors duration-300" style={{ backgroundColor: "var(--t-bg)", border: "2px solid var(--t-accent)" }}>
                                             <div className="w-2.5 h-2.5 rounded-full transition-transform duration-300 group-hover:scale-125" style={{ backgroundColor: "var(--t-accent)" }} />
                                         </div>
-                                        <span className="text-xl md:text-2xl font-light leading-relaxed" style={{ color: "var(--t-text)" }}>{item}</span>
+                                        <span className="type-body-lg leading-relaxed" style={{ color: "var(--t-text)" }}>{item}</span>
                                     </div>
                                 ))}
                             </div>
@@ -197,7 +197,7 @@ export function ServiceDetailClient({ service }: { service: ServiceData }) {
                                             <div className="absolute inset-0 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" style={{ backgroundColor: "var(--t-accent)" }} />
                                             <FocusIcon className="w-8 h-8 drop-shadow-md relative z-10" />
                                         </div>
-                                        <span className="font-display font-medium text-2xl lg:text-3xl leading-tight transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                        <span className="type-h3 leading-tight transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
                                             {item}
                                         </span>
                                     </motion.div>
@@ -244,8 +244,8 @@ export function ServiceDetailClient({ service }: { service: ServiceData }) {
                                                 <StepIcon className="w-10 h-10 md:w-12 md:h-12 drop-shadow-md relative z-10" />
                                             </div>
                                             <div className="flex flex-col">
-                                                <span className="text-xs font-bold uppercase tracking-widest opacity-50 mb-1" style={{ color: "var(--t-accent)" }}>Step 0{i + 1}</span>
-                                                <span className="font-display text-2xl md:text-3xl font-bold transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                                <span className="type-caption opacity-60 mb-1" style={{ color: "var(--t-accent)" }}>Step 0{i + 1}</span>
+                                                <span className="type-h3 transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
                                                     {step}
                                                 </span>
                                             </div>
@@ -284,7 +284,7 @@ export function ServiceDetailClient({ service }: { service: ServiceData }) {
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                                                 </svg>
                                             </div>
-                                            <span className="font-medium text-lg leading-snug transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                            <span className="font-medium type-body leading-snug transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
                                                 {item}
                                             </span>
                                         </motion.div>
