@@ -97,12 +97,12 @@ export default function ServicesPage() {
                         <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>Our Capabilities</span>
                     </div>
                     <h1
-                        className="font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-8"
+                        className="type-display mb-8"
                         style={{ color: "var(--t-text)" }}
                     >
                         End-to-end solutions for <span className="italic" style={{ color: "var(--t-accent)" }}>complex challenges.</span>
                     </h1>
-                    <p className="text-lg md:text-xl leading-relaxed max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
+                    <p className="type-body-lg max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
                         We bring together specialized teams in strategy, design, and engineering to deliver digital products that scale and perform.
                     </p>
                 </motion.div>
@@ -122,7 +122,7 @@ export default function ServicesPage() {
                             >
                                 <div className="flex items-center gap-6 mb-8">
                                     <div
-                                        className="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300"
+                                        className="w-16 h-16 rounded-[var(--t-radius-md)] flex items-center justify-center transition-all duration-300"
                                         style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}
                                     >
                                         {category.icon}
@@ -131,10 +131,10 @@ export default function ServicesPage() {
                                         {category.num}
                                     </span>
                                 </div>
-                                <h2 className="font-display text-4xl lg:text-5xl font-bold leading-tight mb-6" style={{ color: "var(--t-text)" }}>
+                                <h2 className="type-h2 mb-6" style={{ color: "var(--t-text)" }}>
                                     {category.title}
                                 </h2>
-                                <p className="text-lg leading-relaxed mb-8" style={{ color: "var(--t-text-muted)" }}>
+                                <p className="type-body-lg mb-8" style={{ color: "var(--t-text-muted)" }}>
                                     {category.desc}
                                 </p>
                             </motion.div>
@@ -148,7 +148,7 @@ export default function ServicesPage() {
                                 className="lg:col-span-7"
                             >
                                 <div
-                                    className="rounded-3xl p-8 lg:p-10 relative overflow-hidden h-full flex flex-col gap-4"
+                                    className="rounded-[var(--t-radius-card)] p-8 lg:p-10 relative overflow-hidden h-full flex flex-col gap-4"
                                     style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                                 >
                                     <div className="absolute inset-0 opacity-100 pointer-events-none"
@@ -161,7 +161,7 @@ export default function ServicesPage() {
                                                 <Link
                                                     key={service.slug}
                                                     href={`/capabilities/${service.slug}`}
-                                                    className="group flex flex-col gap-2 p-5 rounded-2xl transition-all duration-300 relative overflow-hidden"
+                                                    className="group flex flex-col gap-2 p-5 rounded-[var(--t-radius-card)] transition-all duration-300 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)]"
                                                     style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)" }}
                                                 >
                                                     <div className="flex items-center justify-between">
@@ -194,8 +194,8 @@ export default function ServicesPage() {
                         transition={{ duration: 0.7 }}
                         className="text-center mb-16"
                     >
-                        <h2 className="font-display text-4xl lg:text-5xl font-bold mb-6" style={{ color: "var(--t-text)" }}>How we work with you</h2>
-                        <p className="text-lg mx-auto max-w-2xl" style={{ color: "var(--t-text-muted)" }}>
+                        <h2 className="type-h2 mb-6" style={{ color: "var(--t-text)" }}>How we work with you</h2>
+                        <p className="type-body-lg mx-auto max-w-2xl" style={{ color: "var(--t-text-muted)" }}>
                             We adapt to your organizational structure, providing engagement models that align precisely with your goals and timelines.
                         </p>
                     </motion.div>
@@ -212,11 +212,11 @@ export default function ServicesPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                                className="rounded-2xl p-8"
+                                className="rounded-[var(--t-radius-card)] p-8"
                                 style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)" }}
                             >
-                                <h3 className="font-display font-bold text-xl mb-3" style={{ color: "var(--t-text)" }}>{model.title}</h3>
-                                <p className="leading-relaxed" style={{ color: "var(--t-text-muted)" }}>{model.desc}</p>
+                                <h3 className="type-h3 mb-3" style={{ color: "var(--t-text)" }}>{model.title}</h3>
+                                <p className="type-body" style={{ color: "var(--t-text-muted)" }}>{model.desc}</p>
                             </motion.div>
                         ))}
                     </div>

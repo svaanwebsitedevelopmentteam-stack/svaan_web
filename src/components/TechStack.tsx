@@ -15,7 +15,7 @@ export function TechStack() {
             category: "Backend & Systems",
             desc: "Node.js, Python, Java, Go",
             icon: <Icons3D.Backend className="w-10 h-10" />,
-            bg: "bg-indigo-500/10"
+            bg: "bg-blue-600/10"
         },
         {
             category: "Cloud Infrastructure",
@@ -27,7 +27,7 @@ export function TechStack() {
             category: "Data & ML",
             desc: "PostgreSQL, MongoDB, TensorFlow",
             icon: <Icons3D.DataTree className="w-10 h-10" />,
-            bg: "bg-purple-500/10"
+            bg: "bg-slate-500/10"
         },
         {
             category: "DevOps & Security",
@@ -39,7 +39,7 @@ export function TechStack() {
             category: "Architecture",
             desc: "Microservices, Serverless, APIs",
             icon: <Icons3D.Microservices className="w-10 h-10" />,
-            bg: "bg-rose-500/10"
+            bg: "bg-blue-700/10"
         }
     ];
 
@@ -53,7 +53,7 @@ export function TechStack() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full border text-sm font-semibold"
+                        className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-[var(--t-radius-sm)] border text-sm font-semibold"
                         style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}
                     >
                         Technologies We Use
@@ -63,7 +63,7 @@ export function TechStack() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+                        className="type-h2 mb-6"
                         style={{ color: "var(--t-text)" }}
                     >
                         The right tool for <span className="italic" style={{ color: "var(--t-accent)" }}>the right problem.</span>
@@ -73,7 +73,7 @@ export function TechStack() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-lg"
+                        className="type-body-lg"
                         style={{ color: "var(--t-text-muted)" }}
                     >
                         We operate across the modern technology stack, ensuring your architecture is built for performance, scalability, and long-term maintainability.
@@ -89,18 +89,18 @@ export function TechStack() {
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1, duration: 0.6, ease: "easeOut" }}
                             whileHover={{ y: -5 }}
-                            className="group relative p-8 rounded-3xl shadow-sm hover:shadow-xl hover:shadow-indigo-900/5 transition-all duration-300"
+                            className="group relative p-8 rounded-[var(--t-radius-card)] shadow-sm hover:shadow-xl hover:shadow-slate-900/5 transition-all duration-300"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                         >
                             <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-10 transition-opacity transform scale-150 z-0 pointer-events-none grayscale">
                                 {tech.icon}
                             </div>
 
-                            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-sm border ${tech.bg} relative z-10 transition-transform duration-500 group-hover:scale-110`} style={{ borderColor: 'var(--t-border)' }}>
+                            <div className={`w-16 h-16 rounded-[var(--t-radius-md)] flex items-center justify-center mb-6 shadow-sm border ${tech.bg} relative z-10 transition-transform duration-500 group-hover:scale-110`} style={{ borderColor: 'var(--t-border)' }}>
                                 {tech.icon}
                             </div>
-                            <h3 className="text-xl font-bold mb-3 relative z-10" style={{ color: "var(--t-text)" }}>{tech.category}</h3>
-                            <p className="font-medium leading-relaxed relative z-10" style={{ color: "var(--t-text-muted)" }}>{tech.desc}</p>
+                            <h3 className="type-h3 mb-3 relative z-10" style={{ color: "var(--t-text)" }}>{tech.category}</h3>
+                            <p className="type-body relative z-10" style={{ color: "var(--t-text-muted)" }}>{tech.desc}</p>
                         </motion.div>
                     ))}
                 </div>

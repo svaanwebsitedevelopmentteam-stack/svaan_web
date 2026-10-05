@@ -21,9 +21,8 @@ export function CustomCursor() {
         // Only show custom cursor on non-touch devices
         if (window.matchMedia("(pointer: coarse)").matches) return;
 
-        setIsVisible(true);
-
         const moveCursor = (e: MouseEvent) => {
+            setIsVisible(true);
             cursorXEvent.current = e.clientX;
             cursorYEvent.current = e.clientY;
             cursorX.set(e.clientX);

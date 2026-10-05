@@ -87,14 +87,14 @@ export function HeroSection() {
                         className="flex items-center gap-3 mb-8"
                     >
                         <span
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
+                            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[var(--t-radius-sm)] text-xs font-semibold uppercase tracking-wider"
                             style={{
                                 backgroundColor: "var(--t-bg-surface)",
                                 border: "1px solid var(--t-border)",
                                 color: "var(--t-text-muted)",
                             }}
                         >
-                            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                             Available for new projects
                         </span>
                     </motion.div>
@@ -137,18 +137,10 @@ export function HeroSection() {
                     >
                         <Link
                             href="/contact"
-                            className="group inline-flex items-center gap-3 h-14 px-8 rounded-full font-semibold text-base transition-all duration-300 shadow-xl"
+                            className="group inline-flex items-center gap-3 h-12 px-7 rounded-[var(--t-radius-btn)] font-semibold text-base transition-all duration-200 shadow-sm hover:shadow-md hover:bg-[var(--t-btn-hover)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--t-bg)]"
                             style={{
                                 backgroundColor: "var(--t-btn-bg)",
                                 color: "var(--t-btn-text)",
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = "var(--t-accent)";
-                                e.currentTarget.style.color = "#fff";
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.backgroundColor = "var(--t-btn-bg)";
-                                e.currentTarget.style.color = "var(--t-btn-text)";
                             }}
                         >
                             Start a project
@@ -158,16 +150,10 @@ export function HeroSection() {
                         </Link>
                         <Link
                             href="/work"
-                            className="inline-flex items-center gap-2 h-14 px-8 rounded-full font-medium text-base transition-all duration-300"
+                            className="inline-flex items-center gap-2 h-12 px-7 rounded-[var(--t-radius-btn)] font-semibold text-base transition-all duration-200 border hover:bg-[var(--t-bg-surface)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--t-bg)]"
                             style={{
-                                border: "1px solid var(--t-border)",
+                                borderColor: "var(--t-border)",
                                 color: "var(--t-text)",
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = "var(--t-bg-surface)";
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.backgroundColor = "transparent";
                             }}
                         >
                             View our work
@@ -209,7 +195,7 @@ export function HeroSection() {
                         <Link
                             key={card.title}
                             href={card.href}
-                            className="group relative rounded-2xl p-8 transition-all duration-500 overflow-hidden"
+                            className="group relative rounded-[var(--t-radius-card)] p-8 transition-all duration-500 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
                             style={{
                                 backgroundColor: "var(--t-bg-card)",
                                 border: "1px solid var(--t-border)",

@@ -14,9 +14,9 @@ const IsoRight = ({ x, y, size, h, fill }: { x: number, y: number, size: number,
 );
 
 // Helper for a complete 3D Block
-const IsoBlock = ({ x, y, size, h, colorTop, colorLeft, colorRight, style }: any) => {
+const IsoBlock = ({ x, y, size, h, colorTop, colorLeft, colorRight, style, className }: { x: number; y: number; size: number; h: number; colorTop: string; colorLeft: string; colorRight: string; style?: React.CSSProperties; className?: string }) => {
     return (
-        <g style={style}>
+        <g style={style} className={className}>
             <IsoLeft x={x} y={y} size={size} h={h} fill={colorLeft} />
             <IsoRight x={x} y={y} size={size} h={h} fill={colorRight} />
             <IsoTop x={x} y={y} size={size} fill={colorTop} />

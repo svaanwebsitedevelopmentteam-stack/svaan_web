@@ -11,19 +11,17 @@ export function CTASection() {
 
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
                 <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className="text-center">
-                    <h2 className="font-display text-5xl md:text-6xl lg:text-8xl font-bold leading-tight mb-8" style={{ color: "var(--t-text)" }}>
+                    <h2 className="type-display mb-8" style={{ color: "var(--t-text)" }}>
                         Let&apos;s talk about
                         your{" "}
                         <span className="italic" style={{ color: "var(--t-accent)" }}>project.</span>
                     </h2>
-                    <p className="text-lg md:text-xl max-w-lg mx-auto mb-12" style={{ color: "var(--t-text-muted)" }}>
+                    <p className="type-body-lg max-w-lg mx-auto mb-12" style={{ color: "var(--t-text-muted)" }}>
                         Got a challenge worth solving? Let&apos;s create something great. We can transform that idea into a real, working product.
                     </p>
                     <Link href="/contact"
-                        className="group inline-flex items-center gap-3 h-16 px-12 rounded-full font-bold text-lg transition-all duration-300 shadow-2xl"
+                        className="group inline-flex items-center gap-3 h-14 px-10 rounded-[var(--t-radius-btn)] font-semibold text-base transition-all duration-200 shadow-md hover:bg-[var(--t-btn-hover)] hover:shadow-lg active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
                         style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}
-                        onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--t-accent)"; e.currentTarget.style.color = "#fff"; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--t-btn-bg)"; e.currentTarget.style.color = "var(--t-btn-text)"; }}
                     >
                         Get in Touch
                         <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

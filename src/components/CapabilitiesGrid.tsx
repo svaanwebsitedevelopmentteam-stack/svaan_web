@@ -50,12 +50,12 @@ export function CapabilitiesGrid() {
                 <div className="mb-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-end">
                     <div>
                         <div
-                            className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full border text-sm font-semibold tracking-widest uppercase relative z-10"
+                            className="inline-flex items-center justify-center px-3.5 py-1.5 mb-6 rounded-[var(--t-radius-sm)] border text-xs font-semibold tracking-wider uppercase relative z-10"
                             style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}
                         >
                             Our Expertise
                         </div>
-                        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4 relative z-10 tracking-tight" style={{ color: "var(--t-text)" }}>
+                        <h2 className="type-h2 mb-4 relative z-10" style={{ color: "var(--t-text)" }}>
                             Capabilities that <br />
                             <span className="italic" style={{ color: "var(--t-accent)" }}>drive change.</span>
                         </h2>
@@ -70,10 +70,8 @@ export function CapabilitiesGrid() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.7, delay: idx * 0.1 }}
-                            className="group rounded-[1.5rem] p-8 relative overflow-hidden flex flex-col transition-all duration-500"
-                            style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
-                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-accent)"; }}
-                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-border)"; }}
+                            className="group rounded-[var(--t-radius-card)] p-8 relative overflow-hidden flex flex-col transition-all duration-300 border hover:border-[var(--t-accent)] hover:shadow-md"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                         >
 
                             {/* Motion Graphics Video - set at very low opacity to act as an ambient texture for the Light/Dark theme card */}
@@ -97,7 +95,7 @@ export function CapabilitiesGrid() {
                             {/* Content Layer (Using native theme text variables) */}
                             <div className="relative z-20">
                                 <motion.div
-                                    className="w-[70px] h-[70px] rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 group-hover:-translate-y-1 shadow-sm"
+                                    className="w-16 h-16 rounded-[var(--t-radius-md)] flex items-center justify-center mb-5 transition-all duration-300 group-hover:-translate-y-1 shadow-sm"
                                     style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}
                                 >
                                     {cap.icon}

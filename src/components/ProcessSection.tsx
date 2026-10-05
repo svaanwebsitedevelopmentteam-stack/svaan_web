@@ -41,21 +41,19 @@ export function ProcessSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
                     <div className="lg:sticky lg:top-32 lg:h-max">
                         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }}>
-                            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" style={{ color: "var(--t-text)" }}>
+                            <h2 className="type-h2 mb-6" style={{ color: "var(--t-text)" }}>
                                 High-quality work with{" "}
                                 <span className="italic" style={{ color: "var(--t-accent)" }}>real value</span>{" "}
                                 considered.
                             </h2>
-                            <p className="text-lg leading-relaxed mb-10 max-w-lg" style={{ color: "var(--t-text-muted)" }}>
+                            <p className="type-body-lg mb-10 max-w-lg" style={{ color: "var(--t-text-muted)" }}>
                                 Our working process revolves around maximizing clarity and impact.
                                 It begins with thorough research and planning, where we gather
                                 relevant information and outline key objectives aligned with your business.
                             </p>
                             <Link href="/approach"
-                                className="group inline-flex items-center gap-3 h-13 px-8 rounded-full font-medium transition-all duration-300"
-                                style={{ border: "1px solid var(--t-border)", backgroundColor: "var(--t-bg-surface)", color: "var(--t-text)" }}
-                                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
+                                className="group inline-flex items-center gap-3 h-12 px-7 rounded-[var(--t-radius-btn)] font-semibold text-base transition-all duration-200 border hover:bg-[var(--t-bg-surface)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
+                                style={{ borderColor: "var(--t-border)", backgroundColor: "var(--t-bg-surface)", color: "var(--t-text)" }}
                             >
                                 Learn More
                                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -68,14 +66,12 @@ export function ProcessSection() {
                     <div className="flex flex-col gap-6">
                         {steps.map((step, i) => (
                             <motion.div key={step.num} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                                className="group rounded-2xl p-8 transition-all duration-500 cursor-default"
-                                style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
-                                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-accent)"; }}
-                                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-border)"; }}
+                                className="group rounded-[var(--t-radius-card)] p-8 transition-all duration-300 border hover:border-[var(--t-accent)] hover:shadow-md cursor-default"
+                                style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                             >
                                 <div className="flex items-start justify-between mb-6">
                                     <h3 className="font-display text-xl md:text-2xl font-bold group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>{step.title}</h3>
-                                    <div className="flex items-center justify-center w-12 h-12 rounded-2xl transition-colors duration-500" style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-accent)" }}>
+                                    <div className="flex items-center justify-center w-12 h-12 rounded-[var(--t-radius-md)] transition-colors duration-300" style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-accent)" }}>
                                         {step.icon}
                                     </div>
                                 </div>

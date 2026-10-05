@@ -75,12 +75,12 @@ export default function ApproachPage() {
                         <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>Our Approach</span>
                     </div>
                     <h1
-                        className="font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-8"
+                        className="type-display mb-8"
                         style={{ color: "var(--t-text)" }}
                     >
                         Understand the challenge. Shape the direction. <span className="italic" style={{ color: "var(--t-accent)" }}>Build what matters.</span>
                     </h1>
-                    <p className="text-lg md:text-xl leading-relaxed max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
+                    <p className="type-body-lg max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
                         We do not begin with technology. We begin with understanding. Then we connect strategy, design, and technology to create practical progress.
                     </p>
                 </motion.div>
@@ -88,10 +88,10 @@ export default function ApproachPage() {
                 {/* Why this approach - Simplified Minimal Statement */}
                 <div className="mb-32">
                     <div className="flex flex-col md:flex-row md:items-end justify-between border-b pb-12" style={{ borderColor: "var(--t-border)" }}>
-                        <h2 className="font-display text-3xl md:text-5xl font-bold leading-tight md:w-[60%] mb-6 md:mb-0" style={{ color: "var(--t-text)" }}>
+                        <h2 className="type-h2 md:w-[60%] mb-6 md:mb-0" style={{ color: "var(--t-text)" }}>
                             Start with the problem,<br />not the solution.
                         </h2>
-                        <p className="text-lg leading-relaxed md:w-[35%]" style={{ color: "var(--t-text-muted)" }}>
+                        <p className="type-body-lg md:w-[35%]" style={{ color: "var(--t-text-muted)" }}>
                             The right technology decision depends on the problem it is meant to solve. Our approach creates space to understand the business context, clarify priorities, and build with purpose.
                         </p>
                     </div>
@@ -100,7 +100,7 @@ export default function ApproachPage() {
                 {/* Core Principles - Elegant Premium List */}
                 <div className="mb-40">
                     <div className="mb-12">
-                        <h3 className="font-display text-2xl font-bold" style={{ color: "var(--t-text)" }}>Our Principles</h3>
+                        <h3 className="type-h3" style={{ color: "var(--t-text)" }}>Our Principles</h3>
                     </div>
                     <div className="flex flex-col border-t border-b" style={{ borderColor: "var(--t-border)" }}>
                         {[
@@ -120,11 +120,11 @@ export default function ApproachPage() {
                                 style={{ borderColor: "var(--t-border)" }}
                             >
                                 <div className="flex items-center gap-8 md:w-[50%] mb-4 md:mb-0">
-                                    <span className="font-display text-2xl font-bold opacity-30 group-hover:opacity-100 transition-opacity" style={{ color: "var(--t-accent)" }}>0{i + 1} //</span>
-                                    <h4 className="font-display text-2xl md:text-3xl font-bold" style={{ color: "var(--t-text)" }}>{principle.title}</h4>
+                                    <span className="font-display text-2xl font-bold opacity-30 group-hover:opacity-100 transition-opacity" style={{ color: "var(--t-accent)" }}>0{i + 1} {"//"}</span>
+                                    <h4 className="type-h3" style={{ color: "var(--t-text)" }}>{principle.title}</h4>
                                 </div>
                                 <div className="md:w-[40%]">
-                                    <p className="text-lg leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity" style={{ color: "var(--t-text-muted)" }}>{principle.desc}</p>
+                                    <p className="type-body opacity-70 group-hover:opacity-100 transition-opacity" style={{ color: "var(--t-text-muted)" }}>{principle.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -136,29 +136,29 @@ export default function ApproachPage() {
                     <div className="flex flex-col md:flex-row items-start gap-16">
 
                         <div className="md:w-1/3 md:sticky md:top-32 relative">
-                            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6" style={{ color: "var(--t-text)" }}>Five Stages</h2>
-                            <p className="text-lg leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                            <h2 className="type-h2 mb-6" style={{ color: "var(--t-text)" }}>Five Stages</h2>
+                            <p className="type-body-lg" style={{ color: "var(--t-text-muted)" }}>
                                 A systematic methodology ensuring deep alignment before technical execution, leading to stable, long-lasting outcomes.
                             </p>
                         </div>
 
                         <div className="md:w-2/3 flex flex-col gap-12">
-                            {methodologies.map((step, i) => (
+                            {methodologies.map((step) => (
                                 <motion.div
                                     key={step.num}
                                     initial={{ opacity: 0, x: 30 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true, margin: "-100px" }}
                                     transition={{ duration: 0.6 }}
-                                    className="rounded-[2rem] p-10 md:p-14"
+                                    className="rounded-[var(--t-radius-card)] p-10 md:p-14"
                                     style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                                 >
                                     <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6">
                                         <div className="flex items-center gap-6">
-                                            <div className="w-16 h-16 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}>
+                                            <div className="w-16 h-16 rounded-[var(--t-radius-md)] flex items-center justify-center" style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}>
                                                 <step.icon className="w-10 h-10 drop-shadow-md" />
                                             </div>
-                                            <h3 className="font-display text-3xl font-bold" style={{ color: "var(--t-text)" }}>{step.title}</h3>
+                                            <h3 className="type-h3" style={{ color: "var(--t-text)" }}>{step.title}</h3>
                                         </div>
                                         <span className="font-display text-5xl font-bold opacity-10" style={{ color: "var(--t-text)" }}>{step.num}</span>
                                     </div>
@@ -186,10 +186,10 @@ export default function ApproachPage() {
                 {/* Engagement Model - Editorial 4-Column Typography Layout */}
                 <div className="mb-40">
                     <div className="mb-20">
-                        <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 lg:max-w-3xl" style={{ color: "var(--t-text)" }}>
+                        <h2 className="type-h2 mb-6 lg:max-w-3xl" style={{ color: "var(--t-text)" }}>
                             The shape of the engagement follows the problem.
                         </h2>
-                        <p className="text-xl leading-relaxed max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
+                        <p className="type-body-lg max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
                             Not every challenge needs the same starting point or delivery model. We work with clients to identify the right combination of strategy, product, technology, engineering, and ongoing support.
                         </p>
                     </div>
@@ -213,10 +213,10 @@ export default function ApproachPage() {
                                 <span className="font-mono text-sm font-semibold tracking-widest mb-12 opacity-40 group-hover:opacity-100 transition-opacity" style={{ color: "var(--t-accent)" }}>
                                     {m.step}
                                 </span>
-                                <h3 className="font-display font-bold text-2xl mb-4" style={{ color: "var(--t-text)" }}>
+                                <h3 className="type-h3 mb-4" style={{ color: "var(--t-text)" }}>
                                     {m.title}
                                 </h3>
-                                <p className="text-base leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                                <p className="type-body-sm" style={{ color: "var(--t-text-muted)" }}>
                                     {m.desc}
                                 </p>
                             </motion.div>

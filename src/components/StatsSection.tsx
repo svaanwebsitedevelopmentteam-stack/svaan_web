@@ -48,8 +48,8 @@ export function StatsSection() {
         <section className="py-[60px]" style={{ borderTop: "1px solid var(--t-border)", borderBottom: "1px solid var(--t-border)" }}>
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }} className="text-center mb-20">
-                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "var(--t-text)" }}>Our numbers say it all</h2>
-                    <p className="text-lg max-w-lg mx-auto" style={{ color: "var(--t-text-muted)" }}>
+                    <h2 className="type-h2 mb-4" style={{ color: "var(--t-text)" }}>Our numbers say it all</h2>
+                    <p className="type-body-lg max-w-lg mx-auto" style={{ color: "var(--t-text-muted)" }}>
                         These numbers reflect the experience, consistency, and measurable impact behind the work we&apos;ve delivered.
                     </p>
                 </motion.div>

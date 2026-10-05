@@ -12,7 +12,7 @@ const projects = [
         desc: "Built around intelligent automation and data-driven decision support, this platform redefines how financial services operate at scale with precision and speed.",
         href: "/work/fintech-platform",
         Illustration: Illustrations.FinTech,
-        gradient: "from-indigo-600/60 to-blue-900/60",
+        gradient: "from-blue-700/60 to-slate-900/60",
     },
     {
         title: "Healthcare Digital Transformation",
@@ -84,10 +84,10 @@ export function WorkShowcase() {
                     className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16"
                 >
                     <div>
-                        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4" style={{ color: "var(--t-text)" }}>
+                        <h2 className="type-h2 mb-4" style={{ color: "var(--t-text)" }}>
                             Our selected works
                         </h2>
-                        <p className="text-lg max-w-lg leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                        <p className="type-body-lg max-w-lg leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
                             With deep expertise across strategy, design, and engineering, we
                             craft solutions that create real, measurable business impact.
                         </p>
@@ -133,10 +133,8 @@ export function WorkShowcase() {
                         >
                             <Link
                                 href={project.href}
-                                className="group block relative rounded-3xl overflow-hidden transition-all duration-500 h-full flex flex-col"
-                                style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
-                                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
+                                className="group block relative rounded-[var(--t-radius-card)] overflow-hidden transition-all duration-300 h-full flex flex-col border hover:border-[var(--t-accent)] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
+                                style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                             >
                                 <div className="relative h-56 md:h-64 flex-shrink-0 overflow-hidden bg-[var(--t-bg-card)]">
                                     <project.Illustration className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -147,7 +145,7 @@ export function WorkShowcase() {
                                     <div>
                                         <div className="mb-4 flex flex-wrap gap-2">
                                             {project.tags.split(',').map((tag) => (
-                                                <span key={tag} className="text-[10px] sm:text-xs font-semibold tracking-wider uppercase px-3 py-1.5 rounded-full" style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-text-muted)", border: "1px solid var(--t-border)" }}>
+                                                <span key={tag} className="text-[10px] sm:text-xs font-semibold tracking-wider uppercase px-2.5 py-1 rounded-[var(--t-radius-sm)]" style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-text-muted)", border: "1px solid var(--t-border)" }}>
                                                     {tag.trim()}
                                                 </span>
                                             ))}
@@ -174,7 +172,7 @@ export function WorkShowcase() {
                     <div className="flex md:hidden items-center gap-3">
                         <button
                             onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
-                            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
+                            className="w-12 h-12 rounded-[var(--t-radius-btn)] flex items-center justify-center transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[var(--t-bg-surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)]"
                             style={{ border: "1px solid var(--t-border)", color: "var(--t-text)" }}
                             disabled={activeIndex === 0}
                             aria-label="Previous project"
@@ -183,7 +181,7 @@ export function WorkShowcase() {
                         </button>
                         <button
                             onClick={() => scrollTo(Math.min(projects.length - 1, activeIndex + 1))}
-                            className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
+                            className="w-12 h-12 rounded-[var(--t-radius-btn)] flex items-center justify-center transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[var(--t-bg-surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)]"
                             style={{ border: "1px solid var(--t-border)", color: "var(--t-text)" }}
                             disabled={activeIndex === projects.length - 1}
                             aria-label="Next project"
@@ -195,10 +193,8 @@ export function WorkShowcase() {
                     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
                         <Link
                             href="/work"
-                            className="group inline-flex items-center gap-3 h-14 px-10 rounded-full font-semibold transition-all duration-300 w-full sm:w-auto justify-center"
-                            style={{ border: "1px solid var(--t-border)", color: "var(--t-text)" }}
-                            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--t-bg-surface)"; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; }}
+                            className="group inline-flex items-center gap-3 h-12 px-7 rounded-[var(--t-radius-btn)] font-semibold text-base transition-all duration-200 border hover:bg-[var(--t-bg-surface)] active:scale-[0.98] w-full sm:w-auto justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
+                            style={{ borderColor: "var(--t-border)", color: "var(--t-text)" }}
                         >
                             See All Works
                             <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

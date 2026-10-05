@@ -19,12 +19,12 @@ export default function TermsPage() {
                         <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>Legal</span>
                     </div>
                     <h1
-                        className="font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-8"
+                        className="type-display mb-8"
                         style={{ color: "var(--t-text)" }}
                     >
                         Terms & Conditions
                     </h1>
-                    <p className="text-lg md:text-xl leading-relaxed max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
+                    <p className="type-body-lg max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
                         These Terms & Conditions govern the use of the SVaaN Global Tech website, including all content, resources, and services available through the platform.
                     </p>
                 </motion.div>

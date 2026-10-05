@@ -90,10 +90,10 @@ export function GlobalFloatActions() {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 20 }}
                                 transition={{ delay: i * 0.05, duration: 0.2 }}
-                                className="group relative flex items-center justify-end gap-3 w-full"
+                                className="group relative flex items-center justify-end gap-3 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-card)]"
                             >
                                 <span
-                                    className="whitespace-nowrap px-3 py-1.5 rounded-lg text-sm font-medium shadow-sm transition-transform duration-300 origin-right hover:scale-105"
+                                    className="whitespace-nowrap px-3 py-1.5 rounded-[var(--t-radius-card)] text-sm font-medium shadow-sm transition-transform duration-300 origin-right hover:scale-105"
                                     style={{ backgroundColor: "var(--t-bg-card)", color: "var(--t-text)", border: "1px solid var(--t-border)" }}
                                 >
                                     {action.name}
@@ -115,8 +115,9 @@ export function GlobalFloatActions() {
                 onClick={toggleMenu}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-14 h-14 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center text-white relative overflow-hidden z-10"
+                className="w-14 h-14 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center text-white relative overflow-hidden z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
                 style={{ backgroundColor: "var(--t-accent)" }}
+                aria-label={isOpen ? "Close contact options" : "Open contact options"}
             >
                 {/* Ping animation when closed */}
                 {!isOpen && (
@@ -163,7 +164,7 @@ export function GlobalFloatActions() {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={scrollToTop}
-                        className="hidden md:flex w-14 h-14 rounded-full shadow-lg items-center justify-center transition-colors relative z-0"
+                        className="hidden md:flex w-14 h-14 rounded-full shadow-lg items-center justify-center transition-colors relative z-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
                         style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-text)", border: "1px solid var(--t-border)" }}
                         aria-label="Scroll to top"
                     >

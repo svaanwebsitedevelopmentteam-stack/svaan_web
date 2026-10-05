@@ -24,7 +24,7 @@ const insights = [
         summary: "A practical guide to the operational, technical, and strategic risks organizations face when transitioning from AI proof-of-concepts to production.",
         author: "Sai Ramamurthy",
         date: "November 12, 2026",
-        gradient: "from-blue-600/20 to-purple-600/20"
+        gradient: "from-blue-700/20 to-slate-900/20"
     },
     {
         id: "product-strategy",
@@ -83,12 +83,12 @@ export default function InsightsPage() {
                         <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>Perspectives</span>
                     </div>
                     <h1
-                        className="font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-8"
+                        className="type-display mb-8"
                         style={{ color: "var(--t-text)" }}
                     >
                         Ideas, perspectives and practical thinking for a changing <span className="italic" style={{ color: "var(--t-accent)" }}>digital world.</span>
                     </h1>
-                    <p className="text-lg md:text-xl leading-relaxed max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
+                    <p className="type-body-lg max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
                         Explore practical perspectives on strategy, digital transformation, products, technology, AI, engineering and technology management.
                     </p>
                 </motion.div>
@@ -97,7 +97,7 @@ export default function InsightsPage() {
                 <div className="py-8 mb-16 overflow-x-auto no-scrollbar scroll-smooth">
                     <div className="flex flex-nowrap items-center gap-3">
                         <button
-                            className="px-6 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-colors"
+                            className="px-6 py-2 rounded-[var(--t-radius-sm)] text-sm font-bold whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)]"
                             style={{ backgroundColor: "var(--t-text)", color: "var(--t-bg)" }}
                         >
                             All Perspectives
@@ -105,7 +105,7 @@ export default function InsightsPage() {
                         {categories.map(cat => (
                             <button
                                 key={cat}
-                                className="px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-colors hover:opacity-80"
+                                className="px-6 py-2 rounded-[var(--t-radius-sm)] text-sm font-semibold whitespace-nowrap transition-colors hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)]"
                                 style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
                             >
                                 {cat}
@@ -124,9 +124,9 @@ export default function InsightsPage() {
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.6, delay: (i % 2) * 0.1 }}
                         >
-                            <Link href="#" className="group block focus:outline-none">
+                            <Link href="#" className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-4 rounded-[var(--t-radius-card)]">
 
-                                <div className="w-full aspect-[16/9] mb-8 rounded-[2rem] overflow-hidden relative" style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
+                                <div className="w-full aspect-[16/9] mb-8 rounded-[var(--t-radius-card)] overflow-hidden relative" style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
                                     <div className={`absolute inset-0 bg-gradient-to-br ${article.gradient} transition-transform duration-1000 group-hover:scale-105`} />
                                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
                                 </div>
@@ -137,11 +137,11 @@ export default function InsightsPage() {
                                         <span className="text-sm" style={{ color: "var(--t-text-muted)" }}>{article.date}</span>
                                     </div>
 
-                                    <h2 className="font-display text-3xl font-bold mb-4 group-hover:text-[var(--t-accent)] transition-colors leading-snug lg:h-[4.5rem] line-clamp-2" style={{ color: "var(--t-text)" }}>
+                                    <h2 className="type-h3 mb-4 group-hover:text-[var(--t-accent)] transition-colors leading-snug lg:h-[4.5rem] line-clamp-2" style={{ color: "var(--t-text)" }}>
                                         {article.title}
                                     </h2>
 
-                                    <p className="text-lg leading-relaxed mb-6 line-clamp-3" style={{ color: "var(--t-text-muted)" }}>
+                                    <p className="type-body mb-6 line-clamp-3" style={{ color: "var(--t-text-muted)" }}>
                                         {article.summary}
                                     </p>
 

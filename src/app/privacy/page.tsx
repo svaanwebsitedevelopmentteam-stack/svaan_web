@@ -19,12 +19,12 @@ export default function PrivacyPage() {
                         <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>Legal</span>
                     </div>
                     <h1
-                        className="font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-8"
+                        className="type-display mb-8"
                         style={{ color: "var(--t-text)" }}
                     >
                         Privacy Policy
                     </h1>
-                    <p className="text-lg md:text-xl leading-relaxed max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
+                    <p className="type-body-lg max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
                         This Privacy Policy explains how SVaaN Global Tech collects, uses, stores, and protects personal information when you use our website or contact our organization.
                     </p>
                 </motion.div>

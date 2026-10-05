@@ -55,12 +55,12 @@ export default function CompanyPage() {
                         <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>About SVaaN</span>
                     </div>
                     <h1
-                        className="font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-8"
+                        className="type-display mb-8"
                         style={{ color: "var(--t-text)" }}
                     >
                         We connect strategy and technology to create <span className="italic" style={{ color: "var(--t-accent)" }}>meaningful progress.</span>
                     </h1>
-                    <p className="text-lg md:text-xl leading-relaxed max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
+                    <p className="type-body-lg max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
                         SVaaN Global Tech helps organizations understand complex challenges, shape the right direction, and turn that direction into practical technology-driven outcomes.
                     </p>
                 </motion.div>
@@ -87,11 +87,11 @@ export default function CompanyPage() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: i * 0.1 }}
-                            className="p-10 rounded-[2rem] flex flex-col"
+                            className="p-10 rounded-[var(--t-radius-card)] flex flex-col"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                         >
-                            <h3 className="font-display text-2xl font-bold mb-6" style={{ color: "var(--t-accent)" }}>{item.title}</h3>
-                            <p className="leading-relaxed text-lg flex-grow" style={{ color: "var(--t-text)" }}>{item.text}</p>
+                            <h3 className="type-h3 mb-6" style={{ color: "var(--t-accent)" }}>{item.title}</h3>
+                            <p className="type-body flex-grow" style={{ color: "var(--t-text)" }}>{item.text}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -101,7 +101,7 @@ export default function CompanyPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
                         <div className="lg:col-span-4">
-                            <h2 className="font-display text-4xl md:text-5xl font-bold sticky top-32" style={{ color: "var(--t-text)" }}>What We Believe</h2>
+                            <h2 className="type-h2 sticky top-32" style={{ color: "var(--t-text)" }}>What We Believe</h2>
                         </div>
 
                         <div className="lg:col-span-8 flex flex-col gap-12">
@@ -112,18 +112,18 @@ export default function CompanyPage() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    className="p-8 md:p-12 rounded-3xl group transition-all duration-300"
+                                    className="p-8 md:p-12 rounded-[var(--t-radius-card)] group transition-all duration-300"
                                     style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)" }}
                                 >
                                     <div className="flex flex-col md:flex-row md:items-center gap-6 mb-4">
-                                        <div className="w-16 h-16 shrink-0 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}>
+                                        <div className="w-16 h-16 shrink-0 rounded-[var(--t-radius-md)] flex items-center justify-center" style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}>
                                             <belief.icon className="w-10 h-10 drop-shadow-md" />
                                         </div>
-                                        <h3 className="font-display text-2xl md:text-3xl font-bold transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                        <h3 className="type-h3 transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
                                             {belief.title}
                                         </h3>
                                     </div>
-                                    <p className="text-xl leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                                    <p className="type-body" style={{ color: "var(--t-text-muted)" }}>
                                         {belief.desc}
                                     </p>
                                 </motion.div>
@@ -134,12 +134,12 @@ export default function CompanyPage() {
                 </div>
 
                 {/* How We Work Ribbon (Cinematic Pipeline) */}
-                <div className="mb-40 py-24 rounded-[3rem] overflow-hidden relative border" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+                <div className="mb-40 py-24 rounded-[var(--t-radius-card)] overflow-hidden relative border" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.03),transparent)] pointer-events-none" />
 
                     <div className="text-center mb-20 relative z-10 px-6">
-                        <h2 className="font-display text-4xl md:text-5xl font-bold mb-6" style={{ color: "var(--t-text)" }}>Our work follows a simple principle</h2>
-                        <p className="mt-4 text-xl max-w-2xl mx-auto" style={{ color: "var(--t-text-muted)" }}>
+                        <h2 className="type-h2 mb-6" style={{ color: "var(--t-text)" }}>Our work follows a simple principle</h2>
+                        <p className="mt-4 type-body-lg max-w-2xl mx-auto" style={{ color: "var(--t-text-muted)" }}>
                             We use this journey to connect strategic thinking with practical technology delivery.
                         </p>
                     </div>
@@ -164,7 +164,7 @@ export default function CompanyPage() {
                                 className="group relative flex flex-col items-center w-full lg:w-48 bg-transparent"
                             >
                                 {/* 3D Icon Card */}
-                                <div className="w-28 h-28 md:w-32 md:h-32 rounded-[2rem] flex items-center justify-center mb-8 relative transition-all duration-500 ease-out group-hover:-translate-y-4 shadow-xl group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] backdrop-blur-3xl" style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
+                                <div className="w-28 h-28 md:w-32 md:h-32 rounded-[var(--t-radius-md)] flex items-center justify-center mb-8 relative transition-all duration-500 ease-out group-hover:-translate-y-4 shadow-xl group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] backdrop-blur-3xl" style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
                                     <div className="absolute inset-0 opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-500" style={{ backgroundColor: "var(--t-accent)" }} />
                                     <step.icon className="w-14 h-14 md:w-16 md:h-16 relative z-10" />
                                 </div>

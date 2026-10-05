@@ -49,10 +49,10 @@ export function ServicesGrid() {
                     className="flex flex-col md:flex-row md:justify-between items-start md:items-end gap-10"
                 >
                     <div className="max-w-2xl">
-                        <h2 className="font-display text-4xl md:text-5xl font-bold text-slate leading-tight mb-6">
+                        <h2 className="type-h2 mb-6 text-slate">
                             Explore the services behind our capabilities.
                         </h2>
-                        <p className="text-xl text-slate/70 leading-relaxed max-w-xl">
+                        <p className="type-body-lg text-slate-600 leading-relaxed max-w-xl">
                             Our services sit within six capabilities. This makes it easier to
                             understand not only what we do, but why a service may be relevant
                             to a particular business challenge.
@@ -60,7 +60,7 @@ export function ServicesGrid() {
                     </div>
                     <Link
                         href="/capabilities"
-                        className="group hidden sm:inline-flex items-center justify-center rounded-full bg-white text-slate border border-slate/10 px-8 h-14 font-medium shadow-sm transition-all hover:bg-slate hover:text-white hover:border-slate hover:-translate-y-1 hover:shadow-xl"
+                        className="group hidden sm:inline-flex items-center justify-center rounded-[var(--t-radius-btn)] bg-white text-slate border border-slate/20 px-8 h-12 font-medium shadow-sm transition-all hover:bg-slate-50 hover:border-slate-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-svaan-blue focus-visible:ring-offset-2"
                     >
                         Explore all services
                         <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
@@ -80,12 +80,12 @@ export function ServicesGrid() {
                         <motion.div variants={item} key={service}>
                             <Link
                                 href={`/capabilities/${service.toLowerCase().replace(/\s*\/\s*/g, "-").replace(/\s+/g, "-")}`}
-                                className="group relative bg-white rounded-2xl p-6 md:p-8 border border-transparent shadow-sm hover:shadow-2xl hover:shadow-slate/10 transition-all duration-300 flex items-center justify-between overflow-hidden block"
+                                className="group relative bg-white rounded-[var(--t-radius-card)] p-6 md:p-8 border border-transparent shadow-sm hover:shadow-2xl hover:shadow-slate/10 transition-all duration-300 flex items-center justify-between overflow-hidden block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-svaan-blue"
                             >
                                 {/* 2px SVaaN Blue keyline marker on left edge revealed on hover */}
                                 <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-svaan-blue transform -translate-x-full transition-transform duration-300 ease-out group-hover:translate-x-0" />
 
-                                <h3 className="font-display font-semibold text-lg md:text-xl text-slate pr-8 transition-transform duration-300 group-hover:translate-x-2">
+                                <h3 className="type-h3 pr-8 transition-transform duration-300 group-hover:translate-x-2 text-slate">
                                     {service}
                                 </h3>
 
@@ -106,7 +106,7 @@ export function ServicesGrid() {
                 >
                     <Link
                         href="/capabilities"
-                        className="group inline-flex w-full items-center justify-center rounded-full bg-slate text-white border border-slate/10 px-8 h-14 font-medium transition-all"
+                        className="group inline-flex w-full items-center justify-center rounded-[var(--t-radius-btn)] bg-svaan-blue text-white px-8 h-12 font-medium hover:bg-[#005FA3] transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-svaan-blue focus-visible:ring-offset-2"
                     >
                         Explore all services
                         <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />

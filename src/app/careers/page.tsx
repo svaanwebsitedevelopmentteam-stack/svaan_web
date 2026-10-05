@@ -60,18 +60,18 @@ export default function CareersPage() {
                         <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>Careers</span>
                     </div>
                     <h1
-                        className="font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-8"
+                        className="type-display mb-8"
                         style={{ color: "var(--t-text)" }}
                     >
                         Build meaningful technology with people who <span className="italic" style={{ color: "var(--t-accent)" }}>care about the problem.</span>
                     </h1>
-                    <p className="text-lg md:text-xl leading-relaxed max-w-3xl mb-12" style={{ color: "var(--t-text-muted)" }}>
+                    <p className="type-body-lg max-w-3xl mb-12" style={{ color: "var(--t-text-muted)" }}>
                         Good technology starts with good thinking. We look for people who want to understand the problem, work with others, and keep improving how technology creates value.
                     </p>
 
                     <button
                         onClick={() => document.getElementById("open-roles")?.scrollIntoView({ behavior: 'smooth' })}
-                        className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold transition-all duration-300 group"
+                        className="inline-flex items-center gap-3 px-8 py-3.5 rounded-[var(--t-radius-btn)] font-semibold transition-all duration-200 group hover:bg-[var(--t-bg-surface)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
                         style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
                     >
                         View Opportunities
@@ -81,7 +81,7 @@ export default function CareersPage() {
 
                 {/* Why SVaaN Grid */}
                 <div className="mb-40">
-                    <h2 className="font-display text-3xl font-bold mb-10" style={{ color: "var(--t-text)" }}>Why SVaaN</h2>
+                    <h2 className="type-h2 mb-10" style={{ color: "var(--t-text)" }}>Why SVaaN</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {whySvaan.map((item, i) => (
                             <motion.div
@@ -90,11 +90,11 @@ export default function CareersPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                                className="rounded-3xl p-10"
+                                className="rounded-[var(--t-radius-card)] p-10"
                                 style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                             >
-                                <h3 className="font-display text-2xl font-bold mb-4" style={{ color: "var(--t-text)" }}>{item.title}</h3>
-                                <p className="leading-relaxed text-lg" style={{ color: "var(--t-text-muted)" }}>{item.desc}</p>
+                                <h3 className="type-h3 mb-4" style={{ color: "var(--t-text)" }}>{item.title}</h3>
+                                <p className="type-body" style={{ color: "var(--t-text-muted)" }}>{item.desc}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -110,12 +110,12 @@ export default function CareersPage() {
 
                 {/* Hiring Process */}
                 <div className="mb-40">
-                    <h2 className="font-display text-3xl font-bold mb-10" style={{ color: "var(--t-text)" }}>The Hiring Process</h2>
+                    <h2 className="type-h2 mb-10" style={{ color: "var(--t-text)" }}>The Hiring Process</h2>
                     <div className="flex flex-col md:flex-row flex-wrap items-center gap-4">
                         {hiringProcess.map((step, idx) => (
                             <div key={idx} className="flex items-center gap-4 w-full md:w-auto">
                                 <div
-                                    className="px-6 py-3 rounded-full font-semibold whitespace-nowrap w-full md:w-auto text-center"
+                                    className="px-6 py-3 rounded-[var(--t-radius-sm)] font-semibold whitespace-nowrap w-full md:w-auto text-center"
                                     style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
                                 >
                                     {step}
@@ -133,18 +133,18 @@ export default function CareersPage() {
                 {/* Open Roles */}
                 <div id="open-roles" className="mb-32 scroll-mt-32">
                     <div className="mb-12">
-                        <h2 className="font-display text-4xl md:text-5xl font-bold mb-6" style={{ color: "var(--t-text)" }}>Explore current opportunities.</h2>
-                        <p className="text-xl leading-relaxed max-w-2xl" style={{ color: "var(--t-text-muted)" }}>
+                        <h2 className="type-h2 mb-6" style={{ color: "var(--t-text)" }}>Explore current opportunities.</h2>
+                        <p className="type-body-lg max-w-2xl" style={{ color: "var(--t-text-muted)" }}>
                             Browse open positions and find an opportunity that matches your experience, interests, and career direction.
                         </p>
                     </div>
 
                     <div className="flex flex-col gap-4 border-t" style={{ borderColor: "var(--t-border)" }}>
                         {dummyJobs.map((job) => (
-                            <Link href="#" key={job.id} className="group block border-b py-8 hover:px-6 transition-all duration-300" style={{ borderColor: "var(--t-border)" }}>
+                            <Link href="#" key={job.id} className="group block border-b py-8 hover:px-6 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] rounded-[var(--t-radius-card)]" style={{ borderColor: "var(--t-border)" }}>
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                                     <div>
-                                        <h3 className="font-display text-2xl font-bold mb-2 group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>{job.title}</h3>
+                                        <h3 className="type-h3 mb-2 group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>{job.title}</h3>
                                         <div className="flex items-center gap-4 text-sm font-semibold" style={{ color: "var(--t-text-muted)" }}>
                                             <span>{job.location}</span>
                                             <span className="w-1 h-1 rounded-full" style={{ backgroundColor: "var(--t-border)" }} />

@@ -54,7 +54,7 @@ export function ClientExperiences() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full border text-sm font-semibold max-w-max uppercase tracking-widest"
+                            className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-[var(--t-radius-sm)] border text-sm font-semibold max-w-max uppercase tracking-widest"
                             style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}
                         >
                             Client Experiences
@@ -65,7 +65,7 @@ export function ClientExperiences() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 leading-[1.1]"
+                            className="type-h2 mb-8 leading-[1.1]"
                             style={{ color: "var(--t-text)" }}
                         >
                             Impact that <br />
@@ -84,7 +84,8 @@ export function ClientExperiences() {
                             <div className="flex items-center gap-3">
                                 <button
                                     onClick={handlePrev}
-                                    className="w-12 h-12 flex items-center justify-center rounded-full border transition-all hover:-translate-x-1"
+                                    aria-label="Previous testimonial"
+                                    className="w-12 h-12 flex items-center justify-center rounded-full border transition-all hover:-translate-x-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
                                     style={{ borderColor: "var(--t-border)", color: "var(--t-text)" }}
                                 >
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +94,8 @@ export function ClientExperiences() {
                                 </button>
                                 <button
                                     onClick={handleNext}
-                                    className="w-12 h-12 flex items-center justify-center rounded-full border transition-all hover:translate-x-1"
+                                    aria-label="Next testimonial"
+                                    className="w-12 h-12 flex items-center justify-center rounded-full border transition-all hover:translate-x-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
                                     style={{ borderColor: "var(--t-border)", color: "var(--t-text)", backgroundColor: "var(--t-bg-surface)" }}
                                 >
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +107,12 @@ export function ClientExperiences() {
                             {/* Animated Pagination Line */}
                             <div className="flex items-center gap-2">
                                 {testimonials.map((_, i) => (
-                                    <button onClick={() => setCurrentIndex(i)} key={i} className="py-2 focus:outline-none">
+                                    <button
+                                        onClick={() => setCurrentIndex(i)}
+                                        key={i}
+                                        aria-label={`Go to slide ${i + 1}`}
+                                        className="py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] rounded-[var(--t-radius-sm)]"
+                                    >
                                         <motion.div
                                             animate={{
                                                 width: i === currentIndex ? 48 : 12,
@@ -137,7 +144,7 @@ export function ClientExperiences() {
                                 className="absolute inset-0 flex flex-col justify-center"
                             >
                                 <p className="font-display text-2xl md:text-3xl lg:text-4xl leading-tight font-medium mb-10" style={{ color: "var(--t-text)" }}>
-                                    "{testimonials[currentIndex].quote}"
+                                    &ldquo;{testimonials[currentIndex].quote}&rdquo;
                                 </p>
 
                                 <div className="flex items-center gap-5 pt-6 mt-auto">

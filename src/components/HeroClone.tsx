@@ -58,7 +58,7 @@ export const HeroClone = () => {
 
                 {/* Secondary Glow that trails behind slowly */}
                 <motion.div
-                    className="absolute top-0 left-0 w-[600px] h-[600px] bg-indigo-400/20 rounded-full blur-[150px] mix-blend-multiply"
+                    className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px] mix-blend-multiply"
                     style={{
                         x: springX2,
                         y: springY2,
@@ -68,8 +68,8 @@ export const HeroClone = () => {
                 />
 
                 {/* Ambient static glows so corners aren't entirely empty */}
-                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-300/20 blur-[120px] rounded-full" />
-                <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-sky-200/30 blur-[130px] rounded-full" />
+                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-sky-300/20 blur-[120px] rounded-full" />
+                <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-200/30 blur-[130px] rounded-full" />
 
                 {/* Soft grain texture */}
                 <div className="absolute inset-0 opacity-[0.25]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
@@ -81,11 +81,11 @@ export const HeroClone = () => {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/80 backdrop-blur-md border border-slate-200 shadow-sm text-sm font-semibold tracking-wide text-slate-700 mb-8"
+                    className="inline-flex items-center gap-2 px-5 py-2 rounded-[var(--t-radius-sm)] bg-white/80 backdrop-blur-md border border-slate-200 shadow-sm text-sm font-semibold tracking-wide text-slate-700 mb-8"
                 >
                     <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-600 -left-[1px] -top-[1px]"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-600 -left-[1px] -top-[1px]"></span>
                     </span>
                     Next-Generation Business Consulting
                 </motion.div>
@@ -95,10 +95,10 @@ export const HeroClone = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                    className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight text-slate-900 mb-8 max-w-4xl leading-[1.05]"
+                    className="type-display text-slate-900 mb-8 max-w-4xl"
                 >
                     Strategy That Powers Your{" "}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-sky-500">
                         Next Level of Growth.
                     </span>
                 </motion.h1>
@@ -108,7 +108,7 @@ export const HeroClone = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    className="text-xl md:text-2xl text-slate-600 max-w-2xl mb-12 font-medium leading-relaxed"
+                    className="type-body-lg text-slate-600 max-w-2xl mb-12 font-medium leading-relaxed"
                 >
                     Stratwell Consulting is a results-driven business consultancy helping leaders navigate complexity, refine strategy, and achieve sustainable growth.
                 </motion.p>
@@ -122,14 +122,14 @@ export const HeroClone = () => {
                 >
                     <Link
                         href="#expertise"
-                        className="group flex items-center justify-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-full font-semibold shadow-xl shadow-slate-900/10 hover:bg-slate-800 transition-all duration-300 hover:-translate-y-1"
+                        className="group flex items-center justify-center gap-2 bg-svaan-blue text-white px-8 py-3.5 rounded-[var(--t-radius-btn)] font-semibold shadow-md hover:bg-[#005FA3] transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-svaan-blue focus-visible:ring-offset-2"
                     >
                         Our Expertise
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <Link
                         href="#contact"
-                        className="flex items-center justify-center px-8 py-4 rounded-full font-semibold border border-slate-200 text-slate-700 bg-white/70 backdrop-blur hover:border-slate-300 hover:bg-white transition-all duration-300 hover:-translate-y-1"
+                        className="flex items-center justify-center px-8 py-3.5 rounded-[var(--t-radius-btn)] font-semibold border border-slate-200 text-slate-700 bg-white/70 backdrop-blur hover:border-slate-300 hover:bg-white transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-svaan-blue focus-visible:ring-offset-2"
                     >
                         Start Your Growth Journey
                     </Link>

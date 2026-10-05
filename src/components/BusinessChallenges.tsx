@@ -53,10 +53,10 @@ export function BusinessChallenges() {
                 transition={{ duration: 0.8 }}
                 className="max-w-7xl mx-auto px-6 mb-20 md:mb-32 relative z-10"
             >
-                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-4xl leading-tight">
+                <h2 className="type-h2 mb-6 max-w-4xl">
                     Complex challenges need more than technology.
                 </h2>
-                <p className="text-xl md:text-2xl text-canvas/70 max-w-2xl leading-relaxed">
+                <p className="type-body-lg text-white/80 max-w-2xl leading-relaxed">
                     The right solution starts with understanding the problem. Whether the
                     challenge is strategic, digital, operational, or technical, we bring
                     the right perspectives together before moving into execution.
@@ -78,16 +78,16 @@ export function BusinessChallenges() {
                                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                                 viewport={{ margin: "-20%" }}
                                 transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
-                                className="w-full lg:w-2/3 h-[50vh] md:h-[60vh] bg-white text-slate p-8 md:p-14 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col justify-between border border-white/20 origin-top"
+                                className="w-full lg:w-2/3 h-[50vh] md:h-[60vh] bg-white text-slate p-8 md:p-14 rounded-[var(--t-radius-card)] shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col justify-between border border-white/20 origin-top"
                             >
                                 <div>
                                     <div className="text-svaan-blue font-bold font-display text-xl mb-6">
                                         {challenge.id}
                                     </div>
-                                    <h3 className="font-display text-3xl md:text-4xl font-bold mb-6 max-w-xl">
+                                    <h3 className="type-h3 mb-6 max-w-xl">
                                         {challenge.title}
                                     </h3>
-                                    <p className="text-lg md:text-xl text-slate/70 max-w-xl leading-relaxed">
+                                    <p className="type-body max-w-xl leading-relaxed text-slate-600">
                                         {challenge.description}
                                     </p>
                                 </div>
@@ -95,7 +95,7 @@ export function BusinessChallenges() {
                                 <div>
                                     <Link
                                         href={challenge.href}
-                                        className="group inline-flex items-center text-svaan-blue font-semibold text-lg"
+                                        className="group inline-flex items-center text-svaan-blue font-semibold text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-svaan-blue focus-visible:ring-offset-2 rounded-[var(--t-radius-sm)]"
                                     >
                                         <span className="border-b-2 border-transparent group-hover:border-svaan-blue transition-colors">
                                             {challenge.cta}

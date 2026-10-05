@@ -83,10 +83,10 @@ export function HowWeWork() {
                         <div className="uppercase tracking-widest text-sm font-semibold text-svaan-blue mb-4">
                             What SVaaN Does
                         </div>
-                        <h2 className="font-display text-4xl md:text-5xl font-bold text-slate leading-tight font-display mb-6">
+                        <h2 className="type-h2 mb-6 text-slate">
                             From business challenge to meaningful progress.
                         </h2>
-                        <p className="text-xl text-slate/70 leading-relaxed max-w-xl">
+                        <p className="type-body-lg text-slate-600 leading-relaxed max-w-xl">
                             SVaaN connects strategy, design, and technology so organizations
                             can move from uncertainty to a clearer direction and from
                             direction to practical execution. We can help at the beginning of
@@ -95,7 +95,7 @@ export function HowWeWork() {
                     </div>
                     <Link
                         href="/approach"
-                        className="group inline-flex items-center justify-center rounded-full bg-slate text-white px-8 h-14 font-medium transition-all hover:bg-slate/90 hover:-translate-y-1 shadow-xl hover:shadow-2xl"
+                        className="group inline-flex items-center justify-center rounded-[var(--t-radius-btn)] bg-svaan-blue hover:bg-[#005FA3] text-white px-8 h-12 font-medium transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-svaan-blue focus-visible:ring-offset-2 shadow-md hover:shadow-lg"
                     >
                         See how we work
                         <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
@@ -108,7 +108,7 @@ export function HowWeWork() {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        className="font-display text-2xl md:text-3xl font-bold text-slate mb-8"
+                        className="type-h3 mb-8 text-slate"
                     >
                         Understand. Strategize. Design. Build. Evolve.
                     </motion.h2>
@@ -124,7 +124,7 @@ export function HowWeWork() {
                             <motion.div
                                 variants={itemVariants}
                                 key={stage.id}
-                                className={`group bg-white rounded-3xl p-8 md:p-10 border border-slate/5 shadow-sm hover:shadow-2xl hover:shadow-svaan-blue/10 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden relative ${stage.span}`}
+                                className={`group bg-white rounded-[var(--t-radius-card)] p-8 md:p-10 border border-slate/5 shadow-sm hover:shadow-2xl hover:shadow-svaan-blue/10 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between overflow-hidden relative ${stage.span}`}
                             >
                                 <div className="absolute top-0 right-0 p-8 opacity-5 transform translate-x-4 -translate-y-4 group-hover:scale-150 group-hover:rotate-12 transition-all duration-700 pointer-events-none">
                                     <span className="font-display font-bold text-9xl">{stage.id}</span>
@@ -133,10 +133,10 @@ export function HowWeWork() {
                                     {stage.id}
                                 </div>
                                 <div className="relative z-10">
-                                    <h3 className="font-display text-2xl md:text-3xl font-bold text-slate mb-3 group-hover:text-svaan-blue transition-colors">
+                                    <h3 className="type-h3 mb-3 text-slate group-hover:text-svaan-blue transition-colors">
                                         {stage.title}
                                     </h3>
-                                    <p className="text-slate/70 text-lg leading-relaxed max-w-md">
+                                    <p className="type-body text-slate-600 leading-relaxed max-w-md">
                                         {stage.description}
                                     </p>
                                 </div>

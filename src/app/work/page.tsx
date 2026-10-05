@@ -13,7 +13,7 @@ const allProjects = [
         tags: ["AI Development", "Strategy"],
         href: "/work/fintech-platform",
         Illustration: Illustrations.FinTech,
-        gradient: "from-blue-600/60 to-purple-800/60"
+        gradient: "from-blue-700/60 to-slate-900/60"
     },
     {
         title: "Healthcare Digital Transformation",
@@ -37,7 +37,7 @@ const allProjects = [
         tags: ["Architecture", "DevOps"],
         href: "/work/ecommerce",
         Illustration: Illustrations.Ecommerce,
-        gradient: "from-pink-500/60 to-rose-800/60"
+        gradient: "from-blue-600/60 to-slate-800/60"
     },
     {
         title: "Autonomous Logistics Tracker",
@@ -45,7 +45,7 @@ const allProjects = [
         tags: ["Machine Learning", "IoT"],
         href: "/work/logistics-tracker",
         Illustration: Illustrations.PropTech,
-        gradient: "from-indigo-500/60 to-fuchsia-800/60"
+        gradient: "from-blue-800/60 to-slate-900/60"
     },
     {
         title: "Zero-Trust Identity Portal",
@@ -84,12 +84,12 @@ export default function WorkPage() {
                         <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>Our Work</span>
                     </div>
                     <h1
-                        className="font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-8"
+                        className="type-display mb-8"
                         style={{ color: "var(--t-text)" }}
                     >
                         Turning challenges into <span className="italic" style={{ color: "var(--t-accent)" }}>practical outcomes.</span>
                     </h1>
-                    <p className="text-lg md:text-xl leading-relaxed max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
+                    <p className="type-body-lg max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
                         Explore approved work that shows how SVaaN has approached real business and technology challenges.
                     </p>
                 </motion.div>
@@ -104,11 +104,11 @@ export default function WorkPage() {
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.6, delay: (i % 3) * 0.1 }}
                         >
-                            <Link href={project.href} className="group block w-full outline-none">
+                            <Link href={project.href} className="group block w-full outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-4 rounded-[var(--t-radius-card)]">
 
                                 {/* Massive Image Container */}
                                 <div
-                                    className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden mb-8 group"
+                                    className="relative w-full aspect-[4/3] rounded-[var(--t-radius-card)] overflow-hidden mb-8 group"
                                     style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                                 >
                                     {/* Embedded Custom SVG Illustration */}
@@ -147,7 +147,7 @@ export default function WorkPage() {
                                     </div>
 
                                     <div className="flex items-start justify-between gap-4">
-                                        <h2 className="font-display text-2xl xl:text-3xl font-bold transition-colors duration-300 group-hover:text-[var(--t-accent)] leading-tight" style={{ color: "var(--t-text)" }}>
+                                        <h2 className="type-h3 transition-colors duration-300 group-hover:text-[var(--t-accent)] leading-tight" style={{ color: "var(--t-text)" }}>
                                             {project.title}
                                         </h2>
 

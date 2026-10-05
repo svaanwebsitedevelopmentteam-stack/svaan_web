@@ -38,7 +38,7 @@ export default function NotFound() {
                     transition={{ duration: 0.6, delay: 0.1 }}
                     className="-mt-16 sm:-mt-24 mb-6 relative"
                 >
-                    <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-tight" style={{ color: "var(--t-text)" }}>
+                    <h1 className="type-h1" style={{ color: "var(--t-text)" }}>
                         Page not found.
                     </h1>
                 </motion.div>
@@ -47,7 +47,7 @@ export default function NotFound() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-lg md:text-xl max-w-lg mx-auto mb-12"
+                    className="type-body-lg max-w-lg mx-auto mb-12"
                     style={{ color: "var(--t-text-muted)" }}
                 >
                     The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
@@ -61,14 +61,14 @@ export default function NotFound() {
                 >
                     <Link
                         href="/"
-                        className="inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
+                        className="inline-flex items-center justify-center h-12 px-8 rounded-[var(--t-radius-btn)] text-base font-semibold transition-all duration-200 hover:bg-[var(--t-btn-hover)] active:scale-[0.98] shadow-md hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
                         style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}
                     >
                         Return Home
                     </Link>
                     <Link
                         href="/contact"
-                        className="inline-flex items-center justify-center h-14 px-8 rounded-full text-base font-semibold transition-all duration-300 hover:scale-105"
+                        className="inline-flex items-center justify-center h-12 px-8 rounded-[var(--t-radius-btn)] text-base font-semibold transition-all duration-200 hover:bg-[var(--t-bg-surface)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
                         style={{ backgroundColor: "transparent", color: "var(--t-text)", border: "1px solid var(--t-border)" }}
                     >
                         Contact Support

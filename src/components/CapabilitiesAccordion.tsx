@@ -48,7 +48,7 @@ export function CapabilitiesAccordion() {
     return (
         <section className="w-full bg-white py-[60px] md:py-[60px] overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 mb-16">
-                <h2 className="font-display text-4xl md:text-5xl font-bold text-slate max-w-3xl leading-tight">
+                <h2 className="type-h2 text-slate max-w-3xl">
                     Capabilities connected around your challenge.
                 </h2>
             </div>
@@ -61,8 +61,17 @@ export function CapabilitiesAccordion() {
                         return (
                             <div
                                 key={cap.id}
+                                role="button"
+                                tabIndex={0}
+                                aria-expanded={isActive}
                                 onClick={() => setActiveIndex(index)}
-                                className={`group relative overflow-hidden rounded-3xl cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${isActive
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter" || e.key === " ") {
+                                        e.preventDefault();
+                                        setActiveIndex(index);
+                                    }
+                                }}
+                                className={`group relative overflow-hidden rounded-[var(--t-radius-card)] cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-svaan-blue ${isActive
                                         ? "flex-[4] bg-slate text-white shadow-2xl"
                                         : "flex-[1] bg-canvas text-slate hover:bg-slate/5"
                                     } flex flex-col`}
@@ -93,10 +102,10 @@ export function CapabilitiesAccordion() {
                                             }`}
                                     >
                                         <div className="mt-8 md:mt-12">
-                                            <h3 className="font-display text-3xl md:text-4xl font-bold mb-6 whitespace-normal">
+                                            <h3 className="type-h3 mb-6 whitespace-normal text-white">
                                                 {cap.title}
                                             </h3>
-                                            <p className="text-lg md:text-xl text-white/70 max-w-lg leading-relaxed">
+                                            <p className="type-body text-white/80 max-w-lg leading-relaxed">
                                                 {cap.description}
                                             </p>
                                         </div>
@@ -120,7 +129,7 @@ export function CapabilitiesAccordion() {
                                             <Link
                                                 href={`/capabilities/${cap.title.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and")}`}
                                                 onClick={(e) => e.stopPropagation()}
-                                                className="inline-flex items-center justify-center rounded-full bg-svaan-blue text-white px-6 h-12 font-medium transition-transform hover:scale-105"
+                                                className="inline-flex items-center justify-center rounded-[var(--t-radius-btn)] bg-svaan-blue hover:bg-[#005FA3] text-white px-6 h-11 font-medium transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-svaan-blue focus-visible:ring-offset-2"
                                             >
                                                 Explore Capability
                                             </Link>

@@ -67,12 +67,12 @@ export default function ContactPage() {
                         <div className="h-[1px] w-8" style={{ backgroundColor: "var(--t-accent)" }} />
                     </div>
                     <h1
-                        className="font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-8"
+                        className="type-display mb-8"
                         style={{ color: "var(--t-text)" }}
                     >
                         Have a challenge <span className="italic" style={{ color: "var(--t-accent)" }}>worth solving?</span>
                     </h1>
-                    <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: "var(--t-text-muted)" }}>
+                    <p className="type-body-lg max-w-3xl mx-auto" style={{ color: "var(--t-text-muted)" }}>
                         Tell us what you are working through. Share the context, the challenge, and what you are trying to achieve.
                     </p>
                 </motion.div>
@@ -120,23 +120,21 @@ export default function ContactPage() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 + (i * 0.1) }}
-                            className="group p-8 rounded-3xl transition-all duration-500 overflow-hidden relative"
+                            className="group p-8 rounded-[var(--t-radius-card)] transition-all duration-300 overflow-hidden relative hover:border-[var(--t-accent)]"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
-                            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
                         >
                             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                                 style={{ background: "linear-gradient(135deg, var(--t-gradient-from), transparent)" }} />
                             <div className="relative z-10 flex flex-col items-start text-left">
                                 <div
-                                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-all duration-300"
+                                    className="w-12 h-12 rounded-[var(--t-radius-md)] flex items-center justify-center mb-6 transition-all duration-300"
                                     style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}
                                 >
                                     {item.icon}
                                 </div>
-                                <h3 className="font-semibold text-lg mb-1" style={{ color: "var(--t-text)" }}>{item.title}</h3>
+                                <h3 className="type-h3 mb-1" style={{ color: "var(--t-text)" }}>{item.title}</h3>
                                 <p className="font-display font-bold text-xl mb-3" style={{ color: "var(--t-text)" }}>{item.value}</p>
-                                <p className="text-sm" style={{ color: "var(--t-text-muted)" }}>{item.sub}</p>
+                                <p className="type-body-sm" style={{ color: "var(--t-text-muted)" }}>{item.sub}</p>
                             </div>
                         </motion.div>
                     ))}
@@ -150,7 +148,7 @@ export default function ContactPage() {
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="rounded-3xl overflow-hidden relative min-h-[400px] lg:min-h-full"
+                        className="rounded-[var(--t-radius-card)] overflow-hidden relative min-h-[400px] lg:min-h-full"
                         style={{ border: "1px solid var(--t-border)" }}
                     >
                         {/* Embedded Google Maps */}
@@ -168,7 +166,7 @@ export default function ContactPage() {
                         {/* Gradient overlay for thematic blend */}
                         <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, var(--t-bg), transparent)" }} />
                         <div
-                            className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl backdrop-blur-xl pointer-events-none"
+                            className="absolute bottom-6 left-6 right-6 p-6 rounded-[var(--t-radius-card)] backdrop-blur-xl pointer-events-none"
                             style={{ backgroundColor: "var(--t-glass-bg)", border: "1px solid var(--t-glass-border)" }}
                         >
                             <h4 className="font-display font-bold text-lg mb-1" style={{ color: "var(--t-text)" }}>Global Headquarters</h4>
@@ -181,7 +179,7 @@ export default function ContactPage() {
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.5 }}
-                        className="rounded-3xl p-8 lg:p-12 relative overflow-hidden"
+                        className="rounded-[var(--t-radius-card)] p-8 lg:p-12 relative overflow-hidden"
                         style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                     >
                         <AnimatePresence mode="wait">
@@ -204,22 +202,18 @@ export default function ContactPage() {
                                         <label htmlFor="name" className="block text-sm font-semibold mb-1" style={{ color: "var(--t-text)" }}>Name *</label>
                                         <p className="text-xs mb-3" style={{ color: "var(--t-text-muted)" }}>Tell us who we should speak with.</p>
                                         <input required type="text" id="name" name="name"
-                                            className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300"
+                                            className="w-full px-5 py-4 rounded-[var(--t-radius-btn)] outline-none transition-all duration-200 focus:ring-2 focus:ring-[var(--t-accent)] focus:border-transparent"
                                             placeholder="John Doe"
                                             style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
-                                            onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                            onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
                                         />
                                     </div>
                                     <div>
                                         <label htmlFor="email" className="block text-sm font-semibold mb-1" style={{ color: "var(--t-text)" }}>Work email *</label>
                                         <p className="text-xs mb-3" style={{ color: "var(--t-text-muted)" }}>Use your business email where possible.</p>
                                         <input required type="email" id="email" name="email"
-                                            className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300"
+                                            className="w-full px-5 py-4 rounded-[var(--t-radius-btn)] outline-none transition-all duration-200 focus:ring-2 focus:ring-[var(--t-accent)] focus:border-transparent"
                                             placeholder="john@example.com"
                                             style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
-                                            onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                            onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
                                         />
                                     </div>
                                 </div>
@@ -228,23 +222,19 @@ export default function ContactPage() {
                                     <label htmlFor="company" className="block text-sm font-semibold mb-1" style={{ color: "var(--t-text)" }}>Company</label>
                                     <p className="text-xs mb-3" style={{ color: "var(--t-text-muted)" }}>Tell us about the organization or team.</p>
                                     <input type="text" id="company" name="company"
-                                        className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300"
+                                        className="w-full px-5 py-4 rounded-[var(--t-radius-btn)] outline-none transition-all duration-200 focus:ring-2 focus:ring-[var(--t-accent)] focus:border-transparent"
                                         placeholder="Example Corp"
                                         style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
-                                        onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                        onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
                                     />
                                 </div>
 
                                 <div>
                                     <label htmlFor="interest" className="block text-sm font-semibold mb-2" style={{ color: "var(--t-text)" }}>How can we help? *</label>
-                                    <select required id="interest" name="interest"
-                                        className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300 appearance-none"
+                                    <select required id="interest" name="interest" defaultValue=""
+                                        className="w-full px-5 py-4 rounded-[var(--t-radius-btn)] outline-none transition-all duration-200 appearance-none focus:ring-2 focus:ring-[var(--t-accent)] focus:border-transparent"
                                         style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
-                                        onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                        onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
                                     >
-                                        <option value="" disabled selected>Select an area of interest...</option>
+                                        <option value="" disabled>Select an area of interest...</option>
                                         <option value="strategy">Strategy & Advisory</option>
                                         <option value="engineering">Software Engineering</option>
                                         <option value="design">Product & Design</option>
@@ -256,11 +246,9 @@ export default function ContactPage() {
                                 <div>
                                     <label htmlFor="message" className="block text-sm font-semibold mb-2" style={{ color: "var(--t-text)" }}>Project Details</label>
                                     <textarea id="message" name="message" rows={4}
-                                        className="w-full px-5 py-4 rounded-xl outline-none transition-all duration-300 resize-none"
+                                        className="w-full px-5 py-4 rounded-[var(--t-radius-btn)] outline-none transition-all duration-200 resize-none focus:ring-2 focus:ring-[var(--t-accent)] focus:border-transparent"
                                         placeholder="Tell us a bit about what you're looking to build or solve..."
                                         style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text)" }}
-                                        onFocus={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                        onBlur={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}
                                     />
                                 </div>
 
@@ -268,18 +256,8 @@ export default function ContactPage() {
                                     <button
                                         type="submit"
                                         disabled={formState === "submitting"}
-                                        className="w-full group inline-flex items-center justify-center gap-3 h-14 rounded-xl font-bold transition-all duration-300 shadow-xl disabled:opacity-70 disabled:cursor-not-allowed"
+                                        className="w-full group inline-flex items-center justify-center gap-3 h-14 rounded-[var(--t-radius-btn)] font-semibold transition-all duration-200 shadow-md hover:bg-[var(--t-btn-hover)] hover:shadow-lg active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
                                         style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}
-                                        onMouseEnter={(e) => {
-                                            if (formState === "submitting") return;
-                                            e.currentTarget.style.backgroundColor = "var(--t-accent)";
-                                            e.currentTarget.style.color = "#fff";
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            if (formState === "submitting") return;
-                                            e.currentTarget.style.backgroundColor = "var(--t-btn-bg)";
-                                            e.currentTarget.style.color = "var(--t-btn-text)";
-                                        }}
                                     >
                                         {formState === "submitting" ? (
                                             <span className="flex items-center gap-3">
@@ -287,7 +265,7 @@ export default function ContactPage() {
                                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                                 </svg>
-                                                Processsing...
+                                                Processing...
                                             </span>
                                         ) : (
                                             <>

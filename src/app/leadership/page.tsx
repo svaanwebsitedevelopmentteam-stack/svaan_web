@@ -55,7 +55,7 @@ export default function LeadershipPage() {
                         <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>Leadership</span>
                     </div>
                     <h1
-                        className="font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-8"
+                        className="type-display mb-8"
                         style={{ color: "var(--t-text)" }}
                     >
                         Meet the people responsible for shaping SVaaN&apos;s <span className="italic" style={{ color: "var(--t-accent)" }}>direction.</span>
@@ -75,7 +75,7 @@ export default function LeadershipPage() {
                                 transition={{ duration: 0.7 }}
                                 className="lg:col-span-4 lg:sticky top-32"
                             >
-                                <div className="aspect-[4/5] rounded-[2rem] overflow-hidden mb-8 relative"
+                                <div className="aspect-[4/5] rounded-[var(--t-radius-card)] overflow-hidden mb-8 relative"
                                     style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
                                     <img
                                         src={leader.image}
@@ -83,11 +83,11 @@ export default function LeadershipPage() {
                                         className="w-full h-full object-cover filter grayscale-[30%] contrast-[1.1] hover:grayscale-0 transition-all duration-700"
                                     />
                                 </div>
-                                <h2 className="font-display text-4xl font-bold mb-2" style={{ color: "var(--t-text)" }}>{leader.name}</h2>
-                                <h3 className="text-xl font-medium mb-6" style={{ color: "var(--t-accent)" }}>{leader.role}</h3>
+                                <h2 className="type-h2 mb-2" style={{ color: "var(--t-text)" }}>{leader.name}</h2>
+                                <h3 className="type-h3 mb-6" style={{ color: "var(--t-accent)" }}>{leader.role}</h3>
 
                                 <a href={leader.linkedin} target="_blank" rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-70 transition-opacity"
+                                    className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-70 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-sm)]"
                                     style={{ color: "var(--t-text-muted)" }}>
                                     LinkedIn Profile
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,7 +106,7 @@ export default function LeadershipPage() {
                             >
                                 <div className="space-y-8">
                                     {leader.bio.map((para, i) => (
-                                        <p key={i} className="text-lg md:text-xl leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                                        <p key={i} className="type-body-lg" style={{ color: "var(--t-text-muted)" }}>
                                             {para}
                                         </p>
                                     ))}
