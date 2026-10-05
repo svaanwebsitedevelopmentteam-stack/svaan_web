@@ -7,60 +7,28 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/components/ThemeProvider";
 
 const menuItems = [
-    { label: "Approach", href: "/approach" },
     {
-        label: "Capabilities",
-        href: "/capabilities",
-        megaMenu: [
-            {
-                category: "Strategy & Advisory",
-                items: [{ label: "POC Development", href: "/capabilities/poc-development" }]
-            },
-            {
-                category: "Product & Experience",
-                items: [
-                    { label: "UI/UX Design", href: "/capabilities/ui-ux-design" },
-                    { label: "MVP Development", href: "/capabilities/mvp-development" }
-                ]
-            },
-            {
-                category: "Software & Technology",
-                items: [
-                    { label: "Software Product", href: "/capabilities/software-product-development" },
-                    { label: "Enterprise Software", href: "/capabilities/enterprise-software-development" }
-                ]
-            },
-            {
-                category: "AI & Automation",
-                items: [{ label: "AI Development", href: "/capabilities/ai-software-development" }]
-            },
-            {
-                category: "Engineering Group",
-                items: [{ label: "Quality Assurance", href: "/capabilities/quality-assurance" }]
-            },
-            {
-                category: "Managed Tech",
-                items: [
-                    { label: "Helpdesk Support", href: "/capabilities/helpdesk-support" },
-                    { label: "App Support", href: "/capabilities/application-support" },
-                    { label: "Infra Support", href: "/capabilities/infrastructure-support" },
-                    { label: "Production Support", href: "/capabilities/production-support" },
-                    { label: "DevOps Support", href: "/capabilities/devops-support" },
-                    { label: "Cloud Services", href: "/capabilities/cloud-managed-services" },
-                ]
-            }
+        label: "Solutions",
+        href: "/solutions/build", // Fallback to first item or a general page if you have one
+        subMenu: [
+            { label: "Build", href: "/solutions/build" },
+            { label: "Modernize", href: "/solutions/modernize" },
+            { label: "Operate", href: "/solutions/operate" },
+            { label: "Evolve", href: "/solutions/evolve" }
         ]
     },
-    { label: "Work", href: "/work" },
+    { label: "Client Stories", href: "/work" },
+    { label: "Why SVaaN", href: "/why-svaan" },
+    { label: "Approach", href: "/approach" },
     {
         label: "Company",
         href: "/about",
         subMenu: [
-            { label: "About Us", href: "/about" },
-            { label: "Leadership", href: "/leadership" }
+            { label: "About", href: "/about" },
+            { label: "Leadership", href: "/leadership" },
+            { label: "Insights", href: "/insights" }
         ]
-    },
-    { label: "Contact", href: "/contact" },
+    }
 ];
 
 export function Header() {
@@ -128,7 +96,7 @@ export function Header() {
                                     }}
                                 >
                                     {link.label}
-                                    {(link.megaMenu || link.subMenu) && (
+                                    {(link.subMenu) && (
                                         <svg className={`w-3.5 h-3.5 transition-transform duration-300 ${hoveredMenu === link.label ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                         </svg>
@@ -147,7 +115,7 @@ export function Header() {
                                             style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                                             onMouseLeave={() => setHoveredCategory(null)}
                                         >
-                                            {/* Simple SubMenu mode (Company) */}
+                                            {/* Simple SubMenu mode (Company & Solutions) */}
                                             {link.subMenu && link.subMenu.map(sub => (
                                                 <Link
                                                     key={sub.label}
@@ -158,51 +126,6 @@ export function Header() {
                                                 >
                                                     {sub.label}
                                                 </Link>
-                                            ))}
-
-                                            {/* Cascading MegaMenu mode (Capabilities) */}
-                                            {link.megaMenu && link.megaMenu.map(category => (
-                                                <div
-                                                    key={category.category}
-                                                    className="relative"
-                                                    onMouseEnter={() => setHoveredCategory(category.category)}
-                                                >
-                                                    <div className="flex items-center justify-between px-4 py-3 text-[15px] font-medium rounded-lg transition-colors hover:bg-[var(--t-bg-surface)] cursor-default" style={{ color: "var(--t-text)" }}>
-                                                        <span>{category.category}</span>
-                                                        <svg className={`w-4 h-4 transition-transform ${hoveredCategory === category.category ? 'translate-x-1 text-[var(--t-accent)]' : 'text-[var(--t-text-muted)]'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                                        </svg>
-                                                    </div>
-
-                                                    {/* Side Flyout level 3 */}
-                                                    <AnimatePresence>
-                                                        {hoveredCategory === category.category && (
-                                                            <motion.div
-                                                                initial={{ opacity: 0, x: -10 }}
-                                                                animate={{ opacity: 1, x: 0 }}
-                                                                exit={{ opacity: 0, x: -10, transition: { duration: 0.1 } }}
-                                                                transition={{ duration: 0.2 }}
-                                                                className="absolute top-0 left-[calc(100%+8px)] min-w-[240px] rounded-[10px] shadow-2xl p-2 border"
-                                                                style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
-                                                            >
-                                                                {category.items.map(item => (
-                                                                    <Link
-                                                                        key={item.label}
-                                                                        href={item.href}
-                                                                        onClick={() => {
-                                                                            setHoveredMenu(null);
-                                                                            setHoveredCategory(null);
-                                                                        }}
-                                                                        className="block px-4 py-3 text-[15px] font-medium rounded-lg hover:bg-[var(--t-bg-surface)] transition-all duration-300"
-                                                                        style={{ color: "var(--t-text)" }}
-                                                                    >
-                                                                        {item.label}
-                                                                    </Link>
-                                                                ))}
-                                                            </motion.div>
-                                                        )}
-                                                    </AnimatePresence>
-                                                </div>
                                             ))}
                                         </motion.div>
                                     )}
@@ -306,7 +229,7 @@ export function Header() {
                             {menuItems.map((link, i) => (
                                 <motion.div key={link.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
 
-                                    {(link.megaMenu || link.subMenu) ? (
+                                    {(link.subMenu) ? (
                                         // Parent item with toggle
                                         <div className="border-b" style={{ borderColor: "var(--t-border)" }}>
                                             <button
@@ -332,28 +255,6 @@ export function Header() {
                                                         className="overflow-hidden"
                                                     >
                                                         <div className="flex flex-col gap-4 pt-2 pb-6 px-1">
-                                                            {link.megaMenu && link.megaMenu.map(category => (
-                                                                <div key={category.category} className="bg-[var(--t-bg-surface)] rounded-2xl p-5 border border-[var(--t-border)]">
-                                                                    <div className="text-xs font-bold uppercase tracking-widest mb-4 opacity-50" style={{ color: "var(--t-text)" }}>{category.category}</div>
-                                                                    <div className="flex flex-col gap-3">
-                                                                        {category.items.map(item => (
-                                                                            <Link
-                                                                                key={item.label}
-                                                                                href={item.href}
-                                                                                onClick={() => setMobileOpen(false)}
-                                                                                className="text-lg font-medium transition-colors hover:text-[var(--t-accent)] flex items-center justify-between group"
-                                                                                style={{ color: "var(--t-text)" }}
-                                                                            >
-                                                                                {item.label}
-                                                                                <svg className="w-4 h-4 opacity-0 transition-opacity group-hover:opacity-50 text-[var(--t-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                                                                </svg>
-                                                                            </Link>
-                                                                        ))}
-                                                                    </div>
-                                                                </div>
-                                                            ))}
-
                                                             {link.subMenu && (
                                                                 <div className="flex flex-col gap-2">
                                                                     {link.subMenu.map(sub => (
