@@ -4,6 +4,9 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Illustrations } from "@/components/ui/Illustrations";
 
 /* ────────────────────────────────────────────────────────────
    SECTION 1 — HERO (Solutions Style)
@@ -74,8 +77,10 @@ function AboutHero() {
                             className="absolute inset-8 rounded-full border border-dashed opacity-30 pointer-events-none"
                             style={{ borderColor: "var(--t-accent)" }} />
 
-                        <motion.div animate={{ y: [-10, 10, -10] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-                            <Icons3D.Strategy className="w-[280px] h-[280px] md:w-[350px] md:h-[350px] relative z-10 filter drop-shadow-2xl" />
+                        <motion.div animate={{ y: [-10, 10, -10] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="w-full h-full relative z-10 flex items-center justify-center filter drop-shadow-2xl">
+                            <div className="w-[300px] h-[300px] rounded-3xl overflow-hidden" style={{ border: "1px solid var(--t-border)", boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3)" }}>
+                                <Illustrations.PropTech className="w-full h-full" />
+                            </div>
                         </motion.div>
                     </div>
                 </motion.div>
@@ -162,21 +167,21 @@ function LessonsSection() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {lessons.map((b, i) => (
                         <motion.div key={b.num} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                            className={`group relative p-8 md:p-10 rounded-3xl overflow-hidden flex flex-col justify-between ${b.colSpan}`}
-                            style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)", boxShadow: "0 10px 40px -10px rgba(0,0,0,0.05)" }}>
+                            className={b.colSpan}>
+                            <Card hoverEffect className="group relative p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between overflow-hidden">
+                                <div className="absolute -bottom-8 -right-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none transform group-hover:scale-110">
+                                    {b.icon}
+                                </div>
 
-                            <div className="absolute -bottom-8 -right-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none transform group-hover:scale-110">
-                                {b.icon}
-                            </div>
+                                <div className="relative z-10 mb-8">
+                                    <span className="text-5xl font-display font-bold opacity-20" style={{ color: "var(--t-accent)" }}>{b.num}</span>
+                                </div>
 
-                            <div className="relative z-10 mb-8">
-                                <span className="text-5xl font-display font-bold opacity-20" style={{ color: "var(--t-accent)" }}>{b.num}</span>
-                            </div>
-
-                            <div className="relative z-10">
-                                <h3 className="font-display text-2xl md:text-3xl font-bold mb-4" style={{ color: "var(--t-text)" }}>{b.title}</h3>
-                                <p className="text-lg leading-relaxed opacity-90" style={{ color: "var(--t-text-muted)" }}>{b.desc}</p>
-                            </div>
+                                <div className="relative z-10">
+                                    <h3 className="font-display text-2xl md:text-3xl font-bold mb-4" style={{ color: "var(--t-text)" }}>{b.title}</h3>
+                                    <p className="text-lg leading-relaxed opacity-90" style={{ color: "var(--t-text-muted)" }}>{b.desc}</p>
+                                </div>
+                            </Card>
                         </motion.div>
                     ))}
                 </div>
@@ -194,7 +199,7 @@ function OwnershipSection() {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[var(--t-accent)] rounded-full blur-[250px] opacity-10 pointer-events-none" />
 
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
-                <div className="text-center mb-24">
+                <div className="text-center mb-20">
                     <motion.div initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="w-16 h-1 rounded-full mx-auto mb-8" style={{ backgroundColor: "var(--t-accent)" }} />
                     <motion.span initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="uppercase tracking-widest text-sm font-bold mb-4 block" style={{ color: "var(--t-accent)" }}>
                         The Long Game
@@ -204,54 +209,80 @@ function OwnershipSection() {
                     </motion.h2>
                 </div>
 
-                {/* Horizontal Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-                    {/* Connecting line */}
-                    <div className="hidden md:block absolute top-[28px] left-[15%] right-[15%] h-[2px]" style={{ background: "linear-gradient(to right, transparent, var(--t-accent), var(--t-accent), transparent)", opacity: 0.3 }} />
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 relative">
+                    
+                    {/* Box 1 - Main Philosophy (7 cols) */}
+                    <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="md:col-span-7">
+                        <Card hoverEffect className="h-full p-10 md:p-14 rounded-3xl relative overflow-hidden group flex flex-col justify-between">
+                            {/* Animated background element */}
+                            <div className="absolute -top-32 -right-32 w-96 h-96 bg-[var(--t-accent)] rounded-full blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity duration-700" />
+                            
+                            <div className="mb-16 relative z-10">
+                                <Icons3D.Strategy className="w-24 h-24 filter drop-shadow-lg group-hover:scale-110 transition-transform duration-500 origin-top-left" />
+                            </div>
+                            <div className="relative z-10">
+                                <h3 className="font-display text-3xl md:text-4xl font-bold mb-6" style={{ color: "var(--t-text)" }}>
+                                    We don't hand a system over at launch and disappear.
+                                </h3>
+                                <p className="text-xl leading-relaxed opacity-80" style={{ color: "var(--t-text-muted)" }}>
+                                    The team that builds it stays responsible for it. We believe the true test of software isn't day one, it's year three.
+                                </p>
+                            </div>
+                        </Card>
+                    </motion.div>
 
-                    {/* Step 1 */}
-                    <div className="relative pt-24 md:pt-16 text-center md:text-left">
-                        <div className="absolute top-0 left-1/2 md:left-10 -translate-x-1/2 md:translate-x-0 w-14 h-14 rounded-full border-4 items-center justify-center z-10 flex shadow-lg" style={{ borderColor: "var(--t-bg-surface)", backgroundColor: "var(--t-bg-card)" }}>
-                            <div className="w-4 h-4 rounded-full animate-ping" style={{ backgroundColor: "var(--t-accent)" }} />
-                            <div className="absolute w-4 h-4 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
-                        </div>
-                        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="h-full p-10 rounded-3xl backdrop-blur-md relative overflow-hidden group shadow-xl transition-transform hover:-translate-y-2 border text-left" style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
-                            <p className="text-2xl leading-relaxed font-medium mb-4" style={{ color: "var(--t-text)" }}>
-                                We don't hand a system over at launch and disappear.
-                            </p>
+                    {/* Box 2 - Day to Day (5 cols) */}
+                    <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className="md:col-span-5 flex flex-col gap-6">
+                        <Card hoverEffect className="flex-1 p-10 rounded-3xl relative overflow-hidden group flex flex-col justify-center">
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--t-bg-surface)] border border-[var(--t-border)]">
+                                    <svg className="w-6 h-6 text-[var(--t-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                                </div>
+                                <span className="font-bold text-lg tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Continuity</span>
+                            </div>
                             <p className="text-xl leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
-                                The team that builds it stays responsible for it.
-                            </p>
-                        </motion.div>
-                    </div>
-
-                    {/* Step 2 */}
-                    <div className="relative pt-24 md:pt-16 text-center md:text-left">
-                        <div className="absolute top-0 left-1/2 md:left-10 -translate-x-1/2 md:translate-x-0 w-14 h-14 rounded-full border-4 items-center justify-center z-10 flex shadow-lg" style={{ borderColor: "var(--t-bg-surface)", backgroundColor: "var(--t-bg-card)" }}>
-                            <div className="absolute w-4 h-4 rounded-full" style={{ backgroundColor: "var(--t-text-muted)" }} />
-                        </div>
-                        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="h-full p-10 rounded-3xl backdrop-blur-md relative overflow-hidden group shadow-xl transition-transform hover:-translate-y-2 border text-left" style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
-                            <p className="text-xl leading-relaxed mb-4" style={{ color: "var(--t-text-muted)" }}>
                                 If you want us to run it, we do. If a user reports a bug in month six, it goes to someone who has seen the code.
                             </p>
-                            <p className="text-2xl leading-relaxed font-medium" style={{ color: "var(--t-text)" }}>
+                        </Card>
+                        <Card hoverEffect className="flex-1 p-10 rounded-3xl relative overflow-hidden group flex flex-col justify-center">
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--t-bg-surface)] border border-[var(--t-border)]">
+                                    <svg className="w-6 h-6 text-[var(--t-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                                </div>
+                                <span className="font-bold text-lg tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Adaptability</span>
+                            </div>
+                            <p className="text-xl leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
                                 If the business changes direction, the same people adjust the software.
                             </p>
-                        </motion.div>
-                    </div>
+                        </Card>
+                    </motion.div>
 
-                    {/* Step 3 */}
-                    <div className="relative pt-24 md:pt-16 text-center md:text-left">
-                        <div className="absolute top-0 left-1/2 md:left-10 -translate-x-1/2 md:translate-x-0 w-14 h-14 rounded-full border-4 items-center justify-center z-10 flex shadow-[0_0_30px_var(--t-accent)]" style={{ borderColor: "var(--t-bg-surface)", backgroundColor: "var(--t-accent)" }}>
-                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+                    {/* Box 3 - The Result (12 cols) */}
+                    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="md:col-span-12">
+                        <div className="relative rounded-3xl overflow-hidden shadow-2xl p-10 md:p-16 flex flex-col md:flex-row items-center gap-12 group"
+                            style={{ backgroundColor: "var(--t-accent)", color: "#fff" }}>
+                            
+                            {/* Animated wave background */}
+                            <svg className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-1000" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <path d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z" fill="rgba(255,255,255,0.1)" />
+                                <path d="M0,70 Q25,50 50,70 T100,70 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)" />
+                            </svg>
+
+                            <div className="relative z-10 w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white/20 flex items-center justify-center shrink-0 shadow-lg">
+                                <svg className="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                                <div className="absolute inset-0 rounded-full border-4 border-white border-t-transparent animate-spin opacity-50" style={{ animationDuration: '3s' }} />
+                            </div>
+
+                            <div className="relative z-10 text-center md:text-left">
+                                <h3 className="font-display text-3xl md:text-5xl font-bold mb-6">The Result</h3>
+                                <p className="text-xl md:text-2xl leading-relaxed font-medium opacity-90 max-w-4xl">
+                                    That's more work for us than finishing a project and moving on. We still think it's the only way the thing is working properly in year three.
+                                </p>
+                            </div>
                         </div>
-                        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="h-full p-10 rounded-3xl backdrop-blur-md relative overflow-hidden shadow-2xl hover:-translate-y-2 transition-transform text-left" style={{ backgroundColor: "var(--t-accent)", color: "#fff" }}>
-                            <h3 className="font-display text-3xl font-bold mb-6">The Result</h3>
-                            <p className="text-xl leading-relaxed font-medium">
-                                That's more work for us than finishing a project and moving on. We still think it's the only way the thing is working properly in year three.
-                            </p>
-                        </motion.div>
-                    </div>
+                    </motion.div>
 
                 </div>
             </div>
@@ -296,10 +327,8 @@ function PillarsSection() {
                     <div className="lg:w-2/3 flex flex-col gap-8">
                         {pillars.map((pillar, idx) => (
                             <motion.div key={idx} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }}>
-                                <Link href={pillar.href} className="group block p-10 md:p-12 rounded-3xl transition-all duration-300 relative overflow-hidden"
-                                    style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)", boxShadow: "0 20px 40px -20px rgba(0,0,0,0.1)" }}
-                                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-accent)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-5px)"; }}
-                                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-border)"; (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; }}>
+                                <Link href={pillar.href} className="block outline-none">
+                                    <Card variant="interactive" hoverEffect className="group p-10 md:p-12 rounded-3xl relative overflow-hidden transition-all duration-300 hover:-translate-y-1">
 
                                     {/* Hover gradient overlay */}
                                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
@@ -316,6 +345,7 @@ function PillarsSection() {
                                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                                         </div>
                                     </div>
+                                    </Card>
                                 </Link>
                             </motion.div>
                         ))}
@@ -332,11 +362,11 @@ function PillarsSection() {
    ──────────────────────────────────────────────────────────── */
 function WhereWeWork() {
     const locations = [
-        { name: "Canada", top: "25%", left: "26%", isHQ: false },
-        { name: "United States", top: "29%", left: "25.5%", isHQ: false },
-        { name: "United Kingdom", top: "21%", left: "46%", isHQ: false },
-        { name: "United Arab Emirates", top: "33%", left: "58.5%", isHQ: false },
-        { name: "Chennai, India", top: "44.5%", left: "61.5%", isHQ: true }
+        { name: "Canada", top: "25%", left: "26%", isHQ: false, labelPos: "top" },
+        { name: "United States", top: "29%", left: "25.5%", isHQ: false, labelPos: "bottom" },
+        { name: "United Kingdom", top: "21%", left: "46%", isHQ: false, labelPos: "left" },
+        { name: "UAE", top: "33%", left: "58.5%", isHQ: false, labelPos: "left" },
+        { name: "Chennai (HQ)", top: "44.5%", left: "61.5%", isHQ: true, labelPos: "bottom" }
     ];
 
     return (
@@ -360,11 +390,11 @@ function WhereWeWork() {
                     {/* SVG Map Background Mask */}
                     <div className="absolute inset-0 bg-[var(--t-text)] pointer-events-none transition-colors duration-300" 
                         style={{
-                            WebkitMaskImage: 'url("https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg")',
+                            WebkitMaskImage: 'url("/svaan-map.svg")',
                             WebkitMaskSize: 'contain',
                             WebkitMaskRepeat: 'no-repeat',
                             WebkitMaskPosition: 'center',
-                            maskImage: 'url("https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg")',
+                            maskImage: 'url("/svaan-map.svg")',
                             maskSize: 'contain',
                             maskRepeat: 'no-repeat',
                             maskPosition: 'center',
@@ -372,35 +402,32 @@ function WhereWeWork() {
                         }}
                     />
 
-                    {/* Glowing Accent Orb behind map */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full blur-[120px] opacity-20 pointer-events-none" style={{ backgroundColor: "var(--t-accent)" }} />
-
                     {/* Markers */}
                     {locations.map((loc, i) => (
-                        <motion.div key={loc.name} initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.2 }}
-                            className="absolute flex flex-col items-center group cursor-default z-20"
+                        <motion.div key={loc.name} initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}
+                            className="absolute z-20"
                             style={{ top: loc.top, left: loc.left, transform: 'translate(-50%, -50%)' }}>
-                            {loc.isHQ ? (
-                                <>
-                                    <div className="w-6 h-6 rounded-full flex items-center justify-center relative shadow-[0_0_20px_var(--t-accent)]" style={{ backgroundColor: "var(--t-accent)" }}>
-                                        <div className="absolute inset-0 rounded-full animate-ping opacity-70" style={{ backgroundColor: "var(--t-accent)" }} />
-                                        <div className="w-2 h-2 bg-white rounded-full" />
+                            
+                            {/* Marker Dot */}
+                            <div className="relative flex items-center justify-center z-10">
+                                {loc.isHQ ? (
+                                    <div className="w-3.5 h-3.5 rounded-full" style={{ backgroundColor: "#0066ff" }} />
+                                ) : (
+                                    <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center shadow-[0_0_12px_rgba(0,102,255,0.5)]">
+                                        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#0066ff" }} />
                                     </div>
-                                    <div className="mt-3 p-3 px-5 rounded-2xl backdrop-blur-xl whitespace-nowrap text-center border shadow-xl hidden md:block" style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-accent)" }}>
-                                        <p className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "var(--t-accent)" }}>Headquarters</p>
-                                        <p className="font-display font-bold text-lg" style={{ color: "var(--t-text)" }}>{loc.name}</p>
-                                    </div>
-                                </>
-                            ) : (
-                                <>
-                                    <div className="w-4 h-4 rounded-full border-2 transition-all duration-300 group-hover:scale-150 relative shadow-lg" style={{ borderColor: "var(--t-accent)", backgroundColor: "var(--t-bg-surface)" }}>
-                                        <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity animate-ping" style={{ backgroundColor: "var(--t-accent)" }} />
-                                    </div>
-                                    <div className="absolute top-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-2 px-4 rounded-xl backdrop-blur-xl whitespace-nowrap border pointer-events-none shadow-xl" style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
-                                        <p className="font-semibold text-sm" style={{ color: "var(--t-text)" }}>{loc.name}</p>
-                                    </div>
-                                </>
-                            )}
+                                )}
+                            </div>
+
+                            {/* Text Label */}
+                            <div className={`absolute whitespace-nowrap font-medium text-[15px] pointer-events-none ${
+                                loc.labelPos === 'top' ? 'bottom-full left-1/2 -translate-x-1/2 mb-1.5' :
+                                loc.labelPos === 'bottom' ? 'top-full left-1/2 -translate-x-1/2 mt-1.5' :
+                                loc.labelPos === 'left' ? 'right-full top-1/2 -translate-y-1/2 mr-2' :
+                                'left-full top-1/2 -translate-y-1/2 ml-2'
+                            }`} style={{ color: "var(--t-text)" }}>
+                                {loc.name}
+                            </div>
                         </motion.div>
                     ))}
                 </div>
@@ -427,16 +454,12 @@ function ClosingCTA() {
                         Want to meet the people you'd be working with? Or just tell us what you need. If we're not the right fit, we'll say so.
                     </p>
                     <div className="flex flex-wrap justify-center items-center gap-4">
-                        <Link href="/leadership" className="group inline-flex items-center gap-3 h-14 px-8 rounded-full font-bold text-base transition-all duration-300 shadow-2xl hover:scale-105"
-                            style={{ backgroundColor: "var(--t-accent)", color: "#fff" }}>
+                        <Button href="/leadership" variant="primary" size="lg">
                             Meet the leadership
-                        </Link>
-                        <Link href="/contact" className="inline-flex items-center gap-2 h-14 px-8 rounded-full font-medium text-base transition-all duration-300"
-                            style={{ border: "1px solid var(--t-border)", color: "var(--t-text)" }}
-                            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--t-bg-surface)"; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; }}>
+                        </Button>
+                        <Button href="/contact" variant="outline" size="lg">
                             Discuss your challenge
-                        </Link>
+                        </Button>
                     </div>
                 </motion.div>
             </div>
