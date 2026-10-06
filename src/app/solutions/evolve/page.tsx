@@ -201,7 +201,7 @@ function WhenYouNeedIt() {
                                             
                                             <div className={`absolute top-0 w-32 h-32 rounded-full blur-[50px] opacity-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-40 ${isEven ? 'right-0' : 'left-0'}`} style={{ backgroundColor: "var(--t-accent)" }} />
                                             
-                                            <span className="font-display text-6xl font-bold opacity-10 absolute -top-4 -left-2" style={{ color: "var(--t-accent)" }}>0{i+1}</span>
+                                            <span className="font-display type-display font-bold opacity-10 absolute -top-4 -left-2" style={{ color: "var(--t-accent)" }}>0{i+1}</span>
                                             <p className="type-h3 relative z-10" style={{ color: "var(--t-text)" }}>
                                                 {sign}
                                             </p>
@@ -237,7 +237,7 @@ const faqs = [
 
 function FAQ() {
     return (
-        <section className="py-32 bg-opacity-50" style={{ backgroundColor: "var(--t-bg-surface)" }}>
+        <section className="py-32 backdrop-blur-md" style={{ backgroundColor: "var(--t-bg-surface)" }}>
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
                 <div className="text-center mb-16">
                     <h2 className="type-display mb-6" style={{ color: "var(--t-text)" }}>Frequently Asked Questions</h2>

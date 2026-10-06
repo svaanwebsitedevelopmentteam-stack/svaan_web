@@ -35,7 +35,7 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
                     >
                         <button 
                             onClick={() => setOpenIndex(isOpen ? null : index)}
-                            className="w-full px-6 py-6 flex items-center justify-between text-left focus:outline-none group"
+                            className="w-full px-6 py-6 flex items-center justify-between text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 group"
                         >
                             <h4 className="type-body-lg"
                                 style={{ color: isOpen ? "var(--t-accent)" : "var(--t-text)" }}>

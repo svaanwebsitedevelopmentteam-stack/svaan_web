@@ -196,7 +196,7 @@ export default function WhySvaanContent() {
                 <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
                     <div className="text-center mb-24">
                         <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="type-display mb-6" style={{ color: "var(--t-text)" }}>How we differ</motion.h2>
-                        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-xl md:text-2xl" style={{ color: "var(--t-text-muted)" }}>A radically different approach to technology engagements.</motion.p>
+                        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="type-h3" style={{ color: "var(--t-text-muted)" }}>A radically different approach to technology engagements.</motion.p>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 relative">
