@@ -206,21 +206,27 @@ const problems = [
 function ProblemFraming() {
     const [active, setActive] = useState(0);
     const [progress, setProgress] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+    const isPausedRef = useRef(false);
+    const progressRef = useRef(0);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
     const startAutoPlay = useCallback(() => {
         if (intervalRef.current) clearInterval(intervalRef.current);
+        progressRef.current = 0;
         setProgress(0);
         const tick = 50; // ms
         const duration = 6000; // 6s per slide
-        let elapsed = 0;
         intervalRef.current = setInterval(() => {
-            elapsed += tick;
-            setProgress((elapsed / duration) * 100);
-            if (elapsed >= duration) {
-                setActive(prev => (prev + 1) % problems.length);
-                elapsed = 0;
+            if (isPausedRef.current) return;
+
+            progressRef.current += (tick / duration) * 100;
+            if (progressRef.current >= 100) {
+                progressRef.current = 0;
                 setProgress(0);
+                setActive(prev => (prev + 1) % problems.length);
+            } else {
+                setProgress(progressRef.current);
             }
         }, tick);
     }, []);
@@ -233,6 +239,16 @@ function ProblemFraming() {
     const selectTab = (i: number) => {
         setActive(i);
         startAutoPlay();
+    };
+
+    const handleMouseEnterCard = () => {
+        isPausedRef.current = true;
+        setIsPaused(true);
+    };
+
+    const handleMouseLeaveCard = () => {
+        isPausedRef.current = false;
+        setIsPaused(false);
     };
 
     return (
@@ -266,15 +282,13 @@ function ProblemFraming() {
                                         border: `1px solid ${isSelected ? p.accent + "50" : "var(--t-border)"}`,
                                         boxShadow: isSelected ? "0 4px 20px -4px rgba(0,0,0,0.08)" : "none"
                                     }}>
-                                    {/* Left Accent indicator when selected (desktop) / Bottom on mobile */}
+                                    {/* Bottom Accent progress loader when selected */}
                                     {isSelected && (
-                                        <>
-                                            <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-[3.5px] overflow-hidden"
-                                                style={{ backgroundColor: "var(--t-border)" }}>
-                                                <div className="w-full transition-none rounded-r" style={{ height: `${progress}%`, backgroundColor: p.accent }} />
-                                            </div>
-                                            <div className="lg:hidden absolute bottom-0 left-0 right-0 h-[2.5px] transition-none" style={{ width: `${progress}%`, backgroundColor: p.accent }} />
-                                        </>
+                                        <div className="absolute bottom-0 left-0 right-0 h-[3px] overflow-hidden"
+                                            style={{ backgroundColor: "var(--t-border)" }}>
+                                            <div className="h-full transition-none rounded-t"
+                                                style={{ width: `${progress}%`, backgroundColor: p.accent }} />
+                                        </div>
                                     )}
 
                                     <div className="flex items-center justify-between w-full">
@@ -308,7 +322,10 @@ function ProblemFraming() {
                     </div>
 
                     {/* Right Column: Active Content Card (70%) */}
-                    <div className="relative rounded-2xl overflow-hidden min-h-[240px] sm:min-h-[280px] flex"
+                    <div
+                        onMouseEnter={handleMouseEnterCard}
+                        onMouseLeave={handleMouseLeaveCard}
+                        className="relative rounded-2xl overflow-hidden min-h-[240px] sm:min-h-[280px] flex transition-colors"
                         style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
 
                         <AnimatePresence mode="wait">
@@ -361,9 +378,17 @@ function ProblemFraming() {
                                         </svg>
                                     </Link>
 
-                                    <span className="text-xs font-mono opacity-50 font-medium" style={{ color: "var(--t-text-muted)" }}>
-                                        0{active + 1} / 04
-                                    </span>
+                                    <div className="flex items-center gap-2">
+                                        {isPaused && (
+                                            <span className="text-[10px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border"
+                                                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: problems[active].accent }}>
+                                                Paused
+                                            </span>
+                                        )}
+                                        <span className="text-xs font-mono opacity-50 font-medium" style={{ color: "var(--t-text-muted)" }}>
+                                            0{active + 1} / 04
+                                        </span>
+                                    </div>
                                 </div>
                             </motion.div>
                         </AnimatePresence>

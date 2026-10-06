@@ -27,7 +27,7 @@ const menuItems = [
         subMenu: [
             { label: "About", href: "/about" },
             { label: "Leadership", href: "/leadership" },
-            { label: "Insights", href: "/insights" },
+            // { label: "Insights", href: "/insights" },
         ],
     },
 ];
@@ -41,8 +41,19 @@ export function Header() {
     const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
-        const onScroll = () => setIsScrolled(window.scrollY > 50);
-        onScroll(); // Initialize state on mount
+        let ticking = false;
+        const onScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const shouldBeScrolled = window.scrollY > 40;
+                    setIsScrolled((prev) => (prev !== shouldBeScrolled ? shouldBeScrolled : prev));
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+
+        onScroll();
         window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
@@ -72,12 +83,13 @@ export function Header() {
     return (
         <>
             <header
-                className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+                className="fixed top-0 left-0 right-0 z-50 transition-colors duration-300"
                 style={{
                     backgroundColor: isScrolled || hoveredMenu ? "var(--t-glass-bg)" : "transparent",
                     borderBottom: isScrolled || hoveredMenu ? "1px solid var(--t-border)" : "1px solid transparent",
-                    backdropFilter: isScrolled || hoveredMenu ? "blur(24px)" : "none",
-                    WebkitBackdropFilter: isScrolled || hoveredMenu ? "blur(24px)" : "none",
+                    backdropFilter: isScrolled || hoveredMenu ? "blur(16px)" : "none",
+                    WebkitBackdropFilter: isScrolled || hoveredMenu ? "blur(16px)" : "none",
+                    transform: "translateZ(0)",
                 }}
                 onMouseLeave={() => setHoveredMenu(null)}
             >
@@ -127,9 +139,8 @@ export function Header() {
                                         {link.label}
                                         {link.subMenu && (
                                             <svg
-                                                className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                                                    hoveredMenu === link.label ? "rotate-180" : ""
-                                                }`}
+                                                className={`w-3.5 h-3.5 transition-transform duration-300 ${hoveredMenu === link.label ? "rotate-180" : ""
+                                                    }`}
                                                 fill="none"
                                                 viewBox="0 0 24 24"
                                                 stroke="currentColor"
@@ -174,11 +185,10 @@ export function Header() {
                                                             key={sub.label}
                                                             href={sub.href}
                                                             onClick={() => setHoveredMenu(null)}
-                                                            className={`block px-4 py-2.5 text-sm font-medium rounded-[var(--t-radius-md)] hover:bg-[var(--t-bg-surface)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 ${
-                                                                isSubActive
-                                                                    ? "text-[var(--t-accent)] font-semibold bg-[var(--t-bg-surface)]"
-                                                                    : "text-[var(--t-text)]"
-                                                            }`}
+                                                            className={`block px-4 py-2.5 text-sm font-medium rounded-[var(--t-radius-md)] hover:bg-[var(--t-bg-surface)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 ${isSubActive
+                                                                ? "text-[var(--t-accent)] font-semibold bg-[var(--t-bg-surface)]"
+                                                                : "text-[var(--t-text)]"
+                                                                }`}
                                                         >
                                                             {sub.label}
                                                         </Link>
@@ -351,11 +361,10 @@ export function Header() {
                                                                                 key={sub.label}
                                                                                 href={sub.href}
                                                                                 onClick={() => setMobileOpen(false)}
-                                                                                className={`text-xl font-medium px-4 py-3 rounded-[var(--t-radius-md)] transition-colors hover:bg-[var(--t-bg-surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 ${
-                                                                                    isSubActive
-                                                                                        ? "text-[var(--t-accent)] bg-[var(--t-bg-surface)]"
-                                                                                        : "text-[var(--t-text)]"
-                                                                                }`}
+                                                                                className={`text-xl font-medium px-4 py-3 rounded-[var(--t-radius-md)] transition-colors hover:bg-[var(--t-bg-surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 ${isSubActive
+                                                                                    ? "text-[var(--t-accent)] bg-[var(--t-bg-surface)]"
+                                                                                    : "text-[var(--t-text)]"
+                                                                                    }`}
                                                                             >
                                                                                 {sub.label}
                                                                             </Link>

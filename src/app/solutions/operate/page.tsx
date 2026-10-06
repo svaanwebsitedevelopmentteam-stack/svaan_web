@@ -4,82 +4,83 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
-import { TechStack } from "@/components/TechStack";
 import { FAQAccordion } from "@/components/FAQAccordion";
 
 /* ────────────────────────────────────────────────────────────
-   HERO SECTION
+   1. HERO SECTION
    ──────────────────────────────────────────────────────────── */
 function OperateHero() {
     return (
-        <section className="relative min-h-[85vh] flex flex-col justify-center overflow-hidden py-24 border-b" style={{ borderColor: "var(--t-border)" }}>
-            {/* Animated Grid Background */}
-            <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" 
-                 style={{ 
-                     backgroundImage: 'linear-gradient(to right, var(--t-border) 1px, transparent 1px), linear-gradient(to bottom, var(--t-border) 1px, transparent 1px)',
-                     backgroundSize: '4rem 4rem',
-                     maskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, #000 10%, transparent 100%)'
-                 }} 
-            />
-            
-            {/* Floating Glows */}
-            <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-[120px] opacity-20 animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
-            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[150px] opacity-10" style={{ backgroundColor: "var(--t-text)" }} />
+        <section className="relative min-h-[85vh] flex flex-col justify-center overflow-clip pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 border-b"
+            style={{ borderColor: "var(--t-border)" }}>
+            {/* Ambient Background Glow */}
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] sm:w-[700px] h-[300px] sm:h-[400px] rounded-full blur-[160px] pointer-events-none"
+                style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
 
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10 w-full grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
-                
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 w-full grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 sm:gap-14 lg:gap-16 items-center">
+
                 {/* Left Content */}
                 <div className="relative">
-                    {/* Decorative line */}
-                    <div className="hidden lg:block absolute -left-10 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--t-accent)] to-transparent opacity-30" />
-                    
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-8">
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest border" 
-                            style={{ backgroundColor: "var(--t-bg-card)", color: "var(--t-accent)", borderColor: "var(--t-border)" }}>
-                            <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-4 sm:mb-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
                             Solution Focus
-                        </span>
+                        </div>
                     </motion.div>
-                    
+
                     <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-                        className="type-display mb-8" style={{ color: "var(--t-text)" }}>
-                        Keep critical technology <span className="italic relative whitespace-nowrap">
-                            <span className="relative z-10" style={{ color: "var(--t-accent)" }}>running.</span>
-                            <svg className="absolute w-full h-3 -bottom-1 left-0 z-0 opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="var(--t-accent)" strokeWidth="4" fill="none" strokeLinecap="round"/></svg>
-                        </span>
+                        className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] mb-4 sm:mb-6"
+                        style={{ color: "var(--t-text)" }}>
+                        Keep critical technology{" "}
+                        <span className="italic" style={{ color: "var(--t-accent)" }}>running.</span>
                     </motion.h1>
-                    
+
                     <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-                        className="type-body-lg max-w-2xl mb-12" style={{ color: "var(--t-text-muted)" }}>
+                        className="text-base sm:text-lg lg:text-xl max-w-2xl mb-8 sm:mb-10 leading-relaxed"
+                        style={{ color: "var(--t-text-muted)" }}>
                         Launch is the start, not the finish. SVaaN supports live applications, infrastructure and users, so the technology your business depends on stays stable and useful.
                     </motion.p>
-                    
+
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-                        className="flex flex-wrap items-center gap-6">
-                        <div className="flex items-center gap-3 px-6 py-4 rounded-[var(--t-radius-md)] border backdrop-blur-sm" style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
-                            <svg className="w-6 h-6" style={{ color: "var(--t-accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                            <span className="font-semibold text-sm tracking-wide uppercase" style={{ color: "var(--t-text)" }}>24/7 Reliability</span>
+                        className="flex flex-wrap items-center gap-3 sm:gap-4">
+                        <div className="flex items-center gap-3 px-4 sm:px-5 py-3 rounded-xl border transition-all duration-300 hover:border-[var(--t-accent)] hover:shadow-sm"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
+                            <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border"
+                                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                            </div>
+                            <span className="font-semibold text-xs sm:text-sm tracking-wide uppercase" style={{ color: "var(--t-text)" }}>24/7 Reliability</span>
                         </div>
-                        <div className="flex items-center gap-3 px-6 py-4 rounded-[var(--t-radius-md)] border backdrop-blur-sm" style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
-                            <svg className="w-6 h-6" style={{ color: "var(--t-accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                            <span className="font-semibold text-sm tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Proactive Support</span>
+                        <div className="flex items-center gap-3 px-4 sm:px-5 py-3 rounded-xl border transition-all duration-300 hover:border-[var(--t-accent)] hover:shadow-sm"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
+                            <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border"
+                                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            </div>
+                            <span className="font-semibold text-xs sm:text-sm tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Proactive Support</span>
                         </div>
                     </motion.div>
                 </div>
 
-                {/* Right Content: Floating Icon in Glass Box */}
-                <motion.div initial={{ opacity: 0, scale: 0.8, rotateY: -15 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 1, delay: 0.3 }}
+                {/* Right Content: Floating 3D Icon */}
+                <motion.div initial={{ opacity: 0, scale: 0.9, rotateY: -10 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 0.9, delay: 0.3 }}
                     className="relative flex justify-center lg:justify-end">
-                    
-                    <div className="relative w-full max-w-[450px] aspect-square rounded-[3rem] p-10 flex items-center justify-center transform-gpu">
-                        
+                    <div className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex items-center justify-center transform-gpu border"
+                        style={{
+                            backgroundColor: "var(--t-bg-card)",
+                            borderColor: "var(--t-border)",
+                            boxShadow: "0 20px 40px -15px var(--t-shadow)"
+                        }}>
                         {/* Rotating ring behind icon */}
-                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-8 rounded-full border border-dashed opacity-30 pointer-events-none"
+                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-6 rounded-full border border-dashed opacity-30 pointer-events-none"
                             style={{ borderColor: "var(--t-accent)" }} />
-                            
-                        <motion.div animate={{ y: [-10, 10, -10] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-                            <Icons3D.Support className="w-[280px] h-[280px] md:w-[350px] md:h-[350px] relative z-10 filter drop-shadow-2xl" />
+
+                        <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
+                            <div className="w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] md:w-[300px] md:h-[300px] flex items-center justify-center">
+                                <Icons3D.Support className="w-full h-full relative z-10 filter drop-shadow-2xl" />
+                            </div>
                         </motion.div>
                     </div>
                 </motion.div>
@@ -90,27 +91,34 @@ function OperateHero() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   THE PROBLEM
+   2. THE PROBLEM SECTION
    ──────────────────────────────────────────────────────────── */
 function TheProblem() {
     return (
-        <section className="py-16 relative">
-            <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-                    className="p-8 md:p-10 rounded-[var(--t-radius-md)] flex flex-col md:flex-row items-center md:items-center gap-8 border relative overflow-hidden backdrop-blur-md"
-                    style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", boxShadow: "0 10px 30px rgba(0,0,0,0.05)" }}>
-                    
-                    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[var(--t-accent)] to-transparent opacity-80" />
-                    
-                    <div className="flex-shrink-0 md:w-1/3">
-                        <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "var(--t-accent)" }}>The Problem</div>
-                        <h2 className="type-h2" style={{ color: "var(--t-text)" }}>
+        <section className="py-14 sm:py-20 lg:py-24 relative overflow-clip border-b"
+            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+            <div className="max-w-[1260px] mx-auto px-4 sm:px-6 lg:px-10">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}
+                    className="p-6 sm:p-10 lg:p-12 rounded-2xl sm:rounded-3xl flex flex-col md:flex-row items-start md:items-center gap-6 sm:gap-10 border relative overflow-hidden shadow-lg transition-all duration-300"
+                    style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
+
+                    <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[var(--t-accent)] to-transparent" />
+
+                    <div className="shrink-0 md:w-5/12">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+                            The Problem
+                        </div>
+                        <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight leading-snug" style={{ color: "var(--t-text)" }}>
                             When live technology breaks, people stop working.
                         </h2>
                     </div>
-                    <div className="md:w-2/3 border-l border-[var(--t-border)] pl-0 md:pl-8 pt-4 md:pt-0">
-                        <p className="type-body-lg" style={{ color: "var(--t-text-muted)" }}>
-                            If nobody clearly owns it, issues bounce between teams and the same problems keep coming back.
+
+                    <div className="md:w-7/12 border-t md:border-t-0 md:border-l pt-5 md:pt-0 md:pl-10 text-sm sm:text-base lg:text-lg leading-relaxed"
+                        style={{ borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
+                        <p>
+                            If nobody clearly owns it, issues bounce between teams and the same problems keep coming back. Downtime costs money, customer trust and team momentum.
                         </p>
                     </div>
                 </motion.div>
@@ -120,34 +128,58 @@ function TheProblem() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   WHAT WE DO (Bento Grid layout)
+   3. WHAT WE DO (Services Grid)
    ──────────────────────────────────────────────────────────── */
 const services = [
-    { title: "Application support", desc: "Keep business-critical applications stable and useful.", icon: <Icons3D.Software /> },
-    { title: "Production support", desc: "Protect the reliability of live environments.", icon: <Icons3D.ProcessShape /> },
-    { title: "Helpdesk & end-user", desc: "Keep people productive when technology gets in the way.", icon: <Icons3D.Support /> },
-    { title: "Infrastructure support", desc: "Keep the technology foundation dependable.", icon: <Icons3D.ProcessBuild /> },
-    { title: "Cloud managed services", desc: "Manage cloud environments for performance and growth.", icon: <Icons3D.Cloud /> },
-    { title: "DevOps support", desc: "Make software delivery more consistent and efficient.", icon: <Icons3D.Strategy /> },
-    { title: "Monitoring & incident response", desc: "Spot problems early and resolve them.", icon: <Icons3D.ProcessDiscover /> },
-    { title: "Continuous maintenance", desc: "Routine updates, fixes and performance reviews.", icon: <Icons3D.ProcessPrototype /> }
+    { title: "Application support", desc: "Keep business-critical applications stable, monitored and useful.", icon: <Icons3D.Software className="w-full h-full" /> },
+    { title: "Production support", desc: "Protect the reliability and uptime of live business environments.", icon: <Icons3D.ProcessShape className="w-full h-full" /> },
+    { title: "Helpdesk & end-user", desc: "Keep teams productive with rapid resolution when technology gets in the way.", icon: <Icons3D.Support className="w-full h-full" /> },
+    { title: "Infrastructure support", desc: "Keep foundational servers, networks and databases dependable.", icon: <Icons3D.ProcessBuild className="w-full h-full" /> },
+    { title: "Cloud managed services", desc: "Manage AWS, Azure and GCP environments for cost, performance and growth.", icon: <Icons3D.Cloud className="w-full h-full" /> },
+    { title: "DevOps support", desc: "Make software deployments consistent, automated and low-risk.", icon: <Icons3D.Strategy className="w-full h-full" /> },
+    { title: "Monitoring & incident response", desc: "Spot bottlenecks early and resolve issues before users notice.", icon: <Icons3D.ProcessDiscover className="w-full h-full" /> },
+    { title: "Continuous maintenance", desc: "Routine patches, dependency updates, security audits and tuning.", icon: <Icons3D.ProcessPrototype className="w-full h-full" /> }
 ];
 
 function WhatWeDo() {
     return (
-        <section className="py-32">
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-                <div className="mb-16">
-                    <h2 className="type-display mb-6" style={{ color: "var(--t-text)" }}>What we do</h2>
+        <section className="py-14 sm:py-20 lg:py-28 relative overflow-clip border-b"
+            style={{ backgroundColor: "var(--t-bg)", borderColor: "var(--t-border)" }}>
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+                            Scope & Deliverables
+                        </div>
+                        <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-3 sm:mb-4" style={{ color: "var(--t-text)" }}>
+                            What we <span className="italic" style={{ color: "var(--t-accent)" }}>deliver.</span>
+                        </h2>
+                        <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                            Round-the-clock ownership, rigorous SLA compliance and proactive operational excellence.
+                        </p>
+                    </motion.div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                     {services.map((s, i) => (
-                        <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                            className="p-8 rounded-[var(--t-radius-md)] transition-all hover:-translate-y-1"
-                            style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
-                            <div className="w-12 h-12 mb-6" style={{ color: "var(--t-accent)" }}>{s.icon}</div>
-                            <h3 className="type-h3 mb-3" style={{ color: "var(--t-text)" }}>{s.title}</h3>
-                            <p className="type-body-sm" style={{ color: "var(--t-text-muted)" }}>{s.desc}</p>
+                        <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ delay: i * 0.05 }}
+                            className="p-6 sm:p-7 rounded-2xl border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group flex flex-col justify-between"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
+                            <div>
+                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 border [&>svg]:w-7 [&>svg]:h-7"
+                                    style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                                    {s.icon}
+                                </div>
+                                <h3 className="font-display text-base sm:text-lg font-bold mb-2 group-hover:text-[var(--t-accent)] transition-colors duration-200 leading-snug"
+                                    style={{ color: "var(--t-text)" }}>
+                                    {s.title}
+                                </h3>
+                                <p className="text-xs sm:text-sm leading-relaxed opacity-75" style={{ color: "var(--t-text-muted)" }}>
+                                    {s.desc}
+                                </p>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
@@ -157,94 +189,87 @@ function WhatWeDo() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   WHEN YOU NEED IT
+   4. WHEN YOU NEED IT (Triggers)
    ──────────────────────────────────────────────────────────── */
 const signs = [
     "Your team built or bought an application and cannot support it fully.",
-    "A vendor has left and nobody owns the system.",
+    "A vendor has left and nobody owns the live system.",
     "Users report problems and there is no clear place to send them.",
-    "You want a helpdesk for staff or customers.",
-    "Your cloud environment needs someone to manage it.",
-    "Releases are manual and risky."
+    "You want a dedicated helpdesk for staff or customers.",
+    "Your cloud environment needs someone to proactively manage it.",
+    "Releases are manual, stressful and prone to downtime."
 ];
 
 function WhenYouNeedIt() {
     return (
-        <section className="py-32 relative overflow-hidden" style={{ backgroundColor: "var(--t-bg-surface)", borderTop: "1px solid var(--t-border)" }}>
-            <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
-                <div className="text-center mb-24">
-                    <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="type-display mb-6" style={{ color: "var(--t-text)" }}>When you need it</motion.h2>
-                    <motion.div initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="w-24 h-1 mx-auto rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+        <section className="py-14 sm:py-20 lg:py-28 relative overflow-clip border-b"
+            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+            <div className="max-w-[1260px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+                            Signals & Triggers
+                        </div>
+                        <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-3 sm:mb-4" style={{ color: "var(--t-text)" }}>
+                            When you <span className="italic" style={{ color: "var(--t-accent)" }}>need it.</span>
+                        </h2>
+                        <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                            Operational indicators that your technology needs dedicated, accountable support.
+                        </p>
+                    </motion.div>
                 </div>
-                
-                <div className="relative">
-                    {/* Center Line */}
-                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -ml-px" 
-                         style={{ background: "linear-gradient(180deg, transparent 0%, var(--t-accent) 20%, var(--t-accent) 80%, transparent 100%)", opacity: 0.3 }} />
-                         
-                    <div className="space-y-6 md:space-y-0">
-                        {signs.map((sign, i) => {
-                            const isEven = i % 2 === 0;
-                            return (
-                                <div key={i} className={`relative flex flex-col md:flex-row items-center md:min-h-[200px] ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                                    
-                                    {/* Mobile only line */}
-                                    <div className="md:hidden absolute left-8 top-0 bottom-0 w-px" style={{ background: "linear-gradient(180deg, transparent 0%, var(--t-accent) 20%, var(--t-accent) 80%, transparent 100%)", opacity: 0.3 }} />
 
-                                    {/* Node */}
-                                    <motion.div initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-                                        className="absolute left-[24px] md:left-1/2 w-4 h-4 rounded-full md:-ml-[8px] mt-8 md:mt-0 shadow-[0_0_15px_var(--t-accent)] z-10" 
-                                        style={{ backgroundColor: "var(--t-accent)" }} />
-                                         
-                                    {/* Content Card */}
-                                    <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${isEven ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'} mt-8 md:mt-0`}>
-                                        <motion.div initial={{ opacity: 0, x: isEven ? -30 : 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-                                            className="p-8 md:p-10 rounded-[var(--t-radius-md)] relative overflow-hidden group transition-all duration-300 hover:scale-[1.02]"
-                                            style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)", boxShadow: "0 10px 40px -10px rgba(0,0,0,0.05)" }}>
-                                            
-                                            <div className={`absolute top-0 w-32 h-32 rounded-full blur-[50px] opacity-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-40 ${isEven ? 'right-0' : 'left-0'}`} style={{ backgroundColor: "var(--t-accent)" }} />
-                                            
-                                            <span className="font-display type-display font-bold opacity-10 absolute -top-4 -left-2" style={{ color: "var(--t-accent)" }}>0{i+1}</span>
-                                            <p className="type-h3 relative z-10" style={{ color: "var(--t-text)" }}>
-                                                {sign}
-                                            </p>
-                                        </motion.div>
-                                    </div>
-                                    
-                                    {/* Empty Space for alignment */}
-                                    <div className="hidden md:block w-1/2" />
-                                </div>
-                            );
-                        })}
-                    </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                    {signs.map((sign, i) => (
+                        <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.5, delay: i * 0.06 }}
+                            className="p-6 sm:p-8 rounded-2xl border relative overflow-hidden group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex gap-4 sm:gap-5 items-start"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
+                            <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl font-mono text-xs sm:text-sm font-bold flex items-center justify-center shrink-0 border transition-colors duration-300 group-hover:bg-[var(--t-accent)] group-hover:text-white"
+                                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                                0{i + 1}
+                            </span>
+                            <div className="flex-1 min-w-0 pt-1">
+                                <p className="font-display text-sm sm:text-base font-semibold leading-relaxed" style={{ color: "var(--t-text)" }}>
+                                    {sign}
+                                </p>
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
-            </div>
-            
-            {/* Background Icon */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.02] pointer-events-none scale-[2]">
-                <Icons3D.Support className="w-[500px] h-[500px]" />
             </div>
         </section>
     );
 }
 
 /* ────────────────────────────────────────────────────────────
-   FAQ
+   5. FAQ SECTION
    ──────────────────────────────────────────────────────────── */
 const faqs = [
     { q: "What can you support?", a: "Applications, production environments, infrastructure, cloud environments and end users. We agree the scope in writing before we start." },
-    { q: "Can you support a system you did not build?", a: "Yes. We start by learning how it works and documenting what we find." },
-    { q: "What are your support hours and response times?", a: "We define these based on your specific operational needs and agree on SLAs before the engagement starts." },
-    { q: "Can support grow into improvement work?", a: "Yes. Many support engagements lead to fixes and enhancements. That is the Evolve service." }
+    { q: "Can you support a system you did not build?", a: "Yes. We start by learning how it works, documenting rules and setting up observability." },
+    { q: "What are your support hours and response times?", a: "We define these based on your specific operational needs and agree on clear SLAs." },
+    { q: "Can support grow into improvement work?", a: "Yes. Many support engagements lead directly to fixes, optimizations and feature enhancements via our Evolve service." }
 ];
 
 function FAQ() {
     return (
-        <section className="py-32 backdrop-blur-md" style={{ backgroundColor: "var(--t-bg-surface)" }}>
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-                <div className="text-center mb-16">
-                    <h2 className="type-display mb-6" style={{ color: "var(--t-text)" }}>Frequently Asked Questions</h2>
-                    <p className="type-body-lg" style={{ color: "var(--t-text-muted)" }}>Everything you need to know about our Operate service.</p>
+        <section className="py-14 sm:py-20 lg:py-28 relative overflow-clip border-b"
+            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+            <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-10">
+                <div className="text-center mb-10 sm:mb-14">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                        style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+                        FAQ
+                    </div>
+                    <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-3" style={{ color: "var(--t-text)" }}>
+                        Frequently asked <span className="italic" style={{ color: "var(--t-accent)" }}>questions.</span>
+                    </h2>
+                    <p className="text-sm sm:text-base leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                        Everything you need to know about our Operate service.
+                    </p>
                 </div>
                 <FAQAccordion faqs={faqs} />
             </div>
@@ -253,18 +278,33 @@ function FAQ() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   CTA
+   6. CTA SECTION
    ──────────────────────────────────────────────────────────── */
 function CTA() {
     return (
-        <section className="py-32 relative overflow-hidden text-center" style={{ borderTop: "1px solid var(--t-border)" }}>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full blur-[200px] opacity-20 pointer-events-none" style={{ backgroundColor: "var(--t-accent)" }} />
-            <div className="max-w-[800px] mx-auto px-6 relative z-10">
-                <h2 className="type-display mb-6" style={{ color: "var(--t-text)" }}>Tell us what needs looking after.</h2>
-                <Link href="/contact" className="inline-flex items-center gap-3 h-14 px-8 rounded-[var(--t-radius-md)] font-bold transition-all hover:scale-105"
+        <section className="py-16 sm:py-24 lg:py-32 relative overflow-clip text-center"
+            style={{ backgroundColor: "var(--t-bg)", borderColor: "var(--t-border)" }}>
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] sm:w-[700px] h-[300px] sm:h-[400px] rounded-full blur-[180px] pointer-events-none"
+                style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
+            <div className="max-w-[800px] mx-auto px-4 sm:px-6 relative z-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                    style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+                    Operations & Support
+                </div>
+                <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6" style={{ color: "var(--t-text)" }}>
+                    Tell us what needs{" "}
+                    <span className="italic" style={{ color: "var(--t-accent)" }}>looking after.</span>
+                </h2>
+                <p className="text-sm sm:text-base lg:text-lg mb-8 leading-relaxed max-w-xl mx-auto" style={{ color: "var(--t-text-muted)" }}>
+                    Gain peace of mind with proactive monitoring, rapid SLA incident resolution and continuous operational ownership.
+                </p>
+                <Link href="/contact" className="inline-flex items-center gap-2.5 h-12 sm:h-14 px-7 sm:px-9 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 group"
                     style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}>
-                    Discuss your support needs
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    <span>Discuss your support needs</span>
+                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
                 </Link>
             </div>
         </section>
@@ -273,7 +313,7 @@ function CTA() {
 
 export default function OperatePage() {
     return (
-        <main className="w-full">
+        <main className="w-full overflow-x-clip min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
             <OperateHero />
             <TheProblem />
             <WhatWeDo />

@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import React from "react";
 import Link from "next/link";
-import { CTASection } from "@/components/CTASection";
-
+import { motion } from "framer-motion";
 import { Illustrations } from "@/components/ui/Illustrations";
+import { CTASection } from "@/components/CTASection";
 
 const allProjects = [
     {
@@ -59,113 +59,117 @@ const allProjects = [
 
 export default function WorkPage() {
     return (
-        <main className="min-h-screen pt-[140px] pb-0 relative overflow-x-clip">
-            {/* Background Orbs */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 max-h-screen">
-                <motion.div
-                    animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
-                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-[15%] right-[15%] w-[500px] h-[500px] rounded-full blur-[180px]"
-                    style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }}
-                />
-            </div>
+        <main className="w-full overflow-x-clip min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
+            {/* 1. HERO SECTION */}
+            <section className="relative min-h-[55vh] lg:min-h-[60vh] flex flex-col justify-center overflow-clip pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 border-b"
+                style={{ borderColor: "var(--t-border)" }}>
+                {/* Ambient Glow */}
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] sm:w-[700px] h-[300px] sm:h-[400px] rounded-full blur-[180px] pointer-events-none"
+                    style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
 
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
+                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 w-full">
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-4 sm:mb-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
+                            Portfolio & Case Studies
+                        </div>
+                    </motion.div>
 
-                {/* Structured Grid Hero matching section 8 */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="pb-[60px] lg:pb-28 pt-8 w-full md:w-[80%]"
-                >
-                    <div className="inline-flex items-center gap-4 mb-8">
-                        <div className="h-[1px] w-12" style={{ backgroundColor: "var(--t-accent)" }} />
-                        <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "var(--t-text-muted)" }}>Our Work</span>
-                    </div>
-                    <h1
-                        className="type-display mb-8"
-                        style={{ color: "var(--t-text)" }}
-                    >
-                        Turning challenges into <span className="italic" style={{ color: "var(--t-accent)" }}>practical outcomes.</span>
-                    </h1>
-                    <p className="type-body-lg max-w-3xl" style={{ color: "var(--t-text-muted)" }}>
-                        Explore approved work that shows how SVaaN has approached real business and technology challenges.
-                    </p>
-                </motion.div>
+                    <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
+                        className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] mb-4 sm:mb-6 max-w-4xl"
+                        style={{ color: "var(--t-text)" }}>
+                        Turning challenges into{" "}
+                        <span className="italic" style={{ color: "var(--t-accent)" }}>practical outcomes.</span>
+                    </motion.h1>
 
-                {/* Structured 3-Column Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 pb-40">
-                    {allProjects.map((project, i) => (
-                        <motion.div
-                            key={project.title}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6, delay: (i % 3) * 0.1 }}
-                        >
-                            <Link href={project.href} className="group block w-full outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-4 rounded-[var(--t-radius-card)]">
+                    <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+                        className="text-base sm:text-lg lg:text-xl max-w-2xl leading-relaxed"
+                        style={{ color: "var(--t-text-muted)" }}>
+                        Explore approved work that demonstrates how SVaaN engineers enterprise systems, modernizes legacy stacks, and scales AI platforms.
+                    </motion.p>
+                </div>
+            </section>
 
-                                {/* Massive Image Container */}
-                                <div
-                                    className="relative w-full aspect-[4/3] rounded-[var(--t-radius-card)] overflow-hidden mb-8 group"
-                                    style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
+            {/* 2. PROJECTS GRID */}
+            <section className="py-14 sm:py-20 lg:py-28 relative overflow-clip border-b"
+                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+                        {allProjects.map((project, i) => (
+                            <motion.div
+                                key={project.title}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-60px" }}
+                                transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
+                            >
+                                <Link
+                                    href={project.href}
+                                    className="group flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl border overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)]"
+                                    style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                                 >
-                                    {/* Embedded Custom SVG Illustration */}
-                                    <div className="absolute inset-0 w-full h-full pointer-events-none group-hover:scale-[1.03] transition-transform duration-[1.5s] ease-out">
-                                        <project.Illustration className="w-full h-full object-cover" />
-                                    </div>
-                                    <motion.div
-                                        className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay transition-opacity duration-[1.2s] ease-out opacity-60 group-hover:opacity-20`}
-                                    />
+                                    {/* Image Container with SVG illustration */}
+                                    <div className="relative w-full aspect-[16/10] overflow-hidden border-b"
+                                        style={{ borderColor: "var(--t-border)" }}>
+                                        <div className="absolute inset-0 w-full h-full pointer-events-none group-hover:scale-105 transition-transform duration-700 ease-out">
+                                            <project.Illustration className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-60 group-hover:opacity-20 transition-opacity duration-500`} />
 
-                                    {/* Hover Icon Over Image */}
-                                    <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                        <div className="w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-xl"
-                                            style={{ backgroundColor: "var(--t-glass-bg)", border: "1px solid var(--t-glass-border)", color: "var(--t-text)" }}>
-                                            <svg className="w-6 h-6 rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                        {/* Hover arrow badge */}
+                                        <div className="absolute top-4 right-4 w-10 h-10 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-md border"
+                                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                             </svg>
                                         </div>
                                     </div>
-                                </div>
 
-                                {/* Clean Meta & Typography Below */}
-                                <div className="flex flex-col gap-3 px-2">
-                                    <div className="flex flex-wrap items-center gap-2 lg:gap-3">
-                                        <span className="text-xs lg:text-sm font-bold uppercase tracking-widest truncate max-w-[200px]" style={{ color: "var(--t-text-muted)" }}>
-                                            {project.client}
-                                        </span>
-                                        <span className="w-1.5 h-1.5 flex-shrink-0 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
-                                        <div className="flex flex-wrap gap-2">
-                                            {project.tags.map(tag => (
-                                                <span key={tag} className="text-xs lg:text-sm font-medium whitespace-nowrap" style={{ color: "var(--t-text-muted)" }}>
-                                                    {tag}
+                                    {/* Content & Metadata */}
+                                    <div className="p-5 sm:p-7 flex flex-col justify-between flex-1">
+                                        <div>
+                                            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                                <span className="text-xs font-mono font-bold uppercase tracking-wider" style={{ color: "var(--t-accent)" }}>
+                                                    {project.client}
                                                 </span>
-                                            ))}
+                                                <div className="flex flex-wrap gap-1.5">
+                                                    {project.tags.map(tag => (
+                                                        <span key={tag} className="text-[11px] font-semibold px-2 py-0.5 rounded-full border"
+                                                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
+                                                            {tag}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            <h2 className="font-display text-lg sm:text-xl font-bold leading-snug group-hover:text-[var(--t-accent)] transition-colors duration-200"
+                                                style={{ color: "var(--t-text)" }}>
+                                                {project.title}
+                                            </h2>
+                                        </div>
+
+                                        <div className="pt-5 mt-5 border-t flex items-center justify-between"
+                                            style={{ borderColor: "var(--t-border)" }}>
+                                            <span className="text-xs font-bold uppercase tracking-wider group-hover:text-[var(--t-accent)] transition-colors duration-200"
+                                                style={{ color: "var(--t-text)" }}>
+                                                View Case Study
+                                            </span>
+                                            <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"
+                                                style={{ color: "var(--t-accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                            </svg>
                                         </div>
                                     </div>
-
-                                    <div className="flex items-start justify-between gap-4">
-                                        <h2 className="type-h3 transition-colors duration-300 group-hover:text-[var(--t-accent)] leading-tight" style={{ color: "var(--t-text)" }}>
-                                            {project.title}
-                                        </h2>
-
-                                        <svg className="w-8 h-8 opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" style={{ color: "var(--t-accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                        </svg>
-                                    </div>
-                                </div>
-
-                            </Link>
-                        </motion.div>
-                    ))}
+                                </Link>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
+            </section>
 
-            </div>
-
+            {/* 3. CTA SECTION */}
             <CTASection />
-
         </main>
     );
 }

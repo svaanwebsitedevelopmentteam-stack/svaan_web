@@ -9,11 +9,15 @@ export function GlobalFloatActions() {
     const [showScroll, setShowScroll] = useState(false);
 
     useEffect(() => {
+        let ticking = false;
         const handleScroll = () => {
-            if (window.scrollY > 400) {
-                setShowScroll(true);
-            } else {
-                setShowScroll(false);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const shouldShow = window.scrollY > 400;
+                    setShowScroll((prev) => (prev !== shouldShow ? shouldShow : prev));
+                    ticking = false;
+                });
+                ticking = true;
             }
         };
 
