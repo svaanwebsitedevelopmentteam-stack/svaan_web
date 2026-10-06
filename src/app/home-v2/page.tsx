@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
@@ -37,26 +38,26 @@ function HeroV2() {
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute inset-0 opacity-[0.05]"
                     style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-                <motion.div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full blur-[120px]"
+                <motion.div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-[var(--t-radius-md)] blur-[120px]"
                     style={{ backgroundColor: "var(--t-accent)", opacity: "calc(var(--t-orb-opacity) + 0.1)", x: springX, y: springY, translateX: "-50%", translateY: "-50%" }} />
-                <motion.div className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-[150px]"
+                <motion.div className="absolute top-0 left-0 w-[600px] h-[600px] rounded-[var(--t-radius-md)] blur-[150px]"
                     style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)", x: springX2, y: springY2, translateX: "-30%", translateY: "-30%" }} />
-                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] opacity-20 blur-[120px] rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] opacity-20 blur-[120px] rounded-[var(--t-radius-md)]" style={{ backgroundColor: "var(--t-accent)" }} />
             </div>
 
             <div className="w-full px-[40px] pt-[70px] pb-[60px] relative z-10 grid grid-cols-1 lg:grid-cols-[6fr_4fr] gap-12 lg:gap-8 items-center">
                 {/* Left Content */}
                 <div className="text-left flex flex-col items-start pt-6 lg:pt-0">
-                    {/* <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="flex items-center gap-3 mb-8">
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="flex items-center gap-3 mb-8">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-[var(--t-radius-md)] text-sm font-medium"
                             style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text-muted)" }}>
-                            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                            <span className="w-2 h-2 rounded-[var(--t-radius-md)] bg-emerald-400 animate-pulse" />
                             Available for new projects
                         </span>
-                    </motion.div> */}
+                    </motion.div>
 
                     <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.15 }}
-                        className="font-display text-[40px] lg:text-[60px] font-bold leading-[1.1] tracking-tight mb-6"
+                        className="type-display mb-6"
                         style={{ color: "var(--t-text)" }}>
                         Build. Modernize.<br />
                         Operate.{" "}
@@ -64,27 +65,21 @@ function HeroV2() {
                     </motion.h1>
 
                     <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.35 }}
-                        className="text-lg md:text-xl max-w-lg leading-relaxed mb-12"
+                        className="type-body-lg mb-10"
                         style={{ color: "var(--t-text-muted)" }}>
                         SVaaN helps businesses build new software, modernize existing systems, operate critical technology and continuously improve the way technology supports their business.
                     </motion.p>
 
                     <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="flex flex-wrap items-center gap-4">
-                        <Link href="/contact" className="group inline-flex items-center gap-3 h-14 px-8 rounded-full font-semibold text-base transition-all duration-300 shadow-xl"
-                            style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}
-                            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--t-accent)"; e.currentTarget.style.color = "#fff"; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--t-btn-bg)"; e.currentTarget.style.color = "var(--t-btn-text)"; }}>
+                        <Button href="/contact" size="lg" className="group">
                             Discuss your technology challenge
                             <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
                             </svg>
-                        </Link>
-                        <Link href="/work" className="inline-flex items-center gap-2 h-14 px-8 rounded-full font-medium text-base transition-all duration-300"
-                            style={{ border: "1px solid var(--t-border)", color: "var(--t-text)" }}
-                            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--t-bg-surface)"; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; }}>
+                        </Button>
+                        <Button href="/work" variant="outline" size="lg">
                             See client stories
-                        </Link>
+                        </Button>
                     </motion.div>
                 </div>
 
@@ -134,7 +129,7 @@ function Counter({ end, suffix = "", label }: CounterProps) {
 
     return (
         <div ref={ref} className="text-center">
-            <div className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-3" style={{ color: "var(--t-text)" }}>
+            <div className="type-display mb-6" style={{ color: "var(--t-text)" }}>
                 {count}<span style={{ color: "var(--t-accent)" }}>{suffix}</span>
             </div>
             <div className="text-sm md:text-base" style={{ color: "var(--t-text-muted)" }}>{label}</div>
@@ -193,15 +188,15 @@ function ProblemFraming() {
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
                 <div className="mb-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-end">
                     <div>
-                        <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full border text-sm font-semibold tracking-widest uppercase relative z-10"
+                        <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-[var(--t-radius-md)] border text-sm font-semibold tracking-widest uppercase relative z-10"
                             style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
                             The Reality
                         </div>
-                        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4 relative z-10 tracking-tight" style={{ color: "var(--t-text)" }}>
+                        <h2 className="type-display mb-6" style={{ color: "var(--t-text)" }}>
                             Technology should help the business{" "}
                             <span className="italic" style={{ color: "var(--t-accent)" }}>move faster.</span>
                         </h2>
-                        <p className="text-lg leading-relaxed max-w-lg" style={{ color: "var(--t-text-muted)" }}>
+                        <p className="type-body-lg" style={{ color: "var(--t-text-muted)" }}>
                             Most of the businesses we talk to are in one of these four situations.
                         </p>
                     </div>
@@ -210,7 +205,7 @@ function ProblemFraming() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                     {problems.map((p, idx) => (
                         <motion.div key={idx} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, delay: idx * 0.1 }}
-                            className="group rounded-[1.5rem] p-8 relative overflow-hidden flex flex-col transition-all duration-500"
+                            className="group rounded-[var(--t-radius-md)] p-8 relative overflow-hidden flex flex-col transition-all duration-500"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-accent)"; }}
                             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-border)"; }}>
@@ -225,13 +220,13 @@ function ProblemFraming() {
                                 style={{ background: "linear-gradient(135deg, var(--t-gradient-from), transparent)" }} />
 
                             <div className="relative z-20">
-                                <motion.div className="w-[70px] h-[70px] rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 group-hover:-translate-y-1 shadow-sm"
+                                <motion.div className="w-[70px] h-[70px] rounded-[var(--t-radius-md)] flex items-center justify-center mb-4 transition-all duration-500 group-hover:-translate-y-1 shadow-sm"
                                     style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}>
                                     {p.icon}
                                 </motion.div>
                             </div>
                             <div className="relative z-20 flex flex-col flex-grow">
-                                <h3 className="font-display text-2xl font-bold mb-4" style={{ color: "var(--t-text)" }}>{p.title}</h3>
+                                <h3 className="type-h2" style={{ color: "var(--t-text)" }}>{p.title}</h3>
                                 <p className="leading-relaxed opacity-90" style={{ color: "var(--t-text-muted)" }}>{p.desc}</p>
                             </div>
                         </motion.div>
@@ -256,7 +251,7 @@ const pillars = [
         href: "/solutions/build",
         btnLabel: "Explore Build",
         Illustration: Illustrations.FinTech,
-        gradient: "from-indigo-600/60 to-blue-900/60",
+        gradient: " ",
     },
     {
         title: "Modernize what is holding the business back.",
@@ -313,11 +308,11 @@ function SolutionPillarsSection() {
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }}>
-                        <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full border text-sm font-semibold tracking-widest uppercase"
+                        <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-[var(--t-radius-md)] border text-sm font-semibold tracking-widest uppercase"
                             style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
                             Our Solutions
                         </div>
-                        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight" style={{ color: "var(--t-text)" }}>
+                        <h2 className="type-display mb-6" style={{ color: "var(--t-text)" }}>
                             Four ways we work with<br />your{" "}
                             <span className="italic" style={{ color: "var(--t-accent)" }}>technology.</span>
                         </h2>
@@ -335,7 +330,7 @@ function SolutionPillarsSection() {
                     <motion.div key={idx} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.7, delay: idx * 0.1 }}
                         className="flex-none w-[85vw] md:w-[45vw] lg:w-[31vw] snap-start">
-                        <Link href={pillar.href} className="group flex flex-col h-full rounded-[2rem] overflow-hidden transition-all duration-500" style={{ border: "1px solid var(--t-border)" }}
+                        <Link href={pillar.href} className="group flex flex-col h-full rounded-[var(--t-radius-md)] overflow-hidden transition-all duration-500" style={{ border: "1px solid var(--t-border)" }}
                             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-accent)"; }}
                             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-border)"; }}>
                             {/* Illustration area */}
@@ -347,7 +342,7 @@ function SolutionPillarsSection() {
                             {/* Content area */}
                             <div className="p-8 md:p-10 flex flex-col flex-grow" style={{ backgroundColor: "var(--t-bg-card)" }}>
                                 <div className="text-xs font-medium tracking-widest uppercase mb-4" style={{ color: "var(--t-accent)" }}>{pillar.tags}</div>
-                                <h3 className="font-display text-2xl font-bold mb-4 group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>{pillar.title}</h3>
+                                <h3 className="type-h2" style={{ color: "var(--t-text)" }}>{pillar.title}</h3>
                                 <p className="leading-relaxed mb-8 flex-grow" style={{ color: "var(--t-text-muted)" }}>{pillar.desc}</p>
                                 <span className="inline-flex items-center gap-2 font-semibold text-sm transition-all group-hover:gap-3" style={{ color: "var(--t-accent)" }}>
                                     {pillar.btnLabel}
@@ -362,7 +357,7 @@ function SolutionPillarsSection() {
             {/* Dot indicators */}
             <div className="flex justify-center gap-2 mt-8">
                 {pillars.map((_, i) => (
-                    <div key={i} className="w-2 h-2 rounded-full transition-all duration-300"
+                    <div key={i} className="w-2 h-2 rounded-[var(--t-radius-md)] transition-all duration-300"
                         style={{ backgroundColor: i === activeIndex ? "var(--t-accent)" : "var(--t-border)", transform: i === activeIndex ? "scale(1.5)" : "scale(1)" }} />
                 ))}
             </div>
@@ -385,41 +380,38 @@ const reasons = [
 function WhySvaaNSection() {
     return (
         <section className="py-[60px] relative overflow-clip">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full blur-[200px] pointer-events-none"
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-[var(--t-radius-md)] blur-[200px] pointer-events-none"
                 style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
 
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
                     <div className="lg:sticky lg:top-32 lg:h-max">
                         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }}>
-                            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" style={{ color: "var(--t-text)" }}>
+                            <h2 className="type-display mb-6" style={{ color: "var(--t-text)" }}>
                                 Why businesses choose{" "}
                                 <span className="italic" style={{ color: "var(--t-accent)" }}>SVaaN.</span>
                             </h2>
-                            <p className="text-lg leading-relaxed mb-10 max-w-lg" style={{ color: "var(--t-text-muted)" }}>
+                            <p className="type-body-lg mb-10" style={{ color: "var(--t-text-muted)" }}>
                                 We don&apos;t just deliver a project and walk away. We stay involved, because software that works today needs to keep working tomorrow.
                             </p>
-                            <Link href="/why-svaan" className="group inline-flex items-center gap-3 h-13 px-8 rounded-full font-medium transition-all duration-300"
-                                style={{ border: "1px solid var(--t-border)", backgroundColor: "var(--t-bg-surface)", color: "var(--t-text)" }}
-                                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}>
+                            <Button href="/why-svaan" variant="outline" className="group">
                                 Why SVaaN
                                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                            </Link>
+                            </Button>
                         </motion.div>
                     </div>
 
                     <div className="flex flex-col gap-6">
                         {reasons.map((r, i) => (
                             <motion.div key={r.num} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                                className="group rounded-2xl p-8 transition-all duration-500 cursor-default"
+                                className="group rounded-[var(--t-radius-md)] p-8 transition-all duration-500 cursor-default"
                                 style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-accent)"; }}
                                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-border)"; }}>
                                 <div className="flex items-start justify-between mb-6">
-                                    <h3 className="font-display text-xl md:text-2xl font-bold group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>{r.title}</h3>
-                                    <div className="flex items-center justify-center w-12 h-12 rounded-2xl transition-colors duration-500" style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-accent)" }}>
+                                    <h3 className="font-display text-xl md:type-h3 group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>{r.title}</h3>
+                                    <div className="flex items-center justify-center w-12 h-12 rounded-[var(--t-radius-md)] transition-colors duration-500" style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-accent)" }}>
                                         {r.icon}
                                     </div>
                                 </div>
@@ -448,41 +440,38 @@ const steps = [
 function HowWeWork() {
     return (
         <section className="py-[60px] relative overflow-clip" style={{ borderTop: "1px solid var(--t-border)", borderBottom: "1px solid var(--t-border)" }}>
-            <div className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full blur-[200px] pointer-events-none"
+            <div className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-[var(--t-radius-md)] blur-[200px] pointer-events-none"
                 style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
 
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
                     <div className="lg:sticky lg:top-32 lg:h-max">
                         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }}>
-                            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" style={{ color: "var(--t-text)" }}>
+                            <h2 className="type-display mb-6" style={{ color: "var(--t-text)" }}>
                                 One simple way of{" "}
                                 <span className="italic" style={{ color: "var(--t-accent)" }}>working.</span>
                             </h2>
-                            <p className="text-lg leading-relaxed mb-10 max-w-lg" style={{ color: "var(--t-text-muted)" }}>
+                            <p className="type-body-lg mb-10" style={{ color: "var(--t-text-muted)" }}>
                                 Every engagement follows these five stages. The depth varies, the discipline doesn&apos;t.
                             </p>
-                            <Link href="/approach" className="group inline-flex items-center gap-3 h-13 px-8 rounded-full font-medium transition-all duration-300"
-                                style={{ border: "1px solid var(--t-border)", backgroundColor: "var(--t-bg-surface)", color: "var(--t-text)" }}
-                                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}>
+                            <Button href="/approach" variant="outline" className="group">
                                 See our approach
                                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                            </Link>
+                            </Button>
                         </motion.div>
                     </div>
 
                     <div className="flex flex-col gap-6">
                         {steps.map((step, i) => (
                             <motion.div key={step.num} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                                className="group rounded-2xl p-8 transition-all duration-500 cursor-default"
+                                className="group rounded-[var(--t-radius-md)] p-8 transition-all duration-500 cursor-default"
                                 style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-accent)"; }}
                                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-border)"; }}>
                                 <div className="flex items-start justify-between mb-6">
-                                    <h3 className="font-display text-xl md:text-2xl font-bold group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>{step.title}</h3>
-                                    <div className="flex items-center justify-center w-12 h-12 rounded-2xl transition-colors duration-500" style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-accent)" }}>
+                                    <h3 className="font-display text-xl md:type-h3 group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>{step.title}</h3>
+                                    <div className="flex items-center justify-center w-12 h-12 rounded-[var(--t-radius-md)] transition-colors duration-500" style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-accent)" }}>
                                         {step.icon}
                                     </div>
                                 </div>
@@ -503,21 +492,21 @@ function HowWeWork() {
 function LeadershipPreview() {
     return (
         <section id="leadership" className="py-[60px] relative overflow-hidden">
-            <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[500px] h-[500px] rounded-full blur-[200px] pointer-events-none"
+            <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[500px] h-[500px] rounded-[var(--t-radius-md)] blur-[200px] pointer-events-none"
                 style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
 
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-stretch">
                     {/* Left — Image with floating card */}
                     <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className="relative flex flex-col justify-center">
-                        <div className="relative w-full h-full min-h-[350px] lg:min-h-full rounded-3xl overflow-hidden"
+                        <div className="relative w-full h-full min-h-[350px] lg:min-h-full rounded-[var(--t-radius-md)] overflow-hidden"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
                             <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
                                 alt="SVaaN leadership team" className="absolute inset-0 w-full h-full object-cover filter grayscale-[10%]" />
                             <div className="absolute inset-0 mix-blend-overlay opacity-60" style={{ background: "linear-gradient(135deg, var(--t-gradient-from), transparent, var(--t-gradient-to))" }} />
                         </div>
                         <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -bottom-6 -right-4 md:right-8 rounded-2xl px-6 py-4 shadow-2xl"
+                            className="absolute -bottom-6 -right-4 md:right-8 rounded-[var(--t-radius-md)] px-6 py-4 shadow-md"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
                             <div className="font-display font-bold text-2xl" style={{ color: "var(--t-accent)" }}>Since 2021</div>
                             <div className="text-xs" style={{ color: "var(--t-text-muted)" }}>Building technology that works</div>
@@ -526,18 +515,18 @@ function LeadershipPreview() {
 
                     {/* Right — Text */}
                     <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: 0.15 }} className="flex flex-col justify-center py-4 lg:py-8">
-                        <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-8" style={{ color: "var(--t-text)" }}>The people behind SVaaN.</h2>
-                        <p className="text-lg leading-relaxed mb-6" style={{ color: "var(--t-text-muted)" }}>
+                        <h2 className="type-display mb-6" style={{ color: "var(--t-text)" }}>The people behind SVaaN.</h2>
+                        <p className="type-body-lg" style={{ color: "var(--t-text-muted)" }}>
                             SVaaN was founded in 2021 by Dinesh Natarajan and Sai Ramamurthy. Both come from engineering and consulting backgrounds with over a decade of delivery experience across sectors.
                         </p>
-                        <p className="text-lg leading-relaxed mb-10" style={{ color: "var(--t-text-muted)" }}>
+                        <p className="type-body-lg" style={{ color: "var(--t-text-muted)" }}>
                             They started SVaaN because they saw too many technology projects that delivered code but missed the point. The company was built around a simple principle: understand the business problem first, then build the right technology.
                         </p>
 
                         <div className="grid grid-cols-2 gap-4 mb-10">
                             {["Dinesh Natarajan — Founder", "Sai Ramamurthy — CEO"].map((person) => (
                                 <div key={person} className="flex items-center gap-3 text-sm" style={{ color: "var(--t-text-secondary)" }}>
-                                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "var(--t-accent)" }} />
+                                    <span className="w-1.5 h-1.5 rounded-[var(--t-radius-md)] flex-shrink-0" style={{ backgroundColor: "var(--t-accent)" }} />
                                     {person}
                                 </div>
                             ))}
@@ -562,26 +551,23 @@ function LeadershipPreview() {
 function ClosingCTA() {
     return (
         <section className="py-[60px] relative overflow-hidden">
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[200px] pointer-events-none"
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-[var(--t-radius-md)] blur-[200px] pointer-events-none"
                 style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
 
             <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
                 <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className="text-center">
-                    <h2 className="font-display text-5xl md:text-6xl lg:text-8xl font-bold leading-tight mb-8" style={{ color: "var(--t-text)" }}>
+                    <h2 className="type-display mb-6" style={{ color: "var(--t-text)" }}>
                         Have a technology problem{" "}
                         <span className="italic" style={{ color: "var(--t-accent)" }}>worth solving?</span>
                     </h2>
-                    <p className="text-lg md:text-xl max-w-lg mx-auto mb-12" style={{ color: "var(--t-text-muted)" }}>
+                    <p className="type-body-lg mb-10" style={{ color: "var(--t-text-muted)" }}>
                         Tell us what is happening, what you want to achieve, and where you need help.
                     </p>
-                    <Link href="/contact" className="group inline-flex items-center gap-3 h-16 px-12 rounded-full font-bold text-lg transition-all duration-300 shadow-2xl"
-                        style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}
-                        onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--t-accent)"; e.currentTarget.style.color = "#fff"; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--t-btn-bg)"; e.currentTarget.style.color = "var(--t-btn-text)"; }}>
+                    <Button href="/contact" size="lg" className="group">
                         Discuss your challenge
                         <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" /></svg>
-                    </Link>
+                    </Button>
                 </motion.div>
             </div>
         </section>
