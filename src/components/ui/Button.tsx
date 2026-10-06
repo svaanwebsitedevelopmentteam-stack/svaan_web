@@ -102,7 +102,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         );
 
         if ("href" in props && props.href) {
-            const { href, target, rel, download, onClick, ...anchorRest } = props;
+            const { href, target, rel, download, onClick, ...anchorRest } = rest as Omit<ButtonAsLink, keyof ButtonBaseProps>;
             return (
                 <Link
                     href={href}

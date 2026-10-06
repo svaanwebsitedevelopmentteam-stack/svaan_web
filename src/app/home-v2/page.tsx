@@ -65,13 +65,13 @@ function HeroV2() {
                     </motion.h1>
 
                     <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.35 }}
-                        className="type-body-lg"
+                        className="type-body-lg mb-10"
                         style={{ color: "var(--t-text-muted)" }}>
                         SVaaN helps businesses build new software, modernize existing systems, operate critical technology and continuously improve the way technology supports their business.
                     </motion.p>
 
                     <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="flex flex-wrap items-center gap-4">
-                        <Button href="/contact" size="lg" className="group shadow-xl">
+                        <Button href="/contact" size="lg" className="group">
                             Discuss your technology challenge
                             <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
@@ -205,7 +205,7 @@ function ProblemFraming() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                     {problems.map((p, idx) => (
                         <motion.div key={idx} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.7, delay: idx * 0.1 }}
-                            className="group rounded-[1.5rem] p-8 relative overflow-hidden flex flex-col transition-all duration-500"
+                            className="group rounded-[var(--t-radius-md)] p-8 relative overflow-hidden flex flex-col transition-all duration-500"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-accent)"; }}
                             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-border)"; }}>
@@ -330,7 +330,7 @@ function SolutionPillarsSection() {
                     <motion.div key={idx} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.7, delay: idx * 0.1 }}
                         className="flex-none w-[85vw] md:w-[45vw] lg:w-[31vw] snap-start">
-                        <Link href={pillar.href} className="group flex flex-col h-full rounded-[2rem] overflow-hidden transition-all duration-500" style={{ border: "1px solid var(--t-border)" }}
+                        <Link href={pillar.href} className="group flex flex-col h-full rounded-[var(--t-radius-md)] overflow-hidden transition-all duration-500" style={{ border: "1px solid var(--t-border)" }}
                             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-accent)"; }}
                             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--t-border)"; }}>
                             {/* Illustration area */}
@@ -391,17 +391,14 @@ function WhySvaaNSection() {
                                 Why businesses choose{" "}
                                 <span className="italic" style={{ color: "var(--t-accent)" }}>SVaaN.</span>
                             </h2>
-                            <p className="type-body-lg" style={{ color: "var(--t-text-muted)" }}>
+                            <p className="type-body-lg mb-10" style={{ color: "var(--t-text-muted)" }}>
                                 We don&apos;t just deliver a project and walk away. We stay involved, because software that works today needs to keep working tomorrow.
                             </p>
-                            <Link href="/why-svaan" className="group inline-flex items-center gap-3 h-13 px-8 rounded-[var(--t-radius-md)] font-medium transition-all duration-300"
-                                style={{ border: "1px solid var(--t-border)", backgroundColor: "var(--t-bg-surface)", color: "var(--t-text)" }}
-                                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}>
+                            <Button href="/why-svaan" variant="outline" className="group">
                                 Why SVaaN
                                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                            </Link>
+                            </Button>
                         </motion.div>
                     </div>
 
@@ -454,17 +451,14 @@ function HowWeWork() {
                                 One simple way of{" "}
                                 <span className="italic" style={{ color: "var(--t-accent)" }}>working.</span>
                             </h2>
-                            <p className="type-body-lg" style={{ color: "var(--t-text-muted)" }}>
+                            <p className="type-body-lg mb-10" style={{ color: "var(--t-text-muted)" }}>
                                 Every engagement follows these five stages. The depth varies, the discipline doesn&apos;t.
                             </p>
-                            <Link href="/approach" className="group inline-flex items-center gap-3 h-13 px-8 rounded-[var(--t-radius-md)] font-medium transition-all duration-300"
-                                style={{ border: "1px solid var(--t-border)", backgroundColor: "var(--t-bg-surface)", color: "var(--t-text)" }}
-                                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--t-accent)"; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--t-border)"; }}>
+                            <Button href="/approach" variant="outline" className="group">
                                 See our approach
                                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                            </Link>
+                            </Button>
                         </motion.div>
                     </div>
 
@@ -512,7 +506,7 @@ function LeadershipPreview() {
                             <div className="absolute inset-0 mix-blend-overlay opacity-60" style={{ background: "linear-gradient(135deg, var(--t-gradient-from), transparent, var(--t-gradient-to))" }} />
                         </div>
                         <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -bottom-6 -right-4 md:right-8 rounded-[var(--t-radius-md)] px-6 py-4 shadow-2xl"
+                            className="absolute -bottom-6 -right-4 md:right-8 rounded-[var(--t-radius-md)] px-6 py-4 shadow-md"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
                             <div className="font-display font-bold text-2xl" style={{ color: "var(--t-accent)" }}>Since 2021</div>
                             <div className="text-xs" style={{ color: "var(--t-text-muted)" }}>Building technology that works</div>
@@ -566,17 +560,14 @@ function ClosingCTA() {
                         Have a technology problem{" "}
                         <span className="italic" style={{ color: "var(--t-accent)" }}>worth solving?</span>
                     </h2>
-                    <p className="type-body-lg" style={{ color: "var(--t-text-muted)" }}>
+                    <p className="type-body-lg mb-10" style={{ color: "var(--t-text-muted)" }}>
                         Tell us what is happening, what you want to achieve, and where you need help.
                     </p>
-                    <Link href="/contact" className="type-body-lg"
-                        style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}
-                        onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--t-accent)"; e.currentTarget.style.color = "#fff"; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--t-btn-bg)"; e.currentTarget.style.color = "var(--t-btn-text)"; }}>
+                    <Button href="/contact" size="lg" className="group">
                         Discuss your challenge
                         <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" /></svg>
-                    </Link>
+                    </Button>
                 </motion.div>
             </div>
         </section>
