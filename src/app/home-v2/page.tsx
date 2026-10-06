@@ -747,17 +747,6 @@ function HowWeWork() {
                                         {step.desc}
                                     </p>
                                 </div>
-
-                                {/* Bottom Accent Line */}
-                                <div className="mt-6 h-[2px] w-full rounded-full overflow-hidden"
-                                    style={{ backgroundColor: "var(--t-border)" }}>
-                                    <div className="h-full transition-all duration-500 rounded-full"
-                                        style={{
-                                            width: isHovered ? "100%" : "25%",
-                                            backgroundColor: "var(--t-accent)",
-                                            opacity: isHovered ? 1 : 0.4
-                                        }} />
-                                </div>
                             </motion.div>
                         );
                     })}

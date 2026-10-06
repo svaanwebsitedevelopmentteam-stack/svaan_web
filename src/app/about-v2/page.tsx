@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
@@ -13,7 +13,7 @@ import { Illustrations } from "@/components/ui/Illustrations";
    ──────────────────────────────────────────────────────────── */
 function AboutHero() {
     return (
-        <section className="relative min-h-[85vh] flex flex-col justify-center overflow-hidden pb-24 pt-12 border-b" style={{ borderColor: "var(--t-border)" }}>
+        <section className="relative min-h-[85vh] flex flex-col justify-center overflow-clip pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 border-b" style={{ borderColor: "var(--t-border)" }}>
             {/* Animated Grid Background */}
             <div className="absolute inset-0 z-0 opacity-20 pointer-events-none"
                 style={{
@@ -23,62 +23,82 @@ function AboutHero() {
                 }}
             />
 
-            {/* Floating Glows */}
-            <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-[120px] opacity-20 animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
-            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[150px] opacity-10" style={{ backgroundColor: "var(--t-text)" }} />
+            {/* Floating Ambient Glows */}
+            <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-[140px] pointer-events-none"
+                style={{ backgroundColor: "var(--t-accent)", opacity: "calc(var(--t-orb-opacity) * 0.8)" }} />
+            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[160px] pointer-events-none"
+                style={{ backgroundColor: "var(--t-text)", opacity: "calc(var(--t-orb-opacity) * 0.5)" }} />
 
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10 w-full grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 w-full grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 sm:gap-14 lg:gap-16 items-center">
 
                 {/* Left Content */}
                 <div className="relative">
                     {/* Decorative line */}
-                    <div className="hidden lg:block absolute -left-10 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--t-accent)] to-transparent opacity-30" />
+                    <div className="hidden lg:block absolute -left-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--t-accent)] to-transparent opacity-30" />
 
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-8">
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest border"
-                            style={{ backgroundColor: "var(--t-bg-card)", color: "var(--t-accent)", borderColor: "var(--t-border)" }}>
-                            <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-4 sm:mb-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
                             About SVaaN
-                        </span>
+                        </div>
                     </motion.div>
 
                     <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-                        className="font-display text-[45px] lg:text-[55px] font-bold leading-tight mb-8" style={{ color: "var(--t-text)" }}>
-                        We started with one<span className="italic relative whitespace-nowrap">
-                            <span className="relative z-10" style={{ color: "var(--t-accent)" }}> application.</span>
-                            <svg className="absolute w-full h-3 -bottom-1 left-0 z-0 opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="var(--t-accent)" strokeWidth="4" fill="none" strokeLinecap="round" /></svg>
+                        className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6" style={{ color: "var(--t-text)" }}>
+                        We started with one{" "}
+                        <span className="italic relative whitespace-nowrap">
+                            <span className="relative z-10" style={{ color: "var(--t-accent)" }}>application.</span>
+                            <svg className="absolute w-full h-3 -bottom-1 left-0 z-0 opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                <path d="M0 5 Q 50 10 100 5" stroke="var(--t-accent)" strokeWidth="4" fill="none" strokeLinecap="round" />
+                            </svg>
                         </span>
                     </motion.h1>
 
-                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-xl leading-relaxed max-w-2xl mb-12 space-y-6" style={{ color: "var(--t-text-muted)" }}>
+                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+                        className="text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mb-8 sm:mb-10" style={{ color: "var(--t-text-muted)" }}>
                         <p>SVaaN Global Tech is a team of 60+ in Chennai. We build software, fix old systems and look after live applications for clients in the US, UAE, UK and Canada. If something in your technology is broken, missing or ownerless, we take it on.</p>
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-                        className="flex flex-wrap items-center gap-6">
-                        <div className="flex items-center gap-3 px-6 py-4 rounded-2xl border backdrop-blur-sm" style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
-                            <svg className="w-6 h-6" style={{ color: "var(--t-accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
-                            <span className="font-semibold text-sm tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Global Reach</span>
+                        className="flex flex-wrap items-center gap-4 sm:gap-5">
+                        <div className="flex items-center gap-3 px-4 sm:px-5 py-3 rounded-xl border transition-all duration-300 hover:border-[var(--t-accent)] hover:shadow-sm"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
+                            <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border"
+                                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                            </div>
+                            <span className="font-semibold text-xs sm:text-sm tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Global Reach</span>
                         </div>
-                        <div className="flex items-center gap-3 px-6 py-4 rounded-2xl border backdrop-blur-sm" style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
-                            <svg className="w-6 h-6" style={{ color: "var(--t-accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            <span className="font-semibold text-sm tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Long-Term Focus</span>
+                        <div className="flex items-center gap-3 px-4 sm:px-5 py-3 rounded-xl border transition-all duration-300 hover:border-[var(--t-accent)] hover:shadow-sm"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
+                            <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border"
+                                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </div>
+                            <span className="font-semibold text-xs sm:text-sm tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Long-Term Focus</span>
                         </div>
                     </motion.div>
                 </div>
 
-                {/* Right Content: Floating Icon in Glass Box */}
-                <motion.div initial={{ opacity: 0, scale: 0.8, rotateY: -15 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 1, delay: 0.3 }}
+                {/* Right Content: Floating Illustration Card */}
+                <motion.div initial={{ opacity: 0, scale: 0.9, rotateY: -10 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 0.9, delay: 0.3 }}
                     className="relative flex justify-center lg:justify-end">
-
-                    <div className="relative w-full max-w-[450px] aspect-square rounded-[3rem] p-10 flex items-center justify-center transform-gpu">
+                    <div className="relative w-full max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex items-center justify-center transform-gpu border"
+                        style={{
+                            backgroundColor: "var(--t-bg-card)",
+                            borderColor: "var(--t-border)",
+                            boxShadow: "0 20px 40px -15px var(--t-shadow)"
+                        }}>
                         {/* Rotating ring behind icon */}
-                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-8 rounded-full border border-dashed opacity-30 pointer-events-none"
+                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-6 rounded-full border border-dashed opacity-30 pointer-events-none"
                             style={{ borderColor: "var(--t-accent)" }} />
 
-                        <motion.div animate={{ y: [-10, 10, -10] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="w-full h-full relative z-10 flex items-center justify-center filter drop-shadow-2xl">
-                            <div className="w-[300px] h-[300px] rounded-3xl overflow-hidden" style={{ border: "1px solid var(--t-border)", boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3)" }}>
+                        <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                            className="w-full h-full relative z-10 flex items-center justify-center">
+                            <div className="w-[260px] h-[260px] sm:w-[280px] sm:h-[280px] rounded-2xl overflow-hidden border shadow-xl"
+                                style={{ borderColor: "var(--t-border)", backgroundColor: "var(--t-bg-surface)" }}>
                                 <Illustrations.PropTech className="w-full h-full" />
                             </div>
                         </motion.div>
@@ -95,42 +115,51 @@ function AboutHero() {
    ──────────────────────────────────────────────────────────── */
 function StorySection() {
     return (
-        <section className="py-[120px] relative overflow-hidden" style={{ borderBottom: "1px solid var(--t-border)" }}>
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] blur-[150px] opacity-10 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-16 lg:gap-24 items-center">
+        <section className="py-14 sm:py-20 lg:py-28 relative overflow-clip border-b" style={{ borderColor: "var(--t-border)" }}>
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] blur-[180px] pointer-events-none rounded-full"
+                style={{ backgroundColor: "var(--t-accent)", opacity: "calc(var(--t-orb-opacity) * 0.7)" }} />
+
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 items-center">
 
                     <div className="relative">
-                        <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-                            className="relative w-full h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
-                            style={{ border: "1px solid var(--t-border)" }}>
+                        <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7 }}
+                            className="relative w-full h-[360px] sm:h-[450px] lg:h-[520px] rounded-2xl sm:rounded-3xl overflow-hidden border shadow-xl"
+                            style={{ borderColor: "var(--t-border)" }}>
                             <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200"
-                                alt="SVaaN Origin" className="absolute inset-0 w-full h-full object-cover filter grayscale-[20%]" />
-                            <div className="absolute inset-0 mix-blend-overlay opacity-60" style={{ background: "linear-gradient(135deg, var(--t-gradient-from), transparent, var(--t-gradient-to))" }} />
+                                alt="SVaaN Origin" className="absolute inset-0 w-full h-full object-cover filter grayscale-[15%]" />
+                            <div className="absolute inset-0 mix-blend-overlay opacity-50"
+                                style={{ background: "linear-gradient(135deg, var(--t-gradient-from), transparent, var(--t-gradient-to))" }} />
 
-                            <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute bottom-8 left-8 p-6 rounded-2xl backdrop-blur-md max-w-[250px]"
-                                style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                                <div className="text-3xl font-display font-bold mb-2 text-white">2021</div>
-                                <div className="text-white/80 text-sm">Began with one application-support engagement.</div>
+                            <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute bottom-6 left-6 p-4 sm:p-5 rounded-xl border backdrop-blur-md max-w-[240px]"
+                                style={{ backgroundColor: "rgba(15, 23, 42, 0.75)", borderColor: "rgba(255, 255, 255, 0.15)" }}>
+                                <div className="text-2xl sm:text-3xl font-display font-bold mb-1 text-white">2021</div>
+                                <div className="text-white/80 text-xs sm:text-sm leading-snug">Began with one application-support engagement.</div>
                             </motion.div>
                         </motion.div>
                     </div>
 
                     <div className="flex flex-col justify-center">
-                        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-                            <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-8" style={{ color: "var(--t-text)" }}>
-                                How SVaaN started.
+                        <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}>
+                            <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                                style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+                                Our Origin
+                            </div>
+                            <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4 sm:mb-6" style={{ color: "var(--t-text)" }}>
+                                How SVaaN{" "}
+                                <span className="italic" style={{ color: "var(--t-accent)" }}>started.</span>
                             </h2>
-                            <p className="text-xl leading-relaxed mb-6" style={{ color: "var(--t-text-muted)" }}>
+                            <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-4" style={{ color: "var(--t-text-muted)" }}>
                                 SVaaN began in 2021, when a US client needed one application supported. We took the job.
                             </p>
-                            <p className="text-xl leading-relaxed mb-6" style={{ color: "var(--t-text-muted)" }}>
-                                The client kept us on, then gave us more to do: first fixes, then new features, and eventually whole products. A few of our later clients found us through people we'd already worked for.
+                            <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-6" style={{ color: "var(--t-text-muted)" }}>
+                                The client kept us on, then gave us more to do: first fixes, then new features, and eventually whole products. A few of our later clients found us through people we&apos;d already worked for.
                             </p>
-                            <div className="h-px w-full max-w-md my-8 opacity-50" style={{ background: "linear-gradient(90deg, var(--t-accent), transparent)" }} />
-                            <p className="text-lg font-medium leading-relaxed" style={{ color: "var(--t-text)" }}>
-                                There wasn't a big plan behind any of this. We did one job, and people kept asking us back.
+                            <div className="h-px w-full max-w-md my-6 opacity-40" style={{ background: "linear-gradient(90deg, var(--t-accent), transparent)" }} />
+                            <p className="text-sm sm:text-base lg:text-lg font-medium leading-relaxed" style={{ color: "var(--t-text)" }}>
+                                There wasn&apos;t a big plan behind any of this. We did one job, and people kept asking us back.
                             </p>
                         </motion.div>
                     </div>
@@ -153,35 +182,61 @@ const lessons = [
 
 function LessonsSection() {
     return (
-        <section className="py-[120px] relative">
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-                <div className="text-center mb-20">
-                    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-                        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                            What long-term clients have <span className="italic" style={{ color: "var(--t-accent)" }}>taught us.</span>
+        <section className="py-14 sm:py-20 lg:py-28 relative overflow-clip border-b" style={{ borderColor: "var(--t-border)" }}>
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
+                            Core Lessons
+                        </div>
+                        <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-3 sm:mb-4" style={{ color: "var(--t-text)" }}>
+                            What long-term clients have{" "}
+                            <span className="italic" style={{ color: "var(--t-accent)" }}>taught us.</span>
                         </h2>
-                        <p className="text-xl" style={{ color: "var(--t-text-muted)" }}>After a few years of running other people's live systems, some things have become obvious.</p>
+                        <p className="text-sm sm:text-base lg:text-lg" style={{ color: "var(--t-text-muted)" }}>
+                            After a few years of running other people&apos;s live systems, some things have become obvious.
+                        </p>
                     </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
                     {lessons.map((b, i) => (
-                        <motion.div key={b.num} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
+                        <motion.div key={b.num} initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: i * 0.08 }}
                             className={b.colSpan}>
-                            <Card hoverEffect className="group relative p-8 md:p-10 rounded-3xl h-full flex flex-col justify-between overflow-hidden">
-                                <div className="absolute -bottom-8 -right-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none transform group-hover:scale-110">
+                            <div className="group relative p-6 sm:p-8 rounded-2xl border h-full flex flex-col justify-between overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--t-accent)]"
+                                style={{
+                                    backgroundColor: "var(--t-bg-card)",
+                                    borderColor: "var(--t-border)"
+                                }}>
+                                <div className="absolute -bottom-6 -right-6 opacity-10 group-hover:opacity-20 transition-all duration-500 pointer-events-none transform group-hover:scale-110">
                                     {b.icon}
                                 </div>
 
-                                <div className="relative z-10 mb-8">
-                                    <span className="text-5xl font-display font-bold opacity-20" style={{ color: "var(--t-accent)" }}>{b.num}</span>
+                                <div className="relative z-10 mb-6 flex items-center justify-between">
+                                    <span className="w-8 h-8 rounded-lg flex items-center justify-center font-mono text-xs font-bold transition-all duration-300"
+                                        style={{
+                                            backgroundColor: "var(--t-bg-surface)",
+                                            color: "var(--t-accent)",
+                                            border: "1px solid var(--t-border)"
+                                        }}>
+                                        {b.num}
+                                    </span>
+                                    <span className="text-[11px] font-semibold uppercase tracking-wider opacity-60" style={{ color: "var(--t-text-muted)" }}>
+                                        Lesson {b.num}
+                                    </span>
                                 </div>
 
                                 <div className="relative z-10">
-                                    <h3 className="font-display text-2xl md:text-3xl font-bold mb-4" style={{ color: "var(--t-text)" }}>{b.title}</h3>
-                                    <p className="text-lg leading-relaxed opacity-90" style={{ color: "var(--t-text-muted)" }}>{b.desc}</p>
+                                    <h3 className="font-display text-xl sm:text-2xl font-bold mb-2.5 transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                        {b.title}
+                                    </h3>
+                                    <p className="text-xs sm:text-sm lg:text-base leading-relaxed opacity-75" style={{ color: "var(--t-text-muted)" }}>
+                                        {b.desc}
+                                    </p>
                                 </div>
-                            </Card>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
@@ -195,90 +250,100 @@ function LessonsSection() {
    ──────────────────────────────────────────────────────────── */
 function OwnershipSection() {
     return (
-        <section className="py-[160px] relative overflow-hidden" style={{ backgroundColor: "var(--t-bg-surface)", borderTop: "1px solid var(--t-border)" }}>
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[var(--t-accent)] rounded-full blur-[250px] opacity-10 pointer-events-none" />
+        <section className="py-14 sm:py-20 lg:py-28 relative overflow-clip border-b"
+            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full blur-[200px] pointer-events-none"
+                style={{ backgroundColor: "var(--t-accent)", opacity: "calc(var(--t-orb-opacity) * 0.7)" }} />
 
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
-                <div className="text-center mb-20">
-                    <motion.div initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="w-16 h-1 rounded-full mx-auto mb-8" style={{ backgroundColor: "var(--t-accent)" }} />
-                    <motion.span initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="uppercase tracking-widest text-sm font-bold mb-4 block" style={{ color: "var(--t-accent)" }}>
-                        The Long Game
-                    </motion.span>
-                    <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="font-display text-5xl md:text-7xl font-bold leading-tight" style={{ color: "var(--t-text)" }}>
-                        Ownership after go-live.
-                    </motion.h2>
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+                            The Long Game
+                        </div>
+                        <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-3 sm:mb-4" style={{ color: "var(--t-text)" }}>
+                            Ownership after{" "}
+                            <span className="italic" style={{ color: "var(--t-accent)" }}>go-live.</span>
+                        </h2>
+                    </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 relative">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 relative">
                     
                     {/* Box 1 - Main Philosophy (7 cols) */}
-                    <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="md:col-span-7">
-                        <Card hoverEffect className="h-full p-10 md:p-14 rounded-3xl relative overflow-hidden group flex flex-col justify-between">
-                            {/* Animated background element */}
-                            <div className="absolute -top-32 -right-32 w-96 h-96 bg-[var(--t-accent)] rounded-full blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity duration-700" />
+                    <motion.div initial={{ opacity: 0, x: -25 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6 }} className="md:col-span-7">
+                        <div className="h-full p-6 sm:p-10 lg:p-12 rounded-2xl sm:rounded-3xl border relative overflow-hidden group flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--t-accent)]"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
+                            <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none"
+                                style={{ backgroundColor: "var(--t-accent)" }} />
                             
-                            <div className="mb-16 relative z-10">
-                                <Icons3D.Strategy className="w-24 h-24 filter drop-shadow-lg group-hover:scale-110 transition-transform duration-500 origin-top-left" />
+                            <div className="mb-10 sm:mb-14 relative z-10">
+                                <Icons3D.Strategy className="w-16 h-16 sm:w-20 sm:h-20 filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 origin-top-left" />
                             </div>
                             <div className="relative z-10">
-                                <h3 className="font-display text-3xl md:text-4xl font-bold mb-6" style={{ color: "var(--t-text)" }}>
-                                    We don't hand a system over at launch and disappear.
+                                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-5 leading-tight" style={{ color: "var(--t-text)" }}>
+                                    We don&apos;t hand a system over at launch and disappear.
                                 </h3>
-                                <p className="text-xl leading-relaxed opacity-80" style={{ color: "var(--t-text-muted)" }}>
-                                    The team that builds it stays responsible for it. We believe the true test of software isn't day one, it's year three.
+                                <p className="text-sm sm:text-base lg:text-lg leading-relaxed opacity-80" style={{ color: "var(--t-text-muted)" }}>
+                                    The team that builds it stays responsible for it. We believe the true test of software isn&apos;t day one, it&apos;s year three.
                                 </p>
                             </div>
-                        </Card>
+                        </div>
                     </motion.div>
 
                     {/* Box 2 - Day to Day (5 cols) */}
-                    <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className="md:col-span-5 flex flex-col gap-6">
-                        <Card hoverEffect className="flex-1 p-10 rounded-3xl relative overflow-hidden group flex flex-col justify-center">
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--t-bg-surface)] border border-[var(--t-border)]">
-                                    <svg className="w-6 h-6 text-[var(--t-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                    <motion.div initial={{ opacity: 0, x: 25 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6, delay: 0.1 }} className="md:col-span-5 flex flex-col gap-5 sm:gap-6">
+                        <div className="flex-1 p-6 sm:p-8 rounded-2xl border relative overflow-hidden group flex flex-col justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--t-accent)]"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-10 h-10 rounded-xl flex items-center justify-center border"
+                                    style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                                 </div>
-                                <span className="font-bold text-lg tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Continuity</span>
+                                <span className="font-bold text-sm sm:text-base tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Continuity</span>
                             </div>
-                            <p className="text-xl leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                            <p className="text-sm sm:text-base leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
                                 If you want us to run it, we do. If a user reports a bug in month six, it goes to someone who has seen the code.
                             </p>
-                        </Card>
-                        <Card hoverEffect className="flex-1 p-10 rounded-3xl relative overflow-hidden group flex flex-col justify-center">
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--t-bg-surface)] border border-[var(--t-border)]">
-                                    <svg className="w-6 h-6 text-[var(--t-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                        </div>
+                        <div className="flex-1 p-6 sm:p-8 rounded-2xl border relative overflow-hidden group flex flex-col justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--t-accent)]"
+                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-10 h-10 rounded-xl flex items-center justify-center border"
+                                    style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
                                 </div>
-                                <span className="font-bold text-lg tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Adaptability</span>
+                                <span className="font-bold text-sm sm:text-base tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Adaptability</span>
                             </div>
-                            <p className="text-xl leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                            <p className="text-sm sm:text-base leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
                                 If the business changes direction, the same people adjust the software.
                             </p>
-                        </Card>
+                        </div>
                     </motion.div>
 
                     {/* Box 3 - The Result (12 cols) */}
-                    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="md:col-span-12">
-                        <div className="relative rounded-3xl overflow-hidden shadow-2xl p-10 md:p-16 flex flex-col md:flex-row items-center gap-12 group"
-                            style={{ backgroundColor: "var(--t-accent)", color: "#fff" }}>
+                    <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6, delay: 0.15 }} className="md:col-span-12">
+                        <div className="relative rounded-2xl sm:rounded-3xl border overflow-hidden p-6 sm:p-10 lg:p-12 flex flex-col md:flex-row items-center gap-6 sm:gap-10 group shadow-lg"
+                            style={{ backgroundColor: "var(--t-accent)", color: "#fff", borderColor: "transparent" }}>
                             
-                            {/* Animated wave background */}
-                            <svg className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-1000" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <svg className="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:scale-105 transition-transform duration-1000 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
                                 <path d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z" fill="rgba(255,255,255,0.1)" />
                                 <path d="M0,70 Q25,50 50,70 T100,70 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)" />
                             </svg>
 
-                            <div className="relative z-10 w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white/20 flex items-center justify-center shrink-0 shadow-lg">
-                                <svg className="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border-2 border-white/25 flex items-center justify-center shrink-0 shadow-md backdrop-blur-sm"
+                                style={{ backgroundColor: "rgba(255,255,255,0.15)" }}>
+                                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                 </svg>
-                                <div className="absolute inset-0 rounded-full border-4 border-white border-t-transparent animate-spin opacity-50" style={{ animationDuration: '3s' }} />
                             </div>
 
                             <div className="relative z-10 text-center md:text-left">
-                                <h3 className="font-display text-3xl md:text-5xl font-bold mb-6">The Result</h3>
-                                <p className="text-xl md:text-2xl leading-relaxed font-medium opacity-90 max-w-4xl">
-                                    That's more work for us than finishing a project and moving on. We still think it's the only way the thing is working properly in year three.
+                                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">The Result</h3>
+                                <p className="text-sm sm:text-base lg:text-lg leading-relaxed font-medium opacity-95 max-w-4xl">
+                                    That&apos;s more work for us than finishing a project and moving on. We still think it&apos;s the only way the thing is working properly in year three.
                                 </p>
                             </div>
                         </div>
@@ -302,50 +367,63 @@ const pillars = [
 
 function PillarsSection() {
     return (
-        <section className="py-[120px] relative" style={{ borderTop: "1px solid var(--t-border)" }}>
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-                <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+        <section className="py-14 sm:py-20 lg:py-28 relative overflow-clip border-b" style={{ borderColor: "var(--t-border)" }}>
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                <div className="flex flex-col lg:flex-row gap-10 sm:gap-14 lg:gap-20">
 
                     {/* Left Sticky Headers */}
                     <div className="lg:w-1/3">
-                        <div className="sticky top-32">
-                            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-display text-5xl md:text-6xl font-bold tracking-tight mb-6" style={{ color: "var(--t-text)" }}>
-                                The four pillars
-                            </motion.h2>
-                            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-xl mb-8" style={{ color: "var(--t-text-muted)" }}>
-                                We group our work into four areas, which roughly follow the life of a piece of software.
-                            </motion.p>
-                            <motion.div initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="w-16 h-1 rounded-full mb-8" style={{ backgroundColor: "var(--t-accent)" }} />
-
-                            {/* <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg font-medium" style={{ color: "var(--t-text)" }}>
-                                Plenty of clients begin with one area and end up using another. You'd still be dealing with the same team.
-                            </motion.p> */}
+                        <div className="lg:sticky lg:top-32">
+                            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}>
+                                <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                                    style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                                    <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
+                                    Service Architecture
+                                </div>
+                                <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-3 sm:mb-4" style={{ color: "var(--t-text)" }}>
+                                    The four{" "}
+                                    <span className="italic" style={{ color: "var(--t-accent)" }}>pillars.</span>
+                                </h2>
+                                <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-6" style={{ color: "var(--t-text-muted)" }}>
+                                    We group our work into four areas, which roughly follow the life of a piece of software.
+                                </p>
+                                <Button href="/work" variant="outline" className="group">
+                                    Explore all services
+                                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </Button>
+                            </motion.div>
                         </div>
                     </div>
 
                     {/* Right Scrolling Cards */}
-                    <div className="lg:w-2/3 flex flex-col gap-8">
+                    <div className="lg:w-2/3 flex flex-col gap-4 sm:gap-5">
                         {pillars.map((pillar, idx) => (
-                            <motion.div key={idx} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }}>
-                                <Link href={pillar.href} className="block outline-none">
-                                    <Card variant="interactive" hoverEffect className="group p-10 md:p-12 rounded-3xl relative overflow-hidden transition-all duration-300 hover:-translate-y-1">
-
-                                    {/* Hover gradient overlay */}
-                                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                                        style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.02))" }} />
-
-                                    <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                                        <div>
-                                            <h3 className="font-display text-3xl font-bold mb-3 group-hover:text-[var(--t-accent)] transition-colors" style={{ color: "var(--t-text)" }}>{pillar.title}</h3>
-                                            <p className="text-xl font-medium mb-3" style={{ color: "var(--t-text)" }}>{pillar.desc}</p>
-                                            <p className="text-lg opacity-80" style={{ color: "var(--t-text-muted)" }}>{pillar.detail}</p>
-                                        </div>
-                                        <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-full border border-dashed transition-all group-hover:rotate-45"
-                                            style={{ borderColor: "var(--t-accent)", color: "var(--t-accent)" }}>
-                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                            <motion.div key={idx} initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.5, delay: idx * 0.08 }}>
+                                <Link href={pillar.href} className="block outline-none group">
+                                    <div className="p-6 sm:p-8 rounded-2xl border relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--t-accent)]"
+                                        style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
+                                        <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6">
+                                            <div className="flex-1 min-w-0">
+                                                <div className="flex items-center gap-3 mb-2">
+                                                    <span className="w-7 h-7 rounded-lg flex items-center justify-center font-mono text-xs font-bold"
+                                                        style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-accent)", border: "1px solid var(--t-border)" }}>
+                                                        0{idx + 1}
+                                                    </span>
+                                                    <h3 className="font-display text-xl sm:text-2xl font-bold transition-colors duration-300 group-hover:text-[var(--t-accent)]" style={{ color: "var(--t-text)" }}>
+                                                        {pillar.title}
+                                                    </h3>
+                                                </div>
+                                                <p className="text-sm sm:text-base font-medium mb-1.5" style={{ color: "var(--t-text)" }}>{pillar.desc}</p>
+                                                <p className="text-xs sm:text-sm opacity-75 leading-relaxed" style={{ color: "var(--t-text-muted)" }}>{pillar.detail}</p>
+                                            </div>
+                                            <div className="shrink-0 flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-xl border transition-all duration-300 group-hover:scale-105 group-hover:bg-[var(--t-accent)] group-hover:text-white group-hover:border-[var(--t-accent)]"
+                                                style={{ borderColor: "var(--t-border)", color: "var(--t-accent)", backgroundColor: "var(--t-bg-surface)" }}>
+                                                <svg className="w-5 h-5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                            </div>
                                         </div>
                                     </div>
-                                    </Card>
                                 </Link>
                             </motion.div>
                         ))}
@@ -361,76 +439,301 @@ function PillarsSection() {
    SECTION 6 — WHERE WE WORK
    ──────────────────────────────────────────────────────────── */
 function WhereWeWork() {
+    const [hoveredLoc, setHoveredLoc] = useState<string | null>(null);
+
     const locations = [
-        { name: "Canada", top: "25%", left: "26%", isHQ: false, labelPos: "top" },
-        { name: "United States", top: "29%", left: "25.5%", isHQ: false, labelPos: "bottom" },
-        { name: "United Kingdom", top: "21%", left: "46%", isHQ: false, labelPos: "left" },
-        { name: "UAE", top: "33%", left: "58.5%", isHQ: false, labelPos: "left" },
-        { name: "Chennai (HQ)", top: "44.5%", left: "61.5%", isHQ: true, labelPos: "bottom" }
+        {
+            id: "chennai",
+            name: "Chennai (HQ)",
+            country: "India",
+            flag: "🇮🇳",
+            tag: "Global Headquarters",
+            team: "60+ In-House Engineers",
+            timezone: "IST (UTC+5:30)",
+            coverage: "24/7 Operations",
+            focus: "Full-stack development, core system architecture, legacy modernisation & round-the-clock live maintenance.",
+            isHQ: true,
+            top: "49.13%",
+            left: "69.09%",
+            tooltipPos: "top" as const
+        },
+        {
+            id: "us",
+            name: "United States",
+            country: "USA",
+            flag: "🇺🇸",
+            tag: "Client Hub",
+            team: "Dedicated Delivery Pods",
+            timezone: "EST / CST / PST",
+            coverage: "100% Timezone Overlap",
+            focus: "Enterprise cloud software, custom platform builds, and dedicated development teams for US businesses.",
+            isHQ: false,
+            top: "30.73%",
+            left: "20.26%",
+            tooltipPos: "bottom" as const
+        },
+        {
+            id: "uk",
+            name: "United Kingdom",
+            country: "UK",
+            flag: "🇬🇧",
+            tag: "Client Hub",
+            team: "Product & Architecture",
+            timezone: "GMT / BST",
+            coverage: "Daily Synchronized Standups",
+            focus: "SaaS engineering, tech stack migrations, and ongoing application monitoring.",
+            isHQ: false,
+            top: "21.12%",
+            left: "46.6%",
+            tooltipPos: "top" as const
+        },
+        {
+            id: "canada",
+            name: "Canada",
+            country: "Canada",
+            flag: "🇨🇦",
+            tag: "Client Hub",
+            team: "Cloud & QA Pods",
+            timezone: "EST / PST",
+            coverage: "Extended Business Hours",
+            focus: "High-reliability web platforms, quality engineering, and active maintenance contracts.",
+            isHQ: false,
+            top: "20.1%",
+            left: "18.07%",
+            tooltipPos: "top" as const
+        },
+        {
+            id: "uae",
+            name: "UAE",
+            country: "United Arab Emirates",
+            flag: "🇦🇪",
+            tag: "Client Hub",
+            team: "Regional Delivery",
+            timezone: "GST (UTC+4)",
+            coverage: "Direct Regional Overlap",
+            focus: "Fintech, digital transformation, and fast-paced agile development.",
+            isHQ: false,
+            top: "41.02%",
+            left: "62.06%",
+            tooltipPos: "bottom" as const
+        }
     ];
 
     return (
-        <section className="py-[160px] relative overflow-hidden" style={{ borderTop: "1px solid var(--t-border)", backgroundColor: "var(--t-bg-surface)" }}>
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
-                <div className="text-center mb-16">
-                    <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight mb-8" style={{ color: "var(--t-text)" }}>
+        <section className="py-20 lg:py-32 relative overflow-hidden" style={{ borderTop: "1px solid var(--t-border)", backgroundColor: "var(--t-bg-surface)" }}>
+            {/* Ambient Background Glows */}
+            <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full blur-[160px] pointer-events-none opacity-20"
+                style={{ backgroundColor: "var(--t-accent)" }} />
+            <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[140px] pointer-events-none opacity-15"
+                style={{ backgroundColor: "#1f5eff" }} />
+
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                {/* Header */}
+                <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
+                    <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="mb-4">
+                        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border"
+                            style={{ backgroundColor: "var(--t-bg-card)", color: "var(--t-accent)", borderColor: "var(--t-border)" }}>
+                            <span className="w-2 h-2 rounded-full animate-ping" style={{ backgroundColor: "var(--t-accent)" }} />
+                            Global Operations
+                        </span>
+                    </motion.div>
+
+                    <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
+                        className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6" style={{ color: "var(--t-text)" }}>
                         Global reach.<br/>
                         <span className="italic" style={{ color: "var(--t-accent)" }}>Local focus.</span>
-                    </h2>
-                    <p className="text-xl leading-relaxed mb-4 max-w-2xl mx-auto" style={{ color: "var(--t-text-muted)" }}>
-                        Our office is at 295, 13th St, S. Kolathur, Chennai, Tamil Nadu 600129.
-                    </p>
-                    <p className="text-lg font-medium leading-relaxed max-w-2xl mx-auto" style={{ color: "var(--t-text)" }}>
-                        We work with clients over calls and shared tools, and we set our hours around when they need us.
-                    </p>
+                    </motion.h2>
+
+                    <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
+                        className="text-base sm:text-lg lg:text-xl leading-relaxed mb-4" style={{ color: "var(--t-text-muted)" }}>
+                        Headquartered at <span className="font-semibold" style={{ color: "var(--t-text)" }}>295, 13th St, S. Kolathur, Chennai, Tamil Nadu 600129</span>.
+                    </motion.p>
+                    <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.25 }}
+                        className="text-sm sm:text-base md:text-lg font-medium leading-relaxed" style={{ color: "var(--t-text)" }}>
+                        We work with clients over calls and shared tools, and we set our working hours around when they need us.
+                    </motion.p>
                 </div>
 
-                {/* Map Container */}
-                <div className="relative w-full aspect-[2/1] max-w-[1200px] mx-auto mt-16 lg:mt-24">
-                    {/* SVG Map Background Mask */}
-                    <div className="absolute inset-0 bg-[var(--t-text)] pointer-events-none transition-colors duration-300" 
+                {/* Map Display Card */}
+                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
+                    className="relative rounded-2xl sm:rounded-3xl border p-3 sm:p-6 lg:p-10 backdrop-blur-md overflow-hidden transition-all duration-300"
+                    style={{
+                        backgroundColor: "var(--t-bg-card)",
+                        borderColor: "var(--t-border)",
+                        boxShadow: "0 25px 50px -12px var(--t-shadow)"
+                    }}>
+                    
+                    {/* Subtle grid texture overlay */}
+                    <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
                         style={{
-                            WebkitMaskImage: 'url("/svaan-map.svg")',
-                            WebkitMaskSize: 'contain',
-                            WebkitMaskRepeat: 'no-repeat',
-                            WebkitMaskPosition: 'center',
-                            maskImage: 'url("/svaan-map.svg")',
-                            maskSize: 'contain',
-                            maskRepeat: 'no-repeat',
-                            maskPosition: 'center',
-                            opacity: 0.15
+                            backgroundImage: 'radial-gradient(var(--t-text) 1px, transparent 1px)',
+                            backgroundSize: '24px 24px'
                         }}
                     />
 
-                    {/* Markers */}
-                    {locations.map((loc, i) => (
-                        <motion.div key={loc.name} initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}
-                            className="absolute z-20"
-                            style={{ top: loc.top, left: loc.left, transform: 'translate(-50%, -50%)' }}>
-                            
-                            {/* Marker Dot */}
-                            <div className="relative flex items-center justify-center z-10">
-                                {loc.isHQ ? (
-                                    <div className="w-3.5 h-3.5 rounded-full" style={{ backgroundColor: "#0066ff" }} />
-                                ) : (
-                                    <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center shadow-[0_0_12px_rgba(0,102,255,0.5)]">
-                                        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#0066ff" }} />
-                                    </div>
-                                )}
-                            </div>
+                    {/* Interactive World Map Container */}
+                    <div className="relative w-full aspect-[4378/2060] max-w-[1260px] mx-auto select-none">
+                        {/* Native SVG Map */}
+                        <img
+                            src="/svaan-map.svg"
+                            alt="SVaaN Global Presence World Map"
+                            className="w-full h-full object-contain block drop-shadow-sm transition-transform duration-500"
+                            loading="eager"
+                            draggable={false}
+                        />
 
-                            {/* Text Label */}
-                            <div className={`absolute whitespace-nowrap font-medium text-[15px] pointer-events-none ${
-                                loc.labelPos === 'top' ? 'bottom-full left-1/2 -translate-x-1/2 mb-1.5' :
-                                loc.labelPos === 'bottom' ? 'top-full left-1/2 -translate-x-1/2 mt-1.5' :
-                                loc.labelPos === 'left' ? 'right-full top-1/2 -translate-y-1/2 mr-2' :
-                                'left-full top-1/2 -translate-y-1/2 ml-2'
-                            }`} style={{ color: "var(--t-text)" }}>
-                                {loc.name}
+                        {/* Interactive Hotspot Overlay */}
+                        {locations.map((loc) => {
+                            const isHovered = hoveredLoc === loc.id;
+                            return (
+                                <div
+                                    key={loc.id}
+                                    className="absolute group z-20"
+                                    style={{
+                                        top: loc.top,
+                                        left: loc.left,
+                                        transform: 'translate(-50%, -50%)'
+                                    }}
+                                    onMouseEnter={() => setHoveredLoc(loc.id)}
+                                    onMouseLeave={() => setHoveredLoc(null)}
+                                    onClick={() => setHoveredLoc(hoveredLoc === loc.id ? null : loc.id)}
+                                >
+                                    {/* Hit target area */}
+                                    <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center cursor-pointer">
+                                        {/* Animated highlight aura when card or pin is hovered */}
+                                        {isHovered && (
+                                            <span className="absolute w-8 h-8 sm:w-10 sm:h-10 rounded-full animate-ping opacity-60"
+                                                style={{ backgroundColor: loc.isHQ ? "var(--t-accent)" : "#1f5eff" }} />
+                                        )}
+                                        {isHovered && (
+                                            <span className="absolute w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 border-white shadow-[0_0_15px_rgba(31,94,255,0.8)]"
+                                                style={{ backgroundColor: loc.isHQ ? "var(--t-accent)" : "#1f5eff" }} />
+                                        )}
+                                    </div>
+
+                                    {/* Rich Tooltip Card */}
+                                    {isHovered && (
+                                        <div
+                                            className={`absolute z-30 whitespace-nowrap rounded-xl p-3 sm:p-4 border shadow-2xl backdrop-blur-md pointer-events-none transition-all duration-200 ${
+                                                loc.tooltipPos === 'top'
+                                                    ? 'bottom-full left-1/2 -translate-x-1/2 mb-3'
+                                                    : 'top-full left-1/2 -translate-x-1/2 mt-3'
+                                            }`}
+                                            style={{
+                                                backgroundColor: "var(--t-bg)",
+                                                borderColor: "var(--t-border)",
+                                                color: "var(--t-text)"
+                                            }}
+                                        >
+                                            <div className="flex items-center gap-2 mb-1.5">
+                                                <span className="text-base sm:text-lg">{loc.flag}</span>
+                                                <span className="font-bold text-sm sm:text-base">{loc.name}</span>
+                                                <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border"
+                                                    style={{
+                                                        backgroundColor: loc.isHQ ? "var(--t-accent)" : "var(--t-bg-surface)",
+                                                        color: loc.isHQ ? "#fff" : "var(--t-accent)",
+                                                        borderColor: "var(--t-border)"
+                                                    }}>
+                                                    {loc.tag}
+                                                </span>
+                                            </div>
+                                            <div className="text-xs space-y-0.5" style={{ color: "var(--t-text-muted)" }}>
+                                                <div className="flex items-center gap-1.5 font-medium" style={{ color: "var(--t-text)" }}>
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                                    {loc.timezone} • {loc.coverage}
+                                                </div>
+                                                <div className="text-[11px] max-w-[220px] whitespace-normal pt-1" style={{ color: "var(--t-text-muted)" }}>
+                                                    {loc.focus}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* Bottom Location Badges Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 mt-6 sm:mt-10 pt-6 border-t"
+                        style={{ borderColor: "var(--t-border)" }}>
+                        {locations.map((loc) => {
+                            const isHovered = hoveredLoc === loc.id;
+                            return (
+                                <div
+                                    key={loc.id}
+                                    onMouseEnter={() => setHoveredLoc(loc.id)}
+                                    onMouseLeave={() => setHoveredLoc(null)}
+                                    onClick={() => setHoveredLoc(hoveredLoc === loc.id ? null : loc.id)}
+                                    className={`group p-4 rounded-xl border transition-all duration-200 cursor-pointer text-left ${
+                                        isHovered
+                                            ? 'scale-[1.02] shadow-lg ring-1'
+                                            : 'hover:scale-[1.01]'
+                                    }`}
+                                    style={{
+                                        backgroundColor: isHovered
+                                            ? "var(--t-bg-surface)"
+                                            : "var(--t-bg)",
+                                        borderColor: isHovered
+                                            ? "var(--t-accent)"
+                                            : "var(--t-border)",
+                                        boxShadow: isHovered
+                                            ? "0 0 0 1px var(--t-accent), 0 10px 25px -5px var(--t-shadow)"
+                                            : undefined
+                                    }}
+                                >
+                                    <div className="flex items-center justify-between gap-2 mb-2">
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-xl">{loc.flag}</span>
+                                            <h3 className="font-bold text-sm sm:text-base leading-snug" style={{ color: "var(--t-text)" }}>
+                                                {loc.name}
+                                            </h3>
+                                        </div>
+                                        {loc.isHQ && (
+                                            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider text-white"
+                                                style={{ backgroundColor: "var(--t-accent)" }}>
+                                                HQ
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className="text-xs font-semibold mb-1" style={{ color: "var(--t-accent)" }}>
+                                        {loc.team}
+                                    </div>
+                                    <div className="text-[11px] mb-2 font-medium" style={{ color: "var(--t-text-muted)" }}>
+                                        {loc.timezone}
+                                    </div>
+                                    <p className="text-xs leading-relaxed line-clamp-2" style={{ color: "var(--t-text-muted)" }}>
+                                        {loc.focus}
+                                    </p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </motion.div>
+
+                {/* Bottom Operating Model Summary Pill */}
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}
+                    className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-6 rounded-2xl border"
+                    style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border"
+                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <div>
+                            <div className="font-semibold text-sm sm:text-base" style={{ color: "var(--t-text)" }}>
+                                Flexible Overlapping Hours
                             </div>
-                        </motion.div>
-                    ))}
-                </div>
+                            <div className="text-xs sm:text-sm" style={{ color: "var(--t-text-muted)" }}>
+                                Synchronized delivery pods tailored for EST, CST, PST, GMT, and GST time zones.
+                            </div>
+                        </div>
+                    </div>
+                    <Link href="/contact" className="w-full sm:w-auto shrink-0">
+                        <Button variant="outline" size="sm" className="w-full sm:w-auto">
+                            Schedule a Call
+                        </Button>
+                    </Link>
+                </motion.div>
             </div>
         </section>
     );
@@ -441,24 +744,36 @@ function WhereWeWork() {
    ──────────────────────────────────────────────────────────── */
 function ClosingCTA() {
     return (
-        <section className="py-[120px] relative overflow-hidden" style={{ borderTop: "1px solid var(--t-border)" }}>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[200px] pointer-events-none"
-                style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
+        <section className="py-16 sm:py-24 lg:py-32 relative overflow-clip border-t" style={{ borderColor: "var(--t-border)" }}>
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full blur-[200px] pointer-events-none"
+                style={{ backgroundColor: "var(--t-accent)", opacity: "calc(var(--t-orb-opacity) * 0.9)" }} />
 
-            <div className="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
-                <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className="text-center">
-                    <h2 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-8" style={{ color: "var(--t-text)" }}>
-                        Talk to us.
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7 }} className="text-center">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-md border text-xs font-semibold tracking-wider uppercase"
+                        style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                        <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
+                        Get In Touch
+                    </div>
+                    <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 sm:mb-6" style={{ color: "var(--t-text)" }}>
+                        Talk to{" "}
+                        <span className="italic" style={{ color: "var(--t-accent)" }}>us.</span>
                     </h2>
-                    <p className="text-lg md:text-xl max-w-lg mx-auto mb-12" style={{ color: "var(--t-text-muted)" }}>
-                        Want to meet the people you'd be working with? Or just tell us what you need. If we're not the right fit, we'll say so.
+                    <p className="text-sm sm:text-base lg:text-lg max-w-lg mx-auto mb-8 sm:mb-10 leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                        Want to meet the people you&apos;d be working with? Or just tell us what you need. If we&apos;re not the right fit, we&apos;ll say so.
                     </p>
                     <div className="flex flex-wrap justify-center items-center gap-4">
-                        <Button href="/leadership" variant="primary" size="lg">
+                        <Button href="/leadership" variant="primary" size="lg" className="group">
                             Meet the leadership
+                            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
                         </Button>
-                        <Button href="/contact" variant="outline" size="lg">
+                        <Button href="/contact" variant="outline" size="lg" className="group">
                             Discuss your challenge
+                            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
                         </Button>
                     </div>
                 </motion.div>
@@ -472,7 +787,7 @@ function ClosingCTA() {
    ──────────────────────────────────────────────────────────── */
 export default function AboutV2() {
     return (
-        <main className="w-full pt-[80px]">
+        <main className="w-full overflow-x-clip">
             <AboutHero />
             <StorySection />
             <LessonsSection />
