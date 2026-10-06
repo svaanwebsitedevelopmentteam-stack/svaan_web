@@ -20,9 +20,9 @@ const leaders = [
         role: "Chief Executive Officer",
         image: "/Sai.jpg",
         bio: [
-            "Sai Ramamurthy leads SVaaN Global Tech with a focus on business transformation, organizational design, and building systems that allow businesses to evolve beyond founder dependency. His approach begins with understanding the patterns, misalignments, and dependencies within a business before deciding what should be systemized, automated, or made autonomous.",
-            "Before joining SVaaN as CEO, Sai built experience across business development, market analysis, financial planning, partner management, and organizational growth. He also founded NO TOXIC®, where he continues to focus on building systems around a clear set of principles.",
-            "At SVaaN, Sai brings a business-first perspective to how strategy, technology, and organizational design come together."
+            "Sai Ramamurthy is the CEO of SVaaN Global Tech, where he works with businesses on growth, transformation, and building stronger ways of working. His focus is on understanding how a business operates as a whole — its people, processes, technology, customers, and the decisions that drive it.",
+            "He believes that technology should follow the business, not the other way around. Much of his work is about finding what is holding a business back, simplifying it, and putting the right systems and people in place so the business can grow without everything depending on the founder.",
+            "Sai is also the founder of NO TOXIC®, a venture built around his belief that businesses can create value without compromising people or the planet. Across both ventures, his work is driven by a simple idea: build businesses that are commercially strong, well organised, and capable of creating a better future."
         ],
         linkedin: "https://www.linkedin.com/in/sairamamurthy"
     },
