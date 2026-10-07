@@ -4,38 +4,41 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeUpVariants } from "@/lib/motion";
 import { 
-    Code2, Terminal, Database, Cloud, 
-    Monitor, Server, Cpu, Layers, Box, Layout, Shield,
-    Activity, CheckSquare, LifeBuoy
-} from "lucide-react";
+    SiNextdotjs, SiReact, SiVuedotjs, SiNodedotjs, SiPython, SiGo,
+    SiPostgresql, SiMongodb, SiGooglecloud, SiDocker, SiKubernetes,
+    SiTensorflow, SiDatadog, SiPrometheus, SiNewrelic, SiJira, SiZendesk, SiGithub
+} from "react-icons/si";
+import { FaJava, FaAws, FaNetworkWired, FaCubes } from "react-icons/fa6";
+import { VscAzure } from "react-icons/vsc";
+import { TbApi } from "react-icons/tb";
 
 const iconMap: Record<string, any> = {
-    "Next.js": Layout,
-    "React": Code2,
-    "React Native": Monitor,
-    "Vue": Layers,
-    "Node.js": Server,
-    "Python": Terminal,
-    "Java": Box,
-    "Go": Cpu,
-    "PostgreSQL": Database,
-    "MongoDB": Database,
-    "AWS": Cloud,
-    "Google Cloud": Cloud,
-    "Azure": Cloud,
-    "Docker": Box,
-    "Kubernetes": Layers,
-    "CI/CD pipelines": Terminal,
-    "APIs": Code2,
-    "microservices": Box,
-    "serverless": Cloud,
-    "TensorFlow": Cpu,
-    "Datadog": Activity,
-    "New Relic": Activity,
-    "Prometheus": Activity,
-    "Jira": CheckSquare,
-    "ServiceNow": LifeBuoy,
-    "Zendesk": LifeBuoy
+    "Next.js": SiNextdotjs,
+    "React": SiReact,
+    "React Native": SiReact,
+    "Vue": SiVuedotjs,
+    "Node.js": SiNodedotjs,
+    "Python": SiPython,
+    "Java": FaJava,
+    "Go": SiGo,
+    "PostgreSQL": SiPostgresql,
+    "MongoDB": SiMongodb,
+    "AWS": FaAws,
+    "Google Cloud": SiGooglecloud,
+    "Azure": VscAzure,
+    "Docker": SiDocker,
+    "Kubernetes": SiKubernetes,
+    "CI/CD pipelines": SiGithub,
+    "APIs": TbApi,
+    "microservices": FaCubes,
+    "serverless": FaAws,
+    "TensorFlow": SiTensorflow,
+    "Datadog": SiDatadog,
+    "New Relic": SiNewrelic,
+    "Prometheus": SiPrometheus,
+    "Jira": SiJira,
+    "ServiceNow": FaNetworkWired,
+    "Zendesk": SiZendesk
 };
 
 export function TechGroups({ groups }: { groups: any[] }) {
@@ -96,14 +99,14 @@ export function TechGroups({ groups }: { groups: any[] }) {
                                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                                     >
                                         {activeGroup.items?.map((item: string, j: number) => {
-                                            const Icon = iconMap[item] || Box;
+                                            const Icon = iconMap[item] || FaCubes;
                                             return (
                                                 <div 
                                                     key={j} 
                                                     className="snap-start shrink-0 w-[240px] bg-[var(--t-bg-surface)] border border-[var(--t-border)] hover:border-[var(--t-accent)] rounded-[8px] p-8 transition-colors group flex flex-col items-center justify-center text-center gap-4"
                                                 >
                                                     <div className="w-12 h-12 rounded-full bg-[var(--t-bg-card)] border border-[var(--t-border)] flex items-center justify-center text-[var(--t-text-secondary)] group-hover:text-[var(--t-accent)] group-hover:border-[var(--t-accent)] transition-colors">
-                                                        <Icon strokeWidth={1.5} size={24} />
+                                                        <Icon size={24} />
                                                     </div>
                                                     <span className="type-body font-medium text-[var(--t-text)]">{item}</span>
                                                 </div>
