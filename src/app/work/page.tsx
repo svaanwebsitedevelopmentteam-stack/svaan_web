@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { CTASection } from "@/components/CTASection";
-import { allProjectsList, type ProjectData } from "@/data/projectsData";
+import { allProjectsList } from "@/data/projectsData";
 
 const categories = ["All", "Touring", "Home Care", "Healthcare", "Real Estate"] as const;
 type CategoryFilter = typeof categories[number];
@@ -101,51 +101,53 @@ export default function WorkPage() {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, scale: 0.95 }}
                                     transition={{ duration: 0.4, delay: i * 0.05 }}
+                                    className="h-full"
                                 >
                                     <Link
                                         href={project.href}
-                                        className="group flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl border overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)]"
+                                        aria-label={`${project.title} - Explore Solutions`}
+                                        className="group flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl border overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[var(--t-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] block cursor-pointer"
                                         style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                                     >
                                         {/* Image Container with SVG illustration */}
                                         <div className="relative w-full aspect-[16/10] overflow-hidden border-b"
                                             style={{ borderColor: "var(--t-border)" }}>
-                                            <div className="absolute inset-0 w-full h-full pointer-events-none group-hover:scale-105 transition-transform duration-700 ease-out">
+                                            <div className="absolute inset-0 w-full h-full pointer-events-none transition-transform duration-500 group-hover:scale-105">
                                                 <project.Illustration className="w-full h-full object-cover" />
                                             </div>
-                                            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-50 group-hover:opacity-20 transition-opacity duration-500`} />
+                                            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-50`} />
 
                                             {/* Scope pill badge on top left */}
                                             <div className="absolute top-4 left-4 z-10">
                                                 <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase backdrop-blur-md border shadow-sm"
                                                     style={{
-                                                        backgroundColor: "rgba(0, 0, 0, 0.6)",
-                                                        borderColor: "rgba(255, 255, 255, 0.15)",
+                                                        backgroundColor: "rgba(0, 0, 0, 0.65)",
+                                                        borderColor: "rgba(255, 255, 255, 0.2)",
                                                         color: "#fff"
                                                     }}>
                                                     {project.scope}
                                                 </span>
                                             </div>
 
-                                            {/* Hover arrow badge on top right */}
-                                            <div className="absolute top-4 right-4 w-10 h-10 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-md border z-10"
-                                                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
-                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                                </svg>
+                                            {/* Category pill badge on top right */}
+                                            <div className="absolute top-4 right-4 z-10">
+                                                <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide backdrop-blur-md border shadow-sm"
+                                                    style={{
+                                                        backgroundColor: "var(--t-bg-card)",
+                                                        borderColor: "var(--t-border)",
+                                                        color: "var(--t-accent)"
+                                                    }}>
+                                                    {project.category}
+                                                </span>
                                             </div>
                                         </div>
 
                                         {/* Content & Metadata */}
-                                        <div className="p-5 sm:p-7 flex flex-col justify-between flex-1">
+                                        <div className="p-6 sm:p-7 flex flex-col justify-between flex-1">
                                             <div>
-                                                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                                <div className="mb-2">
                                                     <span className="text-xs font-mono font-bold uppercase tracking-wider" style={{ color: "var(--t-accent)" }}>
                                                         {project.client}
-                                                    </span>
-                                                    <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full border"
-                                                        style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text)" }}>
-                                                        {project.category}
                                                     </span>
                                                 </div>
 
@@ -154,31 +156,48 @@ export default function WorkPage() {
                                                     {project.title}
                                                 </h2>
 
-                                                <p className="text-sm leading-relaxed mb-4 line-clamp-2" style={{ color: "var(--t-text-muted)" }}>
+                                                <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--t-text-muted)" }}>
                                                     {project.summary}
                                                 </p>
 
-                                                {/* Key Metric Pill */}
-                                                <div className="flex flex-wrap gap-1.5 mb-2">
-                                                    {project.metrics.slice(0, 2).map((metric) => (
-                                                        <span key={metric} className="text-[10px] font-medium px-2 py-0.5 rounded-md border"
-                                                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
+                                                {/* Key Metric / Highlights Pills */}
+                                                <div className="flex flex-wrap gap-1.5 mb-5">
+                                                    {project.metrics.map((metric) => (
+                                                        <span key={metric} className="text-[11px] font-medium px-2.5 py-1 rounded-md border"
+                                                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text)" }}>
                                                             ✓ {metric}
                                                         </span>
                                                     ))}
                                                 </div>
                                             </div>
 
-                                            <div className="pt-5 mt-5 border-t flex items-center justify-between"
+                                            {/* Footer with tech stack tags and subtle action arrow */}
+                                            <div className="pt-4 border-t flex items-center justify-between gap-3"
                                                 style={{ borderColor: "var(--t-border)" }}>
-                                                <span className="text-xs font-bold uppercase tracking-wider group-hover:text-[var(--t-accent)] transition-colors duration-200"
-                                                    style={{ color: "var(--t-text)" }}>
-                                                    View Case Study
-                                                </span>
-                                                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"
-                                                    style={{ color: "var(--t-accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                                </svg>
+                                                <div className="flex flex-wrap gap-1.5">
+                                                    {project.techStack.slice(0, 3).map((tech) => (
+                                                        <span key={tech} className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded border"
+                                                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
+                                                            {tech}
+                                                        </span>
+                                                    ))}
+                                                    {project.techStack.length > 3 && (
+                                                        <span className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded border"
+                                                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
+                                                            +{project.techStack.length - 3}
+                                                        </span>
+                                                    )}
+                                                </div>
+
+                                                {/* Interactive arrow icon */}
+                                                <div className="w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 group-hover:bg-[var(--t-accent)] group-hover:text-white group-hover:border-[var(--t-accent)]"
+                                                    style={{ borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}
+                                                    aria-hidden="true"
+                                                >
+                                                    <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                    </svg>
+                                                </div>
                                             </div>
                                         </div>
                                     </Link>

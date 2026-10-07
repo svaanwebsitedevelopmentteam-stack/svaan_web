@@ -107,7 +107,8 @@ export function WorkShowcase() {
                         >
                             <Link
                                 href={project.href}
-                                className="group block relative rounded-[var(--t-radius-card)] overflow-hidden transition-all duration-300 h-full flex flex-col border hover:border-[var(--t-accent)] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
+                                aria-label={`${project.title} - Our Solutions`}
+                                className="group block relative rounded-[var(--t-radius-card)] overflow-hidden transition-all duration-300 h-full flex flex-col border hover:border-[var(--t-accent)] hover:shadow-md cursor-pointer"
                                 style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                             >
                                 <div className="relative h-56 md:h-64 flex-shrink-0 overflow-hidden bg-[var(--t-bg-card)]">
@@ -127,13 +128,7 @@ export function WorkShowcase() {
                                         <h3 className="type-h3 mb-3 group-hover:text-[var(--t-accent)] transition-colors duration-300 line-clamp-2" style={{ color: "var(--t-text)" }}>
                                             {project.title}
                                         </h3>
-                                        <p className="type-body-sm mb-6 line-clamp-2" style={{ color: "var(--t-text-muted)" }}>{project.desc}</p>
-                                    </div>
-                                    <div className="inline-flex items-center gap-2 type-body-sm font-semibold group-hover:gap-3 transition-all duration-300" style={{ color: "var(--t-accent)" }}>
-                                        View Project
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
-                                        </svg>
+                                        <p className="type-body-sm line-clamp-3" style={{ color: "var(--t-text-muted)" }}>{project.desc}</p>
                                     </div>
                                 </div>
                             </Link>

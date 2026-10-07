@@ -479,7 +479,7 @@ function SolutionPillarsSection() {
     };
 
     return (
-        <section className="py-14 sm:py-20 lg:py-28 bg-[var(--t-bg-surface)]">
+        <section id="solutions" className="py-14 sm:py-20 lg:py-28 bg-[var(--t-bg-surface)] scroll-mt-24">
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }}>
