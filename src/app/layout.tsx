@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/herosection.png",
+        url: "/herosection.webp",
         width: 1200,
         height: 630,
         alt: "SVaaN Global Tech",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SVaaN Global Tech - Technology & Strategy Partner",
     description: "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
-    images: ["/herosection.png"],
+    images: ["/herosection.webp"],
   },
   icons: {
     icon: [
@@ -63,6 +63,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${sora.variable} ${inter.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      </head>
       <body className="min-h-screen font-sans antialiased">
         <ThemeProvider>
           <CustomCursor />

@@ -81,6 +81,7 @@ export function CapabilitiesGrid() {
                                     muted
                                     loop
                                     playsInline
+                                    preload="none"
                                     className="w-full h-full object-cover scale-[1.05] group-hover:scale-110 transition-transform duration-[3s]"
                                 >
                                     <source src={cap.videoSrc} type="video/mp4" />

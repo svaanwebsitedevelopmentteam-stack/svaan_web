@@ -305,6 +305,7 @@ nav,
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -313,11 +314,30 @@ nav,
 
 ::-webkit-scrollbar-thumb {
   background: var(--t-border);
-  border-radius: 3px;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--t-text-muted);
+}
+
+/* Explicit visible horizontal scrollbar for mobile signal tabs */
+.signal-tab-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--t-accent) var(--t-border);
+  -webkit-overflow-scrolling: touch;
+}
+.signal-tab-scrollbar::-webkit-scrollbar {
+  height: 4px;
+  display: block;
+}
+.signal-tab-scrollbar::-webkit-scrollbar-track {
+  background: var(--t-border);
+  border-radius: 9999px;
+}
+.signal-tab-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--t-accent);
+  border-radius: 9999px;
 }
 
 /* Selection */

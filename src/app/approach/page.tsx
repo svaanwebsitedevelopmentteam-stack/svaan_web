@@ -684,8 +684,8 @@ export default function ApproachPage() {
                         className="rounded-2xl sm:rounded-3xl p-6 sm:p-9 lg:p-10 border transition-all duration-300 hover:shadow-xl hover:border-[var(--t-accent)] group"
                         style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                     >
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4">
-                            <div className="flex items-center gap-4">
+                        <div className="flex items-center justify-between mb-4 sm:mb-6 gap-4">
+                            <div className="flex items-center gap-3.5 sm:gap-4">
                                 <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shrink-0 border shadow-sm group-hover:scale-105 transition-transform duration-300"
                                     style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
                                     <step.icon className="w-7 h-7 sm:w-8 sm:h-8" />
@@ -699,7 +699,7 @@ export default function ApproachPage() {
                                     </h3>
                                 </div>
                             </div>
-                            <span className="font-display text-4xl sm:text-5xl font-black opacity-10 self-end sm:self-auto" style={{ color: "var(--t-text)" }}>
+                            <span className="font-display text-3xl sm:text-5xl font-black opacity-15 sm:opacity-20 shrink-0 select-none leading-none" style={{ color: "var(--t-text)" }}>
                                 {step.num}
                             </span>
                         </div>

@@ -133,7 +133,15 @@ function HeroV2() {
                 {/* Right Image */}
                 <motion.div initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }} animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                     transition={{ duration: 1, delay: 0.2 }} className="relative w-full h-[240px] sm:h-[380px] md:h-[460px] lg:h-[540px] mt-2 sm:mt-6 lg:mt-0">
-                    <Image src="/herosection.png" alt="SVaaN Hero" fill className="object-contain lg:object-right object-center" priority />
+                    <Image
+                        src="/herosection.webp"
+                        alt="SVaaN Hero"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                        className="object-contain lg:object-right object-center"
+                        priority
+                        fetchPriority="high"
+                    />
                 </motion.div>
             </div>
 
@@ -1182,8 +1190,13 @@ function LeadershipPreview() {
                     <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className="relative flex flex-col justify-center">
                         <div className="relative w-full h-[260px] sm:h-[360px] lg:h-[440px] rounded-2xl overflow-hidden"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
-                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
-                                alt="SVaaN leadership team" className="absolute inset-0 w-full h-full object-cover filter grayscale-[10%]" />
+                            <img
+                                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
+                                alt="SVaaN leadership team"
+                                loading="lazy"
+                                decoding="async"
+                                className="absolute inset-0 w-full h-full object-cover filter grayscale-[10%]"
+                            />
                             <div className="absolute inset-0 mix-blend-overlay opacity-60" style={{ background: "linear-gradient(135deg, var(--t-gradient-from), transparent, var(--t-gradient-to))" }} />
                         </div>
                         <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}

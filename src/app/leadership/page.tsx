@@ -32,7 +32,7 @@ const leaders: Leader[] = [
     {
         name: "Sai Ramamurthy",
         role: "Chief Executive Officer, SVaaN Global Tech",
-        image: "/Sai.jpg",
+        image: "/Sai.webp",
         linkedinLabel: "LinkedIn: Sai Ramamurthy",
         linkedin: "https://www.linkedin.com/in/sairamamurthy",
         tagline: "Helping businesses figure out what needs to change before deciding what technology they need.",
@@ -131,6 +131,8 @@ export default function LeadershipPage() {
                                         <img
                                             src={leader.image}
                                             alt={leader.name}
+                                            loading="lazy"
+                                            decoding="async"
                                             className="w-full h-full object-cover filter contrast-[1.05] group-hover:scale-105 transition-transform duration-700 ease-out"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
