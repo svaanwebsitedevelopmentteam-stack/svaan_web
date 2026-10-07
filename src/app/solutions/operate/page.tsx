@@ -281,7 +281,7 @@ function CTA() {
 
 export default function OperatePage() {
     return (
-        <main className="w-full overflow-x-clip min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
+        <main className="w-full min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
             <OperateHero />
             <TheProblem />
             <WhatWeDo />

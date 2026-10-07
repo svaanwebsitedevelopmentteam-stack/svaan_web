@@ -198,7 +198,8 @@ const modernizeSignals: SignalItem[] = [
     { tag: "Cost & Efficiency", text: "Hosting and cloud costs are rising while infrastructure is visibly ageing." },
     { tag: "Integration Silos", text: "Your core applications and databases do not share data seamlessly." },
     { tag: "Key-Person Risk", text: "One individual holds the unwritten tribal knowledge of how everything works." },
-    { tag: "Throughput Limit", text: "The legacy system struggles to handle peak concurrency as business grows." }
+    { tag: "Throughput Limit", text: "The legacy system struggles to handle peak concurrency as business grows." },
+    { tag: "Downtime Risk", text: "Deployments and releases require manual heroics and service interruption." }
 ];
 
 function WhenYouNeedIt() {
@@ -280,7 +281,7 @@ function CTA() {
 
 export default function ModernizePage() {
     return (
-        <main className="w-full overflow-x-clip min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
+        <main className="w-full min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
             <ModernizeHero />
             <TheProblem />
             <WhatWeDo />

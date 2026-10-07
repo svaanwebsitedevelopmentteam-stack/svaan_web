@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
 
 interface TechItem {
@@ -267,23 +267,7 @@ const officialLogos = [
     }
 ];
 
-const categoryTabs = [
-    { id: "all", label: "All Ecosystems" },
-    { id: "frontend", label: "Frontend & Mobile" },
-    { id: "backend", label: "Backend Systems" },
-    { id: "cloud", label: "Cloud Infra" },
-    { id: "data", label: "Data & AI" },
-    { id: "devops", label: "DevOps & Security" },
-];
-
 export function TechStack() {
-    const [selectedTab, setSelectedTab] = useState("all");
-
-    const filteredDomains =
-        selectedTab === "all"
-            ? techDomains
-            : techDomains.filter((d) => d.id === selectedTab);
-
     return (
         <section
             className="py-14 sm:py-20 lg:py-28 relative overflow-hidden border-b"
@@ -331,34 +315,9 @@ export function TechStack() {
                     </motion.div>
                 </div>
 
-                {/* Interactive Category Filter Pills */}
-                <div className="flex items-center justify-center gap-2 mb-10 sm:mb-14 flex-wrap">
-                    {categoryTabs.map((tab) => {
-                        const isActive = selectedTab === tab.id;
-                        return (
-                            <button
-                                key={tab.id}
-                                onClick={() => setSelectedTab(tab.id)}
-                                className="relative px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] cursor-pointer"
-                                style={{
-                                    color: isActive ? "#fff" : "var(--t-text-muted)",
-                                    border: isActive ? "1px solid var(--t-accent)" : "1px solid var(--t-border)",
-                                    backgroundColor: isActive ? "var(--t-accent)" : "var(--t-bg-card)",
-                                }}
-                            >
-                                <span className="relative z-10">{tab.label}</span>
-                            </button>
-                        );
-                    })}
-                </div>
-
-                {/* Animated Domain Cards Grid */}
-                <motion.div
-                    layout
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 w-full"
-                >
-                    <AnimatePresence mode="popLayout">
-                        {filteredDomains.map((domain, idx) => (
+                {/* All Technology Domain Cards in 3 Columns Grid (No Tab View) */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 w-full">
+                    {techDomains.map((domain, idx) => (
                             <motion.div
                                 layout
                                 key={domain.category}
@@ -448,8 +407,7 @@ export function TechStack() {
                                 </div>
                             </motion.div>
                         ))}
-                    </AnimatePresence>
-                </motion.div>
+                    </div>
 
                 {/* Bottom Animated Infinite Logo Ribbon */}
                 <div

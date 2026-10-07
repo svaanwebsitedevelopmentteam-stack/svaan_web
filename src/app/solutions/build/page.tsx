@@ -197,7 +197,9 @@ const buildSignals: SignalItem[] = [
     { tag: "Validation Phase", text: "You have an idea and want to test it before committing large capital." },
     { tag: "Operational Ceiling", text: "Spreadsheets and manual processes are bottlenecking the business." },
     { tag: "Off-the-Shelf Mismatch", text: "The tools you can buy off the shelf do not fit the way you work." },
-    { tag: "AI Integration", text: "You want to add purposeful AI to a product with a clear high-value use case." }
+    { tag: "AI Integration", text: "You want to add purposeful AI to a product with a clear high-value use case." },
+    { tag: "Continuous Velocity", text: "Your engineering throughput cannot keep pace with accelerating business demand." },
+    { tag: "Throughput Limit", text: "Your current architecture struggles to handle enterprise concurrency and scale." }
 ];
 
 function WhenYouNeedIt() {
@@ -279,7 +281,7 @@ function CTA() {
 
 export default function BuildPage() {
     return (
-        <main className="w-full overflow-x-clip min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
+        <main className="w-full min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
             <BuildHero />
             <TheProblem />
             <WhatWeDo />
