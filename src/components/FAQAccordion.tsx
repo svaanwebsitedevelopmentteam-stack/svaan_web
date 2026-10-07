@@ -10,15 +10,18 @@ interface FAQItem {
 
 interface FAQAccordionProps {
     faqs: FAQItem[];
+    className?: string;
 }
 
-export function FAQAccordion({ faqs }: FAQAccordionProps) {
+export function FAQAccordion({ faqs, className = "" }: FAQAccordionProps) {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <div className="max-w-[900px] mx-auto w-full space-y-4">
+        <div className={`max-w-[900px] mx-auto w-full space-y-4 ${className}`.trim()}>
             {faqs.map((faq, index) => {
                 const isOpen = openIndex === index;
+                const contentId = `faq-content-${index}`;
+                const buttonId = `faq-button-${index}`;
                 return (
                     <motion.div 
                         key={index} 
@@ -34,6 +37,9 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
                         }}
                     >
                         <button 
+                            id={buttonId}
+                            aria-expanded={isOpen}
+                            aria-controls={contentId}
                             onClick={() => setOpenIndex(isOpen ? null : index)}
                             className="w-full px-6 py-6 flex items-center justify-between text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 group"
                         >
@@ -56,6 +62,9 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
                         <AnimatePresence initial={false}>
                             {isOpen && (
                                 <motion.div
+                                    id={contentId}
+                                    role="region"
+                                    aria-labelledby={buttonId}
                                     initial={{ height: 0, opacity: 0 }}
                                     animate={{ height: "auto", opacity: 1 }}
                                     exit={{ height: 0, opacity: 0 }}

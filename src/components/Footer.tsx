@@ -83,8 +83,8 @@ export function Footer() {
                             {[
                                 { label: "About Us", href: "/about" },
                                 { label: "Leadership", href: "/leadership" },
-                                { label: "Privacy Policy", href: "/privacy" },
-                                { label: "Terms", href: "/terms" },
+                                { label: "Privacy Policy", href: "/privacy-policy" },
+                                { label: "Terms", href: "/terms-conditions" },
                             ].map((link) => (
                                 <li key={link.label}>
                                     <Link
@@ -139,19 +139,19 @@ export function Footer() {
                     </p>
                     <div className="flex items-center gap-6">
                         <Link
-                            href="/privacy"
+                            href="/privacy-policy"
                             className="hover:text-[var(--t-accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-sm)]"
                         >
                             Privacy
                         </Link>
                         <Link
-                            href="/terms"
+                            href="/terms-conditions"
                             className="hover:text-[var(--t-accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-sm)]"
                         >
                             Terms
                         </Link>
                         <Link
-                            href="/cookies"
+                            href="/cookie-policy"
                             className="hover:text-[var(--t-accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-sm)]"
                         >
                             Cookies

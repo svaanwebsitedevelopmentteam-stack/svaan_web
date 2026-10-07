@@ -603,7 +603,7 @@ export default function ContactPage() {
                                         />
                                         <span className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
                                             I agree to the processing of my details according to SVaaN&apos;s{" "}
-                                            <Link href="/privacy" className="underline hover:text-[var(--t-accent)]" target="_blank">
+                                            <Link href="/privacy-policy" className="underline hover:text-[var(--t-accent)]" target="_blank">
                                                 Privacy Policy
                                             </Link>{" "}
                                             and consent to receive communications regarding my enquiry.{" "}

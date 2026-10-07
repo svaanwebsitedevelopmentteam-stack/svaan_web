@@ -191,6 +191,7 @@ We pick technology after we understand the problem. Typical choices: Next.js, Re
 
 **Call to action:** Tell us what you want to build. Button: Discuss your build
 
+
 ## 5. Modernize (/solutions/modernize)
 
 **Title:** Legacy & Application Modernization | SVaaN
