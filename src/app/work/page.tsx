@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { CTASection } from "@/components/CTASection";
 import { allProjectsList } from "@/data/projectsData";
@@ -101,106 +100,82 @@ export default function WorkPage() {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, scale: 0.95 }}
                                     transition={{ duration: 0.4, delay: i * 0.05 }}
-                                    className="h-full"
+                                    className="flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl border overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                                    style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                                 >
-                                    <Link
-                                        href={project.href}
-                                        aria-label={`${project.title} - Explore Solutions`}
-                                        className="group flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl border overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[var(--t-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] block cursor-pointer"
-                                        style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
-                                    >
-                                        {/* Image Container with SVG illustration */}
-                                        <div className="relative w-full aspect-[16/10] overflow-hidden border-b"
-                                            style={{ borderColor: "var(--t-border)" }}>
-                                            <div className="absolute inset-0 w-full h-full pointer-events-none transition-transform duration-500 group-hover:scale-105">
-                                                <project.Illustration className="w-full h-full object-cover" />
-                                            </div>
-                                            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-50`} />
+                                    {/* Image Container with SVG illustration */}
+                                    <div className="relative w-full aspect-[16/10] overflow-hidden border-b"
+                                        style={{ borderColor: "var(--t-border)" }}>
+                                        <div className="absolute inset-0 w-full h-full pointer-events-none">
+                                            <project.Illustration className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-50`} />
 
-                                            {/* Scope pill badge on top left */}
-                                            <div className="absolute top-4 left-4 z-10">
-                                                <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase backdrop-blur-md border shadow-sm"
-                                                    style={{
-                                                        backgroundColor: "rgba(0, 0, 0, 0.65)",
-                                                        borderColor: "rgba(255, 255, 255, 0.2)",
-                                                        color: "#fff"
-                                                    }}>
-                                                    {project.scope}
-                                                </span>
-                                            </div>
-
-                                            {/* Category pill badge on top right */}
-                                            <div className="absolute top-4 right-4 z-10">
-                                                <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide backdrop-blur-md border shadow-sm"
-                                                    style={{
-                                                        backgroundColor: "var(--t-bg-card)",
-                                                        borderColor: "var(--t-border)",
-                                                        color: "var(--t-accent)"
-                                                    }}>
-                                                    {project.category}
-                                                </span>
-                                            </div>
+                                        {/* Scope pill badge on top left */}
+                                        <div className="absolute top-4 left-4 z-10">
+                                            <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase backdrop-blur-md border shadow-sm"
+                                                style={{
+                                                    backgroundColor: "rgba(0, 0, 0, 0.65)",
+                                                    borderColor: "rgba(255, 255, 255, 0.2)",
+                                                    color: "#fff"
+                                                }}>
+                                                {project.scope}
+                                            </span>
                                         </div>
 
-                                        {/* Content & Metadata */}
-                                        <div className="p-6 sm:p-7 flex flex-col justify-between flex-1">
-                                            <div>
-                                                <div className="mb-2">
-                                                    <span className="text-xs font-mono font-bold uppercase tracking-wider" style={{ color: "var(--t-accent)" }}>
-                                                        {project.client}
+                                        {/* Category pill badge on top right */}
+                                        <div className="absolute top-4 right-4 z-10">
+                                            <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide backdrop-blur-md border shadow-sm"
+                                                style={{
+                                                    backgroundColor: "var(--t-bg-card)",
+                                                    borderColor: "var(--t-border)",
+                                                    color: "var(--t-accent)"
+                                                }}>
+                                                {project.category}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* Content & Metadata */}
+                                    <div className="p-6 sm:p-7 flex flex-col justify-between flex-1">
+                                        <div>
+                                            <div className="mb-2">
+                                                <span className="text-xs font-mono font-bold uppercase tracking-wider" style={{ color: "var(--t-accent)" }}>
+                                                    {project.client}
+                                                </span>
+                                            </div>
+
+                                            <h2 className="font-display text-xl sm:text-2xl font-bold leading-snug mb-3"
+                                                style={{ color: "var(--t-text)" }}>
+                                                {project.title}
+                                            </h2>
+
+                                            <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--t-text-muted)" }}>
+                                                {project.summary}
+                                            </p>
+
+                                            {/* Key Metric / Highlights Pills */}
+                                            <div className="flex flex-wrap gap-1.5 mb-5">
+                                                {project.metrics.map((metric) => (
+                                                    <span key={metric} className="text-[11px] font-medium px-2.5 py-1 rounded-md border"
+                                                        style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text)" }}>
+                                                        ✓ {metric}
                                                     </span>
-                                                </div>
-
-                                                <h2 className="font-display text-xl sm:text-2xl font-bold leading-snug mb-3 group-hover:text-[var(--t-accent)] transition-colors duration-200"
-                                                    style={{ color: "var(--t-text)" }}>
-                                                    {project.title}
-                                                </h2>
-
-                                                <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--t-text-muted)" }}>
-                                                    {project.summary}
-                                                </p>
-
-                                                {/* Key Metric / Highlights Pills */}
-                                                <div className="flex flex-wrap gap-1.5 mb-5">
-                                                    {project.metrics.map((metric) => (
-                                                        <span key={metric} className="text-[11px] font-medium px-2.5 py-1 rounded-md border"
-                                                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text)" }}>
-                                                            ✓ {metric}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
-
-                                            {/* Footer with tech stack tags and subtle action arrow */}
-                                            <div className="pt-4 border-t flex items-center justify-between gap-3"
-                                                style={{ borderColor: "var(--t-border)" }}>
-                                                <div className="flex flex-wrap gap-1.5">
-                                                    {project.techStack.slice(0, 3).map((tech) => (
-                                                        <span key={tech} className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded border"
-                                                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
-                                                            {tech}
-                                                        </span>
-                                                    ))}
-                                                    {project.techStack.length > 3 && (
-                                                        <span className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded border"
-                                                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
-                                                            +{project.techStack.length - 3}
-                                                        </span>
-                                                    )}
-                                                </div>
-
-                                                {/* Interactive arrow icon */}
-                                                <div className="w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 group-hover:bg-[var(--t-accent)] group-hover:text-white group-hover:border-[var(--t-accent)]"
-                                                    style={{ borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}
-                                                    aria-hidden="true"
-                                                >
-                                                    <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                                    </svg>
-                                                </div>
+                                                ))}
                                             </div>
                                         </div>
-                                    </Link>
+
+                                        {/* Footer with tech stack tags */}
+                                        <div className="pt-4 border-t flex flex-wrap gap-1.5"
+                                            style={{ borderColor: "var(--t-border)" }}>
+                                            {project.techStack.map((tech) => (
+                                                <span key={tech} className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded border"
+                                                    style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </motion.div>
                             ))}
                         </AnimatePresence>
