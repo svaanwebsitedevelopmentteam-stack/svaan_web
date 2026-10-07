@@ -344,13 +344,12 @@ export function SignalsSection({
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
 
                 {/* Section Header */}
-                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-14">
+                <div className="max-w-2xl mb-10 sm:mb-14">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-60px" }}
                         transition={{ duration: 0.6 }}
-                        className="max-w-2xl"
                     >
                         <div
                             className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-md border text-xs font-semibold tracking-wider uppercase"
@@ -375,39 +374,6 @@ export function SignalsSection({
                         <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
                             {subtitle}
                         </p>
-                    </motion.div>
-
-                    {/* Telemetry Status Controls */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-60px" }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="flex items-center gap-3 self-start sm:self-auto shrink-0"
-                    >
-                        <div
-                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-mono font-medium shadow-xs"
-                            style={{
-                                backgroundColor: "var(--t-bg-card)",
-                                borderColor: "var(--t-border)",
-                                color: "var(--t-text-muted)",
-                            }}
-                        >
-                            <SignalEqualizer color={activeSignal.accentColor} />
-                            <span className="ml-1 text-[11px] font-semibold tracking-wider uppercase" style={{ color: "var(--t-text)" }}>
-                                {isPaused ? "Paused" : "Live Scanner"}
-                            </span>
-                        </div>
-                        <div
-                            className="px-2.5 py-1 rounded-lg border text-[11px] font-mono font-bold"
-                            style={{
-                                backgroundColor: "var(--t-bg-card)",
-                                borderColor: "var(--t-border)",
-                                color: "var(--t-accent)",
-                            }}
-                        >
-                            0{activeIdx + 1} / 0{enrichedSignals.length}
-                        </div>
                     </motion.div>
                 </div>
 
@@ -574,40 +540,26 @@ export function SignalsSection({
                                 {/* Spotlight Top Bar */}
                                 <div>
                                     <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b" style={{ borderColor: "var(--t-border)" }}>
-                                        <div className="flex items-center gap-2.5">
+                                        <div className="flex items-center gap-2">
                                             <span
-                                                className="w-2 h-2 rounded-full animate-pulse"
+                                                className="w-2 h-2 rounded-full"
                                                 style={{ backgroundColor: activeSignal.accentColor }}
                                             />
                                             <span className="text-[11px] sm:text-xs font-mono font-bold tracking-wider uppercase" style={{ color: "var(--t-text)" }}>
-                                                Trigger Diagnostic // 0{activeIdx + 1}
+                                                {activeSignal.tag}
                                             </span>
                                         </div>
 
-                                        <div className="flex items-center gap-2">
-                                            {isPaused && (
-                                                <span
-                                                    className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold uppercase tracking-wider border animate-pulse"
-                                                    style={{
-                                                        backgroundColor: "var(--t-bg-surface)",
-                                                        borderColor: `${activeSignal.accentColor}40`,
-                                                        color: activeSignal.accentColor,
-                                                    }}
-                                                >
-                                                    Paused
-                                                </span>
-                                            )}
-                                            <span
-                                                className="px-2.5 py-1 rounded-md text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider border"
-                                                style={{
-                                                    backgroundColor: `${activeSignal.accentColor}15`,
-                                                    borderColor: `${activeSignal.accentColor}35`,
-                                                    color: activeSignal.accentColor,
-                                                }}
-                                            >
-                                                {activeSignal.impactLevel}
-                                            </span>
-                                        </div>
+                                        <span
+                                            className="px-2.5 py-1 rounded-md text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider border"
+                                            style={{
+                                                backgroundColor: `${activeSignal.accentColor}15`,
+                                                borderColor: `${activeSignal.accentColor}35`,
+                                                color: activeSignal.accentColor,
+                                            }}
+                                        >
+                                            {activeSignal.impactLevel}
+                                        </span>
                                     </div>
 
                                     {/* Center Display: 3D Icon & Core Trigger Focus */}
