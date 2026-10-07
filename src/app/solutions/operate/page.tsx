@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
 import { FAQAccordion } from "@/components/FAQAccordion";
+import { TechStack } from "@/components/TechStack";
+import { SignalsSection, type SignalItem } from "@/components/SignalsSection";
 
 /* ────────────────────────────────────────────────────────────
    1. HERO SECTION
@@ -191,55 +193,21 @@ function WhatWeDo() {
 /* ────────────────────────────────────────────────────────────
    4. WHEN YOU NEED IT (Triggers)
    ──────────────────────────────────────────────────────────── */
-const signs = [
-    "Your team built or bought an application and cannot support it fully.",
-    "A vendor has left and nobody owns the live system.",
-    "Users report problems and there is no clear place to send them.",
-    "You want a dedicated helpdesk for staff or customers.",
-    "Your cloud environment needs someone to proactively manage it.",
-    "Releases are manual, stressful and prone to downtime."
+const operateSignals: SignalItem[] = [
+    { tag: "Support Deficit", text: "Your team built or bought an application and cannot support it fully." },
+    { tag: "Ownership Void", text: "A previous vendor has left and nobody actively owns or patches the live system." },
+    { tag: "Feedback Bottleneck", text: "Users frequently report problems and there is no clear SLA or routing in place." },
+    { tag: "Helpdesk Need", text: "You need a dedicated, reliable technical helpdesk for your staff or customers." },
+    { tag: "Cloud Governance", text: "Your cloud environment needs proactive optimization, monitoring, and cost control." },
+    { tag: "Downtime Risk", text: "Deployments and releases are manual, stressful, and prone to service interruptions." }
 ];
 
 function WhenYouNeedIt() {
     return (
-        <section className="py-14 sm:py-20 lg:py-28 relative overflow-clip border-b"
-            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
-            <div className="max-w-[1260px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
-                <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }}>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-md border text-xs font-semibold tracking-wider uppercase"
-                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
-                            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
-                            Signals & Triggers
-                        </div>
-                        <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-3 sm:mb-4" style={{ color: "var(--t-text)" }}>
-                            When you <span className="italic" style={{ color: "var(--t-accent)" }}>need it.</span>
-                        </h2>
-                        <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
-                            Operational indicators that your technology needs dedicated, accountable support.
-                        </p>
-                    </motion.div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    {signs.map((sign, i) => (
-                        <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.5, delay: i * 0.06 }}
-                            className="p-6 sm:p-8 rounded-2xl border relative overflow-hidden group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex gap-4 sm:gap-5 items-start"
-                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
-                            <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl font-mono text-xs sm:text-sm font-bold flex items-center justify-center shrink-0 border transition-colors duration-300 group-hover:bg-[var(--t-accent)] group-hover:text-white"
-                                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
-                                0{i + 1}
-                            </span>
-                            <div className="flex-1 min-w-0 pt-1">
-                                <p className="font-display text-sm sm:text-base font-semibold leading-relaxed" style={{ color: "var(--t-text)" }}>
-                                    {sign}
-                                </p>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-        </section>
+        <SignalsSection
+            subtitle="Operational indicators that your live systems need dedicated, accountable support."
+            signals={operateSignals}
+        />
     );
 }
 
@@ -318,6 +286,7 @@ export default function OperatePage() {
             <TheProblem />
             <WhatWeDo />
             <WhenYouNeedIt />
+            <TechStack />
             <FAQ />
             <CTA />
         </main>

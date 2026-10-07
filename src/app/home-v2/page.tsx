@@ -313,7 +313,7 @@ function ProblemFraming() {
 
                                         <svg className={`hidden lg:block w-4 h-4 transition-all duration-300 shrink-0 ${isSelected ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover:opacity-40"}`}
                                             fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: p.accent }}>
-                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                         </svg>
                                     </div>
                                 </button>
@@ -1206,7 +1206,7 @@ function LeadershipPreview() {
                             They started SVaaN because they saw too many technology projects that delivered code but missed the point. The company was built around a simple principle: understand the business problem first, then build the right technology.
                         </p>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-4 mb-8 sm:mb-10">
+                        {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-4 mb-8 sm:mb-10">
                             {[
                                 { name: "Dinesh Natarajan", role: "Founder" },
                                 { name: "Sai Ramamurthy", role: "CEO" }
@@ -1218,7 +1218,7 @@ function LeadershipPreview() {
                                     <span className="opacity-50 text-[11px] sm:text-xs font-normal">({person.role})</span>
                                 </div>
                             ))}
-                        </div>
+                        </div> */}
 
                         <Link href="/leadership" className="group inline-flex items-center gap-3 text-sm sm:text-base font-semibold hover:gap-4 transition-all duration-300" style={{ color: "var(--t-accent)" }}>
                             Meet the leadership
