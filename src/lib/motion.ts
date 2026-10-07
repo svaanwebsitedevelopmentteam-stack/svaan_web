@@ -18,7 +18,9 @@ export const staggerItem = {
     transition: { duration: 0.5 }
 };
 
-export const fadeUpVariants = {
+import { Variants } from "framer-motion";
+
+export const fadeUpVariants: Variants = {
     hidden: { opacity: 0, y: 16 },
     visible: { 
         opacity: 1, 
