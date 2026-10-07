@@ -3,7 +3,7 @@ import { capabilitiesData } from "@/data/capabilitiesData";
 import { projectsData } from "@/data/projectsData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://svaan.in";
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://svaantech.com";
     const lastModified = new Date();
 
     // 1. Core Top-Level Pages
