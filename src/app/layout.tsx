@@ -20,7 +20,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SVaaN Global Tech — Technology & Strategy Partner",
+  title: {
+    default: "SVaaN Global Tech — Technology & Strategy Partner",
+    template: "%s | SVaaN Global Tech",
+  },
   description:
     "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
   metadataBase: new URL("https://svaan-web.vercel.app"),

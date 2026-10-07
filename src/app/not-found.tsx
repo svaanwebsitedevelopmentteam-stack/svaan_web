@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 export default function NotFound() {
     return (
         <main className="min-h-screen flex items-center justify-center relative overflow-hidden" style={{ backgroundColor: "var(--t-bg)" }}>
+            <title>Page Not Found | SVaaN Global Tech</title>
 
             {/* Background Atmosphere */}
             <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">

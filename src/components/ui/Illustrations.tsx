@@ -183,5 +183,111 @@ export const Illustrations = {
             <path d="M 150 80 C 200 150 250 150 350 180" stroke="#fdf2f8" strokeWidth="3" fill="none" className="ill-s" style={{ animationDelay: "1s" }} />
 
         </svg>
+    ),
+
+    // 5. Touring: Globe coordinates, compass rose, map route waypoints
+    Touring: ({ className = "w-full h-full" }: { className?: string }) => (
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" className={`bg-[#451a03] ${className}`}>
+            <GlobalStyles />
+            <defs>
+                <linearGradient id="tr-bg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#78350f" />
+                    <stop offset="100%" stopColor="#291205" />
+                </linearGradient>
+                <linearGradient id="tr-path" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#fbbf24" />
+                    <stop offset="100%" stopColor="#d97706" />
+                </linearGradient>
+            </defs>
+            <rect width="400" height="300" fill="url(#tr-bg)" />
+
+            {/* Globe latitude & longitude grid */}
+            <g stroke="#b45309" strokeWidth="1" opacity="0.25">
+                <circle cx="200" cy="150" r="110" fill="none" />
+                <ellipse cx="200" cy="150" rx="110" ry="45" fill="none" />
+                <ellipse cx="200" cy="150" rx="60" ry="110" fill="none" />
+                <line x1="90" y1="150" x2="310" y2="150" />
+                <line x1="200" y1="40" x2="200" y2="260" />
+            </g>
+
+            {/* Curving Travel Itinerary Route */}
+            <path d="M 60 210 C 110 130, 160 220, 210 140 C 260 60, 310 170, 350 100"
+                fill="none" stroke="url(#tr-path)" strokeWidth="4" className="ill-s" strokeDasharray="12 12" />
+
+            {/* Animated Location Waypoint Markers */}
+            <g className="ill-fu" transform="translate(135, 175)">
+                <path d="M 0 0 C -8 -15, -8 -25, 0 -30 C 8 -25, 8 -15, 0 0" fill="#f59e0b" />
+                <circle cx="0" cy="-22" r="3" fill="#fff" />
+            </g>
+            <g className="ill-fd" transform="translate(210, 140)">
+                <path d="M 0 0 C -10 -18, -10 -30, 0 -36 C 10 -30, 10 -18, 0 0" fill="#fbbf24" />
+                <circle cx="0" cy="-26" r="4" fill="#78350f" />
+            </g>
+            <g className="ill-fu" transform="translate(285, 115)" style={{ animationDelay: "1s" }}>
+                <path d="M 0 0 C -8 -15, -8 -25, 0 -30 C 8 -25, 8 -15, 0 0" fill="#f59e0b" />
+                <circle cx="0" cy="-22" r="3" fill="#fff" />
+            </g>
+
+            {/* Compass Rose Accent in Corner */}
+            <g transform="translate(340, 50)" className="ill-p" opacity="0.6">
+                <circle cx="0" cy="0" r="22" fill="none" stroke="#fcd34d" strokeWidth="1" strokeDasharray="4 4" />
+                <polygon points="0,-16 4,-4 16,0 4,4 0,16 -4,4 -16,0 -4,-4" fill="#f59e0b" />
+            </g>
+        </svg>
+    ),
+
+    // 6. Home Care: Caring home silhouette, pulse telemetry, nurturing cross
+    HomeCare: ({ className = "w-full h-full" }: { className?: string }) => (
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" className={`bg-[#064e3b] ${className}`}>
+            <GlobalStyles />
+            <defs>
+                <linearGradient id="care-bg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#042f2e" />
+                    <stop offset="100%" stopColor="#022c22" />
+                </linearGradient>
+                <linearGradient id="care-pulse" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#5eead4" />
+                    <stop offset="100%" stopColor="#14b8a6" />
+                </linearGradient>
+                <radialGradient id="care-glow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="transparent" />
+                </radialGradient>
+            </defs>
+            <rect width="400" height="300" fill="url(#care-bg)" />
+
+            {/* Ambient Caring Glow Circle */}
+            <circle cx="200" cy="140" r="90" fill="url(#care-glow)" />
+
+            {/* Isometric Care Home Silhouette */}
+            <g className="ill-fu" transform="translate(200, 105)">
+                {/* Roof */}
+                <polygon points="0,-45 -55,0 -40,0 0,-32 40,0 55,0" fill="#2dd4bf" />
+                {/* Chimney */}
+                <rect x="22" y="-38" width="10" height="22" fill="#14b8a6" />
+                {/* Walls */}
+                <rect x="-42" y="0" width="84" height="65" fill="#0f766e" rx="4" />
+                {/* Door */}
+                <rect x="-12" y="32" width="24" height="33" fill="#042f2e" rx="3" />
+                {/* Glowing Medical Cross in Center of Home */}
+                <g fill="#5eead4">
+                    <rect x="-6" y="8" width="12" height="20" rx="2" />
+                    <rect x="-10" y="12" width="20" height="12" rx="2" />
+                </g>
+            </g>
+
+            {/* Continuous Pulse Line Across Front */}
+            <g transform="translate(0, 220)">
+                <path d="M 0 0 L 110 0 L 130 -35 L 155 45 L 180 -20 L 200 0 L 400 0"
+                    fill="none" stroke="url(#care-pulse)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M 0 0 L 110 0 L 130 -35 L 155 45 L 180 -20 L 200 0 L 400 0"
+                    fill="none" stroke="#99f6e4" strokeWidth="2" filter="drop-shadow(0 0 10px #2dd4bf)" />
+            </g>
+
+            {/* Floating Protection Sparks */}
+            <circle cx="90" cy="80" r="4" fill="#5eead4" className="ill-p" />
+            <circle cx="310" cy="95" r="5" fill="#2dd4bf" className="ill-p" style={{ animationDelay: "1.2s" }} />
+            <circle cx="290" cy="170" r="3" fill="#99f6e4" className="ill-p" style={{ animationDelay: "0.6s" }} />
+        </svg>
     )
 };

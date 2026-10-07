@@ -7,6 +7,7 @@ import { Icons3D } from "@/components/ui/Icons3D";
 import { TechStack } from "@/components/TechStack";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { SignalsSection, type SignalItem } from "@/components/SignalsSection";
+import { HowWeWorkSection, type StepItem } from "@/components/HowWeWorkSection";
 
 /* ────────────────────────────────────────────────────────────
    1. HERO SECTION
@@ -197,7 +198,9 @@ const buildSignals: SignalItem[] = [
     { tag: "Validation Phase", text: "You have an idea and want to test it before committing large capital." },
     { tag: "Operational Ceiling", text: "Spreadsheets and manual processes are bottlenecking the business." },
     { tag: "Off-the-Shelf Mismatch", text: "The tools you can buy off the shelf do not fit the way you work." },
-    { tag: "AI Integration", text: "You want to add purposeful AI to a product with a clear high-value use case." }
+    { tag: "AI Integration", text: "You want to add purposeful AI to a product with a clear high-value use case." },
+    { tag: "Continuous Velocity", text: "Your engineering throughput cannot keep pace with accelerating business demand." },
+    { tag: "Throughput Limit", text: "Your current architecture struggles to handle enterprise concurrency and scale." }
 ];
 
 function WhenYouNeedIt() {
@@ -277,13 +280,53 @@ function CTA() {
     );
 }
 
+const buildWorkSteps: StepItem[] = [
+    {
+        num: "01",
+        title: "Understand",
+        tag: "Discovery & Validation",
+        desc: "Deconstruct business objectives, interview stakeholders, and validate technical feasibility.",
+    },
+    {
+        num: "02",
+        title: "Decide",
+        tag: "Architecture & Roadmap",
+        desc: "Define target architecture, data models, API contracts, security standards, and milestones.",
+    },
+    {
+        num: "03",
+        title: "Build",
+        tag: "Engineering & QA",
+        desc: "Sprint-based software development with automated testing, CI/CD pipelines, and rigorous QA.",
+    },
+    {
+        num: "04",
+        title: "Run",
+        tag: "Production Deployment",
+        desc: "Secure cloud orchestration, telemetry observability, and zero-downtime production release.",
+    },
+    {
+        num: "05",
+        title: "Improve",
+        tag: "Continuous Evolution",
+        desc: "Data-backed iterative enhancements, performance scaling, and ongoing feature delivery.",
+    },
+];
+
 export default function BuildPage() {
     return (
-        <main className="w-full overflow-x-clip min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
+        <main className="w-full min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
             <BuildHero />
             <TheProblem />
             <WhatWeDo />
             <WhenYouNeedIt />
+            <HowWeWorkSection
+                badge="Delivery Methodology"
+                title="How we build custom"
+                italicTitle="software."
+                description="Every build engagement follows our disciplined 5-stage lifecycle from problem framing to production scale."
+                steps={buildWorkSteps}
+            />
             <TechStack />
             <FAQ />
             <CTA />
