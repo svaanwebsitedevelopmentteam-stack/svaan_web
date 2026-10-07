@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Case Studies & Featured Client Work",
+  title: {
+    default: "Case Studies & Featured Client Work",
+    template: "%s | SVaaN Global Tech",
+  },
   description:
     "Explore how SVaaN partners with global businesses across FinTech, Healthcare, PropTech, and Logistics to engineer modern software and drive measurable outcomes.",
   openGraph: {

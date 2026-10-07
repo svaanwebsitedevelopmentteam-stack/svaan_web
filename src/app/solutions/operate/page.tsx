@@ -7,6 +7,7 @@ import { Icons3D } from "@/components/ui/Icons3D";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { TechStack } from "@/components/TechStack";
 import { SignalsSection, type SignalItem } from "@/components/SignalsSection";
+import { HowWeWorkSection, type StepItem } from "@/components/HowWeWorkSection";
 
 /* ────────────────────────────────────────────────────────────
    1. HERO SECTION
@@ -279,6 +280,39 @@ function CTA() {
     );
 }
 
+const operateWorkSteps: StepItem[] = [
+    {
+        num: "01",
+        title: "Understand",
+        tag: "Topology & SLA Audit",
+        desc: "Audit production architecture, baseline error budgets, identify failure modes, and review escalation trees.",
+    },
+    {
+        num: "02",
+        title: "Decide",
+        tag: "Runbooks & Protocols",
+        desc: "Define strict SLA/SLO metrics, automated incident escalation pathways, and proactive runbook documentation.",
+    },
+    {
+        num: "03",
+        title: "Build",
+        tag: "Observability Tooling",
+        desc: "Instrument distributed tracing, centralized log aggregation, automated failover triggers, and health alerts.",
+    },
+    {
+        num: "04",
+        title: "Run",
+        tag: "24/7 Managed Operations",
+        desc: "Round-the-clock tier 2/3 engineering monitoring, rapid incident remediation, and guaranteed response times.",
+    },
+    {
+        num: "05",
+        title: "Improve",
+        tag: "Reliability Engineering",
+        desc: "Conduct blameless post-mortems, preventative maintenance patches, and continuous system hardening.",
+    },
+];
+
 export default function OperatePage() {
     return (
         <main className="w-full min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
@@ -286,6 +320,13 @@ export default function OperatePage() {
             <TheProblem />
             <WhatWeDo />
             <WhenYouNeedIt />
+            <HowWeWorkSection
+                badge="Operational Cadence"
+                title="How we operate live"
+                italicTitle="software."
+                description="Around-the-clock proactive management, guaranteed SLAs, and continuous preventative engineering to keep critical technology dependable."
+                steps={operateWorkSteps}
+            />
             <TechStack />
             <FAQ />
             <CTA />

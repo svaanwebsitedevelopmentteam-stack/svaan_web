@@ -7,6 +7,7 @@ import { Icons3D } from "@/components/ui/Icons3D";
 import { TechStack } from "@/components/TechStack";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { SignalsSection, type SignalItem } from "@/components/SignalsSection";
+import { HowWeWorkSection, type StepItem } from "@/components/HowWeWorkSection";
 
 /* ────────────────────────────────────────────────────────────
    1. HERO SECTION
@@ -279,6 +280,39 @@ function CTA() {
     );
 }
 
+const modernizeWorkSteps: StepItem[] = [
+    {
+        num: "01",
+        title: "Understand",
+        tag: "Audit & Dependency Mapping",
+        desc: "Inspect legacy codebases, map database bottlenecks, and identify mission-critical business risk surfaces.",
+    },
+    {
+        num: "02",
+        title: "Decide",
+        tag: "Migration Strategy",
+        desc: "Select proven refactoring patterns (Strangler Fig, microservices decoupling, or direct cloud replatforming).",
+    },
+    {
+        num: "03",
+        title: "Build",
+        tag: "Incremental Refactoring",
+        desc: "Decouple monolithic logic, modernize data schemas, wrap clean APIs, and establish complete regression suites.",
+    },
+    {
+        num: "04",
+        title: "Run",
+        tag: "Parallel-Run Cutover",
+        desc: "Validate data parity with live side-by-side verification and switch over production traffic with zero downtime.",
+    },
+    {
+        num: "05",
+        title: "Improve",
+        tag: "Continuous Optimization",
+        desc: "Implement elastic auto-scaling, cloud cost governance, and proactive architectural maintenance.",
+    },
+];
+
 export default function ModernizePage() {
     return (
         <main className="w-full min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
@@ -286,6 +320,13 @@ export default function ModernizePage() {
             <TheProblem />
             <WhatWeDo />
             <WhenYouNeedIt />
+            <HowWeWorkSection
+                badge="Modernization Methodology"
+                title="How we modernize legacy"
+                italicTitle="systems."
+                description="Decouple, migrate, and re-architect mission-critical software safely without interrupting ongoing business operations."
+                steps={modernizeWorkSteps}
+            />
             <TechStack />
             <FAQ />
             <CTA />

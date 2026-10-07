@@ -1,63 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Illustrations } from "@/components/ui/Illustrations";
+import { motion, AnimatePresence } from "framer-motion";
 import { CTASection } from "@/components/CTASection";
+import { allProjectsList, type ProjectData } from "@/data/projectsData";
 
-const allProjects = [
-    {
-        title: "AI-Powered FinTech Platform",
-        client: "Global Financial Services",
-        tags: ["AI Development", "Strategy"],
-        href: "/work/fintech-platform",
-        Illustration: Illustrations.FinTech,
-        gradient: "from-blue-700/60 to-slate-900/60"
-    },
-    {
-        title: "Healthcare Digital Transformation",
-        client: "Enterprise Health Network",
-        tags: ["Enterprise Software", "UX Design"],
-        href: "/work/healthcare",
-        Illustration: Illustrations.Healthcare,
-        gradient: "from-emerald-500/60 to-teal-800/60"
-    },
-    {
-        title: "PropTech Management Suite",
-        client: "Global Real Estate",
-        tags: ["Product Development", "Cloud"],
-        href: "/work/proptech",
-        Illustration: Illustrations.PropTech,
-        gradient: "from-orange-500/60 to-amber-800/60"
-    },
-    {
-        title: "E-Commerce Infrastructure",
-        client: "Retail Enterprise",
-        tags: ["Architecture", "DevOps"],
-        href: "/work/ecommerce",
-        Illustration: Illustrations.Ecommerce,
-        gradient: "from-blue-600/60 to-slate-800/60"
-    },
-    {
-        title: "Autonomous Logistics Tracker",
-        client: "National Freight Co.",
-        tags: ["Machine Learning", "IoT"],
-        href: "/work/logistics-tracker",
-        Illustration: Illustrations.PropTech,
-        gradient: "from-blue-800/60 to-slate-900/60"
-    },
-    {
-        title: "Zero-Trust Identity Portal",
-        client: "Government Agency",
-        tags: ["Cybersecurity", "Architecture"],
-        href: "/work/identity-portal",
-        Illustration: Illustrations.FinTech,
-        gradient: "from-cyan-500/60 to-sky-800/60"
-    }
-];
+const categories = ["All", "Touring", "Home Care", "Healthcare", "Real Estate"] as const;
+type CategoryFilter = typeof categories[number];
 
 export default function WorkPage() {
+    const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>("All");
+
+    const filteredProjects = selectedCategory === "All"
+        ? allProjectsList
+        : allProjectsList.filter(p => p.category === selectedCategory);
+
     return (
         <main className="w-full overflow-x-clip min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
             {/* 1. HERO SECTION */}
@@ -79,91 +37,154 @@ export default function WorkPage() {
                     <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
                         className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] mb-4 sm:mb-6 max-w-4xl"
                         style={{ color: "var(--t-text)" }}>
-                        Turning challenges into{" "}
-                        <span className="italic" style={{ color: "var(--t-accent)" }}>practical outcomes.</span>
+                        Turning complex challenges into{" "}
+                        <span className="italic" style={{ color: "var(--t-accent)" }}>practical software.</span>
                     </motion.h1>
 
                     <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
                         className="text-base sm:text-lg lg:text-xl max-w-2xl leading-relaxed"
                         style={{ color: "var(--t-text-muted)" }}>
-                        Explore approved work that demonstrates how SVaaN engineers enterprise systems, modernizes legacy stacks, and scales AI platforms.
+                        Explore client platforms engineered across web and mobile applications — purpose-built for touring, home care, healthcare, and real estate.
                     </motion.p>
                 </div>
             </section>
 
-            {/* 2. PROJECTS GRID */}
+            {/* 2. FILTER & PROJECTS GRID */}
             <section className="py-14 sm:py-20 lg:py-28 relative overflow-clip border-b"
                 style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
                 <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-                        {allProjects.map((project, i) => (
-                            <motion.div
-                                key={project.title}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-60px" }}
-                                transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-                            >
-                                <Link
-                                    href={project.href}
-                                    className="group flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl border overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)]"
-                                    style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
+
+                    {/* Category Filter Tabs */}
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-12 pb-6 border-b"
+                        style={{ borderColor: "var(--t-border)" }}>
+                        <span className="text-xs font-mono font-bold uppercase tracking-wider mr-2" style={{ color: "var(--t-text-muted)" }}>
+                            Filter by Category:
+                        </span>
+                        {categories.map((cat) => {
+                            const isSelected = selectedCategory === cat;
+                            return (
+                                <button
+                                    key={cat}
+                                    onClick={() => setSelectedCategory(cat)}
+                                    className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer border"
+                                    style={{
+                                        backgroundColor: isSelected ? "var(--t-accent)" : "var(--t-bg-card)",
+                                        color: isSelected ? "#fff" : "var(--t-text)",
+                                        borderColor: isSelected ? "var(--t-accent)" : "var(--t-border)",
+                                        boxShadow: isSelected ? "0 4px 12px -2px var(--t-shadow)" : undefined
+                                    }}
                                 >
-                                    {/* Image Container with SVG illustration */}
-                                    <div className="relative w-full aspect-[16/10] overflow-hidden border-b"
-                                        style={{ borderColor: "var(--t-border)" }}>
-                                        <div className="absolute inset-0 w-full h-full pointer-events-none group-hover:scale-105 transition-transform duration-700 ease-out">
-                                            <project.Illustration className="w-full h-full object-cover" />
-                                        </div>
-                                        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-60 group-hover:opacity-20 transition-opacity duration-500`} />
+                                    {cat}
+                                    {cat === "All" && (
+                                        <span className="ml-2 opacity-80 text-[11px] font-mono">
+                                            ({allProjectsList.length})
+                                        </span>
+                                    )}
+                                    {cat !== "All" && (
+                                        <span className="ml-2 opacity-80 text-[11px] font-mono">
+                                            ({allProjectsList.filter(p => p.category === cat).length})
+                                        </span>
+                                    )}
+                                </button>
+                            );
+                        })}
+                    </div>
 
-                                        {/* Hover arrow badge */}
-                                        <div className="absolute top-4 right-4 w-10 h-10 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-md border"
-                                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
-                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                            </svg>
-                                        </div>
-                                    </div>
+                    {/* Projects Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+                        <AnimatePresence mode="popLayout">
+                            {filteredProjects.map((project, i) => (
+                                <motion.div
+                                    key={project.id}
+                                    layout
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.95 }}
+                                    transition={{ duration: 0.4, delay: i * 0.05 }}
+                                >
+                                    <Link
+                                        href={project.href}
+                                        className="group flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl border overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)]"
+                                        style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
+                                    >
+                                        {/* Image Container with SVG illustration */}
+                                        <div className="relative w-full aspect-[16/10] overflow-hidden border-b"
+                                            style={{ borderColor: "var(--t-border)" }}>
+                                            <div className="absolute inset-0 w-full h-full pointer-events-none group-hover:scale-105 transition-transform duration-700 ease-out">
+                                                <project.Illustration className="w-full h-full object-cover" />
+                                            </div>
+                                            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-50 group-hover:opacity-20 transition-opacity duration-500`} />
 
-                                    {/* Content & Metadata */}
-                                    <div className="p-5 sm:p-7 flex flex-col justify-between flex-1">
-                                        <div>
-                                            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                                                <span className="text-xs font-mono font-bold uppercase tracking-wider" style={{ color: "var(--t-accent)" }}>
-                                                    {project.client}
+                                            {/* Scope pill badge on top left */}
+                                            <div className="absolute top-4 left-4 z-10">
+                                                <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase backdrop-blur-md border shadow-sm"
+                                                    style={{
+                                                        backgroundColor: "rgba(0, 0, 0, 0.6)",
+                                                        borderColor: "rgba(255, 255, 255, 0.15)",
+                                                        color: "#fff"
+                                                    }}>
+                                                    {project.scope}
                                                 </span>
-                                                <div className="flex flex-wrap gap-1.5">
-                                                    {project.tags.map(tag => (
-                                                        <span key={tag} className="text-[11px] font-semibold px-2 py-0.5 rounded-full border"
+                                            </div>
+
+                                            {/* Hover arrow badge on top right */}
+                                            <div className="absolute top-4 right-4 w-10 h-10 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-md border z-10"
+                                                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        {/* Content & Metadata */}
+                                        <div className="p-5 sm:p-7 flex flex-col justify-between flex-1">
+                                            <div>
+                                                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                                    <span className="text-xs font-mono font-bold uppercase tracking-wider" style={{ color: "var(--t-accent)" }}>
+                                                        {project.client}
+                                                    </span>
+                                                    <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full border"
+                                                        style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text)" }}>
+                                                        {project.category}
+                                                    </span>
+                                                </div>
+
+                                                <h2 className="font-display text-xl sm:text-2xl font-bold leading-snug mb-3 group-hover:text-[var(--t-accent)] transition-colors duration-200"
+                                                    style={{ color: "var(--t-text)" }}>
+                                                    {project.title}
+                                                </h2>
+
+                                                <p className="text-sm leading-relaxed mb-4 line-clamp-2" style={{ color: "var(--t-text-muted)" }}>
+                                                    {project.summary}
+                                                </p>
+
+                                                {/* Key Metric Pill */}
+                                                <div className="flex flex-wrap gap-1.5 mb-2">
+                                                    {project.metrics.slice(0, 2).map((metric) => (
+                                                        <span key={metric} className="text-[10px] font-medium px-2 py-0.5 rounded-md border"
                                                             style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
-                                                            {tag}
+                                                            ✓ {metric}
                                                         </span>
                                                     ))}
                                                 </div>
                                             </div>
 
-                                            <h2 className="font-display text-lg sm:text-xl font-bold leading-snug group-hover:text-[var(--t-accent)] transition-colors duration-200"
-                                                style={{ color: "var(--t-text)" }}>
-                                                {project.title}
-                                            </h2>
+                                            <div className="pt-5 mt-5 border-t flex items-center justify-between"
+                                                style={{ borderColor: "var(--t-border)" }}>
+                                                <span className="text-xs font-bold uppercase tracking-wider group-hover:text-[var(--t-accent)] transition-colors duration-200"
+                                                    style={{ color: "var(--t-text)" }}>
+                                                    View Case Study
+                                                </span>
+                                                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"
+                                                    style={{ color: "var(--t-accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                </svg>
+                                            </div>
                                         </div>
-
-                                        <div className="pt-5 mt-5 border-t flex items-center justify-between"
-                                            style={{ borderColor: "var(--t-border)" }}>
-                                            <span className="text-xs font-bold uppercase tracking-wider group-hover:text-[var(--t-accent)] transition-colors duration-200"
-                                                style={{ color: "var(--t-text)" }}>
-                                                View Case Study
-                                            </span>
-                                            <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5"
-                                                style={{ color: "var(--t-accent)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </motion.div>
-                        ))}
+                                    </Link>
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
                     </div>
                 </div>
             </section>

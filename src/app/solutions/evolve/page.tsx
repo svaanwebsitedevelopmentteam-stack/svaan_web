@@ -7,6 +7,7 @@ import { Icons3D } from "@/components/ui/Icons3D";
 import { TechStack } from "@/components/TechStack";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { SignalsSection, type SignalItem } from "@/components/SignalsSection";
+import { HowWeWorkSection, type StepItem } from "@/components/HowWeWorkSection";
 
 /* ────────────────────────────────────────────────────────────
    1. HERO SECTION
@@ -277,6 +278,39 @@ function CTA() {
     );
 }
 
+const evolveWorkSteps: StepItem[] = [
+    {
+        num: "01",
+        title: "Understand",
+        tag: "Friction & Workflow Audit",
+        desc: "Identify manual operational bottlenecks, data silos, team toil, and high-impact automation candidates.",
+    },
+    {
+        num: "02",
+        title: "Decide",
+        tag: "Automation & AI Strategy",
+        desc: "Prioritize ROI-driven workflows, define LLM/agent boundaries, and design human-in-the-loop safeguards.",
+    },
+    {
+        num: "03",
+        title: "Build",
+        tag: "Pipeline & Agent Engineering",
+        desc: "Build automated orchestration pipelines, bespoke tool connectors, and structured data extraction systems.",
+    },
+    {
+        num: "04",
+        title: "Run",
+        tag: "Phased Pilot & Rollout",
+        desc: "Deploy in controlled test cohorts, benchmark execution accuracy against baselines, and verify system reliability.",
+    },
+    {
+        num: "05",
+        title: "Improve",
+        tag: "Autonomous Optimization",
+        desc: "Tune model prompts, refine workflow throughput velocity, and scale automated capabilities systematically.",
+    },
+];
+
 export default function EvolvePage() {
     return (
         <main className="w-full min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
@@ -284,6 +318,13 @@ export default function EvolvePage() {
             <TheProblem />
             <WhatWeDo />
             <WhenYouNeedIt />
+            <HowWeWorkSection
+                badge="Continuous Evolution"
+                title="How we evolve your"
+                italicTitle="technology."
+                description="Structured automation, purposeful AI workflows, and strategic engineering increments to compound business momentum post-launch."
+                steps={evolveWorkSteps}
+            />
             <TechStack />
             <FAQ />
             <CTA />

@@ -3,42 +3,16 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
-import { Illustrations } from "@/components/ui/Illustrations";
+import { allProjectsList } from "@/data/projectsData";
 
-const projects = [
-    {
-        title: "AI-Powered FinTech Platform",
-        tags: "AI Software Development, Strategy",
-        desc: "Built around intelligent automation and data-driven decision support, this platform redefines how financial services operate at scale with precision and speed.",
-        href: "/work/fintech-platform",
-        Illustration: Illustrations.FinTech,
-        gradient: "from-blue-700/60 to-slate-900/60",
-    },
-    {
-        title: "Healthcare Digital Transformation",
-        tags: "Enterprise Software, UX Design",
-        desc: "A comprehensive digital overhaul connecting patient experience, clinical operations, and administrative workflows into a unified, modern platform.",
-        href: "/work/healthcare-transformation",
-        Illustration: Illustrations.Healthcare,
-        gradient: "from-emerald-600/60 to-teal-900/60",
-    },
-    {
-        title: "PropTech Management Suite",
-        tags: "Product Development, Cloud",
-        desc: "End-to-end property management digitization with real-time analytics, tenant portals, and automated compliance reporting across geographies.",
-        href: "/work/proptech-suite",
-        Illustration: Illustrations.PropTech,
-        gradient: "from-orange-500/60 to-amber-800/60",
-    },
-    {
-        title: "E-Commerce Infrastructure",
-        tags: "MVP Development, DevOps",
-        desc: "Scalable commerce infrastructure handling millions of transactions with intelligent inventory management and personalized customer experiences.",
-        href: "/work/ecommerce-infra",
-        Illustration: Illustrations.Ecommerce,
-        gradient: "from-pink-600/60 to-rose-900/60",
-    }
-];
+const projects = allProjectsList.map(p => ({
+    title: p.title,
+    tags: `${p.scope}, ${p.category}`,
+    desc: p.summary,
+    href: p.href,
+    Illustration: p.Illustration,
+    gradient: p.gradient,
+}));
 
 export function WorkShowcase() {
     const scrollRef = useRef<HTMLDivElement>(null);

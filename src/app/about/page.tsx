@@ -652,62 +652,6 @@ function WhereWeWork() {
                             );
                         })}
                     </div>
-
-                    {/* Bottom Location Badges Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 mt-6 sm:mt-10 pt-6 border-t"
-                        style={{ borderColor: "var(--t-border)" }}>
-                        {locations.map((loc) => {
-                            const isHovered = hoveredLoc === loc.id;
-                            return (
-                                <div
-                                    key={loc.id}
-                                    onMouseEnter={() => setHoveredLoc(loc.id)}
-                                    onMouseLeave={() => setHoveredLoc(null)}
-                                    onClick={() => setHoveredLoc(hoveredLoc === loc.id ? null : loc.id)}
-                                    className={`group p-4 rounded-xl border transition-all duration-200 cursor-pointer text-left ${
-                                        isHovered
-                                            ? 'scale-[1.02] shadow-lg ring-1'
-                                            : 'hover:scale-[1.01]'
-                                    }`}
-                                    style={{
-                                        backgroundColor: isHovered
-                                            ? "var(--t-bg-surface)"
-                                            : "var(--t-bg)",
-                                        borderColor: isHovered
-                                            ? "var(--t-accent)"
-                                            : "var(--t-border)",
-                                        boxShadow: isHovered
-                                            ? "0 0 0 1px var(--t-accent), 0 10px 25px -5px var(--t-shadow)"
-                                            : undefined
-                                    }}
-                                >
-                                    <div className="flex items-center justify-between gap-2 mb-2">
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-xl">{loc.flag}</span>
-                                            <h3 className="font-bold text-sm sm:text-base leading-snug" style={{ color: "var(--t-text)" }}>
-                                                {loc.name}
-                                            </h3>
-                                        </div>
-                                        {loc.isHQ && (
-                                            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider text-white"
-                                                style={{ backgroundColor: "var(--t-accent)" }}>
-                                                HQ
-                                            </span>
-                                        )}
-                                    </div>
-                                    <div className="text-xs font-semibold mb-1" style={{ color: "var(--t-accent)" }}>
-                                        {loc.team}
-                                    </div>
-                                    <div className="text-[11px] mb-2 font-medium" style={{ color: "var(--t-text-muted)" }}>
-                                        {loc.timezone}
-                                    </div>
-                                    <p className="text-xs leading-relaxed line-clamp-2" style={{ color: "var(--t-text-muted)" }}>
-                                        {loc.focus}
-                                    </p>
-                                </div>
-                            );
-                        })}
-                    </div>
                 </motion.div>
 
                 {/* Bottom Operating Model Summary Pill */}
@@ -744,35 +688,30 @@ function WhereWeWork() {
    ──────────────────────────────────────────────────────────── */
 function ClosingCTA() {
     return (
-        <section className="py-16 sm:py-24 lg:py-32 relative overflow-clip border-t" style={{ borderColor: "var(--t-border)" }}>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full blur-[200px] pointer-events-none"
-                style={{ backgroundColor: "var(--t-accent)", opacity: "calc(var(--t-orb-opacity) * 0.9)" }} />
+        <section className="py-16 sm:py-24 lg:py-28 relative overflow-hidden">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[200px] pointer-events-none"
+                style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
 
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7 }} className="text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-md border text-xs font-semibold tracking-wider uppercase"
-                        style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
-                        <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
-                        Get In Touch
-                    </div>
-                    <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 sm:mb-6" style={{ color: "var(--t-text)" }}>
-                        Talk to{" "}
-                        <span className="italic" style={{ color: "var(--t-accent)" }}>us.</span>
+                <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className="text-center">
+                    <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4 sm:mb-6" style={{ color: "var(--t-text)" }}>
+                        Have a technology problem{" "}
+                        <span className="italic" style={{ color: "var(--t-accent)" }}>worth solving?</span>
                     </h2>
-                    <p className="text-sm sm:text-base lg:text-lg max-w-lg mx-auto mb-8 sm:mb-10 leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
-                        Want to meet the people you&apos;d be working with? Or just tell us what you need. If we&apos;re not the right fit, we&apos;ll say so.
+                    <p className="text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                        Tell us what is happening, what you want to achieve, and where you need help.
                     </p>
                     <div className="flex flex-wrap justify-center items-center gap-4">
-                        <Button href="/leadership" variant="primary" size="lg" className="group">
-                            Meet the leadership
-                            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        <Button href="/contact" size="lg" className="w-full sm:w-auto justify-center group">
+                            Discuss your challenge
+                            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
                             </svg>
                         </Button>
-                        <Button href="/contact" variant="outline" size="lg" className="group">
-                            Discuss your challenge
-                            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        <Button href="/leadership" variant="outline" size="lg" className="w-full sm:w-auto justify-center group">
+                            Meet the leadership
+                            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
                             </svg>
                         </Button>
                     </div>

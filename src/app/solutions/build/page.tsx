@@ -7,6 +7,7 @@ import { Icons3D } from "@/components/ui/Icons3D";
 import { TechStack } from "@/components/TechStack";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { SignalsSection, type SignalItem } from "@/components/SignalsSection";
+import { HowWeWorkSection, type StepItem } from "@/components/HowWeWorkSection";
 
 /* ────────────────────────────────────────────────────────────
    1. HERO SECTION
@@ -279,6 +280,39 @@ function CTA() {
     );
 }
 
+const buildWorkSteps: StepItem[] = [
+    {
+        num: "01",
+        title: "Understand",
+        tag: "Discovery & Validation",
+        desc: "Deconstruct business objectives, interview stakeholders, and validate technical feasibility.",
+    },
+    {
+        num: "02",
+        title: "Decide",
+        tag: "Architecture & Roadmap",
+        desc: "Define target architecture, data models, API contracts, security standards, and milestones.",
+    },
+    {
+        num: "03",
+        title: "Build",
+        tag: "Engineering & QA",
+        desc: "Sprint-based software development with automated testing, CI/CD pipelines, and rigorous QA.",
+    },
+    {
+        num: "04",
+        title: "Run",
+        tag: "Production Deployment",
+        desc: "Secure cloud orchestration, telemetry observability, and zero-downtime production release.",
+    },
+    {
+        num: "05",
+        title: "Improve",
+        tag: "Continuous Evolution",
+        desc: "Data-backed iterative enhancements, performance scaling, and ongoing feature delivery.",
+    },
+];
+
 export default function BuildPage() {
     return (
         <main className="w-full min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
@@ -286,6 +320,13 @@ export default function BuildPage() {
             <TheProblem />
             <WhatWeDo />
             <WhenYouNeedIt />
+            <HowWeWorkSection
+                badge="Delivery Methodology"
+                title="How we build custom"
+                italicTitle="software."
+                description="Every build engagement follows our disciplined 5-stage lifecycle from problem framing to production scale."
+                steps={buildWorkSteps}
+            />
             <TechStack />
             <FAQ />
             <CTA />
