@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Leadership & Principals",
+  title: "Leadership",
   description:
-    "Meet the founders and leadership team guiding SVaaN Global Tech with senior engineering rigor, operational accountability, and client partnership.",
+    "The people shaping how SVaaN thinks, builds, and grows. Meet Dinesh Natarajan (Founder) and Sai Ramamurthy (CEO).",
   openGraph: {
-    title: "Leadership & Principals | SVaaN Global Tech",
+    title: "Leadership | SVaaN Global Tech",
     description:
-      "Leadership at SVaaN Global Tech: Dinesh Natarajan (Founder) and Sai Ramamurthy (CEO) bring decades of engineering, operations, and business transformation expertise.",
+      "The people shaping how SVaaN thinks, builds, and grows. Dinesh Natarajan (Founder) and Sai Ramamurthy (CEO) bring deep technology and a business-first approach to transformation and growth.",
   },
 };
 

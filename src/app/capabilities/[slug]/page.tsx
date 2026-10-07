@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const service = capabilitiesData[slug];
     if (!service) return { title: "Service Not Found" };
     return {
-        title: `${service.capability} — ${service.id.replace(/-/g, " ")}`,
+        title: `${service.capability} - ${service.id.replace(/-/g, " ")}`,
         description: service.intro.substring(0, 150) + "...",
     };
 }

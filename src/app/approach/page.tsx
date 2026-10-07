@@ -640,7 +640,7 @@ export default function ApproachPage() {
                             True accountability against real business KPIs.
                         </p>
                         <p className="text-xs sm:text-sm leading-relaxed mb-5" style={{ color: "var(--t-text-muted)" }}>
-                            Progress is measured by real user and commercial metrics — latency reductions, conversion increases, and uptime — not vanity tickets.
+                            Progress is measured by real user and commercial metrics - latency reductions, conversion increases, and uptime - not vanity tickets.
                         </p>
                     </div>
 

@@ -19,10 +19,10 @@ export async function generateMetadata({
     const project = projectsData[slug];
     if (!project) return { title: "Case Study Not Found" };
     return {
-        title: `${project.title} — ${project.category} Case Study`,
+        title: `${project.title} - ${project.category} Case Study`,
         description: project.summary,
         openGraph: {
-            title: `${project.title} — ${project.category} Case Study | SVaaN Global Tech`,
+            title: `${project.title} - ${project.category} Case Study | SVaaN Global Tech`,
             description: project.summary,
         },
     };

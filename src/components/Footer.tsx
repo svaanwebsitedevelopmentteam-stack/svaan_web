@@ -110,8 +110,11 @@ export function Footer() {
                             className="space-y-3 text-sm"
                             style={{ color: "var(--t-text-muted)" }}
                         >
-                            <li>hello@svaantech.com</li>
-                            <li>96775 22812</li>
+                            <li>
+                                <a href="mailto:hello@svaan.in" className="hover:text-[var(--t-accent)] transition-colors">
+                                    hello@svaan.in
+                                </a>
+                            </li>
                             <li className="pt-2">
                                 <span
                                     className="text-xs"

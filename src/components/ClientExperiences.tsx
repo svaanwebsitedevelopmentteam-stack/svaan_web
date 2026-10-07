@@ -11,7 +11,7 @@ const testimonials = [
         company: "Global FinTech SaaS",
     },
     {
-        quote: "The modernization of our core platforms was handled with incredible discipline. They didn't just rebuild our software—they ensured the digital experience made sense for both our users and our operations.",
+        quote: "The modernization of our core platforms was handled with incredible discipline. They didn't just rebuild our software - they ensured the digital experience made sense for both our users and our operations.",
         author: "Marcus Chen",
         title: "VP of Digital Transformation",
         company: "Enterprise Healthcare",

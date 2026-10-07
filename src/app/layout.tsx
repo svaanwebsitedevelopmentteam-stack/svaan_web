@@ -21,14 +21,14 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "SVaaN Global Tech — Technology & Strategy Partner",
+    default: "SVaaN Global Tech - Technology & Strategy Partner",
     template: "%s | SVaaN Global Tech",
   },
   description:
     "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
   metadataBase: new URL("https://svaan-web.vercel.app"),
   openGraph: {
-    title: "SVaaN Global Tech — Technology & Strategy Partner",
+    title: "SVaaN Global Tech - Technology & Strategy Partner",
     description: "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
     url: "https://svaan-web.vercel.app",
     siteName: "SVaaN Global Tech",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SVaaN Global Tech — Technology & Strategy Partner",
+    title: "SVaaN Global Tech - Technology & Strategy Partner",
     description: "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
     images: ["/herosection.png"],
   },

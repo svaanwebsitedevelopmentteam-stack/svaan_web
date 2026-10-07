@@ -9,7 +9,7 @@ import { Card } from "@/components/ui/Card";
 import { Illustrations } from "@/components/ui/Illustrations";
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 1 — HERO (Solutions Style)
+   SECTION 1 - HERO (Solutions Style)
    ──────────────────────────────────────────────────────────── */
 function AboutHero() {
     return (
@@ -111,7 +111,7 @@ function AboutHero() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 2 — STORY (Asymmetric Layout)
+   SECTION 2 - STORY (Asymmetric Layout)
    ──────────────────────────────────────────────────────────── */
 function StorySection() {
     return (
@@ -171,7 +171,7 @@ function StorySection() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 3 — WHAT WE LEARNED (Bento / Masonry)
+   SECTION 3 - WHAT WE LEARNED (Bento / Masonry)
    ──────────────────────────────────────────────────────────── */
 const lessons = [
     { num: "01", title: "The quiet decay", desc: "An application with no owner doesn't fail on launch day. It gets a little slower every month until users start complaining, and by then only one person really knows how it works.", colSpan: "md:col-span-2", icon: <Icons3D.ProcessBuild className="w-16 h-16" /> },
@@ -246,7 +246,7 @@ function LessonsSection() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 4 — OWNERSHIP AFTER GO-LIVE
+   SECTION 4 - OWNERSHIP AFTER GO-LIVE
    ──────────────────────────────────────────────────────────── */
 function OwnershipSection() {
     return (
@@ -356,7 +356,7 @@ function OwnershipSection() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 5 — FOUR PILLARS (Sticky scroll interaction)
+   SECTION 5 - FOUR PILLARS (Sticky scroll interaction)
    ──────────────────────────────────────────────────────────── */
 const pillars = [
     { title: "Build", desc: "Build new software.", href: "/solutions/build", detail: "From a quick prototype up to a full system." },
@@ -436,7 +436,7 @@ function PillarsSection() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 6 — WHERE WE WORK
+   SECTION 6 - WHERE WE WORK
    ──────────────────────────────────────────────────────────── */
 function WhereWeWork() {
     const [hoveredLoc, setHoveredLoc] = useState<string | null>(null);
@@ -684,7 +684,7 @@ function WhereWeWork() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 7 — CTA
+   SECTION 7 - CTA
    ──────────────────────────────────────────────────────────── */
 function ClosingCTA() {
     return (

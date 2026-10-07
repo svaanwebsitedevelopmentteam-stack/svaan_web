@@ -65,7 +65,7 @@ export function StatsSection() {
                     <div className="flex animate-marquee whitespace-nowrap">
                         {Array.from({ length: 6 }).map((_, i) => (
                             <span key={i} className="mx-10 text-lg md:text-xl font-semibold flex items-center gap-4" style={{ color: "var(--t-accent)", opacity: 0.5 }}>
-                                — WE ARE AVAILABLE — FOR NEW PROJECTS
+                                - WE ARE AVAILABLE - FOR NEW PROJECTS
                                 <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
                             </span>
                         ))}

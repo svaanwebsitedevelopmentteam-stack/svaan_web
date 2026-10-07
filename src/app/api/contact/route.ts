@@ -96,9 +96,9 @@ export async function POST(request: Request) {
         });
 
         // 5. Send notification to the designated SVaaN business inbox
-        // Primary inbox: svaanwebsitedevelopmentteam@gmail.com / hello@svaantech.com
+        // Primary inbox: hello@svaan.in
         try {
-            await fetch("https://formsubmit.co/ajax/svaanwebsitedevelopmentteam@gmail.com", {
+            await fetch("https://formsubmit.co/ajax/hello@svaan.in", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -130,7 +130,7 @@ export async function POST(request: Request) {
     } catch (err) {
         console.error("[SVaaN Contact Submission Error]", err);
         return NextResponse.json(
-            { success: false, error: "An unexpected error occurred. Please try again or email hello@svaantech.com directly." },
+            { success: false, error: "An unexpected error occurred. Please try again or email hello@svaan.in directly." },
             { status: 500 }
         );
     }
