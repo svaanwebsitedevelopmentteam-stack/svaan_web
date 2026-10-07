@@ -85,6 +85,12 @@ export const operateContent: SolutionContent = {
             statement: "We agree support hours, contact channels and response targets in writing before we take over. They depend on the system and on how critical it is to your business."
         }
     },
+    techGroups: [
+        { title: "Cloud", items: ["AWS", "Azure", "Google Cloud"] },
+        { title: "DevOps & CI/CD", items: ["Docker", "Kubernetes", "CI/CD pipelines"] },
+        { title: "Monitoring", items: ["Datadog", "New Relic", "Prometheus"] },
+        { title: "Support", items: ["Jira", "ServiceNow", "Zendesk"] }
+    ],
     story: null,
     related: [
         { href: "/solutions/evolve", title: "Evolve", text: "Turn support into steady improvement." },

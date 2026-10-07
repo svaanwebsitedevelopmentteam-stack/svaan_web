@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { fadeUpVariants } from "@/lib/motion";
 import { 
     Code2, Terminal, Database, Cloud, 
-    Monitor, Server, Cpu, Layers, Box, Layout, Shield
+    Monitor, Server, Cpu, Layers, Box, Layout, Shield,
+    Activity, CheckSquare, LifeBuoy
 } from "lucide-react";
 
 const iconMap: Record<string, any> = {
@@ -28,7 +29,13 @@ const iconMap: Record<string, any> = {
     "APIs": Code2,
     "microservices": Box,
     "serverless": Cloud,
-    "TensorFlow": Cpu
+    "TensorFlow": Cpu,
+    "Datadog": Activity,
+    "New Relic": Activity,
+    "Prometheus": Activity,
+    "Jira": CheckSquare,
+    "ServiceNow": LifeBuoy,
+    "Zendesk": LifeBuoy
 };
 
 export function TechGroups({ groups }: { groups: any[] }) {
