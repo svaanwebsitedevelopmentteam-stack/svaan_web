@@ -5,9 +5,10 @@ import { fadeUpVariants } from "@/lib/motion";
 
 export function ProblemSplit({ problem }: { problem: any }) {
     return (
-        <section className="py-16 lg:py-24 pt-48 lg:pt-64 max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
-                <motion.div 
+        <section className="py-16 lg:py-24 pt-48 lg:pt-64">
+            <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+                    <motion.div 
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.25 }}
@@ -45,6 +46,7 @@ export function ProblemSplit({ problem }: { problem: any }) {
                     >
                         {problem.body}
                     </motion.p>
+                </div>
                 </div>
             </div>
         </section>

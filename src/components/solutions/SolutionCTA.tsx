@@ -7,17 +7,19 @@ import { fadeUpVariants } from "@/lib/motion";
 
 export function SolutionCTA({ cta }: { cta: any }) {
     return (
-        <section className="py-24 bg-[var(--t-accent)] text-[var(--t-btn-text)] text-center px-6">
-            <motion.div 
-                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariants}
-                className="max-w-[860px] mx-auto flex flex-col items-center"
-            >
+        <section className="py-24 bg-[var(--t-accent)] text-[var(--t-btn-text)] text-center">
+            <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+                <motion.div 
+                    initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariants}
+                    className="max-w-[860px] mx-auto flex flex-col items-center"
+                >
                 <h2 className="type-display mb-6">{cta.h2}</h2>
                 <p className="type-body-lg mb-10 opacity-90">{cta.text}</p>
                 <Button variant="secondary" href="/contact" className="bg-[var(--t-btn-text)] text-[var(--t-accent)] hover:bg-[var(--t-bg)]">
                     {cta.label}
                 </Button>
-            </motion.div>
+                </motion.div>
+            </div>
         </section>
     );
 }

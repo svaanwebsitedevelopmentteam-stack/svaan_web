@@ -13,9 +13,10 @@ export function ProcessSteps({ steps, heading, note }: { steps: any[], heading: 
     const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
     return (
-        <section className="py-16 lg:py-24 bg-[var(--t-bg)] max-w-[1400px] mx-auto px-6 lg:px-10" ref={ref}>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-                <div className="lg:col-span-4 relative">
+        <section className="py-16 lg:py-24 bg-[var(--t-bg)]" ref={ref}>
+            <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+                    <div className="lg:col-span-4 relative">
                     <div className="sticky top-32">
                         <div className="type-caption text-[var(--t-accent)] mb-4 flex items-center">
                             Process
@@ -67,6 +68,7 @@ export function ProcessSteps({ steps, heading, note }: { steps: any[], heading: 
                             );
                         })}
                     </div>
+                </div>
                 </div>
             </div>
         </section>

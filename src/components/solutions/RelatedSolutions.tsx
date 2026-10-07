@@ -9,9 +9,10 @@ export function RelatedSolutions({ related }: { related: any[] }) {
     if (!related || related.length === 0) return null;
 
     return (
-        <section className="py-16 lg:py-24 max-w-[1400px] mx-auto px-6 lg:px-10">
-            <h2 className="type-h2 text-[var(--t-text)] mb-12">Related solutions</h2>
-            <motion.div 
+        <section className="py-16 lg:py-24">
+            <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+                <h2 className="type-h2 text-[var(--t-text)] mb-12">Related solutions</h2>
+                <motion.div 
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="visible"
@@ -29,7 +30,8 @@ export function RelatedSolutions({ related }: { related: any[] }) {
                         </Link>
                     </motion.div>
                 ))}
-            </motion.div>
+                </motion.div>
+            </div>
         </section>
     );
 }
