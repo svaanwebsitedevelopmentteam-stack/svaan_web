@@ -19,7 +19,7 @@ export function SolutionFAQ({ faqs }: { faqs: any[] }) {
                         </Link>
                     </div>
                     <div className="lg:col-span-8">
-                        <FAQAccordion items={faqs.map(f => ({ question: f.q, answer: f.a }))} className="bg-[var(--t-bg-card)] rounded-[8px] border border-[var(--t-border)] overflow-hidden" />
+                        <FAQAccordion faqs={faqs.map(f => ({ q: f.q, a: f.a }))} className="bg-[var(--t-bg-card)] rounded-[8px] border border-[var(--t-border)] overflow-hidden" />
                     </div>
                 </div>
             </div>

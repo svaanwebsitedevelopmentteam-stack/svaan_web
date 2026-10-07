@@ -31,8 +31,8 @@ export function SolutionHero({ hero, meta }: { hero: any, meta: any }) {
                     )}
                 </motion.p>
                 <motion.div variants={fadeUpVariants} className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                    <Button asChild variant="primary">
-                        <Link href={hero.primaryCta.href}>{hero.primaryCta.label}</Link>
+                    <Button variant="primary" href={hero.primaryCta.href}>
+                        {hero.primaryCta.label}
                     </Button>
                     {hero.secondaryLink && (
                         <Link href={hero.secondaryLink.href} className="type-body font-medium text-[var(--t-text)] hover:text-[var(--t-accent)] transition-colors underline underline-offset-4">

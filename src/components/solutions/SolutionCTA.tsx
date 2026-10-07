@@ -14,8 +14,8 @@ export function SolutionCTA({ cta }: { cta: any }) {
             >
                 <h2 className="type-display mb-6">{cta.h2}</h2>
                 <p className="type-body-lg mb-10 opacity-90">{cta.text}</p>
-                <Button asChild variant="secondary" className="bg-[var(--t-btn-text)] text-[var(--t-accent)] hover:bg-[var(--t-bg)]">
-                    <Link href="/contact">{cta.label}</Link>
+                <Button variant="secondary" href="/contact" className="bg-[var(--t-btn-text)] text-[var(--t-accent)] hover:bg-[var(--t-bg)]">
+                    {cta.label}
                 </Button>
             </motion.div>
         </section>
