@@ -40,7 +40,7 @@ export function HeroSection() {
 
                 {/* Primary Glow that directly follows the mouse cursor */}
                 <motion.div
-                    className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full blur-[120px]"
+                    className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full blur-[100px] pointer-events-none"
                     style={{
                         backgroundColor: "var(--t-accent)",
                         opacity: "calc(var(--t-orb-opacity) + 0.1)",
@@ -48,12 +48,13 @@ export function HeroSection() {
                         y: springY,
                         translateX: "-50%",
                         translateY: "-50%",
+                        transform: "translateZ(0)",
                     }}
                 />
 
                 {/* Secondary Glow that trails behind slowly */}
                 <motion.div
-                    className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-[150px]"
+                    className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-[120px] pointer-events-none"
                     style={{
                         backgroundColor: "var(--t-accent)",
                         opacity: "var(--t-orb-opacity)",
@@ -61,6 +62,7 @@ export function HeroSection() {
                         y: springY2,
                         translateX: "-30%",
                         translateY: "-30%",
+                        transform: "translateZ(0)",
                     }}
                 />
 
