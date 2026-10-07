@@ -455,7 +455,8 @@ function WhereWeWork() {
             isHQ: true,
             top: "49.13%",
             left: "69.09%",
-            tooltipPos: "top" as const
+            tooltipPos: "top" as const,
+            mobileBadgePos: "bottom" as const
         },
         {
             id: "us",
@@ -470,7 +471,8 @@ function WhereWeWork() {
             isHQ: false,
             top: "30.73%",
             left: "20.26%",
-            tooltipPos: "bottom" as const
+            tooltipPos: "bottom" as const,
+            mobileBadgePos: "bottom" as const
         },
         {
             id: "uk",
@@ -485,7 +487,8 @@ function WhereWeWork() {
             isHQ: false,
             top: "21.12%",
             left: "46.6%",
-            tooltipPos: "top" as const
+            tooltipPos: "top" as const,
+            mobileBadgePos: "top" as const
         },
         {
             id: "canada",
@@ -500,7 +503,8 @@ function WhereWeWork() {
             isHQ: false,
             top: "20.1%",
             left: "18.07%",
-            tooltipPos: "top" as const
+            tooltipPos: "top" as const,
+            mobileBadgePos: "top" as const
         },
         {
             id: "uae",
@@ -515,7 +519,8 @@ function WhereWeWork() {
             isHQ: false,
             top: "41.02%",
             left: "62.06%",
-            tooltipPos: "bottom" as const
+            tooltipPos: "bottom" as const,
+            mobileBadgePos: "top" as const
         }
     ];
 
@@ -599,22 +604,64 @@ function WhereWeWork() {
                                     onClick={() => setHoveredLoc(hoveredLoc === loc.id ? null : loc.id)}
                                 >
                                     {/* Hit target area */}
-                                    <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center cursor-pointer">
-                                        {/* Animated highlight aura when card or pin is hovered */}
+                                    <div className="relative w-7 h-7 sm:w-10 sm:h-10 flex items-center justify-center cursor-pointer">
+                                        {/* Mobile Always-Visible Glowing Pin Marker */}
+                                        <span
+                                            className="sm:hidden absolute w-3 h-3 rounded-full animate-ping opacity-70 pointer-events-none"
+                                            style={{ backgroundColor: loc.isHQ ? "var(--t-accent)" : "#1f5eff" }}
+                                        />
+                                        <span
+                                            className="sm:hidden relative w-2.5 h-2.5 rounded-full border-[1.5px] border-white shadow-[0_0_8px_rgba(31,94,255,0.9)]"
+                                            style={{ backgroundColor: loc.isHQ ? "var(--t-accent)" : "#1f5eff" }}
+                                        />
+
+                                        {/* Desktop Animated highlight aura when card or pin is hovered */}
                                         {isHovered && (
-                                            <span className="absolute w-8 h-8 sm:w-10 sm:h-10 rounded-full animate-ping opacity-60"
+                                            <span className="hidden sm:block absolute w-8 h-8 sm:w-10 sm:h-10 rounded-full animate-ping opacity-60 pointer-events-none"
                                                 style={{ backgroundColor: loc.isHQ ? "var(--t-accent)" : "#1f5eff" }} />
                                         )}
                                         {isHovered && (
-                                            <span className="absolute w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 border-white shadow-[0_0_15px_rgba(31,94,255,0.8)]"
+                                            <span className="hidden sm:block absolute w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 border-white shadow-[0_0_15px_rgba(31,94,255,0.8)] pointer-events-none"
                                                 style={{ backgroundColor: loc.isHQ ? "var(--t-accent)" : "#1f5eff" }} />
                                         )}
                                     </div>
 
-                                    {/* Rich Tooltip Card */}
+                                    {/* Mobile Always-Visible Clear Location Badge */}
+                                    <div
+                                        className={`sm:hidden absolute left-1/2 -translate-x-1/2 pointer-events-none z-30 transition-all ${
+                                            loc.mobileBadgePos === 'top'
+                                                ? 'bottom-full mb-1'
+                                                : 'top-full mt-1'
+                                        }`}
+                                    >
+                                        <span
+                                            className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md shadow-md text-[9px] font-bold tracking-tight whitespace-nowrap border transition-transform duration-200 ${
+                                                isHovered ? 'scale-105 ring-2 ring-[var(--t-accent)]' : ''
+                                            }`}
+                                            style={{
+                                                backgroundColor: "var(--t-bg-card)",
+                                                borderColor: loc.isHQ ? "var(--t-accent)" : "var(--t-border)",
+                                                color: loc.isHQ ? "var(--t-accent)" : "var(--t-text)",
+                                                boxShadow: "0 2px 6px rgba(0,0,0,0.18)"
+                                            }}
+                                        >
+                                            <span className="text-[10px] leading-none">{loc.flag}</span>
+                                            <span className="leading-none">{loc.name.replace(" (HQ)", "")}</span>
+                                            {loc.isHQ && (
+                                                <span
+                                                    className="text-[7.5px] font-black uppercase px-1 py-0.5 rounded leading-none text-white"
+                                                    style={{ backgroundColor: "var(--t-accent)" }}
+                                                >
+                                                    HQ
+                                                </span>
+                                            )}
+                                        </span>
+                                    </div>
+
+                                    {/* Desktop Rich Tooltip Card (hidden on mobile to prevent viewport overflow) */}
                                     {isHovered && (
                                         <div
-                                            className={`absolute z-30 whitespace-nowrap rounded-xl p-3 sm:p-4 border shadow-2xl backdrop-blur-md pointer-events-none transition-all duration-200 ${
+                                            className={`hidden sm:block absolute z-30 whitespace-nowrap rounded-xl p-3 sm:p-4 border shadow-2xl backdrop-blur-md pointer-events-none transition-all duration-200 ${
                                                 loc.tooltipPos === 'top'
                                                     ? 'bottom-full left-1/2 -translate-x-1/2 mb-3'
                                                     : 'top-full left-1/2 -translate-x-1/2 mt-3'
@@ -651,6 +698,79 @@ function WhereWeWork() {
                                 </div>
                             );
                         })}
+                    </div>
+
+                    {/* Mobile Interactive Location Hubs Bar & Detail Drawer */}
+                    <div className="sm:hidden mt-4 pt-3 border-t" style={{ borderColor: "var(--t-border)" }}>
+                        <div className="text-[10px] font-bold uppercase tracking-wider text-center mb-2" style={{ color: "var(--t-text-muted)" }}>
+                            Global Delivery Hubs
+                        </div>
+                        <div className="flex flex-wrap justify-center gap-1.5">
+                            {locations.map((loc) => {
+                                const isSelected = hoveredLoc === loc.id;
+                                return (
+                                    <button
+                                        key={loc.id}
+                                        type="button"
+                                        onClick={() => setHoveredLoc(isSelected ? null : loc.id)}
+                                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold border transition-all active:scale-95"
+                                        style={{
+                                            backgroundColor: isSelected ? (loc.isHQ ? "var(--t-accent)" : "#1f5eff") : "var(--t-bg)",
+                                            color: isSelected ? "#fff" : "var(--t-text)",
+                                            borderColor: isSelected ? (loc.isHQ ? "var(--t-accent)" : "#1f5eff") : "var(--t-border)"
+                                        }}
+                                    >
+                                        <span>{loc.flag}</span>
+                                        <span>{loc.name}</span>
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        {/* Mobile Location Detail Card when selected */}
+                        {hoveredLoc && (
+                            <div className="mt-3 p-3.5 rounded-xl border text-xs animate-in fade-in slide-in-from-top-1 duration-200"
+                                style={{ backgroundColor: "var(--t-bg)", borderColor: "var(--t-border)" }}>
+                                {(() => {
+                                    const selected = locations.find(l => l.id === hoveredLoc);
+                                    if (!selected) return null;
+                                    return (
+                                        <div>
+                                            <div className="flex items-center justify-between mb-1.5">
+                                                <div className="flex items-center gap-1.5">
+                                                    <span className="text-base">{selected.flag}</span>
+                                                    <span className="font-bold text-sm" style={{ color: "var(--t-text)" }}>{selected.name}</span>
+                                                    <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full border"
+                                                        style={{
+                                                            backgroundColor: selected.isHQ ? "var(--t-accent)" : "var(--t-bg-surface)",
+                                                            color: selected.isHQ ? "#fff" : "var(--t-accent)",
+                                                            borderColor: "var(--t-border)"
+                                                        }}>
+                                                        {selected.tag}
+                                                    </span>
+                                                </div>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setHoveredLoc(null)}
+                                                    className="w-5 h-5 flex items-center justify-center rounded-full opacity-60 hover:opacity-100 text-xs"
+                                                    style={{ color: "var(--t-text)" }}
+                                                    aria-label="Close"
+                                                >
+                                                    ✕
+                                                </button>
+                                            </div>
+                                            <div className="flex items-center gap-1.5 font-medium mb-1" style={{ color: "var(--t-text)" }}>
+                                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                                <span>{selected.timezone} • {selected.coverage}</span>
+                                            </div>
+                                            <p className="text-[11px] leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                                                {selected.focus}
+                                            </p>
+                                        </div>
+                                    );
+                                })()}
+                            </div>
+                        )}
                     </div>
                 </motion.div>
 
