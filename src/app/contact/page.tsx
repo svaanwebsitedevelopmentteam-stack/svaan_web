@@ -188,14 +188,14 @@ export default function ContactPage() {
                     setErrors(result.errors);
                 } else {
                     setErrors({
-                        general: result.error || "Unable to send your message. Please try again or email hello@svaantech.com."
+                        general: result.error || "Unable to send your message. Please try again or email hello@svaan.in."
                     });
                 }
             }
         } catch {
             setIsSubmitting(false);
             setErrors({
-                general: "A network error occurred. Please check your connection or email hello@svaantech.com directly."
+                general: "A network error occurred. Please check your connection or email hello@svaan.in directly."
             });
         }
     };
@@ -250,7 +250,8 @@ export default function ContactPage() {
                         {
                             id: "email",
                             title: "Email Us",
-                            value: "hello@svaantech.com",
+                            value: "hello@svaan.in",
+                            href: "mailto:hello@svaan.in",
                             sub: "We generally reply within 24 hours.",
                             icon: (
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -262,6 +263,7 @@ export default function ContactPage() {
                             id: "phone",
                             title: "Call Us",
                             value: "96775 22812",
+                            href: "tel:+919677522812",
                             sub: "Mon-Sat from 9am to 6pm IST.",
                             icon: (
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -273,6 +275,7 @@ export default function ContactPage() {
                             id: "location",
                             title: "Visit Us",
                             value: "Viduthalai Nagar, Kovilambakkam",
+                            href: "https://maps.google.com/maps?q=295%2C%2013th%20St%2C%20S.%20Kolathur%2C%20S.Kolathur%2C%20Viduthalai%20Nagar%2C%20Kovilambakkam%2C%20Chennai%2C%20Tamil%20Nadu%20600129",
                             sub: "295, 13th St, S. Kolathur, Chennai, Tamil Nadu 600129",
                             icon: (
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -300,7 +303,19 @@ export default function ContactPage() {
                                     {item.icon}
                                 </div>
                                 <h3 className="text-sm font-semibold uppercase tracking-wider mb-1" style={{ color: "var(--t-accent)" }}>{item.title}</h3>
-                                <p className="font-display font-bold text-lg sm:text-xl mb-2" style={{ color: "var(--t-text)" }}>{item.value}</p>
+                                {item.href ? (
+                                    <a
+                                        href={item.href}
+                                        target={item.id === "location" ? "_blank" : undefined}
+                                        rel={item.id === "location" ? "noopener noreferrer" : undefined}
+                                        className="font-display font-bold text-lg sm:text-xl mb-2 hover:text-[var(--t-accent)] transition-colors inline-block"
+                                        style={{ color: "var(--t-text)" }}
+                                    >
+                                        {item.value}
+                                    </a>
+                                ) : (
+                                    <p className="font-display font-bold text-lg sm:text-xl mb-2" style={{ color: "var(--t-text)" }}>{item.value}</p>
+                                )}
                                 <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--t-text-muted)" }}>{item.sub}</p>
                             </div>
                         </motion.div>
@@ -331,11 +346,28 @@ export default function ContactPage() {
                         />
                         <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, var(--t-bg), transparent)" }} />
                         <div
-                            className="absolute bottom-6 left-6 right-6 p-5 sm:p-6 rounded-[var(--t-radius-card)] backdrop-blur-xl pointer-events-none"
+                            className="absolute bottom-6 left-6 right-6 p-5 sm:p-6 rounded-[var(--t-radius-card)] backdrop-blur-xl z-10 transition-all duration-300"
                             style={{ backgroundColor: "var(--t-glass-bg)", border: "1px solid var(--t-glass-border)" }}
                         >
-                            <h4 className="font-display font-bold text-base sm:text-lg mb-1" style={{ color: "var(--t-text)" }}>Global Headquarters</h4>
-                            <p className="text-xs sm:text-sm" style={{ color: "var(--t-text-muted)" }}>Chennai, Tamil Nadu, India</p>
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div>
+                                    <h4 className="font-display font-bold text-base sm:text-lg mb-1" style={{ color: "var(--t-text)" }}>Global Headquarters</h4>
+                                    <p className="text-xs sm:text-sm" style={{ color: "var(--t-text-muted)" }}>Chennai, Tamil Nadu, India</p>
+                                </div>
+                                <a
+                                    href="https://maps.google.com/maps?q=295%2C%2013th%20St%2C%20S.%20Kolathur%2C%20S.Kolathur%2C%20Viduthalai%20Nagar%2C%20Kovilambakkam%2C%20Chennai%2C%20Tamil%20Nadu%20600129"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 hover:border-[var(--t-accent)] hover:shadow-md shrink-0 self-start sm:self-auto group/maplink"
+                                    style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}
+                                    aria-label="Open SVaaN Global Headquarters in Google Maps"
+                                >
+                                    <span>View on Google Maps</span>
+                                    <svg className="w-3.5 h-3.5 transition-transform group-hover/maplink:translate-x-0.5 group-hover/maplink:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -360,9 +392,9 @@ export default function ContactPage() {
                             >
                                 <div>
                                     <h2 className="font-display font-bold text-2xl sm:text-3xl mb-1.5" style={{ color: "var(--t-text)" }}>Drop us a line</h2>
-                                    <p className="text-xs sm:text-sm" style={{ color: "var(--t-text-muted)" }}>
+                                    {/* <p className="text-xs sm:text-sm" style={{ color: "var(--t-text-muted)" }}>
                                         Fields marked with an asterisk (<span className="text-red-500">*</span>) are required.
-                                    </p>
+                                    </p> */}
                                 </div>
 
                                 {/* General Error Banner */}
@@ -391,9 +423,8 @@ export default function ContactPage() {
                                                 if (errors.name) setErrors(prev => ({ ...prev, name: undefined }));
                                             }}
                                             placeholder="Full name"
-                                            className={`w-full px-4 py-3 sm:py-3.5 rounded-[var(--t-radius-btn)] text-xs sm:text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[var(--t-accent)] ${
-                                                errors.name ? "border-red-500" : ""
-                                            }`}
+                                            className={`w-full px-4 py-3 sm:py-3.5 rounded-[var(--t-radius-btn)] text-xs sm:text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[var(--t-accent)] ${errors.name ? "border-red-500" : ""
+                                                }`}
                                             style={{ backgroundColor: "var(--t-bg-surface)", border: errors.name ? "1px solid #ef4444" : "1px solid var(--t-border)", color: "var(--t-text)" }}
                                             disabled={isSubmitting || isSubmitted}
                                             required
@@ -415,9 +446,8 @@ export default function ContactPage() {
                                                 if (errors.email) setErrors(prev => ({ ...prev, email: undefined }));
                                             }}
                                             placeholder="Business email preferred"
-                                            className={`w-full px-4 py-3 sm:py-3.5 rounded-[var(--t-radius-btn)] text-xs sm:text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[var(--t-accent)] ${
-                                                errors.email ? "border-red-500" : ""
-                                            }`}
+                                            className={`w-full px-4 py-3 sm:py-3.5 rounded-[var(--t-radius-btn)] text-xs sm:text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[var(--t-accent)] ${errors.email ? "border-red-500" : ""
+                                                }`}
                                             style={{ backgroundColor: "var(--t-bg-surface)", border: errors.email ? "1px solid #ef4444" : "1px solid var(--t-border)", color: "var(--t-text)" }}
                                             disabled={isSubmitting || isSubmitted}
                                             required
@@ -442,9 +472,8 @@ export default function ContactPage() {
                                                 if (errors.company) setErrors(prev => ({ ...prev, company: undefined }));
                                             }}
                                             placeholder="Company name"
-                                            className={`w-full px-4 py-3 sm:py-3.5 rounded-[var(--t-radius-btn)] text-xs sm:text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[var(--t-accent)] ${
-                                                errors.company ? "border-red-500" : ""
-                                            }`}
+                                            className={`w-full px-4 py-3 sm:py-3.5 rounded-[var(--t-radius-btn)] text-xs sm:text-sm outline-none transition-all duration-200 focus:ring-2 focus:ring-[var(--t-accent)] ${errors.company ? "border-red-500" : ""
+                                                }`}
                                             style={{ backgroundColor: "var(--t-bg-surface)", border: errors.company ? "1px solid #ef4444" : "1px solid var(--t-border)", color: "var(--t-text)" }}
                                             disabled={isSubmitting || isSubmitted}
                                             required
@@ -561,9 +590,8 @@ export default function ContactPage() {
                                             if (errors.challenge) setErrors(prev => ({ ...prev, challenge: undefined }));
                                         }}
                                         placeholder="Tell us about the challenge you are solving, systems involved, or key goals..."
-                                        className={`w-full px-4 py-3.5 rounded-[var(--t-radius-btn)] text-xs sm:text-sm outline-none transition-all duration-200 resize-none focus:ring-2 focus:ring-[var(--t-accent)] ${
-                                            errors.challenge ? "border-red-500" : ""
-                                        }`}
+                                        className={`w-full px-4 py-3.5 rounded-[var(--t-radius-btn)] text-xs sm:text-sm outline-none transition-all duration-200 resize-none focus:ring-2 focus:ring-[var(--t-accent)] ${errors.challenge ? "border-red-500" : ""
+                                            }`}
                                         style={{ backgroundColor: "var(--t-bg-surface)", border: errors.challenge ? "1px solid #ef4444" : "1px solid var(--t-border)", color: "var(--t-text)" }}
                                         disabled={isSubmitting || isSubmitted}
                                         required
@@ -640,7 +668,7 @@ export default function ContactPage() {
                                             <>
                                                 Send Message
                                                 <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
                                                 </svg>
                                             </>
                                         )}

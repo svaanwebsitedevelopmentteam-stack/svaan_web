@@ -35,7 +35,7 @@ export function AboutSection() {
                             SVaaN Global Tech is a multidisciplinary technology and strategy company based in India with a global outlook. We help organizations navigate complexity, define meaningful direction, and build digital solutions that actually work.
                         </p>
                         <p className="text-lg leading-relaxed mb-10" style={{ color: "var(--t-text-muted)" }}>
-                            Our journey has been a testament to our unwavering passion for crafting meaningful outcomes — connecting strategy, design, and engineering to move business forward with clarity and purpose.
+                            Our journey has been a testament to our unwavering passion for crafting meaningful outcomes - connecting strategy, design, and engineering to move business forward with clarity and purpose.
                         </p>
 
                         <div className="grid grid-cols-2 gap-4 mb-10">

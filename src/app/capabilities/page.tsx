@@ -39,7 +39,7 @@ const categories = [
     {
         num: "04",
         title: "AI & Automation",
-        desc: "We integrate AI where it creates clear business value — from intelligent workflows and decision support to automated operations.",
+        desc: "We integrate AI where it creates clear business value - from intelligent workflows and decision support to automated operations.",
         services: [
             { label: "AI Software Development", slug: "ai-software-development", desc: "Apply AI to real business problems securely and efficiently." }
         ],

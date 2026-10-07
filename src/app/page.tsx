@@ -54,7 +54,7 @@ function Counter({ end, suffix = "", label }: CounterProps) {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 1 — Hero with Integrated Trust Stats
+   SECTION 1 - Hero with Integrated Trust Stats
    ──────────────────────────────────────────────────────────── */
 
 function HeroV2() {
@@ -79,7 +79,7 @@ function HeroV2() {
 
     return (
         <section onMouseMove={handleMouseMove} className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between overflow-hidden">
-            {/* Interactive Background — identical to current site */}
+            {/* Interactive Background - identical to current site */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute inset-0 opacity-[0.05]"
                     style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -133,7 +133,15 @@ function HeroV2() {
                 {/* Right Image */}
                 <motion.div initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }} animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                     transition={{ duration: 1, delay: 0.2 }} className="relative w-full h-[240px] sm:h-[380px] md:h-[460px] lg:h-[540px] mt-2 sm:mt-6 lg:mt-0">
-                    <Image src="/herosection.png" alt="SVaaN Hero" fill className="object-contain lg:object-right object-center" priority />
+                    <Image
+                        src="/herosection.webp"
+                        alt="SVaaN Hero"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                        className="object-contain lg:object-right object-center"
+                        priority
+                        fetchPriority="high"
+                    />
                 </motion.div>
             </div>
 
@@ -161,7 +169,7 @@ function HeroV2() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 3 — Problem Framing  (cloned from CapabilitiesGrid pattern)
+   SECTION 3 - Problem Framing  (cloned from CapabilitiesGrid pattern)
    ──────────────────────────────────────────────────────────── */
 
 const problems = [
@@ -169,7 +177,7 @@ const problems = [
         label: "Build",
         badge: "New Product Development",
         title: "You have a product to build.",
-        desc: "You know what the business needs. You need a team that can turn it into working software — from MVP to enterprise-grade product.",
+        desc: "You know what the business needs. You need a team that can turn it into working software - from MVP to enterprise-grade product.",
         icon: <Icons3D.Software className="w-10 h-10 md:w-12 md:h-12" />,
         accent: "#6366f1",
         href: "/solutions/build"
@@ -187,7 +195,7 @@ const problems = [
         label: "Operate",
         badge: "Live Applications & Support",
         title: "You have live applications that need looking after.",
-        desc: "Someone has to own the fixes, the updates, and the users who depend on them — day after day.",
+        desc: "Someone has to own the fixes, the updates, and the users who depend on them - day after day.",
         icon: <Icons3D.Support className="w-10 h-10 md:w-12 md:h-12" />,
         accent: "#f59e0b",
         href: "/solutions/operate"
@@ -196,7 +204,7 @@ const problems = [
         label: "Evolve",
         badge: "Automation & Continuous AI",
         title: "You have work that should be automated.",
-        desc: "Your people repeat manual steps that technology could handle — costing time, money and focus.",
+        desc: "Your people repeat manual steps that technology could handle - costing time, money and focus.",
         icon: <Icons3D.AI className="w-10 h-10 md:w-12 md:h-12" />,
         accent: "#ec4899",
         href: "/solutions/evolve"
@@ -400,7 +408,7 @@ function ProblemFraming() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 4 — Four Solution Pillars (cloned from WorkShowcase pattern)
+   SECTION 4 - Four Solution Pillars (cloned from WorkShowcase pattern)
    ──────────────────────────────────────────────────────────── */
 
 import { Illustrations } from "@/components/ui/Illustrations";
@@ -555,7 +563,7 @@ function SolutionPillarsSection() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 5 — Why SVaaN (cloned from ProcessSection pattern)
+   SECTION 5 - Why SVaaN (cloned from ProcessSection pattern)
    ──────────────────────────────────────────────────────────── */
 
 const reasons = [
@@ -634,7 +642,7 @@ function WhySvaaNSection() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 6 — How We Work (cloned from ProcessSection pattern)
+   SECTION 6 - How We Work (cloned from ProcessSection pattern)
    ──────────────────────────────────────────────────────────── */
 
 const steps = [
@@ -680,7 +688,7 @@ function HowWeWork() {
                 style={{ backgroundColor: "var(--t-accent)", opacity: "calc(var(--t-orb-opacity) * 0.7)" }} />
 
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
-                {/* Section Header — Full Width with Split CTA */}
+                {/* Section Header - Full Width with Split CTA */}
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 mb-10 sm:mb-14">
                     <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }} className="max-w-2xl">
                         <div className="inline-flex items-center gap-2 px-3 py-1 mb-2.5 sm:mb-3 rounded-md border text-xs font-semibold uppercase tracking-wider"
@@ -782,7 +790,7 @@ function HowWeWork() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 7 — Technologies We Use (Redesigned Tech Matrix)
+   SECTION 7 - Technologies We Use (Redesigned Tech Matrix)
    ──────────────────────────────────────────────────────────── */
 
 const techDomains = [
@@ -1076,7 +1084,7 @@ function TechStackSection() {
                     </motion.h2>
                     <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
                         className="text-xs sm:text-sm md:text-base opacity-80 leading-relaxed max-w-2xl mx-auto" style={{ color: "var(--t-text-muted)" }}>
-                        We operate across the modern technology ecosystem — building high-performance architectures engineered for scalability, security, and long-term maintainability.
+                        We operate across the modern technology ecosystem - building high-performance architectures engineered for scalability, security, and long-term maintainability.
                     </motion.p>
                 </div>
 
@@ -1167,7 +1175,7 @@ function TechStackSection() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 8 — Leadership  (cloned from AboutSection pattern)
+   SECTION 8 - Leadership  (cloned from AboutSection pattern)
    ──────────────────────────────────────────────────────────── */
 
 function LeadershipPreview() {
@@ -1178,12 +1186,17 @@ function LeadershipPreview() {
 
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-24 items-center">
-                    {/* Left — Image with floating card */}
+                    {/* Left - Image with floating card */}
                     <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className="relative flex flex-col justify-center">
                         <div className="relative w-full h-[260px] sm:h-[360px] lg:h-[440px] rounded-2xl overflow-hidden"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
-                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
-                                alt="SVaaN leadership team" className="absolute inset-0 w-full h-full object-cover filter grayscale-[10%]" />
+                            <img
+                                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
+                                alt="SVaaN leadership team"
+                                loading="lazy"
+                                decoding="async"
+                                className="absolute inset-0 w-full h-full object-cover filter grayscale-[10%]"
+                            />
                             <div className="absolute inset-0 mix-blend-overlay opacity-60" style={{ background: "linear-gradient(135deg, var(--t-gradient-from), transparent, var(--t-gradient-to))" }} />
                         </div>
                         <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -1194,7 +1207,7 @@ function LeadershipPreview() {
                         </motion.div>
                     </motion.div>
 
-                    {/* Right — Text */}
+                    {/* Right - Text */}
                     <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay: 0.15 }} className="flex flex-col justify-center py-2 sm:py-4 lg:py-8">
                         <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-4 sm:mb-6" style={{ color: "var(--t-text)" }}>
                             The people behind SVaaN.
@@ -1233,7 +1246,7 @@ function LeadershipPreview() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 9 — Final CTA  (cloned from CTASection)
+   SECTION 9 - Final CTA  (cloned from CTASection)
    ──────────────────────────────────────────────────────────── */
 
 function ClosingCTA() {
@@ -1263,7 +1276,7 @@ function ClosingCTA() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   HOME — Full Page Assembly
+   HOME - Full Page Assembly
    ──────────────────────────────────────────────────────────── */
 
 export default function Home() {

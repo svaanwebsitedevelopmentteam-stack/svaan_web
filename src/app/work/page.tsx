@@ -43,7 +43,7 @@ export default function WorkPage() {
                     <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
                         className="text-base sm:text-lg lg:text-xl max-w-2xl leading-relaxed"
                         style={{ color: "var(--t-text-muted)" }}>
-                        Explore client platforms engineered across web and mobile applications — purpose-built for touring, home care, healthcare, and real estate.
+                        Explore client platforms engineered across web and mobile applications - purpose-built for touring, home care, healthcare, and real estate.
                     </motion.p>
                 </div>
             </section>
@@ -123,28 +123,12 @@ export default function WorkPage() {
                                             </span>
                                         </div>
 
-                                        {/* Category pill badge on top right */}
-                                        <div className="absolute top-4 right-4 z-10">
-                                            <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide backdrop-blur-md border shadow-sm"
-                                                style={{
-                                                    backgroundColor: "var(--t-bg-card)",
-                                                    borderColor: "var(--t-border)",
-                                                    color: "var(--t-accent)"
-                                                }}>
-                                                {project.category}
-                                            </span>
-                                        </div>
+
                                     </div>
 
                                     {/* Content & Metadata */}
                                     <div className="p-6 sm:p-7 flex flex-col justify-between flex-1">
                                         <div>
-                                            <div className="mb-2">
-                                                <span className="text-xs font-mono font-bold uppercase tracking-wider" style={{ color: "var(--t-accent)" }}>
-                                                    {project.client}
-                                                </span>
-                                            </div>
-
                                             <h2 className="font-display text-xl sm:text-2xl font-bold leading-snug mb-3"
                                                 style={{ color: "var(--t-text)" }}>
                                                 {project.title}

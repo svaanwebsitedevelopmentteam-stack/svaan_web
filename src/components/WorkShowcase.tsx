@@ -7,7 +7,7 @@ import { allProjectsList } from "@/data/projectsData";
 
 const projects = allProjectsList.map(p => ({
     title: p.title,
-    tags: `${p.scope}, ${p.category}`,
+    tags: p.scope,
     desc: p.summary,
     href: p.href,
     Illustration: p.Illustration,

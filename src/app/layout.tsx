@@ -22,22 +22,22 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "SVaaN Global Tech — Technology & Strategy Partner",
+    default: "SVaaN Global Tech - Technology & Strategy Partner",
     template: "%s | SVaaN Global Tech",
   },
   description:
     "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
-  metadataBase: new URL("https://svaan-web.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://svaantech.com"),
   openGraph: {
-    title: "SVaaN Global Tech — Technology & Strategy Partner",
+    title: "SVaaN Global Tech - Technology & Strategy Partner",
     description: "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
-    url: "https://svaan-web.vercel.app",
+    url: "https://svaantech.com",
     siteName: "SVaaN Global Tech",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/herosection.png",
+        url: "/herosection.webp",
         width: 1200,
         height: 630,
         alt: "SVaaN Global Tech",
@@ -46,9 +46,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SVaaN Global Tech — Technology & Strategy Partner",
+    title: "SVaaN Global Tech - Technology & Strategy Partner",
     description: "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
-    images: ["/herosection.png"],
+    images: ["/herosection.webp"],
   },
   icons: {
     icon: [
@@ -64,6 +64,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${sora.variable} ${inter.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      </head>
       <body className="min-h-screen font-sans antialiased">
         <ThemeProvider>
           <CustomCursor />

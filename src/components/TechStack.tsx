@@ -310,7 +310,7 @@ export function TechStack() {
                             </span>
                         </h2>
                         <p className="text-sm sm:text-base lg:text-lg leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
-                            We operate across the modern technology ecosystem — building high-performance architectures engineered for scalability, security, and long-term maintainability.
+                            We operate across the modern technology ecosystem - building high-performance architectures engineered for scalability, security, and long-term maintainability.
                         </p>
                     </motion.div>
                 </div>

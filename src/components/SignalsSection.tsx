@@ -318,6 +318,206 @@ export function SignalsSection({
     const activeSignal = enrichedSignals[activeIdx] || enrichedSignals[0];
     const ActiveIcon = activeSignal.IconComponent;
 
+    const renderSpotlightCard = (isMobile = false) => (
+        <div
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className={`relative rounded-2xl sm:rounded-3xl border overflow-hidden flex flex-col transition-colors shadow-lg ${isMobile ? "w-full" : ""}`}
+            style={{
+                backgroundColor: "var(--t-bg-card)",
+                borderColor: "var(--t-border)",
+            }}
+        >
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={activeIdx}
+                    initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: -16, filter: "blur(4px)" }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    className="w-full p-4 sm:p-7 lg:p-8 flex flex-col relative z-10"
+                >
+                    {/* Subtle radial accent glow */}
+                    <div
+                        className="absolute -top-20 -right-20 w-[360px] h-[360px] rounded-full blur-[130px] opacity-20 pointer-events-none transition-colors duration-700"
+                        style={{ backgroundColor: activeSignal.accentColor }}
+                    />
+
+                    {/* Spotlight Top Bar */}
+                    <div>
+                        <div className="flex items-center justify-between gap-3 mb-5 sm:mb-6 pb-3 sm:pb-4 border-b" style={{ borderColor: "var(--t-border)" }}>
+                            <div className="flex items-center gap-2">
+                                <span
+                                    className="w-2 h-2 rounded-full"
+                                    style={{ backgroundColor: activeSignal.accentColor }}
+                                />
+                                <span className="text-[11px] sm:text-xs font-mono font-bold tracking-wider uppercase" style={{ color: "var(--t-text)" }}>
+                                    {activeSignal.tag}
+                                </span>
+                            </div>
+
+                            <span
+                                className="px-2.5 py-1 rounded-md text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider border"
+                                style={{
+                                    backgroundColor: `${activeSignal.accentColor}15`,
+                                    borderColor: `${activeSignal.accentColor}35`,
+                                    color: activeSignal.accentColor,
+                                }}
+                            >
+                                {activeSignal.impactLevel}
+                            </span>
+                        </div>
+
+                        {/* Center Display: 3D Icon & Core Trigger Focus */}
+                        <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 sm:gap-6 items-start mb-5 sm:mb-6">
+                            {/* Floating 3D Icon Stage */}
+                            <div
+                                className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shrink-0 border relative overflow-hidden shadow-sm"
+                                style={{
+                                    backgroundColor: `${activeSignal.accentColor}12`,
+                                    borderColor: `${activeSignal.accentColor}30`,
+                                }}
+                            >
+                                <motion.div
+                                    animate={{ y: [-3, 3, -3] }}
+                                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                    className="scale-90 sm:scale-100"
+                                >
+                                    <ActiveIcon className="w-8 h-8 sm:w-12 sm:h-12" />
+                                </motion.div>
+                            </div>
+
+                            {/* Headline Statement */}
+                            <div className="min-w-0">
+                                <div
+                                    className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider font-semibold mb-1"
+                                    style={{ color: activeSignal.accentColor }}
+                                >
+                                    Observed Indicator
+                                </div>
+                                <h3
+                                    className="font-display text-base sm:text-2xl font-bold tracking-tight leading-snug"
+                                    style={{ color: "var(--t-text)" }}
+                                >
+                                    &ldquo;{activeSignal.text}&rdquo;
+                                </h3>
+                            </div>
+                        </div>
+
+                        {/* Dual Analysis Cards: Diagnosis & Resolution */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 my-2">
+                            {/* The Structural Risk */}
+                            <div
+                                className="p-3.5 sm:p-5 rounded-xl border relative"
+                                style={{
+                                    backgroundColor: "var(--t-bg-surface)",
+                                    borderColor: "var(--t-border)",
+                                }}
+                            >
+                                <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                                    <span className="text-[10px] sm:text-[11px] font-mono uppercase font-bold tracking-wider" style={{ color: "var(--t-text)" }}>
+                                        The Underlying Risk
+                                    </span>
+                                </div>
+                                <p className="text-xs sm:text-[13px] leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
+                                    {activeSignal.diagnosisText}
+                                </p>
+                            </div>
+
+                            {/* The Engineering Resolution */}
+                            <div
+                                className="p-3.5 sm:p-5 rounded-xl border relative"
+                                style={{
+                                    backgroundColor: `${activeSignal.accentColor}0a`,
+                                    borderColor: `${activeSignal.accentColor}30`,
+                                }}
+                            >
+                                <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+                                    <div
+                                        className="w-1.5 h-1.5 rounded-full"
+                                        style={{ backgroundColor: activeSignal.accentColor }}
+                                    />
+                                    <span
+                                        className="text-[10px] sm:text-[11px] font-mono uppercase font-bold tracking-wider"
+                                        style={{ color: activeSignal.accentColor }}
+                                    >
+                                        The SVaaN Approach
+                                    </span>
+                                </div>
+                                <p className="text-xs sm:text-[13px] leading-relaxed" style={{ color: "var(--t-text)" }}>
+                                    {activeSignal.solutionText}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Spotlight Footer: CTA + Pagination Navigator */}
+                    <div
+                        className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 sm:pt-6 mt-3 sm:mt-4 border-t"
+                        style={{ borderColor: "var(--t-border)" }}
+                    >
+                        <Link
+                            href={ctaHref}
+                            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold group transition-all"
+                            style={{ color: activeSignal.accentColor }}
+                        >
+                            <span>{ctaText}</span>
+                            <svg
+                                className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </Link>
+
+                        {/* Nav Dots & Arrows */}
+                        <div className="flex items-center gap-3 self-end sm:self-auto">
+                            <div className="flex gap-1.5">
+                                {enrichedSignals.map((_, dotIdx) => (
+                                    <button
+                                        key={dotIdx}
+                                        onClick={() => handleSelectSignal(dotIdx)}
+                                        className="w-2 h-2 rounded-full transition-all duration-300 cursor-pointer"
+                                        style={{
+                                            backgroundColor: dotIdx === activeIdx ? activeSignal.accentColor : "var(--t-border)",
+                                            transform: dotIdx === activeIdx ? "scale(1.4)" : "scale(1)",
+                                        }}
+                                        aria-label={`Go to trigger ${dotIdx + 1}`}
+                                    />
+                                ))}
+                            </div>
+                            <div className="flex items-center gap-1.5">
+                                <button
+                                    onClick={() => handleSelectSignal((activeIdx - 1 + enrichedSignals.length) % enrichedSignals.length)}
+                                    className="w-7 h-7 rounded-lg border flex items-center justify-center transition-colors hover:bg-[var(--t-bg-surface)] cursor-pointer"
+                                    style={{ borderColor: "var(--t-border)", color: "var(--t-text)" }}
+                                    aria-label="Previous trigger"
+                                >
+                                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                </button>
+                                <button
+                                    onClick={() => handleSelectSignal((activeIdx + 1) % enrichedSignals.length)}
+                                    className="w-7 h-7 rounded-lg border flex items-center justify-center transition-colors hover:bg-[var(--t-bg-surface)] cursor-pointer"
+                                    style={{ borderColor: "var(--t-border)", color: "var(--t-text)" }}
+                                    aria-label="Next trigger"
+                                >
+                                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            </AnimatePresence>
+        </div>
+    );
+
     return (
         <section
             className="py-14 sm:py-20 lg:py-28 relative border-b"
@@ -344,7 +544,7 @@ export function SignalsSection({
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
 
                 {/* Section Header */}
-                <div className="max-w-2xl mb-10 sm:mb-14">
+                <div className="max-w-2xl mb-8 sm:mb-14">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -377,8 +577,127 @@ export function SignalsSection({
                     </motion.div>
                 </div>
 
-                {/* 2-Column Responsive Layout (Why SVaaN pattern): Left Trigger Cards (Page Scroll) + Right Sticky Diagnosis Spotlight */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                {/* 1. MOBILE VIEW ONLY (block lg:hidden): Loader Box followed immediately by Content Box */}
+                <div className="block lg:hidden space-y-3.5">
+                    {/* Mobile Quick Trigger Selector Pills (with Visible Styled Scrollbar) */}
+                    <div className="flex items-center gap-2 overflow-x-auto pb-2.5 signal-tab-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
+                        {enrichedSignals.map((sig, i) => {
+                            const isSelected = activeIdx === i;
+                            return (
+                                <button
+                                    key={i}
+                                    onClick={() => handleSelectSignal(i)}
+                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-semibold shrink-0 border transition-all duration-300"
+                                    style={{
+                                        backgroundColor: isSelected ? `${sig.accentColor}18` : "var(--t-bg-card)",
+                                        borderColor: isSelected ? sig.accentColor : "var(--t-border)",
+                                        color: isSelected ? sig.accentColor : "var(--t-text-muted)",
+                                    }}
+                                >
+                                    <span className="opacity-70">0{i + 1}</span>
+                                    <span className="truncate max-w-[130px]">{sig.tag}</span>
+                                </button>
+                            );
+                        })}
+                    </div>
+
+                    {/* Mobile: Active Loader Box with animated progress bar */}
+                    <div
+                        className="rounded-xl overflow-hidden transition-all duration-300 border shadow-sm relative"
+                        style={{
+                            backgroundColor: "var(--t-bg-card)",
+                            borderColor: activeSignal.accentColor,
+                            boxShadow: `0 8px 24px -6px ${activeSignal.accentColor}25`,
+                        }}
+                    >
+                        <div className="flex items-stretch">
+                            {/* Left accent strip with number */}
+                            <div
+                                className="w-12 shrink-0 flex flex-col items-center justify-center border-r"
+                                style={{
+                                    backgroundColor: `${activeSignal.accentColor}18`,
+                                    borderColor: `${activeSignal.accentColor}40`,
+                                }}
+                            >
+                                <span
+                                    className="text-base font-mono font-black"
+                                    style={{ color: activeSignal.accentColor }}
+                                >
+                                    0{activeIdx + 1}
+                                </span>
+                            </div>
+
+                            {/* Card Content */}
+                            <div className="flex-1 p-3.5 flex items-center justify-between gap-3 min-w-0">
+                                <div className="flex-1 min-w-0">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <span
+                                            className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider truncate border"
+                                            style={{
+                                                backgroundColor: `${activeSignal.accentColor}18`,
+                                                borderColor: `${activeSignal.accentColor}40`,
+                                                color: activeSignal.accentColor,
+                                            }}
+                                        >
+                                            {activeSignal.tag}
+                                        </span>
+                                        <div className="flex items-center gap-1 shrink-0">
+                                            <span className="relative flex h-2 w-2">
+                                                <span
+                                                    className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                                                    style={{ backgroundColor: activeSignal.accentColor }}
+                                                />
+                                                <span
+                                                    className="relative inline-flex rounded-full h-2 w-2"
+                                                    style={{ backgroundColor: activeSignal.accentColor }}
+                                                />
+                                            </span>
+                                            <span className="text-[10px] font-mono uppercase" style={{ color: activeSignal.accentColor }}>
+                                                Active
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <h3 className="font-display text-xs sm:text-sm font-bold leading-snug line-clamp-2" style={{ color: "var(--t-text)" }}>
+                                        {activeSignal.text}
+                                    </h3>
+                                </div>
+
+                                {/* Right mini icon badge */}
+                                <div
+                                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border"
+                                    style={{
+                                        backgroundColor: `${activeSignal.accentColor}18`,
+                                        borderColor: `${activeSignal.accentColor}40`,
+                                        color: activeSignal.accentColor,
+                                    }}
+                                >
+                                    <ActiveIcon className="w-5 h-5" />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Bottom Animated Progress Line (Loader) */}
+                        <div
+                            className="h-[3px] w-full overflow-hidden"
+                            style={{ backgroundColor: "var(--t-border)" }}
+                        >
+                            <div
+                                className="h-full rounded-t"
+                                style={{
+                                    width: `${progress}%`,
+                                    backgroundColor: activeSignal.accentColor,
+                                }}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Mobile Content Box: Appears directly below the loader box */}
+                    {renderSpotlightCard(true)}
+                </div>
+
+                {/* 2. DESKTOP VIEW ONLY (hidden lg:grid lg:grid-cols-12): Original side-by-side layout */}
+                <div className="hidden lg:grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                     {/* Left Column: Interactive Trigger Cards (Scrolls naturally with page) */}
                     <div className="lg:col-span-5 flex flex-col gap-3.5 sm:gap-4.5">
                         {enrichedSignals.map((sig, i) => {
@@ -513,202 +832,7 @@ export function SignalsSection({
 
                     {/* Right Column: Animated Trigger Diagnostic Spotlight (Sticky on Desktop) */}
                     <div className="lg:col-span-7 lg:sticky lg:top-32 lg:self-start w-full">
-                        <div
-                            onMouseEnter={handleMouseEnter}
-                            onMouseLeave={handleMouseLeave}
-                            className="relative rounded-2xl sm:rounded-3xl border overflow-hidden flex flex-col transition-colors shadow-lg"
-                            style={{
-                                backgroundColor: "var(--t-bg-card)",
-                                borderColor: "var(--t-border)",
-                            }}
-                        >
-                            <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeIdx}
-                                initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
-                                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                exit={{ opacity: 0, y: -16, filter: "blur(4px)" }}
-                                transition={{ duration: 0.35, ease: "easeOut" }}
-                                className="w-full p-5 sm:p-7 lg:p-8 flex flex-col relative z-10"
-                            >
-                                {/* Subtle radial accent glow */}
-                                <div
-                                    className="absolute -top-20 -right-20 w-[360px] h-[360px] rounded-full blur-[130px] opacity-20 pointer-events-none transition-colors duration-700"
-                                    style={{ backgroundColor: activeSignal.accentColor }}
-                                />
-
-                                {/* Spotlight Top Bar */}
-                                <div>
-                                    <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b" style={{ borderColor: "var(--t-border)" }}>
-                                        <div className="flex items-center gap-2">
-                                            <span
-                                                className="w-2 h-2 rounded-full"
-                                                style={{ backgroundColor: activeSignal.accentColor }}
-                                            />
-                                            <span className="text-[11px] sm:text-xs font-mono font-bold tracking-wider uppercase" style={{ color: "var(--t-text)" }}>
-                                                {activeSignal.tag}
-                                            </span>
-                                        </div>
-
-                                        <span
-                                            className="px-2.5 py-1 rounded-md text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider border"
-                                            style={{
-                                                backgroundColor: `${activeSignal.accentColor}15`,
-                                                borderColor: `${activeSignal.accentColor}35`,
-                                                color: activeSignal.accentColor,
-                                            }}
-                                        >
-                                            {activeSignal.impactLevel}
-                                        </span>
-                                    </div>
-
-                                    {/* Center Display: 3D Icon & Core Trigger Focus */}
-                                    <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-5 sm:gap-6 items-start mb-6">
-                                        {/* Floating 3D Icon Stage */}
-                                        <div
-                                            className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shrink-0 border relative overflow-hidden shadow-sm"
-                                            style={{
-                                                backgroundColor: `${activeSignal.accentColor}12`,
-                                                borderColor: `${activeSignal.accentColor}30`,
-                                            }}
-                                        >
-                                            <motion.div
-                                                animate={{ y: [-3, 3, -3] }}
-                                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                                className="scale-90 sm:scale-100"
-                                            >
-                                                <ActiveIcon className="w-10 h-10 sm:w-12 sm:h-12" />
-                                            </motion.div>
-                                        </div>
-
-                                        {/* Headline Statement */}
-                                        <div className="min-w-0">
-                                            <div
-                                                className="text-[11px] font-mono uppercase tracking-wider font-semibold mb-1"
-                                                style={{ color: activeSignal.accentColor }}
-                                            >
-                                                Observed Indicator
-                                            </div>
-                                            <h3
-                                                className="font-display text-lg sm:text-2xl font-bold tracking-tight leading-snug"
-                                                style={{ color: "var(--t-text)" }}
-                                            >
-                                                &ldquo;{activeSignal.text}&rdquo;
-                                            </h3>
-                                        </div>
-                                    </div>
-
-                                    {/* Dual Analysis Cards: Diagnosis & Resolution */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-2">
-                                        {/* The Structural Risk */}
-                                        <div
-                                            className="p-4 sm:p-5 rounded-xl border relative"
-                                            style={{
-                                                backgroundColor: "var(--t-bg-surface)",
-                                                borderColor: "var(--t-border)",
-                                            }}
-                                        >
-                                            <div className="flex items-center gap-2 mb-2">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                                                <span className="text-[11px] font-mono uppercase font-bold tracking-wider" style={{ color: "var(--t-text)" }}>
-                                                    The Underlying Risk
-                                                </span>
-                                            </div>
-                                            <p className="text-xs sm:text-[13px] leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
-                                                {activeSignal.diagnosisText}
-                                            </p>
-                                        </div>
-
-                                        {/* The Engineering Resolution */}
-                                        <div
-                                            className="p-4 sm:p-5 rounded-xl border relative"
-                                            style={{
-                                                backgroundColor: `${activeSignal.accentColor}0a`,
-                                                borderColor: `${activeSignal.accentColor}30`,
-                                            }}
-                                        >
-                                            <div className="flex items-center gap-2 mb-2">
-                                                <div
-                                                    className="w-1.5 h-1.5 rounded-full"
-                                                    style={{ backgroundColor: activeSignal.accentColor }}
-                                                />
-                                                <span
-                                                    className="text-[11px] font-mono uppercase font-bold tracking-wider"
-                                                    style={{ color: activeSignal.accentColor }}
-                                                >
-                                                    The SVaaN Approach
-                                                </span>
-                                            </div>
-                                            <p className="text-xs sm:text-[13px] leading-relaxed" style={{ color: "var(--t-text)" }}>
-                                                {activeSignal.solutionText}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Spotlight Footer: CTA + Pagination Navigator */}
-                                <div
-                                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 mt-4 border-t"
-                                    style={{ borderColor: "var(--t-border)" }}
-                                >
-                                    <Link
-                                        href={ctaHref}
-                                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold group transition-all"
-                                        style={{ color: activeSignal.accentColor }}
-                                    >
-                                        <span>{ctaText}</span>
-                                        <svg
-                                            className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                        </svg>
-                                    </Link>
-
-                                    {/* Nav Dots & Arrows */}
-                                    <div className="flex items-center gap-3 self-end sm:self-auto">
-                                        <div className="flex gap-1.5">
-                                            {enrichedSignals.map((_, dotIdx) => (
-                                                <button
-                                                    key={dotIdx}
-                                                    onClick={() => handleSelectSignal(dotIdx)}
-                                                    className="w-2 h-2 rounded-full transition-all duration-300 cursor-pointer"
-                                                    style={{
-                                                        backgroundColor: dotIdx === activeIdx ? activeSignal.accentColor : "var(--t-border)",
-                                                        transform: dotIdx === activeIdx ? "scale(1.4)" : "scale(1)",
-                                                    }}
-                                                    aria-label={`Go to trigger ${dotIdx + 1}`}
-                                                />
-                                            ))}
-                                        </div>
-                                        <div className="flex items-center gap-1.5">
-                                            <button
-                                                onClick={() => handleSelectSignal((activeIdx - 1 + enrichedSignals.length) % enrichedSignals.length)}
-                                                className="w-7 h-7 rounded-lg border flex items-center justify-center transition-colors hover:bg-[var(--t-bg-surface)] cursor-pointer"
-                                                style={{ borderColor: "var(--t-border)", color: "var(--t-text)" }}
-                                                aria-label="Previous trigger"
-                                            >
-                                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                                </svg>
-                                            </button>
-                                            <button
-                                                onClick={() => handleSelectSignal((activeIdx + 1) % enrichedSignals.length)}
-                                                className="w-7 h-7 rounded-lg border flex items-center justify-center transition-colors hover:bg-[var(--t-bg-surface)] cursor-pointer"
-                                                style={{ borderColor: "var(--t-border)", color: "var(--t-text)" }}
-                                                aria-label="Next trigger"
-                                            >
-                                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </AnimatePresence>
+                        {renderSpotlightCard(false)}
                     </div>
                 </div>
             </div>
@@ -793,8 +917,6 @@ export function SignalsSection({
                         </div>
                     </div>
                 </motion.div>
-
-            </div>
         </section>
     );
 }

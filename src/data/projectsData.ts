@@ -24,8 +24,8 @@ export interface ProjectData {
 export const projectsData: Record<string, ProjectData> = {
     "biblical-touring": {
         id: "biblical-touring",
-        title: "Biblical Touring",
-        client: "Biblical Touring",
+        title: "Touring",
+        client: "Biblical",
         category: "Touring",
         scope: "Web App & Mobile App",
         tags: ["Web App", "Mobile App", "Touring", "Travel Tech"],
@@ -57,8 +57,8 @@ export const projectsData: Record<string, ProjectData> = {
     },
     forida: {
         id: "forida",
-        title: "Forida",
-        client: "Forida Home Care",
+        title: "Home Care",
+        client: "Forida",
         category: "Home Care",
         scope: "Web App & Mobile App",
         tags: ["Web App", "Mobile App", "Home Care", "Caregiver Management"],
@@ -90,8 +90,8 @@ export const projectsData: Record<string, ProjectData> = {
     },
     silom: {
         id: "silom",
-        title: "Silom",
-        client: "Silom Health",
+        title: "Healthcare",
+        client: "Silom",
         category: "Healthcare",
         scope: "Web App & Mobile App",
         tags: ["Web App", "Mobile App", "Healthcare", "Telemedicine"],
@@ -123,8 +123,8 @@ export const projectsData: Record<string, ProjectData> = {
     },
     havendeeds: {
         id: "havendeeds",
-        title: "Haven Deeds",
-        client: "Haven Deeds Real Estate",
+        title: "Real Estate PropTech",
+        client: "Haven Deeds",
         category: "Real Estate",
         scope: "Web App & Mobile App",
         tags: ["Web App", "Mobile App", "Real Estate", "PropTech"],
@@ -156,8 +156,8 @@ export const projectsData: Record<string, ProjectData> = {
     },
     mmu: {
         id: "mmu",
-        title: "MMU",
-        client: "MMU Real Estate Group",
+        title: "Real Estate Asset Management",
+        client: "MMU",
         category: "Real Estate",
         scope: "Web App & Mobile App",
         tags: ["Web App", "Mobile App", "Real Estate", "Asset Management"],

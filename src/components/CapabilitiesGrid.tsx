@@ -25,7 +25,7 @@ const capabilities = [
     },
     {
         title: "AI & Automation",
-        desc: "We integrate AI where it creates clear business value — from intelligent workflows and decision support to automated operations.",
+        desc: "We integrate AI where it creates clear business value - from intelligent workflows and decision support to automated operations.",
         icon: <Icons3D.AI className="w-16 h-16" />,
         videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-sphere-with-lines-and-dots-31139-large.mp4"
     },
@@ -37,7 +37,7 @@ const capabilities = [
     },
     {
         title: "Managed Support",
-        desc: "We provide continuous technology support — helpdesk, application, infrastructure, and production support to keep systems running.",
+        desc: "We provide continuous technology support - helpdesk, application, infrastructure, and production support to keep systems running.",
         icon: <Icons3D.Support className="w-16 h-16" />,
         videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-spinning-radar-screen-animation-32824-large.mp4"
     },
@@ -81,6 +81,7 @@ export function CapabilitiesGrid() {
                                     muted
                                     loop
                                     playsInline
+                                    preload="none"
                                     className="w-full h-full object-cover scale-[1.05] group-hover:scale-110 transition-transform duration-[3s]"
                                 >
                                     <source src={cap.videoSrc} type="video/mp4" />
