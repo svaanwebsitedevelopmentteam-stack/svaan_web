@@ -8,7 +8,10 @@ import { fadeUpVariants, staggerContainer } from "@/lib/motion";
 export function SolutionHero({ hero, meta }: { hero: any, meta: any }) {
     return (
         <section className="relative pt-[160px] pb-32 lg:pb-48 bg-[var(--t-bg)] border-b border-[var(--t-border)]">
-            <div className="absolute inset-0 bg-[url('/bg-grid.svg')] bg-center opacity-5 pointer-events-none" />
+            <div 
+                className="absolute inset-0 opacity-[0.04] pointer-events-none" 
+                style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '36px 36px' }} 
+            />
             <motion.div 
                 variants={staggerContainer}
                 initial="hidden"

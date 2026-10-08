@@ -171,7 +171,7 @@ export function HeroSection() {
                     className="relative w-full h-[350px] md:h-[500px] lg:h-[600px] mt-10 lg:mt-0"
                 >
                     <Image
-                        src="/herosection.png"
+                        src="/herosection.webp"
                         alt="SVaaN Hero"
                         fill
                         className="object-contain lg:object-right object-center"

@@ -3,7 +3,6 @@ import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { FooterV2 } from "@/components/FooterV2";
 import { CustomCursor } from "@/components/CustomCursor";
 import { GlobalFloatActions } from "@/components/GlobalFloatActions";

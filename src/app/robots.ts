@@ -9,9 +9,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: "/",
             disallow: [
                 "/api/",
-                "/homeClone",
-                "/home-v2",
-                "/about-v2",
                 "/thank-you",
             ],
         },
