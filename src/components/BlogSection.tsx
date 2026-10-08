@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const posts = [
     { title: "Why understanding business context matters before writing any code.", excerpt: "Useful takeaways for product and technology leaders navigating complex build decisions.", date: "Sep 2026", tag: "Strategy", href: "/insights/business-context-before-code", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" },
@@ -40,10 +41,13 @@ export function BlogSection() {
                                 style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}
                             >
                                 <div className="relative h-48 overflow-hidden group/image" style={{ backgroundColor: "var(--t-bg-surface)" }}>
-                                    <img
+                                    <Image
                                         src={post.image}
                                         alt={post.title}
-                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                                        loading="lazy"
+                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 opacity-80 mix-blend-overlay group-hover:opacity-40 transition-opacity duration-700"
                                         style={{ background: "linear-gradient(135deg, var(--t-gradient-from), var(--t-gradient-to))" }} />

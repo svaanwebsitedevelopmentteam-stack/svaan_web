@@ -21,7 +21,7 @@ function getLastModified(relativeFilePath: string, fallbackIsoString: string): D
     }
 
     try {
-        const fullPath = path.join(process.cwd(), relativeFilePath);
+        const fullPath = path.join(/*turbopackIgnore: true*/ process.cwd(), relativeFilePath);
         if (fs.existsSync(fullPath)) {
             try {
                 const gitDate = execSync(`git log -1 --format=%cI -- "${fullPath}"`, {

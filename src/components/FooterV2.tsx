@@ -61,6 +61,7 @@ export function FooterV2() {
                                         src="/Primary_logo.svg"
                                         alt="SVaaN Global Tech"
                                         fill
+                                        sizes="160px"
                                         className="object-contain object-left transition-opacity group-hover:opacity-90"
                                     />
                                 </div>

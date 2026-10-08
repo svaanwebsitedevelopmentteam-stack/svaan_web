@@ -1190,12 +1190,13 @@ function LeadershipPreview() {
                     <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className="relative flex flex-col justify-center">
                         <div className="relative w-full h-[260px] sm:h-[360px] lg:h-[440px] rounded-2xl overflow-hidden"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
-                            <img
+                            <Image
                                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
                                 alt="SVaaN leadership team"
+                                fill
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
                                 loading="lazy"
-                                decoding="async"
-                                className="absolute inset-0 w-full h-full object-cover filter grayscale-[10%]"
+                                className="object-cover filter grayscale-[10%]"
                             />
                             <div className="absolute inset-0 mix-blend-overlay opacity-60" style={{ background: "linear-gradient(135deg, var(--t-gradient-from), transparent, var(--t-gradient-to))" }} />
                         </div>

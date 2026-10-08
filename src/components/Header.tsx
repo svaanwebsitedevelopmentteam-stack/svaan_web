@@ -105,6 +105,7 @@ export function Header() {
                             src="/Primary_logo.svg"
                             alt="SVaaN"
                             fill
+                            sizes="180px"
                             className="object-contain object-left transition-opacity group-hover:opacity-80"
                             priority
                         />

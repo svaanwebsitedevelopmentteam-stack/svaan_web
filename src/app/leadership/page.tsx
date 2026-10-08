@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface Leader {
@@ -128,12 +129,13 @@ export default function LeadershipPage() {
                                         className="aspect-[4/5] max-w-[320px] sm:max-w-[360px] lg:max-w-none mx-auto lg:mx-0 rounded-2xl sm:rounded-3xl overflow-hidden relative border shadow-lg group transition-all duration-300"
                                         style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                                     >
-                                        <img
+                                        <Image
                                             src={leader.image}
                                             alt={leader.name}
+                                            fill
+                                            sizes="(max-width: 640px) 320px, (max-width: 1024px) 360px, 400px"
                                             loading="lazy"
-                                            decoding="async"
-                                            className="w-full h-full object-cover filter contrast-[1.05] group-hover:scale-105 transition-transform duration-700 ease-out"
+                                            className="object-cover filter contrast-[1.05] group-hover:scale-105 transition-transform duration-700 ease-out"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 

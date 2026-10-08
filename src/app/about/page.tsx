@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
 import { Button } from "@/components/ui/Button";
@@ -126,8 +127,14 @@ function StorySection() {
                         <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7 }}
                             className="relative w-full h-[360px] sm:h-[450px] lg:h-[520px] rounded-2xl sm:rounded-3xl overflow-hidden border shadow-xl"
                             style={{ borderColor: "var(--t-border)" }}>
-                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200"
-                                alt="SVaaN Origin" className="absolute inset-0 w-full h-full object-cover filter grayscale-[15%]" />
+                            <Image
+                                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200"
+                                alt="SVaaN Origin"
+                                fill
+                                sizes="(max-width: 1024px) 100vw, 50vw"
+                                loading="lazy"
+                                className="object-cover filter grayscale-[15%]"
+                            />
                             <div className="absolute inset-0 mix-blend-overlay opacity-50"
                                 style={{ background: "linear-gradient(135deg, var(--t-gradient-from), transparent, var(--t-gradient-to))" }} />
 
@@ -579,12 +586,14 @@ function WhereWeWork() {
                     {/* Interactive World Map Container */}
                     <div className="relative w-full aspect-[4378/2060] max-w-[1260px] mx-auto select-none">
                         {/* Native SVG Map */}
-                        <img
+                        <Image
                             src="/svaan-map.svg"
                             alt="SVaaN Global Presence World Map"
-                            className="w-full h-full object-contain block drop-shadow-sm transition-transform duration-500"
-                            loading="eager"
+                            fill
+                            sizes="(max-width: 1280px) 100vw, 1260px"
+                            loading="lazy"
                             draggable={false}
+                            className="object-contain block drop-shadow-sm transition-transform duration-500"
                         />
 
                         {/* Interactive Hotspot Overlay */}
