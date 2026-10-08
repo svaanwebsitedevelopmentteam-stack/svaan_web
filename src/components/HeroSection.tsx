@@ -38,43 +38,41 @@ export function HeroSection() {
                     style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }}
                 />
 
-                {/* Primary Glow that directly follows the mouse cursor */}
+                {/* Primary Glow that directly follows the mouse cursor - GPU accelerated */}
                 <motion.div
-                    className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full blur-[100px] pointer-events-none"
+                    className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
                     style={{
-                        backgroundColor: "var(--t-accent)",
+                        background: "radial-gradient(circle, var(--t-accent) 0%, transparent 70%)",
                         opacity: "calc(var(--t-orb-opacity) + 0.1)",
                         x: springX,
                         y: springY,
                         translateX: "-50%",
                         translateY: "-50%",
                         transform: "translateZ(0)",
+                        willChange: "transform",
                     }}
                 />
 
                 {/* Secondary Glow that trails behind slowly */}
                 <motion.div
-                    className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-[120px] pointer-events-none"
+                    className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full pointer-events-none"
                     style={{
-                        backgroundColor: "var(--t-accent)",
+                        background: "radial-gradient(circle, var(--t-accent) 0%, transparent 70%)",
                         opacity: "var(--t-orb-opacity)",
                         x: springX2,
                         y: springY2,
                         translateX: "-30%",
                         translateY: "-30%",
                         transform: "translateZ(0)",
+                        willChange: "transform",
                     }}
                 />
 
-                {/* Ambient static glows so corners aren't entirely empty */}
-                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] opacity-20 blur-[120px] rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+                {/* Ambient static glows */}
+                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] opacity-20 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, var(--t-accent) 0%, transparent 70%)" }} />
 
                 {/* Soft grain texture */}
-                <div className="absolute inset-0 opacity-[0.25]"
-                // style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}
-                >
-
-                </div>
+                <div className="absolute inset-0 opacity-[0.25]" />
             </div>
 
             <div className="w-full px-[40px] pt-[70px] pb-[60px] relative z-10 grid grid-cols-1 lg:grid-cols-[6fr_4fr] gap-12 lg:gap-8 items-center">
@@ -82,12 +80,7 @@ export function HeroSection() {
                 {/* Left Side: Content */}
                 <div className="text-left flex flex-col items-start pt-6 lg:pt-0">
                     {/* Eyebrow */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="flex items-center gap-3 mb-8"
-                    >
+                    <div className="flex items-center gap-3 mb-8">
                         <span
                             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[var(--t-radius-sm)] text-xs font-semibold uppercase tracking-wider"
                             style={{
@@ -99,13 +92,10 @@ export function HeroSection() {
                             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                             Available for new projects
                         </span>
-                    </motion.div>
+                    </div>
 
                     {/* Main heading */}
-                    <motion.h1
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.15 }}
+                    <h1
                         className="type-display mb-6"
                         style={{ color: "var(--t-text)" }}
                     >
@@ -115,28 +105,20 @@ export function HeroSection() {
                         <span className="italic" style={{ color: "var(--t-accent)" }}>business</span>
                         <br />
                         forward.
-                    </motion.h1>
+                    </h1>
 
                     {/* Subtext */}
-                    <motion.p
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.35 }}
+                    <p
                         className="text-lg md:text-xl max-w-lg leading-relaxed mb-12"
                         style={{ color: "var(--t-text-muted)" }}
                     >
                         SVaaN Global Tech connects strategy, design, and engineering to help
                         organizations solve complex challenges and build practical digital
                         solutions.
-                    </motion.p>
+                    </p>
 
                     {/* CTAs */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.5 }}
-                        className="flex flex-wrap items-center gap-4"
-                    >
+                    <div className="flex flex-wrap items-center gap-4">
                         <Link
                             href="/contact"
                             className="group inline-flex items-center gap-3 h-12 px-7 rounded-[var(--t-radius-btn)] font-semibold text-base transition-all duration-200 shadow-sm hover:shadow-md hover:bg-[var(--t-btn-hover)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--t-bg)]"
@@ -160,16 +142,11 @@ export function HeroSection() {
                         >
                             View our work
                         </Link>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* Right Side: Image / Video */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    transition={{ duration: 1, delay: 0.2 }}
-                    className="relative w-full h-[350px] md:h-[500px] lg:h-[600px] mt-10 lg:mt-0"
-                >
+                <div className="relative w-full h-[350px] md:h-[500px] lg:h-[600px] mt-10 lg:mt-0">
                     <Image
                         src="/herosection.webp"
                         alt="SVaaN Hero"
@@ -177,8 +154,9 @@ export function HeroSection() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                         className="object-contain lg:object-right object-center"
                         priority
+                        fetchPriority="high"
                     />
-                </motion.div>
+                </div>
 
             </div>
 

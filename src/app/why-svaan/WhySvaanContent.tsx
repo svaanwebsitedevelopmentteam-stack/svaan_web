@@ -85,16 +85,15 @@ export default function WhySvaanContent() {
                         {/* Decorative line */}
                         <div className="hidden lg:block absolute -left-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--t-accent)] to-transparent opacity-30" />
 
-                        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-4 sm:mb-6">
+                        <div className="mb-4 sm:mb-6">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border text-xs font-semibold tracking-wider uppercase"
                                 style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
                                 <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
                                 Why SVaaN
                             </div>
-                        </motion.div>
+                        </div>
 
-                        <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-                            className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6" style={{ color: "var(--t-text)" }}>
+                        <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6" style={{ color: "var(--t-text)" }}>
                             A technology partner that stays{" "}
                             <span className="italic relative whitespace-nowrap">
                                 <span className="relative z-10" style={{ color: "var(--t-accent)" }}>after go-live.</span>
@@ -102,15 +101,13 @@ export default function WhySvaanContent() {
                                     <path d="M0 5 Q 50 10 100 5" stroke="var(--t-accent)" strokeWidth="4" fill="none" strokeLinecap="round" />
                                 </svg>
                             </span>
-                        </motion.h1>
+                        </h1>
 
-                        <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-                            className="text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mb-8 sm:mb-10" style={{ color: "var(--t-text-muted)" }}>
+                        <div className="text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mb-8 sm:mb-10" style={{ color: "var(--t-text-muted)" }}>
                             Many technology vendors finish when the software launches. SVaaN does not. We build it, run it and keep improving it, so the people who understand your system are the same people who support it.
-                        </motion.p>
+                        </div>
 
-                        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-                            className="flex flex-wrap items-center gap-4 sm:gap-5">
+                        <div className="flex flex-wrap items-center gap-4 sm:gap-5">
                             <div className="flex items-center gap-3 px-4 sm:px-5 py-3 rounded-xl border transition-all duration-300 hover:border-[var(--t-accent)] hover:shadow-sm"
                                 style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
                                 <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border"
@@ -127,7 +124,7 @@ export default function WhySvaanContent() {
                                 </div>
                                 <span className="font-semibold text-xs sm:text-sm tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Business-First Depth</span>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
 
                     {/* Right Content: Floating Icon */}

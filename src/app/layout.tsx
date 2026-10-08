@@ -75,6 +75,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preload" as="image" href="/herosection.webp" type="image/webp" fetchPriority="high" />
       </head>
       <body className="min-h-screen font-sans antialiased">
         <ThemeProvider>

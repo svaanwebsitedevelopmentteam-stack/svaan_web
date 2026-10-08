@@ -79,45 +79,61 @@ function HeroV2() {
 
     return (
         <section onMouseMove={handleMouseMove} className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between overflow-hidden">
-            {/* Interactive Background - identical to current site */}
+            {/* Interactive Background - GPU accelerated radial gradients */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute inset-0 opacity-[0.05]"
                     style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-                <motion.div className="absolute top-0 left-0 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-[var(--t-radius-md)] blur-[120px]"
-                    style={{ backgroundColor: "var(--t-accent)", opacity: "calc(var(--t-orb-opacity) + 0.1)", x: springX, y: springY, translateX: "-50%", translateY: "-50%" }} />
-                <motion.div className="absolute top-0 left-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-[var(--t-radius-md)] blur-[150px]"
-                    style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)", x: springX2, y: springY2, translateX: "-30%", translateY: "-30%" }} />
-                <div className="absolute top-[-10%] right-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] opacity-20 blur-[120px] rounded-[var(--t-radius-md)]" style={{ backgroundColor: "var(--t-accent)" }} />
+                <motion.div className="absolute top-0 left-0 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full pointer-events-none"
+                    style={{
+                        background: "radial-gradient(circle, var(--t-accent) 0%, transparent 70%)",
+                        opacity: "calc(var(--t-orb-opacity) + 0.1)",
+                        x: springX,
+                        y: springY,
+                        translateX: "-50%",
+                        translateY: "-50%",
+                        transform: "translateZ(0)",
+                        willChange: "transform",
+                    }} />
+                <motion.div className="absolute top-0 left-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full pointer-events-none"
+                    style={{
+                        background: "radial-gradient(circle, var(--t-accent) 0%, transparent 70%)",
+                        opacity: "var(--t-orb-opacity)",
+                        x: springX2,
+                        y: springY2,
+                        translateX: "-30%",
+                        translateY: "-30%",
+                        transform: "translateZ(0)",
+                        willChange: "transform",
+                    }} />
+                <div className="absolute top-[-10%] right-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] opacity-20 rounded-full pointer-events-none"
+                    style={{ background: "radial-gradient(circle, var(--t-accent) 0%, transparent 70%)" }} />
             </div>
 
             {/* Main Content Grid */}
             <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-[90px] sm:pt-[110px] lg:pt-[120px] pb-6 sm:pb-8 relative z-10 grid grid-cols-1 lg:grid-cols-[6fr_4fr] gap-8 sm:gap-10 lg:gap-8 items-center flex-grow">
                 {/* Left Content */}
                 <div className="text-left flex flex-col items-start pt-2 sm:pt-4 lg:pt-0">
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="flex items-center gap-3 mb-5 sm:mb-8">
+                    <div className="flex items-center gap-3 mb-5 sm:mb-8">
                         <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-[var(--t-radius-md)] text-xs sm:text-sm font-medium"
                             style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-text-muted)" }}>
                             <span className="w-2 h-2 rounded-[var(--t-radius-md)] bg-emerald-400 animate-pulse" />
                             Available for new projects
                         </span>
-                    </motion.div>
+                    </div>
 
-                    <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.15 }}
-                        className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12] mb-4 sm:mb-6"
+                    <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12] mb-4 sm:mb-6"
                         style={{ color: "var(--t-text)" }}>
                         Build. Modernize.<br />
                         Operate.{" "}
                         <span className="italic" style={{ color: "var(--t-accent)" }}>Evolve.</span>
-                    </motion.h1>
+                    </h1>
 
-                    <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.35 }}
-                        className="text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 max-w-xl leading-relaxed"
+                    <p className="text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 max-w-xl leading-relaxed"
                         style={{ color: "var(--t-text-muted)" }}>
                         SVaaN helps businesses build new software, modernize existing systems, operate critical technology and continuously improve the way technology supports their business.
-                    </motion.p>
+                    </p>
 
-                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
-                        className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
                         <Button href="/contact" size="lg" className="w-full sm:w-auto justify-center group">
                             Discuss your technology challenge
                             <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,12 +143,11 @@ function HeroV2() {
                         <Button href="/work" variant="outline" size="lg" className="w-full sm:w-auto justify-center">
                             See client stories
                         </Button>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* Right Image */}
-                <motion.div initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }} animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    transition={{ duration: 1, delay: 0.2 }} className="relative w-full h-[240px] sm:h-[380px] md:h-[460px] lg:h-[540px] mt-2 sm:mt-6 lg:mt-0">
+                <div className="relative w-full h-[240px] sm:h-[380px] md:h-[460px] lg:h-[540px] mt-2 sm:mt-6 lg:mt-0">
                     <Image
                         src="/herosection.webp"
                         alt="SVaaN Hero"
@@ -142,15 +157,11 @@ function HeroV2() {
                         priority
                         fetchPriority="high"
                     />
-                </motion.div>
+                </div>
             </div>
 
             {/* Merged Trust Stats Strip at Bottom of Hero */}
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-6 sm:pb-8 pt-2 relative z-10">
+            <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-6 sm:pb-8 pt-2 relative z-10">
                 <div className="pt-6 sm:pt-8 grid grid-cols-3 gap-2 sm:gap-6 divide-x divide-[var(--t-border)]"
                     style={{ borderTop: "1px solid var(--t-border)" }}>
                     <div className="first:pl-0">
@@ -163,7 +174,7 @@ function HeroV2() {
                         <Counter end={4} suffix="" label="Countries active" />
                     </div>
                 </div>
-            </motion.div>
+            </div>
         </section>
     );
 }

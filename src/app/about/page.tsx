@@ -37,16 +37,15 @@ function AboutHero() {
                     {/* Decorative line */}
                     <div className="hidden lg:block absolute -left-8 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--t-accent)] to-transparent opacity-30" />
 
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-4 sm:mb-6">
+                    <div className="mb-4 sm:mb-6">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border text-xs font-semibold tracking-wider uppercase"
                             style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
                             <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
                             About SVaaN
                         </div>
-                    </motion.div>
+                    </div>
 
-                    <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-                        className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6" style={{ color: "var(--t-text)" }}>
+                    <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6" style={{ color: "var(--t-text)" }}>
                         We started with one{" "}
                         <span className="italic relative whitespace-nowrap">
                             <span className="relative z-10" style={{ color: "var(--t-accent)" }}>application.</span>
@@ -54,15 +53,13 @@ function AboutHero() {
                                 <path d="M0 5 Q 50 10 100 5" stroke="var(--t-accent)" strokeWidth="4" fill="none" strokeLinecap="round" />
                             </svg>
                         </span>
-                    </motion.h1>
+                    </h1>
 
-                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-                        className="text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mb-8 sm:mb-10" style={{ color: "var(--t-text-muted)" }}>
+                    <div className="text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mb-8 sm:mb-10" style={{ color: "var(--t-text-muted)" }}>
                         <p>SVaaN Global Tech is a team of 60+ in Chennai. We build software, fix old systems and look after live applications for clients in the US, UAE, UK and Canada. If something in your technology is broken, missing or ownerless, we take it on.</p>
-                    </motion.div>
+                    </div>
 
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-                        className="flex flex-wrap items-center gap-4 sm:gap-5">
+                    <div className="flex flex-wrap items-center gap-4 sm:gap-5">
                         <div className="flex items-center gap-3 px-4 sm:px-5 py-3 rounded-xl border transition-all duration-300 hover:border-[var(--t-accent)] hover:shadow-sm"
                             style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
                             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border"
@@ -79,7 +76,7 @@ function AboutHero() {
                             </div>
                             <span className="font-semibold text-xs sm:text-sm tracking-wide uppercase" style={{ color: "var(--t-text)" }}>Long-Term Focus</span>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* Right Content: Floating Illustration Card */}
