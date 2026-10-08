@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Contact Us - Start a Project or Technical Consultation",
   description:
     "Discuss your project, application support needs, or digital transformation goals with SVaaN Global Tech's engineering leadership.",
+  alternates: {
+    canonical: "/contact",
+  },
   openGraph: {
     title: "Contact Us - Start a Project or Technical Consultation | SVaaN Global Tech",
     description:

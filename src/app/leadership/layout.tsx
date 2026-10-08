@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Leadership",
   description:
     "The people shaping how SVaaN thinks, builds, and grows. Meet Dinesh Natarajan (Founder) and Sai Ramamurthy (CEO).",
+  alternates: {
+    canonical: "/leadership",
+  },
   openGraph: {
     title: "Leadership | SVaaN Global Tech",
     description:

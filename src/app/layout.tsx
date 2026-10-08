@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   description:
     "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://svaantech.com"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "SVaaN Global Tech - Technology & Strategy Partner",
     description: "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",

@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Privacy Policy | SVaaN Global Tech",
   description:
     "This Privacy Policy explains how SVaaN Global Tech Pvt. Ltd. collects, uses, and handles personal information when you visit our website or interact with us.",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
 };
 
 export default function PrivacyPolicyLayout({

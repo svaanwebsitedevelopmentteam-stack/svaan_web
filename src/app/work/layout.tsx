@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   },
   description:
     "Explore how SVaaN partners with global businesses across FinTech, Healthcare, PropTech, and Logistics to engineer modern software and drive measurable outcomes.",
+  alternates: {
+    canonical: "/work",
+  },
   openGraph: {
     title: "Case Studies & Featured Client Work | SVaaN Global Tech",
     description:

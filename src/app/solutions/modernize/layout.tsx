@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Modernize Legacy Systems & Cloud Infrastructure",
   description:
     "Refactor legacy monolithic software, resolve architectural technical debt, decouple services, and migrate to modern cloud platforms with zero business downtime.",
+  alternates: {
+    canonical: "/solutions/modernize",
+  },
   openGraph: {
     title: "Modernize Legacy Systems & Cloud Infrastructure | SVaaN Global Tech",
     description:

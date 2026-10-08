@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Operate, Support & Maintain Live Software",
   description:
     "SVaaN provides dedicated 24/7 technical support, infrastructure maintenance, SLA-backed incident management, and DevOps operations for mission-critical systems.",
+  alternates: {
+    canonical: "/solutions/operate",
+  },
   openGraph: {
     title: "Operate, Support & Maintain Live Software | SVaaN Global Tech",
     description:

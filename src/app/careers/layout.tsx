@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Careers - Join Our Engineering & Product Team",
   description:
     "Explore open roles at SVaaN Global Tech. Work on meaningful technology challenges with a team grounded in craftsmanship, continuous learning, and client accountability.",
+  alternates: {
+    canonical: "/careers",
+  },
   openGraph: {
     title: "Careers - Join Our Engineering & Product Team | SVaaN Global Tech",
     description:

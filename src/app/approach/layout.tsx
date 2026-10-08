@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Our Approach - Engineering Methodology & Delivery Lifecycle",
   description:
     "How SVaaN works: Understand, Strategize, Design, Build, and Run. A disciplined, transparent delivery framework designed for long-term reliability and business value.",
+  alternates: {
+    canonical: "/approach",
+  },
   openGraph: {
     title: "Our Approach - Engineering Methodology & Delivery Lifecycle | SVaaN Global Tech",
     description:

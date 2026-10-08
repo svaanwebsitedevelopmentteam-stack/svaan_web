@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Build Custom Software & Enterprise Platforms",
   description:
     "SVaaN designs and engineers custom software from validation to enterprise scale and AI integration. Purpose-built technology aligned to measurable business needs.",
+  alternates: {
+    canonical: "/solutions/build",
+  },
   openGraph: {
     title: "Build Custom Software & Enterprise Platforms | SVaaN Global Tech",
     description:
