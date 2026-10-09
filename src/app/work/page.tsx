@@ -1,20 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CTASection } from "@/components/CTASection";
 import { allProjectsList } from "@/data/projectsData";
 
-const categories = ["All", "Touring", "Home Care", "Healthcare", "Real Estate"] as const;
-type CategoryFilter = typeof categories[number];
-
 export default function WorkPage() {
-    const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>("All");
-
-    const filteredProjects = selectedCategory === "All"
-        ? allProjectsList
-        : allProjectsList.filter(p => p.category === selectedCategory);
-
     return (
         <main className="w-full overflow-x-clip min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
             {/* 1. HERO SECTION */}
@@ -48,51 +39,15 @@ export default function WorkPage() {
                 </div>
             </section>
 
-            {/* 2. FILTER & PROJECTS GRID */}
+            {/* 2. CASE STUDIES GRID */}
             <section className="py-14 sm:py-20 lg:py-28 relative overflow-clip border-b"
                 style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
                 <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
 
-                    {/* Category Filter Tabs */}
-                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-12 pb-6 border-b"
-                        style={{ borderColor: "var(--t-border)" }}>
-                        <span className="text-xs font-mono font-bold uppercase tracking-wider mr-2" style={{ color: "var(--t-text-muted)" }}>
-                            Filter by Category:
-                        </span>
-                        {categories.map((cat) => {
-                            const isSelected = selectedCategory === cat;
-                            return (
-                                <button
-                                    key={cat}
-                                    onClick={() => setSelectedCategory(cat)}
-                                    className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer border"
-                                    style={{
-                                        backgroundColor: isSelected ? "var(--t-accent)" : "var(--t-bg-card)",
-                                        color: isSelected ? "#fff" : "var(--t-text)",
-                                        borderColor: isSelected ? "var(--t-accent)" : "var(--t-border)",
-                                        boxShadow: isSelected ? "0 4px 12px -2px var(--t-shadow)" : undefined
-                                    }}
-                                >
-                                    {cat}
-                                    {cat === "All" && (
-                                        <span className="ml-2 opacity-80 text-[11px] font-mono">
-                                            ({allProjectsList.length})
-                                        </span>
-                                    )}
-                                    {cat !== "All" && (
-                                        <span className="ml-2 opacity-80 text-[11px] font-mono">
-                                            ({allProjectsList.filter(p => p.category === cat).length})
-                                        </span>
-                                    )}
-                                </button>
-                            );
-                        })}
-                    </div>
-
                     {/* Projects Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
                         <AnimatePresence mode="popLayout">
-                            {filteredProjects.map((project, i) => (
+                            {allProjectsList.map((project, i) => (
                                 <motion.div
                                     key={project.id}
                                     layout
@@ -103,61 +58,61 @@ export default function WorkPage() {
                                     className="flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl border overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                                     style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                                 >
-                                    {/* Image Container with SVG illustration */}
-                                    <div className="relative w-full aspect-[16/10] overflow-hidden border-b"
-                                        style={{ borderColor: "var(--t-border)" }}>
-                                        <div className="absolute inset-0 w-full h-full pointer-events-none">
-                                            <project.Illustration className="w-full h-full object-cover" />
-                                        </div>
-                                        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-50`} />
+                                    <div className="flex flex-col justify-between h-full">
+                                        {/* Image Container with SVG illustration */}
+                                        <div className="relative w-full aspect-[16/10] overflow-hidden border-b"
+                                            style={{ borderColor: "var(--t-border)" }}>
+                                            <div className="absolute inset-0 w-full h-full pointer-events-none">
+                                                <project.Illustration className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                            </div>
+                                            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-50`} />
 
-                                        {/* Scope pill badge on top left */}
-                                        <div className="absolute top-4 left-4 z-10">
-                                            <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase backdrop-blur-md border shadow-sm"
-                                                style={{
-                                                    backgroundColor: "rgba(0, 0, 0, 0.65)",
-                                                    borderColor: "rgba(255, 255, 255, 0.2)",
-                                                    color: "#fff"
-                                                }}>
-                                                {project.scope}
-                                            </span>
-                                        </div>
-
-
-                                    </div>
-
-                                    {/* Content & Metadata */}
-                                    <div className="p-6 sm:p-7 flex flex-col justify-between flex-1">
-                                        <div>
-                                            <h2 className="font-display text-xl sm:text-2xl font-bold leading-snug mb-3"
-                                                style={{ color: "var(--t-text)" }}>
-                                                {project.title}
-                                            </h2>
-
-                                            <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--t-text-muted)" }}>
-                                                {project.summary}
-                                            </p>
-
-                                            {/* Key Metric / Highlights Pills */}
-                                            <div className="flex flex-wrap gap-1.5 mb-5">
-                                                {project.metrics.map((metric) => (
-                                                    <span key={metric} className="text-[11px] font-medium px-2.5 py-1 rounded-md border"
-                                                        style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text)" }}>
-                                                        ✓ {metric}
-                                                    </span>
-                                                ))}
+                                            {/* Scope pill badge on top left */}
+                                            <div className="absolute top-4 left-4 z-10">
+                                                <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase backdrop-blur-md border shadow-sm"
+                                                    style={{
+                                                        backgroundColor: "rgba(0, 0, 0, 0.65)",
+                                                        borderColor: "rgba(255, 255, 255, 0.2)",
+                                                        color: "#fff"
+                                                    }}>
+                                                    {project.scope}
+                                                </span>
                                             </div>
                                         </div>
 
-                                        {/* Footer with tech stack tags */}
-                                        <div className="pt-4 border-t flex flex-wrap gap-1.5"
-                                            style={{ borderColor: "var(--t-border)" }}>
-                                            {project.techStack.map((tech) => (
-                                                <span key={tech} className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded border"
-                                                    style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
-                                                    {tech}
-                                                </span>
-                                            ))}
+                                        {/* Content & Metadata */}
+                                        <div className="p-6 sm:p-7 flex flex-col justify-between flex-1">
+                                            <div>
+                                                <h2 className="font-display text-xl sm:text-2xl font-bold leading-snug mb-3"
+                                                    style={{ color: "var(--t-text)" }}>
+                                                    {project.title}
+                                                </h2>
+
+                                                <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--t-text-muted)" }}>
+                                                    {project.summary}
+                                                </p>
+
+                                                {/* Key Metric / Highlights Pills */}
+                                                <div className="flex flex-wrap gap-1.5 mb-5">
+                                                    {project.metrics.map((metric) => (
+                                                        <span key={metric} className="text-[11px] font-medium px-2.5 py-1 rounded-md border"
+                                                            style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text)" }}>
+                                                            ✓ {metric}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Footer with tech stack tags */}
+                                            <div className="pt-4 border-t flex flex-wrap gap-1.5"
+                                                style={{ borderColor: "var(--t-border)" }}>
+                                                {project.techStack.map((tech) => (
+                                                    <span key={tech} className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded border"
+                                                        style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text-muted)" }}>
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
                                 </motion.div>

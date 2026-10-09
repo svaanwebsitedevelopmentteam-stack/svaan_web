@@ -22,6 +22,45 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion", "react-icons"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/work/forida",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/work/silom",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/work/biblical-touring",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/work/fareeda-homecare",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/work/siloam",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/work/mmu",
+        destination: "/work",
+        permanent: true,
+      },
+      {
+        source: "/work/havendeeds",
+        destination: "/work",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

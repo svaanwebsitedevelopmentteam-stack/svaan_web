@@ -25,7 +25,7 @@ export const projectsData: Record<string, ProjectData> = {
     "biblical-touring": {
         id: "biblical-touring",
         title: "Touring",
-        client: "Biblical",
+        client: "Biblical Touring",
         category: "Touring",
         scope: "Web App & Mobile App",
         tags: ["Web App", "Mobile App", "Touring", "Travel Tech"],
@@ -51,14 +51,14 @@ export const projectsData: Record<string, ProjectData> = {
             ],
         },
         techStack: ["Next.js", "React Native", "TypeScript", "Node.js", "PostgreSQL", "Mapbox SDK", "AWS S3"],
-        href: "/#solutions",
+        href: "/work",
         gradient: "from-amber-600/60 to-slate-900/60",
         Illustration: Illustrations.Touring,
     },
-    forida: {
-        id: "forida",
+    "fareeda-homecare": {
+        id: "fareeda-homecare",
         title: "Home Care",
-        client: "Forida",
+        client: "Fareeda Homecare",
         category: "Home Care",
         scope: "Web App & Mobile App",
         tags: ["Web App", "Mobile App", "Home Care", "Caregiver Management"],
@@ -84,14 +84,14 @@ export const projectsData: Record<string, ProjectData> = {
             ],
         },
         techStack: ["Next.js", "React Native", "TypeScript", "PostgreSQL", "Tailwind CSS", "Twilio", "AWS"],
-        href: "/#solutions",
+        href: "/work",
         gradient: "from-emerald-600/60 to-teal-900/60",
         Illustration: Illustrations.HomeCare,
     },
-    silom: {
-        id: "silom",
+    siloam: {
+        id: "siloam",
         title: "Healthcare",
-        client: "Silom",
+        client: "Siloam",
         category: "Healthcare",
         scope: "Web App & Mobile App",
         tags: ["Web App", "Mobile App", "Healthcare", "Telemedicine"],
@@ -117,42 +117,9 @@ export const projectsData: Record<string, ProjectData> = {
             ],
         },
         techStack: ["Next.js", "Flutter", "WebRTC", "Python / FastAPI", "PostgreSQL", "Redis", "Docker"],
-        href: "/#solutions",
+        href: "/work",
         gradient: "from-teal-600/60 to-cyan-950/60",
         Illustration: Illustrations.Healthcare,
-    },
-    havendeeds: {
-        id: "havendeeds",
-        title: "Real Estate PropTech",
-        client: "Haven Deeds",
-        category: "Real Estate",
-        scope: "Web App & Mobile App",
-        tags: ["Web App", "Mobile App", "Real Estate", "PropTech"],
-        summary:
-            "PropTech marketplace and digital closing platform providing verified title deed registries, interactive spatial property browsing, secure earnest escrow handling, and collaborative mobile buying experiences.",
-        metrics: ["Verified Title Registry", "Digital Escrow Closing", "Interactive Map Search"],
-        challenge:
-            "Property discovery and transactions suffered from slow paper-based title searches, fragmented broker messaging, and opaque buyer closing timelines that created legal vulnerabilities and escrow delays.",
-        solution:
-            "Engineered an authoritative web transaction platform that digitizes title deed checks and closing milestones, linked to a mobile application allowing prospective buyers and realtors to tour properties, place offers, and track escrow progression.",
-        features: {
-            web: [
-                "Verified property deed ledger & title search repository",
-                "Digital escrow milestone tracker & secure deposit handling",
-                "Broker listing management & virtual 3D tour hosting",
-                "Legal contract generation with electronic signature audit trail",
-            ],
-            mobile: [
-                "Augmented spatial property discovery & neighborhood insights",
-                "Instant private messaging between buyers and licensed agents",
-                "Saved listings, price drop alerts & inspection booking",
-                "Mobile closing checklist with verified document upload",
-            ],
-        },
-        techStack: ["Next.js", "React Native", "TypeScript", "Node.js", "PostgreSQL", "Stripe Connect", "AWS"],
-        href: "/#solutions",
-        gradient: "from-orange-600/60 to-amber-950/60",
-        Illustration: Illustrations.PropTech,
     },
     mmu: {
         id: "mmu",
@@ -183,10 +150,54 @@ export const projectsData: Record<string, ProjectData> = {
             ],
         },
         techStack: ["Next.js", "React Native", "TypeScript", "Python", "PostgreSQL", "Redis", "Docker"],
-        href: "/#solutions",
+        href: "/work",
         gradient: "from-indigo-600/60 to-slate-950/60",
+        Illustration: Illustrations.PropTech,
+    },
+    havendeeds: {
+        id: "havendeeds",
+        title: "Real Estate PropTech",
+        client: "Havendeeds",
+        category: "Real Estate",
+        scope: "Web App & Mobile App",
+        tags: ["Web App", "Mobile App", "Real Estate", "PropTech"],
+        summary:
+            "PropTech marketplace and digital closing platform providing verified title deed registries, interactive spatial property browsing, secure earnest escrow handling, and collaborative mobile buying experiences.",
+        metrics: ["Verified Title Registry", "Digital Escrow Closing", "Interactive Map Search"],
+        challenge:
+            "Property discovery and transactions suffered from slow paper-based title searches, fragmented broker messaging, and opaque buyer closing timelines that created legal vulnerabilities and escrow delays.",
+        solution:
+            "Engineered an authoritative web transaction platform that digitizes title deed checks and closing milestones, linked to a mobile application allowing prospective buyers and realtors to tour properties, place offers, and track escrow progression.",
+        features: {
+            web: [
+                "Verified property deed ledger & title search repository",
+                "Digital escrow milestone tracker & secure deposit handling",
+                "Broker listing management & virtual 3D tour hosting",
+                "Legal contract generation with electronic signature audit trail",
+            ],
+            mobile: [
+                "Augmented spatial property discovery & neighborhood insights",
+                "Instant private messaging between buyers and licensed agents",
+                "Saved listings, price drop alerts & inspection booking",
+                "Mobile closing checklist with verified document upload",
+            ],
+        },
+        techStack: ["Next.js", "React Native", "TypeScript", "Node.js", "PostgreSQL", "Stripe Connect", "AWS"],
+        href: "/work",
+        gradient: "from-orange-600/60 to-amber-950/60",
         Illustration: Illustrations.PropTech,
     },
 };
 
-export const allProjectsList = Object.values(projectsData);
+// Aliases for backward-compatibility with prior paths
+projectsData["forida"] = { ...projectsData["fareeda-homecare"], id: "forida" };
+projectsData["silom"] = { ...projectsData["siloam"], id: "silom" };
+
+// Primary 5 verified case studies strictly in order
+export const allProjectsList: ProjectData[] = [
+    projectsData["biblical-touring"],
+    projectsData["fareeda-homecare"],
+    projectsData["siloam"],
+    projectsData["mmu"],
+    projectsData["havendeeds"],
+];

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
+import { allProjectsList } from "@/data/projectsData";
 
 /* ────────────────────────────────────────────────────────────
    HERO STATS COUNTER
@@ -419,49 +420,8 @@ function ProblemFraming() {
 }
 
 /* ────────────────────────────────────────────────────────────
-   SECTION 4 - Four Solution Pillars (cloned from WorkShowcase pattern)
+   SECTION 4 - Case Studies Carousel ("Our Solutions")
    ──────────────────────────────────────────────────────────── */
-
-import { Illustrations } from "@/components/ui/Illustrations";
-
-const pillars = [
-    {
-        title: "Build what the business needs next.",
-        category: "CUSTOM SOFTWARE",
-        tags: "MVP  Product Engineering",
-        desc: "From proof of concept and MVP to enterprise software and AI-enabled products.",
-        href: "/solutions/build",
-        Illustration: Illustrations.FinTech,
-        gradient: "bg-[#0f172a]",
-    },
-    {
-        title: "Modernize what is holding the business back.",
-        category: "LEGACY SYSTEMS",
-        tags: "Cloud Migration  Architecture",
-        desc: "Improve legacy systems, architecture, integrations and cloud foundations.",
-        href: "/solutions/modernize",
-        Illustration: Illustrations.Healthcare,
-        gradient: "bg-[#064e3b]",
-    },
-    {
-        title: "Keep critical technology running.",
-        category: "MANAGED SERVICES",
-        tags: "App Support  Infrastructure",
-        desc: "Application, production, infrastructure, helpdesk, cloud and DevOps support.",
-        href: "/solutions/operate",
-        Illustration: Illustrations.PropTech,
-        gradient: "bg-[#431407]",
-    },
-    {
-        title: "Keep improving after launch.",
-        category: "OPTIMIZATION",
-        tags: "AI  Automation",
-        desc: "Automation, AI, optimization and steady product improvement.",
-        href: "/solutions/evolve",
-        Illustration: Illustrations.Ecommerce,
-        gradient: "bg-[#831843]",
-    }
-];
 
 function SolutionPillarsSection() {
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -507,8 +467,8 @@ function SolutionPillarsSection() {
                             Our Solutions
                         </div>
                         <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight" style={{ color: "var(--t-text)" }}>
-                            Four ways we work with<br />your{" "}
-                            <span className="italic" style={{ color: "var(--t-accent)" }}>technology.</span>
+                            Proven solutions built for<br />real{" "}
+                            <span className="italic" style={{ color: "var(--t-accent)" }}>business impact.</span>
                         </h2>
                     </motion.div>
 
@@ -527,43 +487,71 @@ function SolutionPillarsSection() {
             {/* Scrollable cards carousel (3 columns desktop) */}
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
                 <div ref={scrollRef} onScroll={checkScroll} className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 sm:pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
-                    {pillars.map((pillar, idx) => (
-                        <motion.div key={idx} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
+                    {allProjectsList.map((project, idx) => (
+                        <motion.div key={project.id} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.7, delay: idx * 0.1 }}
                             className="flex-none w-[84vw] sm:w-[360px] md:w-[45vw] lg:w-[calc(33.333%-16px)] snap-start group relative">
-                            <Link href={pillar.href} className="flex flex-col h-full rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 bg-white">
+                            <div className="flex flex-col h-full rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border"
+                                style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
 
                                 {/* Illustration Area */}
-                                <div className={`relative h-[180px] sm:h-[220px] md:h-[240px] w-full ${pillar.gradient} overflow-hidden`}>
+                                <div className={`relative h-[180px] sm:h-[220px] md:h-[240px] w-full bg-gradient-to-br ${project.gradient} overflow-hidden`}>
                                     <div className="absolute inset-0 opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
-                                        <pillar.Illustration className="w-full h-full object-cover" />
+                                        <project.Illustration className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="absolute top-4 left-4 z-10">
+                                        <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase backdrop-blur-md border shadow-sm"
+                                            style={{
+                                                backgroundColor: "rgba(0, 0, 0, 0.65)",
+                                                borderColor: "rgba(255, 255, 255, 0.2)",
+                                                color: "#fff"
+                                            }}>
+                                            {project.scope}
+                                        </span>
                                     </div>
                                 </div>
 
                                 {/* Content Area */}
-                                <div className="p-5 sm:p-7 md:p-8 flex flex-col flex-grow text-left">
-                                    <div className="flex items-center gap-2.5 mb-2.5 sm:mb-4">
-                                        <span className="text-[11px] sm:text-xs font-bold tracking-[0.1em] text-gray-500 uppercase">
-                                            {pillar.category}
-                                        </span>
-                                        <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+                                <div className="p-5 sm:p-7 md:p-8 flex flex-col flex-grow text-left justify-between"
+                                    style={{ backgroundColor: "var(--t-bg-card)" }}>
+                                    <div>
+                                        <div className="flex items-center gap-2.5 mb-2.5 sm:mb-4">
+                                            <span className="text-[11px] sm:text-xs font-bold tracking-[0.1em] uppercase"
+                                                style={{ color: "var(--t-accent)" }}>
+                                                Case Study
+                                            </span>
+                                            <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--t-accent)" }} />
+                                        </div>
+                                        <h3 className="text-xl sm:text-2xl md:text-[24px] font-bold leading-snug mb-3"
+                                            style={{ color: "var(--t-text)" }}>
+                                            {project.title}
+                                        </h3>
+                                        <p className="text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3"
+                                            style={{ color: "var(--t-text-muted)" }}>
+                                            {project.summary}
+                                        </p>
                                     </div>
-                                    <div className="text-xs sm:text-sm font-semibold text-gray-400 mb-3 sm:mb-4">
-                                        {pillar.tags}
+
+                                    {/* Footer with Key Metrics */}
+                                    <div className="pt-4 border-t flex flex-wrap gap-1.5"
+                                        style={{ borderColor: "var(--t-border)" }}>
+                                        {project.metrics.slice(0, 2).map((m) => (
+                                            <span key={m} className="text-[11px] font-medium px-2 py-0.5 rounded-md border"
+                                                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-text)" }}>
+                                                ✓ {m}
+                                            </span>
+                                        ))}
                                     </div>
-                                    <h3 className="text-xl sm:text-2xl md:text-[26px] font-bold leading-snug" style={{ color: "#111827" }}>
-                                        {pillar.title}
-                                    </h3>
                                 </div>
 
-                            </Link>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
 
                 {/* Dot indicators */}
                 <div className="flex justify-center gap-2 mt-2 sm:mt-4">
-                    {pillars.map((_, i) => (
+                    {allProjectsList.map((_, i) => (
                         <div key={i} className="w-2 h-2 rounded-full transition-all duration-300"
                             style={{ backgroundColor: i === activeIndex ? "var(--t-accent)" : "var(--t-border)", transform: i === activeIndex ? "scale(1.5)" : "scale(1)" }} />
                     ))}

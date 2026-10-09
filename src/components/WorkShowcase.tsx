@@ -107,7 +107,7 @@ export function WorkShowcase() {
                         >
                             <Link
                                 href={project.href}
-                                aria-label={`${project.title} - Our Solutions`}
+                                aria-label={`${project.title} - Case Study`}
                                 className="group block relative rounded-[var(--t-radius-card)] overflow-hidden transition-all duration-300 h-full flex flex-col border hover:border-[var(--t-accent)] hover:shadow-md cursor-pointer"
                                 style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                             >
