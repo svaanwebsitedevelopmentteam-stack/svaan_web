@@ -1,207 +1,343 @@
-"use client";
+import Link from "next/link";
+import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
+import { LegalSection } from "@/components/legal/LegalSection";
+import type { LegalNavSection } from "@/components/legal/LegalTableOfContents";
 
-import { motion } from "framer-motion";
+const cookieSections: LegalNavSection[] = [
+    { id: "what-are-cookies", title: "1. What Are Cookies?" },
+    { id: "how-we-use-cookies", title: "2. How We Use Cookies" },
+    { id: "types-of-cookies", title: "3. Types of Cookies We May Use" },
+    { id: "information-collected", title: "4. Information Collected Through Cookies" },
+    { id: "analytics-third-party", title: "5. Analytics and Third-Party Technologies" },
+    { id: "google-tag-manager", title: "6. Google Tag Manager" },
+    { id: "managing-cookies", title: "7. Managing Cookies" },
+    { id: "cookie-consent", title: "8. Cookie Consent" },
+    { id: "cookies-personal-info", title: "9. Cookies and Personal Information" },
+    { id: "third-party-websites", title: "10. Third-Party Websites" },
+    { id: "changes-to-policy", title: "11. Changes to This Cookie Policy" },
+    { id: "contact-us", title: "12. Contact Us" },
+];
 
 export default function CookiesPage() {
     return (
-        <main className="w-full overflow-x-clip min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
-            {/* HERO SECTION */}
-            <section className="relative min-h-[40vh] lg:min-h-[45vh] flex flex-col justify-center overflow-clip pt-28 pb-14 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20 border-b"
-                style={{ borderColor: "var(--t-border)" }}>
-                {/* Ambient Glow */}
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] sm:w-[700px] h-[300px] sm:h-[400px] rounded-full blur-[180px] pointer-events-none"
-                    style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
+        <LegalPageLayout
+            category="LEGAL"
+            title="Cookie Policy"
+            sections={cookieSections}
+            description={
+                <>
+                    <p>
+                        At SVaaN Global Tech Pvt. Ltd. (&ldquo;SVaaN&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;), we use cookies and similar technologies on our website,{" "}
+                        <a
+                            href="https://svaantech.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-medium underline underline-offset-4 transition-colors"
+                            style={{ color: "var(--t-accent)" }}
+                        >
+                            https://svaantech.com/
+                        </a>
+                        , to support website functionality, understand how visitors use our website, improve performance, and provide a better user experience.
+                    </p>
+                    <p>
+                        This Cookie Policy explains what cookies are, how we use them, and the choices available to you.
+                    </p>
+                </>
+            }
+        >
+            {/* Section 1 */}
+            <LegalSection id="what-are-cookies" title="1. What Are Cookies?">
+                <p>
+                    Cookies are small text files that websites may store on your device when you visit them. They allow a website to recognise your browser or device and can help the website remember information about your visit.
+                </p>
+                <p>
+                    We may also use technologies similar to cookies, including analytics and tracking technologies, for purposes described in this policy.
+                </p>
+            </LegalSection>
 
-                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 w-full">
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-4 sm:mb-6">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border text-xs font-semibold tracking-wider uppercase"
-                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
-                            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
-                            Legal
+            {/* Section 2 */}
+            <LegalSection id="how-we-use-cookies" title="2. How We Use Cookies">
+                <p className="mb-4">
+                    SVaaN may use cookies and similar technologies to:
+                </p>
+                <ul className="list-disc pl-5 space-y-2 mb-4">
+                    <li>Support the operation and functionality of our website.</li>
+                    <li>Understand how visitors interact with our website.</li>
+                    <li>Analyse website traffic and usage patterns.</li>
+                    <li>Improve website performance and functionality.</li>
+                    <li>Understand which pages and content are useful to visitors.</li>
+                    <li>Improve the overall user experience.</li>
+                    <li>Support website security and help identify misuse where applicable.</li>
+                </ul>
+                <p>
+                    The technologies used on the website may change as the website and its functionality evolve.
+                </p>
+            </LegalSection>
+
+            {/* Section 3 */}
+            <LegalSection id="types-of-cookies" title="3. Types of Cookies We May Use">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Essential Cookies */}
+                    <div className="p-6 rounded-xl border flex flex-col" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+                        <h3 className="font-semibold mb-3 text-lg" style={{ color: "var(--t-text)" }}>
+                            Essential Cookies
+                        </h3>
+                        <div className="text-sm leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
+                            <p>Some cookies may be necessary for the website to function properly.</p>
+                            <p>These cookies may support basic functionality, security, navigation, or other features requested by a visitor.</p>
+                            <p>Where a cookie is necessary for the operation of the website, disabling it may affect the functionality of certain parts of the website.</p>
                         </div>
-                    </motion.div>
+                    </div>
 
-                    <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-                        className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] mb-4 sm:mb-6 max-w-4xl"
-                        style={{ color: "var(--t-text)" }}>
-                        Cookie Policy
-                    </motion.h1>
+                    {/* Functionality or Preference Cookies */}
+                    <div className="p-6 rounded-xl border flex flex-col" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+                        <h3 className="font-semibold mb-3 text-lg" style={{ color: "var(--t-text)" }}>
+                            Functionality or Preference Cookies
+                        </h3>
+                        <div className="text-sm leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
+                            <p>Where applicable, cookies may be used to remember preferences or support website functionality.</p>
+                            <p>These cookies may help provide a more consistent experience when you return to the website.</p>
+                        </div>
+                    </div>
 
-                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-                        className="text-base sm:text-lg lg:text-xl max-w-3xl leading-relaxed space-y-4"
-                        style={{ color: "var(--t-text-muted)" }}>
+                    {/* Analytics Cookies */}
+                    <div className="p-6 rounded-xl border flex flex-col" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+                        <h3 className="font-semibold mb-3 text-lg" style={{ color: "var(--t-text)" }}>
+                            Analytics Cookies
+                        </h3>
+                        <div className="text-sm leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
+                            <p>SVaaN may use analytics technologies to understand how visitors use our website and how the website performs.</p>
+                            <p className="font-medium" style={{ color: "var(--t-text)" }}>Information collected through analytics technologies may include:</p>
+                            <ul className="list-disc pl-5 space-y-1.5">
+                                <li>Pages viewed</li>
+                                <li>Date and time of visits</li>
+                                <li>Referral source</li>
+                                <li>Browser information</li>
+                                <li>Device information</li>
+                                <li>Operating system</li>
+                                <li>General website usage patterns</li>
+                            </ul>
+                            <p>Analytics information helps us understand website usage and identify opportunities to improve the website.</p>
+                        </div>
+                    </div>
+
+                    {/* Marketing or Advertising Cookies */}
+                    <div className="p-6 rounded-xl border flex flex-col" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+                        <h3 className="font-semibold mb-3 text-lg" style={{ color: "var(--t-text)" }}>
+                            Marketing or Advertising Cookies
+                        </h3>
+                        <div className="text-sm leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
+                            <p>SVaaN does not describe or classify cookies as marketing or advertising cookies unless such technologies are actually deployed on the website.</p>
+                            <p>If marketing or advertising technologies are introduced in the future, this Cookie Policy may be updated accordingly.</p>
+                        </div>
+                    </div>
+                </div>
+            </LegalSection>
+
+            {/* Section 4 */}
+            <LegalSection id="information-collected" title="4. Information Collected Through Cookies">
+                <p className="mb-4">
+                    Depending on the technologies enabled on the website, cookies and similar technologies may collect technical or usage information such as:
+                </p>
+                <ul className="list-disc pl-5 space-y-2 mb-4">
+                    <li>IP address</li>
+                    <li>Browser type and version</li>
+                    <li>Device information</li>
+                    <li>Operating system</li>
+                    <li>Pages viewed</li>
+                    <li>Referral source</li>
+                    <li>Date and time of visits</li>
+                    <li>Website usage patterns</li>
+                </ul>
+                <div className="space-y-3">
+                    <p>
+                        This information may be used together with other information described in our{" "}
+                        <Link href="/privacy-policy" className="underline underline-offset-4 font-medium transition-colors" style={{ color: "var(--t-accent)" }}>
+                            Privacy Policy
+                        </Link>
+                        .
+                    </p>
+                    <p>
+                        Cookies themselves do not necessarily identify you by name. Personal information may be collected separately when you voluntarily provide information through forms, enquiries, communications, or other interactions with SVaaN.
+                    </p>
+                </div>
+            </LegalSection>
+
+            {/* Section 5 */}
+            <LegalSection id="analytics-third-party" title="5. Analytics and Third-Party Technologies">
+                <p>
+                    The SVaaN website may use third-party technologies to support website analytics, functionality, hosting, security, marketing, or other website-related services.
+                </p>
+                <p>
+                    Our Privacy Policy describes the categories of third-party service providers that may support activities such as:
+                </p>
+                <ul className="list-disc pl-5 space-y-2 mb-4">
+                    <li>Website hosting</li>
+                    <li>Analytics services</li>
+                    <li>CRM and marketing platforms</li>
+                    <li>Customer support tools</li>
+                    <li>IT and security services</li>
+                </ul>
+                <div className="space-y-3">
+                    <p>
+                        Third-party services may use cookies or similar technologies according to their own configurations and policies.
+                    </p>
+                    <p>
+                        Where applicable, we recommend reviewing the privacy and cookie policies of the relevant third-party service providers.
+                    </p>
+                </div>
+            </LegalSection>
+
+            {/* Section 6 */}
+            <LegalSection id="google-tag-manager" title="6. Google Tag Manager">
+                <p>
+                    The SVaaN website uses Google Tag Manager infrastructure to manage website tags and related technologies.
+                </p>
+                <p>
+                    Google Tag Manager itself is a tag-management system and may be used to deploy other website technologies.
+                </p>
+                <p>
+                    The specific cookies or tracking technologies activated through website tags depend on the current production configuration.
+                </p>
+                <p>
+                    We therefore do not treat Google Tag Manager itself as a blanket statement that a particular analytics or advertising service is being used.
+                </p>
+            </LegalSection>
+
+            {/* Section 7 */}
+            <LegalSection id="managing-cookies" title="7. Managing Cookies">
+                <p className="mb-4">
+                    You can manage or delete cookies through your web browser settings. Most browsers allow you to:
+                </p>
+                <ul className="list-disc pl-5 space-y-2 mb-4">
+                    <li>View cookies stored on your device.</li>
+                    <li>Delete existing cookies.</li>
+                    <li>Block cookies.</li>
+                    <li>Allow cookies from specific websites.</li>
+                    <li>Receive notifications before cookies are stored.</li>
+                </ul>
+                <p>
+                    Please note that disabling certain cookies may affect the functionality or performance of some parts of the website.
+                </p>
+            </LegalSection>
+
+            {/* Section 8 */}
+            <LegalSection id="cookie-consent" title="8. Cookie Consent">
+                <p>
+                    Where applicable law requires consent before certain cookies or similar technologies are used, appropriate consent or preference mechanisms should be provided.
+                </p>
+                <p>
+                    The actual consent behaviour of the website depends on the technologies currently enabled in the production environment.
+                </p>
+                <p>
+                    We aim to ensure that our cookie practices and consent mechanisms remain consistent with the technologies used on the website and applicable requirements.
+                </p>
+            </LegalSection>
+
+            {/* Section 9 */}
+            <LegalSection id="cookies-personal-info" title="9. Cookies and Personal Information">
+                <p>
+                    Cookies and similar technologies may collect information that relates to your use of the website.
+                </p>
+                <p>
+                    Our Privacy Policy explains how SVaaN collects, uses, discloses, retains, and protects personal information.
+                </p>
+                <p>
+                    Please read this Cookie Policy together with our Privacy Policy.
+                </p>
+                <div className="pt-2">
+                    <Link
+                        href="/privacy-policy"
+                        className="inline-flex items-center gap-2 font-medium underline underline-offset-4 transition-colors group"
+                        style={{ color: "var(--t-accent)" }}
+                    >
+                        <span>Privacy Policy</span>
+                        <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+                    </Link>
+                </div>
+            </LegalSection>
+
+            {/* Section 10 */}
+            <LegalSection id="third-party-websites" title="10. Third-Party Websites">
+                <p>
+                    Our website may contain links to third-party websites.
+                </p>
+                <p>
+                    This Cookie Policy applies only to the SVaaN website and does not govern the cookie practices of third-party websites.
+                </p>
+                <p>
+                    When you visit a third-party website, we recommend reviewing that website&apos;s privacy and cookie policies.
+                </p>
+            </LegalSection>
+
+            {/* Section 11 */}
+            <LegalSection id="changes-to-policy" title="11. Changes to This Cookie Policy">
+                <p className="mb-4">
+                    We may update this Cookie Policy from time to time to reflect:
+                </p>
+                <ul className="list-disc pl-5 space-y-2 mb-4">
+                    <li>Changes to our website.</li>
+                    <li>Changes to the technologies we use.</li>
+                    <li>Changes to third-party services.</li>
+                    <li>Changes to our business practices.</li>
+                    <li>Changes to applicable legal or regulatory requirements.</li>
+                </ul>
+                <p>
+                    When this policy is updated, the revised version will be published on this page with an updated Last Updated date.
+                </p>
+            </LegalSection>
+
+            {/* Section 12 */}
+            <LegalSection id="contact-us" title="12. Contact Us">
+                <p className="mb-6">
+                    If you have questions, concerns, or requests regarding this Cookie Policy or the use of cookies on our website, please contact us:
+                </p>
+
+                <div className="p-6 rounded-xl border max-w-xl" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+                    <h3 className="font-bold text-lg mb-3" style={{ color: "var(--t-text)" }}>
+                        SVaaN Global Tech Pvt. Ltd.
+                    </h3>
+                    <div className="space-y-2.5 text-sm sm:text-base" style={{ color: "var(--t-text-muted)" }}>
                         <p>
-                            This Cookie Policy explains how SVaaN Global Tech Pvt. Ltd. ("SVaaN", "we", "us", or "our") may use cookies and similar technologies on the SVaaN website.
+                            <strong style={{ color: "var(--t-text)" }}>Email:</strong>{" "}
+                            <a href="mailto:hello@svaan.in" className="hover:underline transition-colors font-medium" style={{ color: "var(--t-accent)" }}>
+                                hello@svaan.in
+                            </a>
                         </p>
                         <p>
-                            Cookies are small files or pieces of information stored on or accessed from your device when you visit a website. The actual cookies used by the Website depend on the technologies and services currently enabled in the production environment.
+                            <strong style={{ color: "var(--t-text)" }}>Phone (India):</strong>{" "}
+                            <a href="tel:+919677522812" className="hover:underline transition-colors">
+                                +91 96775 22812
+                            </a>
                         </p>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* CONTENT SECTION */}
-            <section className="py-12 sm:py-16 lg:py-20 relative overflow-clip border-b"
-                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
-                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6 }}
-                        className="p-6 sm:p-10 lg:p-12 rounded-2xl sm:rounded-3xl border relative overflow-hidden shadow-md"
-                        style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
-
-                        <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[var(--t-accent)] to-transparent" />
-                        
-                        <div className="pl-2 md:pl-6 space-y-12">
-                            <div>
-                                <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "var(--t-accent)" }}>
-                                    Last Updated: 04-07-2026
-                                </p>
-                            </div>
-
-                            {/* Section 1 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    1. Why We Use Cookies
-                                </h2>
-                                <p className="text-sm sm:text-base leading-relaxed mb-4" style={{ color: "var(--t-text-muted)" }}>
-                                    Depending on the Website configuration, cookies or similar technologies may be used to:
-                                </p>
-                                <ul className="list-disc pl-5 text-sm sm:text-base space-y-2 mb-4" style={{ color: "var(--t-text-muted)" }}>
-                                    <li>Make the Website function properly</li>
-                                    <li>Maintain necessary website functionality</li>
-                                    <li>Remember certain preferences</li>
-                                    <li>Understand how visitors use the Website</li>
-                                    <li>Improve website performance and usability</li>
-                                    <li>Support analytics where enabled</li>
-                                </ul>
-                                <p className="text-sm sm:text-base leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
-                                    We aim to use cookies only for appropriate website or business purposes.
-                                </p>
-                            </div>
-
-                            {/* Section 2 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    2. Types of Cookies
-                                </h2>
-                                <p className="text-sm sm:text-base leading-relaxed mb-6" style={{ color: "var(--t-text-muted)" }}>
-                                    Cookies can generally be grouped according to their purpose.
-                                </p>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="p-5 rounded-xl border" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
-                                        <h3 className="font-semibold mb-2 text-lg" style={{ color: "var(--t-text)" }}>Essential Cookies</h3>
-                                        <p className="text-sm space-y-2" style={{ color: "var(--t-text-muted)" }}>
-                                            <span>These cookies may be necessary for the Website to operate or for requested functionality to work.</span><br/><br/>
-                                            <span>Where a cookie is strictly necessary for the requested website functionality, it may not require consent depending on applicable law.</span>
-                                        </p>
-                                    </div>
-                                    <div className="p-5 rounded-xl border" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
-                                        <h3 className="font-semibold mb-2 text-lg" style={{ color: "var(--t-text)" }}>Preference Cookies</h3>
-                                        <p className="text-sm space-y-2" style={{ color: "var(--t-text-muted)" }}>
-                                            <span>These cookies may remember choices or preferences made during website use.</span><br/><br/>
-                                            <span>Examples can include settings that allow the Website to provide a more consistent experience.</span>
-                                        </p>
-                                    </div>
-                                    <div className="p-5 rounded-xl border" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
-                                        <h3 className="font-semibold mb-2 text-lg" style={{ color: "var(--t-text)" }}>Analytics Cookies</h3>
-                                        <p className="text-sm space-y-2" style={{ color: "var(--t-text-muted)" }}>
-                                            <span>Analytics technologies may help us understand how visitors use the Website, such as which pages are visited and how the Website is performing.</span><br/><br/>
-                                            <span>Analytics will only be described here once the actual production analytics implementation has been verified.</span>
-                                        </p>
-                                    </div>
-                                    <div className="p-5 rounded-xl border" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
-                                        <h3 className="font-semibold mb-2 text-lg" style={{ color: "var(--t-text)" }}>Marketing Cookies</h3>
-                                        <p className="text-sm space-y-2" style={{ color: "var(--t-text-muted)" }}>
-                                            <span>The Website should only describe marketing or advertising cookies if such technologies are actually deployed.</span><br/><br/>
-                                            <span>If no marketing or advertising cookies are used, this category should not be presented as an active website practice.</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Section 3 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    3. Third-Party Technologies
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>Some website functionality may rely on third-party services.</p>
-                                    <p>Where a third-party service places or accesses cookies or similar technologies, that service may have its own privacy and cookie practices.</p>
-                                    <p>The actual third-party technologies used by the production Website should be identified through a technical scan before this policy is finalized.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 4 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    4. Managing Cookies
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>Depending on the Website's implementation, you may be able to manage cookie preferences through the Website's cookie controls.</p>
-                                    <p>You can also manage or delete cookies through your browser settings.</p>
-                                    <p>Disabling certain cookies may affect some Website functionality.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 5 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    5. Cookie Consent
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>Where applicable law requires consent for particular cookies or similar technologies, the Website's consent mechanism should provide the appropriate choices before those technologies are activated.</p>
-                                    <p>The actual consent behaviour should match the technologies deployed on the production Website.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 6 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    6. Changes to This Cookie Policy
-                                </h2>
-                                <p className="text-sm sm:text-base leading-relaxed mb-4" style={{ color: "var(--t-text-muted)" }}>
-                                    We may update this Cookie Policy when:
-                                </p>
-                                <ul className="list-disc pl-5 text-sm sm:text-base space-y-2 mb-4" style={{ color: "var(--t-text-muted)" }}>
-                                    <li>The Website changes</li>
-                                    <li>New technologies are introduced</li>
-                                    <li>Existing technologies are removed</li>
-                                    <li>Legal or regulatory requirements change</li>
-                                </ul>
-                                <p className="text-sm sm:text-base leading-relaxed" style={{ color: "var(--t-text-muted)" }}>
-                                    The updated policy will be published on this page with a revised "Last Updated" date.
-                                </p>
-                            </div>
-
-                            {/* Section 7 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    7. Contact Us
-                                </h2>
-                                <p className="text-sm sm:text-base leading-relaxed mb-6" style={{ color: "var(--t-text-muted)" }}>
-                                    If you have questions about this Cookie Policy or the use of cookies on the Website, contact:
-                                </p>
-                                
-                                <div className="p-6 rounded-xl border bg-[var(--t-bg-surface)]" style={{ borderColor: "var(--t-border)" }}>
-                                    <h3 className="font-bold text-lg mb-2" style={{ color: "var(--t-text)" }}>SVaaN Global Tech Pvt. Ltd.</h3>
-                                    <div className="space-y-2 text-sm" style={{ color: "var(--t-text-muted)" }}>
-                                        <p><strong style={{ color: "var(--t-text)" }}>Email:</strong> <a href="mailto:hello@svaan.in" className="hover:underline transition-colors" style={{ color: "var(--t-accent)" }}>hello@svaan.in</a></p>
-                                        <p><strong style={{ color: "var(--t-text)" }}>India:</strong> +91 96775 22812</p>
-                                        <p><strong style={{ color: "var(--t-text)" }}>USA:</strong> +1 (332) 244-7372</p>
-                                        <p className="mt-4"><strong style={{ color: "var(--t-text)" }}>Address:</strong><br/>
-                                            <span className="inline-block mt-1">
-                                                295, 13th St, S. Kolathur,<br/>
-                                                Viduthalai Nagar, Kovilambakkam,<br/>
-                                                Chennai 600129, India
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <p>
+                            <strong style={{ color: "var(--t-text)" }}>Phone (USA):</strong>{" "}
+                            <a href="tel:+13322447372" className="hover:underline transition-colors">
+                                +1 (332) 244-7372
+                            </a>
+                        </p>
+                        <div className="pt-1">
+                            <strong style={{ color: "var(--t-text)" }}>Address:</strong>
+                            <p className="mt-1">
+                                295, 13th St, S. Kolathur, Viduthalai Nagar, Kovilambakkam,<br />
+                                Chennai 600129, India
+                            </p>
                         </div>
-                    </motion.div>
+                        <p className="pt-1">
+                            <strong style={{ color: "var(--t-text)" }}>Website:</strong>{" "}
+                            <a
+                                href="https://svaantech.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:underline transition-colors font-medium"
+                                style={{ color: "var(--t-accent)" }}
+                            >
+                                https://svaantech.com/
+                            </a>
+                        </p>
+                    </div>
                 </div>
-            </section>
-        </main>
+            </LegalSection>
+        </LegalPageLayout>
     );
 }

@@ -1,299 +1,176 @@
-"use client";
+import Link from "next/link";
+import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
+import { LegalSection } from "@/components/legal/LegalSection";
+import type { LegalNavSection } from "@/components/legal/LegalTableOfContents";
 
-import { motion } from "framer-motion";
+const termsSections: LegalNavSection[] = [
+    { id: "acceptance-of-terms", title: "1. Acceptance of Terms" },
+    { id: "modifications-to-terms", title: "2. Modifications to Terms" },
+    { id: "use-of-the-website", title: "3. Use of the Website" },
+    { id: "intellectual-property", title: "4. Intellectual Property Rights" },
+    { id: "limitation-of-liability", title: "5. Limitation of Liability" },
+    { id: "third-party-links", title: "6. Third-Party Links" },
+    { id: "user-generated-content", title: "7. User-Generated Content" },
+    { id: "indemnification", title: "8. Indemnification" },
+    { id: "privacy", title: "9. Privacy" },
+    { id: "governing-law", title: "10. Governing Law" },
+    { id: "contact-information", title: "11. Contact Information" },
+];
 
 export default function TermsConditionsPage() {
     return (
-        <main className="w-full overflow-x-clip min-h-screen" style={{ backgroundColor: "var(--t-bg)" }}>
-            {/* HERO SECTION */}
-            <section className="relative min-h-[40vh] lg:min-h-[45vh] flex flex-col justify-center overflow-clip pt-28 pb-14 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20 border-b"
-                style={{ borderColor: "var(--t-border)" }}>
-                {/* Ambient Glow */}
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] sm:w-[700px] h-[300px] sm:h-[400px] rounded-full blur-[180px] pointer-events-none"
-                    style={{ backgroundColor: "var(--t-accent)", opacity: "var(--t-orb-opacity)" }} />
+        <LegalPageLayout
+            category="LEGAL"
+            title="Terms & Conditions"
+            sections={termsSections}
+            description={
+                <p>
+                    Welcome to SVaaN Global Tech! By accessing or using our website{" "}
+                    <a
+                        href="https://svaantech.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium underline underline-offset-4 transition-colors"
+                        style={{ color: "var(--t-accent)" }}
+                    >
+                        https://svaantech.com
+                    </a>
+                    , you agree to comply with and be bound by the following Terms and Conditions. Please review these terms carefully. If you do not agree with these terms, you should not use this website.
+                </p>
+            }
+        >
+            {/* Section 1 */}
+            <LegalSection id="acceptance-of-terms" title="1. Acceptance of Terms">
+                <p>
+                    By accessing our website, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions, as well as our{" "}
+                    <Link href="/privacy-policy" className="underline underline-offset-4 font-medium transition-colors" style={{ color: "var(--t-accent)" }}>
+                        Privacy Policy
+                    </Link>
+                    .
+                </p>
+            </LegalSection>
 
-                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 w-full">
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-4 sm:mb-6">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border text-xs font-semibold tracking-wider uppercase"
-                            style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
-                            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "var(--t-accent)" }} />
-                            Legal
-                        </div>
-                    </motion.div>
+            {/* Section 2 */}
+            <LegalSection id="modifications-to-terms" title="2. Modifications to Terms">
+                <p>
+                    SVaaN Global Tech reserves the right to change or modify these Terms and Conditions at any time without prior notice. Any modifications will become effective immediately upon posting on the website. Your continued use of the website following any changes constitutes your acceptance of the updated Terms and Conditions.
+                </p>
+            </LegalSection>
 
-                    <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-                        className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] mb-4 sm:mb-6 max-w-4xl"
-                        style={{ color: "var(--t-text)" }}>
-                        Terms & Conditions
-                    </motion.h1>
+            {/* Section 3 */}
+            <LegalSection id="use-of-the-website" title="3. Use of the Website">
+                <p>
+                    You agree to use this website only for lawful purposes and in a manner that does not infringe upon the rights of, restrict, or inhibit anyone else’s use and enjoyment of the website.
+                </p>
+                <p>
+                    You are prohibited from using the website to send, post, or transmit any material that is unlawful, harmful, defamatory, offensive, fraudulent, or otherwise objectionable.
+                </p>
+            </LegalSection>
 
-                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-                        className="text-base sm:text-lg lg:text-xl max-w-3xl leading-relaxed space-y-4"
-                        style={{ color: "var(--t-text-muted)" }}>
+            {/* Section 4 */}
+            <LegalSection id="intellectual-property" title="4. Intellectual Property Rights">
+                <p>
+                    All content available on this website, including but not limited to text, graphics, logos, images, designs, videos, software, and other materials, is the property of SVaaN Global Tech or its licensors and is protected by applicable copyright, trademark, and intellectual property laws.
+                </p>
+                <p>
+                    You may not reproduce, distribute, modify, publish, transmit, display, or otherwise use any content from this website without prior written consent from SVaaN Global Tech.
+                </p>
+            </LegalSection>
+
+            {/* Section 5 */}
+            <LegalSection id="limitation-of-liability" title="5. Limitation of Liability">
+                <p>
+                    SVaaN Global Tech shall not be liable for any direct, indirect, incidental, consequential, special, or punitive damages arising from or related to your use of, or inability to use, this website, including but not limited to loss of data, business interruption, revenue, or profits.
+                </p>
+                <p>
+                    We do not guarantee the accuracy, completeness, reliability, or availability of any content or information provided on this website.
+                </p>
+            </LegalSection>
+
+            {/* Section 6 */}
+            <LegalSection id="third-party-links" title="6. Third-Party Links">
+                <p>
+                    This website may contain links to third-party websites for your convenience and reference. SVaaN Global Tech does not endorse, control, or assume responsibility for the content, privacy policies, or practices of any third-party websites.
+                </p>
+                <p>
+                    Accessing third-party websites is entirely at your own risk.
+                </p>
+            </LegalSection>
+
+            {/* Section 7 */}
+            <LegalSection id="user-generated-content" title="7. User-Generated Content">
+                <p>
+                    Any content, feedback, suggestions, comments, or materials submitted to SVaaN Global Tech through the website may be used by us for business purposes.
+                </p>
+                <p>
+                    By submitting such content, you grant SVaaN Global Tech a non-exclusive, worldwide, royalty-free, perpetual license to use, reproduce, modify, publish, distribute, and display the content.
+                </p>
+                <p>
+                    SVaaN Global Tech reserves the right to review, edit, refuse, or remove any user-submitted content that violates these Terms and Conditions or is deemed inappropriate.
+                </p>
+            </LegalSection>
+
+            {/* Section 8 */}
+            <LegalSection id="indemnification" title="8. Indemnification">
+                <p>
+                    You agree to indemnify, defend, and hold harmless SVaaN Global Tech, its directors, employees, affiliates, partners, and agents from and against any claims, liabilities, damages, losses, costs, or expenses, including legal fees, arising out of your use of the website or violation of these Terms and Conditions.
+                </p>
+            </LegalSection>
+
+            {/* Section 9 */}
+            <LegalSection id="privacy" title="9. Privacy">
+                <p>
+                    Your use of this website is also governed by our{" "}
+                    <Link href="/privacy-policy" className="underline underline-offset-4 font-medium transition-colors" style={{ color: "var(--t-accent)" }}>
+                        Privacy Policy
+                    </Link>
+                    . We encourage you to review our Privacy Policy to understand how we collect, use, and protect your information.
+                </p>
+            </LegalSection>
+
+            {/* Section 10 */}
+            <LegalSection id="governing-law" title="10. Governing Law">
+                <p>
+                    These Terms and Conditions shall be governed by and construed in accordance with the laws of India. Any disputes arising from the use of this website shall be subject to the exclusive jurisdiction of the courts located in Chennai, Tamil Nadu, India.
+                </p>
+            </LegalSection>
+
+            {/* Section 11 */}
+            <LegalSection id="contact-information" title="11. Contact Information">
+                <p className="mb-6">
+                    If you have any questions, concerns, or requests regarding these Terms and Conditions, please contact us:
+                </p>
+                
+                <div className="p-6 rounded-xl border max-w-xl" style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
+                    <h3 className="font-bold text-lg mb-3" style={{ color: "var(--t-text)" }}>SVaaN Global Tech</h3>
+                    <div className="space-y-2.5 text-sm sm:text-base" style={{ color: "var(--t-text-muted)" }}>
                         <p>
-                            These Terms & Conditions ("Terms") govern your use of the SVaaN Global Tech Pvt. Ltd. website ("Website").
+                            <strong style={{ color: "var(--t-text)" }}>Email:</strong>{" "}
+                            <a href="mailto:hello@svaan.in" className="hover:underline transition-colors font-medium" style={{ color: "var(--t-accent)" }}>
+                                hello@svaan.in
+                            </a>
                         </p>
                         <p>
-                            By accessing or using the Website, you agree to these Terms. If you do not agree with these Terms, please do not use the Website.
+                            <strong style={{ color: "var(--t-text)" }}>Phone (USA):</strong>{" "}
+                            <a href="tel:+13322447372" className="hover:underline transition-colors">
+                                +1 (332) 244-7372
+                            </a>
                         </p>
-                    </motion.div>
+                        <p>
+                            <strong style={{ color: "var(--t-text)" }}>Phone (India):</strong>{" "}
+                            <a href="tel:+919677522812" className="hover:underline transition-colors">
+                                +91 96775 22812
+                            </a>
+                        </p>
+                        <p>
+                            <strong style={{ color: "var(--t-text)" }}>Website:</strong>{" "}
+                            <a href="https://svaantech.com/" target="_blank" rel="noopener noreferrer" className="hover:underline transition-colors font-medium" style={{ color: "var(--t-accent)" }}>
+                                https://svaantech.com/
+                            </a>
+                        </p>
+                    </div>
                 </div>
-            </section>
-
-            {/* CONTENT SECTION */}
-            <section className="py-12 sm:py-16 lg:py-20 relative overflow-clip border-b"
-                style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)" }}>
-                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
-                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6 }}
-                        className="p-6 sm:p-10 lg:p-12 rounded-2xl sm:rounded-3xl border relative overflow-hidden shadow-md"
-                        style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
-
-                        <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[var(--t-accent)] to-transparent" />
-                        
-                        <div className="pl-2 md:pl-6 space-y-12">
-                            <div>
-                                <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "var(--t-accent)" }}>
-                                    Last Updated: 04-07-2026
-                                </p>
-                            </div>
-
-                            {/* Section 1 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    1. About SVaaN
-                                </h2>
-                                <p className="text-sm sm:text-base leading-relaxed mb-4" style={{ color: "var(--t-text-muted)" }}>
-                                    The Website is operated by:
-                                </p>
-                                <div className="p-5 rounded-xl border bg-[var(--t-bg-surface)]" style={{ borderColor: "var(--t-border)" }}>
-                                    <h3 className="font-bold text-lg mb-2" style={{ color: "var(--t-text)" }}>SVaaN Global Tech Pvt. Ltd.</h3>
-                                    <div className="space-y-1 text-sm sm:text-base" style={{ color: "var(--t-text-muted)" }}>
-                                        <p>295, 13th St, S. Kolathur, Viduthalai Nagar, Kovilambakkam, Chennai 600129, India</p>
-                                        <p className="mt-2"><strong style={{ color: "var(--t-text)" }}>Email:</strong> <a href="mailto:hello@svaan.in" className="hover:underline transition-colors" style={{ color: "var(--t-accent)" }}>hello@svaan.in</a></p>
-                                        <p><strong style={{ color: "var(--t-text)" }}>India:</strong> +91 96775 22812</p>
-                                        <p><strong style={{ color: "var(--t-text)" }}>USA:</strong> +1 (332) 244-7372</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Section 2 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    2. Use of the Website
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>You may use the Website for lawful purposes and in accordance with these Terms.</p>
-                                    <p>You agree not to use the Website:</p>
-                                    <ul className="list-disc pl-5 space-y-1">
-                                        <li>For any unlawful purpose</li>
-                                        <li>To violate applicable laws or regulations</li>
-                                        <li>To interfere with the operation or security of the Website</li>
-                                        <li>To attempt unauthorised access to systems or information</li>
-                                        <li>To introduce malicious code or harmful material</li>
-                                        <li>To impersonate another person or organisation</li>
-                                        <li>To misuse forms, contact mechanisms, or other website functionality</li>
-                                    </ul>
-                                    <p>We reserve the right to restrict or suspend access where necessary to protect the Website, our users, or our business.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 3 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    3. Website Content
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>The information published on the Website is provided for general informational and business purposes.</p>
-                                    <p>We make reasonable efforts to keep website information useful and current. However, we do not guarantee that all content will always be complete, accurate, current, or available.</p>
-                                    <p>Information on the Website should not be treated as professional, legal, financial, security, or other specialist advice unless expressly stated otherwise.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 4 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    4. Services
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>Information about SVaaN's services on the Website is intended to describe our capabilities and areas of work.</p>
-                                    <p>A description of a service on the Website does not constitute a binding offer or guarantee that a particular service, technology, feature, timeline, deliverable, or outcome will be provided.</p>
-                                    <p>Actual services are governed by the applicable proposal, statement of work, agreement, or other contractual arrangement between SVaaN and the relevant client.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 5 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    5. Intellectual Property
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>Unless otherwise stated, content on the Website is owned by or licensed to SVaaN Global Tech Pvt. Ltd. This may include: Text, Graphics, Logos, Images, Illustrations, Website design, Page layouts, Software and code, and Other original materials.</p>
-                                    <p>You may view the Website and use its content for legitimate personal or business reference purposes.</p>
-                                    <p>You may not reproduce, modify, distribute, publish, commercially exploit, or create derivative works from Website content without appropriate permission, except where permitted by applicable law.</p>
-                                    <p>SVaaN and its logos, names, and associated brand elements may not be used in a way that implies endorsement or affiliation without permission.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 6 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    6. Third-Party Content and Links
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>The Website may contain links to third-party websites or services. These links may be provided for convenience or additional information.</p>
-                                    <p>SVaaN does not control third-party websites and is not responsible for their content, availability, security, privacy practices, or terms.</p>
-                                    <p>Your use of third-party websites is subject to the terms and policies of those websites.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 7 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    7. User Submissions
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>If the Website allows you to submit information, enquiries, comments, or other content, you remain responsible for the information you provide.</p>
-                                    <p>You should not submit:</p>
-                                    <ul className="list-disc pl-5 space-y-1">
-                                        <li>Unlawful material</li>
-                                        <li>Malicious code</li>
-                                        <li>Confidential information that you are not authorised to disclose</li>
-                                        <li>Personal information belonging to another person without appropriate authority</li>
-                                        <li>Material that infringes another person's rights</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            {/* Section 8 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    8. Website Availability
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>We aim to keep the Website available and functional, but we do not guarantee uninterrupted or error-free availability.</p>
-                                    <p>The Website may occasionally be unavailable because of: Maintenance, Updates, Technical problems, Hosting or infrastructure issues, Security measures, or Circumstances outside our reasonable control.</p>
-                                    <p>We may modify, suspend, or discontinue parts of the Website where reasonably necessary.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 9 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    9. Accuracy and Reliance
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>Website content may change over time. Information published on the Website should be evaluated in the context in which it is provided.</p>
-                                    <p>Where a business decision depends on specific technical, commercial, legal, security, or operational information, that information should be confirmed directly with SVaaN or established through the applicable contractual documentation.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 10 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    10. Disclaimer
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>To the extent permitted by applicable law, the Website and its content are provided on an "as available" basis.</p>
-                                    <p>SVaaN does not make warranties that the Website will always be: Available, Error-free, Complete, Secure, or Free from harmful components.</p>
-                                    <p>This does not exclude or limit any rights or obligations that cannot lawfully be excluded or limited.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 11 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    11. Limitation of Liability
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>To the extent permitted by applicable law, SVaaN will not be responsible for losses arising solely from your use of, or reliance on, general information published on the Website.</p>
-                                    <p>Nothing in these Terms is intended to exclude or limit liability that cannot legally be excluded or limited.</p>
-                                </div>
-                            </div>
-                            
-                            {/* Section 12 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    12. Indemnification
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>If an indemnification provision is required, it should be reviewed and approved by the appropriate legal/business owner before publication.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 13 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    13. Privacy
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>Your use of the Website is also subject to our Privacy Policy. The Privacy Policy explains how personal information may be collected and handled through the Website.</p>
-                                    <p><a href="/privacy-policy" className="hover:underline font-semibold" style={{ color: "var(--t-accent)" }}>Privacy Policy &rarr;</a></p>
-                                </div>
-                            </div>
-
-                            {/* Section 14 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    14. Cookies
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>The Website may use cookies or similar technologies as described in our Cookie Policy.</p>
-                                    <p><a href="/cookie-policy" className="hover:underline font-semibold" style={{ color: "var(--t-accent)" }}>Cookie Policy &rarr;</a></p>
-                                </div>
-                            </div>
-
-                            {/* Section 15 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    15. Governing Law and Jurisdiction
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>These Terms are intended to be governed by the laws applicable in India.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 16 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    16. Changes to These Terms
-                                </h2>
-                                <div className="text-sm sm:text-base leading-relaxed space-y-3" style={{ color: "var(--t-text-muted)" }}>
-                                    <p>We may update these Terms when the Website, our business practices, or applicable requirements change.</p>
-                                    <p>Updated Terms will be published on this page with a revised "Last Updated" date.</p>
-                                    <p>Your continued use of the Website after an update may be subject to the revised Terms, to the extent permitted by applicable law.</p>
-                                </div>
-                            </div>
-
-                            {/* Section 17 */}
-                            <div>
-                                <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4" style={{ color: "var(--t-text)" }}>
-                                    17. Contact Us
-                                </h2>
-                                <p className="text-sm sm:text-base leading-relaxed mb-6" style={{ color: "var(--t-text-muted)" }}>
-                                    For questions regarding these Terms, contact:
-                                </p>
-                                
-                                <div className="p-6 rounded-xl border bg-[var(--t-bg-surface)]" style={{ borderColor: "var(--t-border)" }}>
-                                    <h3 className="font-bold text-lg mb-2" style={{ color: "var(--t-text)" }}>SVaaN Global Tech Pvt. Ltd.</h3>
-                                    <div className="space-y-2 text-sm" style={{ color: "var(--t-text-muted)" }}>
-                                        <p><strong style={{ color: "var(--t-text)" }}>Email:</strong> <a href="mailto:hello@svaan.in" className="hover:underline transition-colors" style={{ color: "var(--t-accent)" }}>hello@svaan.in</a></p>
-                                        <p><strong style={{ color: "var(--t-text)" }}>India:</strong> +91 96775 22812</p>
-                                        <p><strong style={{ color: "var(--t-text)" }}>USA:</strong> +1 (332) 244-7372</p>
-                                        <p className="mt-4"><strong style={{ color: "var(--t-text)" }}>Address:</strong><br/>
-                                            <span className="inline-block mt-1">
-                                                295, 13th St, S. Kolathur,<br/>
-                                                Viduthalai Nagar, Kovilambakkam,<br/>
-                                                Chennai 600129, India
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-        </main>
+            </LegalSection>
+        </LegalPageLayout>
     );
 }

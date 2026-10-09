@@ -92,7 +92,7 @@ export function FooterV2() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/careers" className="hover:text-[#38BDF8] hover:translate-x-0.5 inline-block transition-all">
+                                    <Link href="#" className="hover:text-[#38BDF8] hover:translate-x-0.5 inline-block transition-all">
                                         Careers
                                     </Link>
                                 </li>
@@ -126,7 +126,7 @@ export function FooterV2() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/security-trust" className="hover:text-[#38BDF8] hover:translate-x-0.5 inline-block transition-all">
+                                    <Link href="#" className="hover:text-[#38BDF8] hover:translate-x-0.5 inline-block transition-all">
                                         Security & Trust
                                     </Link>
                                 </li>

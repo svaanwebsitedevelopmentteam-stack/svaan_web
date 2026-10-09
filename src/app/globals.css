@@ -177,10 +177,8 @@ body {
   contain: layout style paint;
 }
 
-/* Fixed/sticky elements on their own compositor layer to prevent full-page repaint during scroll */
-header,
-nav,
-.sticky {
+/* Fixed elements on their own compositor layer to prevent full-page repaint during scroll */
+header {
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   backface-visibility: hidden;
