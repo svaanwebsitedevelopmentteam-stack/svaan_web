@@ -3,6 +3,8 @@ import { capabilitiesData } from "@/data/capabilitiesData";
 import { Metadata } from "next";
 import { ServiceDetailClient } from "@/components/ServiceDetailClient";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
     return Object.keys(capabilitiesData).map((slug) => ({
         slug: slug,
