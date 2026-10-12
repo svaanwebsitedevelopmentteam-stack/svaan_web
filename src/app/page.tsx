@@ -149,7 +149,7 @@ function HeroV2() {
                 {/* Right Image */}
                 <div className="relative w-full h-[240px] sm:h-[380px] md:h-[460px] lg:h-[540px] mt-2 sm:mt-6 lg:mt-0">
                     <Image
-                        src="/hero-section.webp"
+                        src="/Hero Section (1).webp"
                         alt="SVaaN Hero"
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
