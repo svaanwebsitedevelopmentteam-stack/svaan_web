@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
@@ -15,31 +16,31 @@ const pillars = [
         title: "We stay accountable beyond go-live.",
         short: "Accountability",
         desc: "Launch is the moment real use begins. We keep supporting, fixing and improving what we build.",
-        icon: <Icons3D.Support className="w-full h-full" />
+        icon: "/Why SVaaN/Our Core Philosophy/We stay accountable beyond go-live.svg"
     },
     {
         title: "We work from the business problem.",
         short: "Problem-First",
         desc: "A requirement is often the start of a conversation, not the end of one. We ask why before we decide what to build.",
-        icon: <Icons3D.Strategy className="w-full h-full" />
+        icon: "/Why SVaaN/Our Core Philosophy/We work from the business problem..svg"
     },
     {
         title: "One partner from build to operation.",
         short: "One Partner",
         desc: "You do not need a new vendor at every stage, or a handover that loses what the last team knew.",
-        icon: <Icons3D.Software className="w-full h-full" />
+        icon: "/Why SVaaN/Our Core Philosophy/One partner from build to operation..svg"
     },
     {
         title: "Long-term relationships over one-off delivery.",
         short: "Long-Term",
         desc: "SVaaN began in 2021 with a single US application-support engagement and now works with clients in the US, UAE, UK and Canada.",
-        icon: <Icons3D.Database className="w-full h-full" />
+        icon: "/Why SVaaN/Our Core Philosophy/Long-term relationships matter..svg"
     },
     {
         title: "Engineering depth with a business-first view.",
         short: "Depth & Vision",
         desc: "Our engineers build the systems. Our leadership looks at how the whole business runs, including people, process, customers and decisions.",
-        icon: <Icons3D.Cloud className="w-full h-full" />
+        icon: "/Why SVaaN/Our Core Philosophy/Engineering depth, business-first view..svg"
     }
 ];
 
@@ -127,27 +128,20 @@ export default function WhySvaanContent() {
                         </div>
                     </div>
 
-                    {/* Right Content: Floating Icon */}
-                    <motion.div initial={{ opacity: 0, scale: 0.9, rotateY: -10 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 0.9, delay: 0.3 }}
+                    {/* Right Content: Hero Graphic */}
+                    <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
                         className="relative flex justify-center lg:justify-end">
-                        <div className="relative w-full max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex items-center justify-center transform-gpu border"
-                            style={{
-                                backgroundColor: "var(--t-bg-card)",
-                                borderColor: "var(--t-border)",
-                                boxShadow: "0 20px 40px -15px var(--t-shadow)"
-                            }}>
-
-                            {/* Rotating ring behind icon */}
-                            <motion.div animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                                className="absolute inset-6 rounded-full border border-dashed opacity-30 pointer-events-none"
-                                style={{ borderColor: "var(--t-accent)" }} />
-
-                            <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-                                <div className="w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] md:w-[320px] md:h-[320px] flex items-center justify-center">
-                                    <Icons3D.Strategy className="w-full h-full relative z-10 filter drop-shadow-2xl" />
-                                </div>
-                            </motion.div>
-                        </div>
+                        <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                            className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+                            <Image
+                                src="/Why SVaaN/Hero Section/hero (3).webp"
+                                alt="Why SVaaN"
+                                fill
+                                priority
+                                sizes="(max-width: 640px) 340px, 420px"
+                                className="object-cover rounded-2xl sm:rounded-3xl"
+                            />
+                        </motion.div>
                     </motion.div>
 
                 </div>
@@ -223,8 +217,18 @@ export default function WhySvaanContent() {
                                         transition={{ duration: 0.35, ease: "easeOut" }}
                                         className="relative z-10 flex flex-col items-center justify-center w-full h-full max-w-md mx-auto"
                                     >
-                                        <div className="w-28 h-28 xl:w-36 xl:h-36 mb-6 opacity-95 filter drop-shadow-lg">
-                                            {pillars[activeIndex].icon}
+                                        <div className="w-28 h-28 xl:w-36 xl:h-36 mb-6 opacity-95 filter drop-shadow-lg flex items-center justify-center">
+                                            {typeof pillars[activeIndex].icon === "string" ? (
+                                                <Image
+                                                    src={pillars[activeIndex].icon}
+                                                    alt={pillars[activeIndex].title}
+                                                    width={120}
+                                                    height={120}
+                                                    className="w-full h-full object-contain"
+                                                />
+                                            ) : (
+                                                pillars[activeIndex].icon
+                                            )}
                                         </div>
                                         <span className="inline-block text-[11px] font-mono font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full border mb-3"
                                             style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
@@ -281,8 +285,18 @@ export default function WhySvaanContent() {
                                         {/* 3D Icon illustration with animated floating & glow */}
                                         <div className="w-24 h-24 sm:w-28 sm:h-28 mb-4 relative flex items-center justify-center">
                                             <div className="absolute inset-0 rounded-full blur-xl opacity-25" style={{ backgroundColor: "var(--t-accent)" }} />
-                                            <div className="w-full h-full relative z-10 filter drop-shadow-lg">
-                                                {pillar.icon}
+                                            <div className="w-full h-full relative z-10 filter drop-shadow-lg flex items-center justify-center">
+                                                {typeof pillar.icon === "string" ? (
+                                                    <Image
+                                                        src={pillar.icon}
+                                                        alt={pillar.title}
+                                                        width={96}
+                                                        height={96}
+                                                        className="w-full h-full object-contain"
+                                                    />
+                                                ) : (
+                                                    pillar.icon
+                                                )}
                                             </div>
                                         </div>
 

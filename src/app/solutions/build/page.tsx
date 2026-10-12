@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
 import { TechStack } from "@/components/TechStack";
@@ -66,26 +67,20 @@ function BuildHero() {
                     </motion.div>
                 </div>
 
-                {/* Right Content: Floating 3D Icon */}
-                <motion.div initial={{ opacity: 0, scale: 0.9, rotateY: -10 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 0.9, delay: 0.3 }}
+                {/* Right Content: Hero Graphic */}
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative flex justify-center lg:justify-end">
-                    <div className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex items-center justify-center transform-gpu border"
-                        style={{
-                            backgroundColor: "var(--t-bg-card)",
-                            borderColor: "var(--t-border)",
-                            boxShadow: "0 20px 40px -15px var(--t-shadow)"
-                        }}>
-                        {/* Rotating ring behind icon */}
-                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-6 rounded-full border border-dashed opacity-30 pointer-events-none"
-                            style={{ borderColor: "var(--t-accent)" }} />
-
-                        <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-                            <div className="w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] md:w-[300px] md:h-[300px] flex items-center justify-center">
-                                <Icons3D.ProcessBuild className="w-full h-full relative z-10 filter drop-shadow-2xl" />
-                            </div>
-                        </motion.div>
-                    </div>
+                    <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+                        <Image
+                            src="/Build/hero/hero.webp"
+                            alt="Build Software"
+                            fill
+                            priority
+                            sizes="(max-width: 640px) 340px, 420px"
+                            className="object-cover rounded-2xl sm:rounded-3xl"
+                        />
+                    </motion.div>
                 </motion.div>
 
             </div>
@@ -134,14 +129,14 @@ function TheProblem() {
    3. WHAT WE DO (Services Grid)
    ──────────────────────────────────────────────────────────── */
 const services = [
-    { title: "Custom software", desc: "Software shaped around how your business works, not a generic package.", icon: <Icons3D.Software className="w-full h-full" /> },
-    { title: "Product engineering", desc: "Taking a product from idea to a working, maintainable release.", icon: <Icons3D.ProcessShape className="w-full h-full" /> },
-    { title: "MVP development", desc: "A first version real users can try, so you learn before you invest more.", icon: <Icons3D.ProcessPrototype className="w-full h-full" /> },
-    { title: "POC development", desc: "Test whether an idea works before you commit to a full build.", icon: <Icons3D.Strategy className="w-full h-full" /> },
-    { title: "Enterprise software", desc: "Systems for complex operations with many users, roles and integrations.", icon: <Icons3D.ProcessBuild className="w-full h-full" /> },
-    { title: "Web and mobile apps", desc: "Applications your customers and teams use every day.", icon: <Icons3D.Cloud className="w-full h-full" /> },
-    { title: "AI software", desc: "AI features that solve a defined business problem, such as workflow automation or decision support.", icon: <Icons3D.AI className="w-full h-full" /> },
-    { title: "Systems integration", desc: "Connect new software to the systems you already use.", icon: <Icons3D.Support className="w-full h-full" /> }
+    { title: "Custom software", desc: "Software shaped around how your business works, not a generic package.", icon: "/Build/Scope & Deliverables/1. Custom software.svg" },
+    { title: "Product engineering", desc: "Taking a product from idea to a working, maintainable release.", icon: "/Build/Scope & Deliverables/2. Product engineering.svg" },
+    { title: "MVP development", desc: "A first version real users can try, so you learn before you invest more.", icon: "/Build/Scope & Deliverables/3. MVP development.svg" },
+    { title: "POC development", desc: "Test whether an idea works before you commit to a full build.", icon: "/Build/Scope & Deliverables/4. POC development.svg" },
+    { title: "Enterprise software", desc: "Systems for complex operations with many users, roles and integrations.", icon: "/Build/Scope & Deliverables/5. Enterprise software.svg" },
+    { title: "Web and mobile apps", desc: "Applications your customers and teams use every day.", icon: "/Build/Scope & Deliverables/6. Web and mobile apps.svg" },
+    { title: "AI software", desc: "AI features that solve a defined business problem, such as workflow automation or decision support.", icon: "/Build/Scope & Deliverables/7. AI software.svg" },
+    { title: "Systems integration", desc: "Connect new software to the systems you already use.", icon: "/Build/Scope & Deliverables/8. Systems integration.svg" }
 ];
 
 function WhatWeDo() {
@@ -171,9 +166,13 @@ function WhatWeDo() {
                             className="p-6 sm:p-7 rounded-2xl border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group flex flex-col justify-between"
                             style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
                             <div>
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 border [&>svg]:w-7 [&>svg]:h-7"
+                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 border"
                                     style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
-                                    {s.icon}
+                                    {typeof s.icon === "string" ? (
+                                        <Image src={s.icon} alt={s.title} width={28} height={28} className="w-7 h-7 object-contain" />
+                                    ) : (
+                                        s.icon
+                                    )}
                                 </div>
                                 <h3 className="font-display text-base sm:text-lg font-bold mb-2 group-hover:text-[var(--t-accent)] transition-colors duration-200 leading-snug"
                                     style={{ color: "var(--t-text)" }}>
@@ -195,12 +194,36 @@ function WhatWeDo() {
    4. WHEN YOU NEED IT (Triggers)
    ──────────────────────────────────────────────────────────── */
 const buildSignals: SignalItem[] = [
-    { tag: "Validation Phase", text: "You have an idea and want to test it before committing large capital." },
-    { tag: "Operational Ceiling", text: "Spreadsheets and manual processes are bottlenecking the business." },
-    { tag: "Off-the-Shelf Mismatch", text: "The tools you can buy off the shelf do not fit the way you work." },
-    { tag: "AI Integration", text: "You want to add purposeful AI to a product with a clear high-value use case." },
-    { tag: "Continuous Velocity", text: "Your engineering throughput cannot keep pace with accelerating business demand." },
-    { tag: "Throughput Limit", text: "Your current architecture struggles to handle enterprise concurrency and scale." }
+    {
+        tag: "Validation Phase",
+        text: "You have an idea and want to test it before committing large capital.",
+        icon: "/Build/Signals & Triggers/1. You have an idea and want to test it before committing large capital..svg"
+    },
+    {
+        tag: "Operational Ceiling",
+        text: "Spreadsheets and manual processes are bottlenecking the business.",
+        icon: "/Build/Signals & Triggers/2. Spreadsheets and manual processes are bottlenecking the business..svg"
+    },
+    {
+        tag: "Off-the-Shelf Mismatch",
+        text: "The tools you can buy off the shelf do not fit the way you work.",
+        icon: "/Build/Signals & Triggers/3. The tools you can buy off the shelf do not fit the way you work..svg"
+    },
+    {
+        tag: "AI Integration",
+        text: "You want to add purposeful AI to a product with a clear high-value use case.",
+        icon: "/Build/Signals & Triggers/4. You want to add purposeful AI to a product with a clear high-value use case..svg"
+    },
+    {
+        tag: "Continuous Velocity",
+        text: "Your engineering throughput cannot keep pace with accelerating business demand.",
+        icon: "/Build/Signals & Triggers/5. Your engineering throughput cannot keep pace with accelerating business demand..svg"
+    },
+    {
+        tag: "Throughput Limit",
+        text: "Your current architecture struggles to handle enterprise concurrency and scale.",
+        icon: "/Build/Signals & Triggers/6. Your current architecture struggles to handle enterprise concurrency and scale..svg"
+    }
 ];
 
 function WhenYouNeedIt() {

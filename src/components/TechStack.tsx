@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
 
@@ -14,7 +15,7 @@ interface TechDomain {
     category: string;
     focus: string;
     accent: string;
-    icon: React.ReactNode;
+    icon: React.ReactNode | string;
     items: TechItem[];
 }
 
@@ -24,7 +25,7 @@ const techDomains: TechDomain[] = [
         category: "Frontend & Mobile",
         focus: "Ultra-responsive, accessible user interfaces with server-side rendering",
         accent: "#0076CC",
-        icon: <Icons3D.Mobile className="w-8 h-8" />,
+        icon: "/Build/Technologies We Use/1.Frontend & Mobile.svg",
         items: [
             { name: "Next.js", badge: "SSR" },
             { name: "React", badge: "" },
@@ -39,7 +40,7 @@ const techDomains: TechDomain[] = [
         category: "Backend & Core Systems",
         focus: "Distributed, type-safe APIs & high-concurrency microservices",
         accent: "#6366f1",
-        icon: <Icons3D.Backend className="w-8 h-8" />,
+        icon: "/Build/Technologies We Use/2. Backend & Core Systems.svg",
         items: [
             { name: "Node.js", badge: "" },
             { name: "Go", badge: "High-Perf" },
@@ -55,7 +56,7 @@ const techDomains: TechDomain[] = [
         category: "Cloud Infrastructure",
         focus: "Elastic multi-cloud architectures, edge computing & serverless",
         accent: "#0ea5e9",
-        icon: <Icons3D.CloudInfra className="w-8 h-8" />,
+        icon: "/Build/Technologies We Use/3. Cloud Infrastructure.svg",
         items: [
             { name: "AWS", badge: "" },
             { name: "Google Cloud", badge: "" },
@@ -70,7 +71,7 @@ const techDomains: TechDomain[] = [
         category: "Data & AI / ML",
         focus: "High-throughput data storage, vector databases & generative AI",
         accent: "#8b5cf6",
-        icon: <Icons3D.DataTree className="w-8 h-8" />,
+        icon: "/Build/Technologies We Use/4. Data & AI  ML.svg",
         items: [
             { name: "PostgreSQL", badge: "SQL" },
             { name: "MongoDB", badge: "NoSQL" },
@@ -85,7 +86,7 @@ const techDomains: TechDomain[] = [
         category: "DevOps & Security",
         focus: "Automated delivery pipelines, security hardening & zero-downtime",
         accent: "#10b981",
-        icon: <Icons3D.DevOps className="w-8 h-8" />,
+        icon: "/Build/Technologies We Use/5. DevOps & Security.svg",
         items: [
             { name: "Kubernetes", badge: "K8s" },
             { name: "Docker", badge: "" },
@@ -100,7 +101,7 @@ const techDomains: TechDomain[] = [
         category: "Architecture & Scale",
         focus: "Decoupled domain-driven designs, websockets & zero trust security",
         accent: "#f59e0b",
-        icon: <Icons3D.Microservices className="w-8 h-8" />,
+        icon: "/Build/Technologies We Use/6. Architecture & Scale.svg",
         items: [
             { name: "Microservices", badge: "" },
             { name: "Serverless", badge: "" },
@@ -348,7 +349,11 @@ export function TechStack() {
                                                 color: domain.accent,
                                             }}
                                         >
-                                            {domain.icon}
+                                            {typeof domain.icon === "string" ? (
+                                                <Image src={domain.icon} alt={domain.category} width={32} height={32} className="w-7 h-7 object-contain" />
+                                            ) : (
+                                                domain.icon
+                                            )}
                                         </div>
 
                                         <span

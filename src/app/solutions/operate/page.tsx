@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -66,26 +67,20 @@ function OperateHero() {
                     </motion.div>
                 </div>
 
-                {/* Right Content: Floating 3D Icon */}
-                <motion.div initial={{ opacity: 0, scale: 0.9, rotateY: -10 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 0.9, delay: 0.3 }}
+                {/* Right Content: Hero Graphic */}
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative flex justify-center lg:justify-end">
-                    <div className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex items-center justify-center transform-gpu border"
-                        style={{
-                            backgroundColor: "var(--t-bg-card)",
-                            borderColor: "var(--t-border)",
-                            boxShadow: "0 20px 40px -15px var(--t-shadow)"
-                        }}>
-                        {/* Rotating ring behind icon */}
-                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-6 rounded-full border border-dashed opacity-30 pointer-events-none"
-                            style={{ borderColor: "var(--t-accent)" }} />
-
-                        <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-                            <div className="w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] md:w-[300px] md:h-[300px] flex items-center justify-center">
-                                <Icons3D.Support className="w-full h-full relative z-10 filter drop-shadow-2xl" />
-                            </div>
-                        </motion.div>
-                    </div>
+                    <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+                        <Image
+                            src="/Operate/hero/hero (2).webp"
+                            alt="Operate and Support"
+                            fill
+                            priority
+                            sizes="(max-width: 640px) 340px, 420px"
+                            className="object-cover rounded-2xl sm:rounded-3xl"
+                        />
+                    </motion.div>
                 </motion.div>
 
             </div>
@@ -134,14 +129,14 @@ function TheProblem() {
    3. WHAT WE DO (Services Grid)
    ──────────────────────────────────────────────────────────── */
 const services = [
-    { title: "Application support", desc: "Keep business-critical applications stable, monitored and useful.", icon: <Icons3D.Software className="w-full h-full" /> },
-    { title: "Production support", desc: "Protect the reliability and uptime of live business environments.", icon: <Icons3D.ProcessShape className="w-full h-full" /> },
-    { title: "Helpdesk & end-user", desc: "Keep teams productive with rapid resolution when technology gets in the way.", icon: <Icons3D.Support className="w-full h-full" /> },
+    { title: "Application support", desc: "Keep business-critical applications stable, monitored and useful.", icon: "/Operate/Scope & Deliverables/1. Application support.svg" },
+    { title: "Production support", desc: "Protect the reliability and uptime of live business environments.", icon: "/Operate/Scope & Deliverables/2. Production support.svg" },
+    { title: "Helpdesk & end-user", desc: "Keep teams productive with rapid resolution when technology gets in the way.", icon: "/Operate/Scope & Deliverables/3. Helpdesk & end-user.svg" },
     { title: "Infrastructure support", desc: "Keep foundational servers, networks and databases dependable.", icon: <Icons3D.ProcessBuild className="w-full h-full" /> },
-    { title: "Cloud managed services", desc: "Manage AWS, Azure and GCP environments for cost, performance and growth.", icon: <Icons3D.Cloud className="w-full h-full" /> },
-    { title: "DevOps support", desc: "Make software deployments consistent, automated and low-risk.", icon: <Icons3D.Strategy className="w-full h-full" /> },
-    { title: "Monitoring & incident response", desc: "Spot bottlenecks early and resolve issues before users notice.", icon: <Icons3D.ProcessDiscover className="w-full h-full" /> },
-    { title: "Continuous maintenance", desc: "Routine patches, dependency updates, security audits and tuning.", icon: <Icons3D.ProcessPrototype className="w-full h-full" /> }
+    { title: "Cloud managed services", desc: "Manage AWS, Azure and GCP environments for cost, performance and growth.", icon: "/Operate/Scope & Deliverables/5. Cloud managed services.svg" },
+    { title: "DevOps support", desc: "Make software deployments consistent, automated and low-risk.", icon: "/Operate/Scope & Deliverables/6. DevOps support.svg" },
+    { title: "Monitoring & incident response", desc: "Spot bottlenecks early and resolve issues before users notice.", icon: "/Operate/Scope & Deliverables/7. Monitoring & incident response.svg" },
+    { title: "Continuous maintenance", desc: "Routine patches, dependency updates, security audits and tuning.", icon: "/Operate/Scope & Deliverables/8. Continuous maintenance.svg" }
 ];
 
 function WhatWeDo() {
@@ -171,9 +166,13 @@ function WhatWeDo() {
                             className="p-6 sm:p-7 rounded-2xl border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group flex flex-col justify-between"
                             style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
                             <div>
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 border [&>svg]:w-7 [&>svg]:h-7"
+                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 border"
                                     style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
-                                    {s.icon}
+                                    {typeof s.icon === "string" ? (
+                                        <Image src={s.icon} alt={s.title} width={28} height={28} className="w-7 h-7 object-contain" />
+                                    ) : (
+                                        s.icon
+                                    )}
                                 </div>
                                 <h3 className="font-display text-base sm:text-lg font-bold mb-2 group-hover:text-[var(--t-accent)] transition-colors duration-200 leading-snug"
                                     style={{ color: "var(--t-text)" }}>
@@ -195,12 +194,36 @@ function WhatWeDo() {
    4. WHEN YOU NEED IT (Triggers)
    ──────────────────────────────────────────────────────────── */
 const operateSignals: SignalItem[] = [
-    { tag: "Support Deficit", text: "Your team built or bought an application and cannot support it fully." },
-    { tag: "Ownership Void", text: "A previous vendor has left and nobody actively owns or patches the live system." },
-    { tag: "Feedback Bottleneck", text: "Users frequently report problems and there is no clear SLA or routing in place." },
-    { tag: "Helpdesk Need", text: "You need a dedicated, reliable technical helpdesk for your staff or customers." },
-    { tag: "Cloud Governance", text: "Your cloud environment needs proactive optimization, monitoring, and cost control." },
-    { tag: "Downtime Risk", text: "Deployments and releases are manual, stressful, and prone to service interruptions." }
+    {
+        tag: "Support Deficit",
+        text: "Your team built or bought an application and cannot support it fully.",
+        icon: "/Operate/Signals & Triggers/1. Your team built or bought an application and cannot support it fully..svg"
+    },
+    {
+        tag: "Ownership Void",
+        text: "A previous vendor has left and nobody actively owns or patches the live system.",
+        icon: "/Operate/Signals & Triggers/2. A previous vendor has left and nobody actively owns or patches the live system..svg"
+    },
+    {
+        tag: "Feedback Bottleneck",
+        text: "Users frequently report problems and there is no clear SLA or routing in place.",
+        icon: "/Operate/Signals & Triggers/3. Users frequently report problems and there is no clear SLA or routing in place..svg"
+    },
+    {
+        tag: "Helpdesk Need",
+        text: "You need a dedicated, reliable technical helpdesk for your staff or customers.",
+        icon: "/Operate/Signals & Triggers/4. You need a dedicated, reliable technical helpdesk for your staff or customers.svg"
+    },
+    {
+        tag: "Cloud Governance",
+        text: "Your cloud environment needs proactive optimization, monitoring, and cost control.",
+        icon: "/Operate/Signals & Triggers/5. Your cloud environment needs proactive optimization, monitoring, and cost control..svg"
+    },
+    {
+        tag: "Downtime Risk",
+        text: "Deployments and releases are manual, stressful, and prone to service interruptions.",
+        icon: "/Operate/Signals & Triggers/6. Deployments and releases are manual, stressful, and prone to service interruptions..svg"
+    }
 ];
 
 function WhenYouNeedIt() {

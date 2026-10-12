@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
 import { CTASection } from "@/components/CTASection";
@@ -12,7 +13,7 @@ const methodologies = [
         subtitle: "Understand before deciding.",
         desc: "We clarify the business challenge, users, context, constraints, and desired progress.",
         deliverables: ["Discovery", "Stakeholder discussions", "Problem framing", "Current-state review", "Requirement analysis", "Opportunity identification"],
-        icon: Icons3D.ProcessDiscover
+        icon: "/Approach/The Framework/Understand.svg"
     },
     {
         num: "02",
@@ -20,7 +21,7 @@ const methodologies = [
         subtitle: "Turn complexity into direction.",
         desc: "We identify priorities, opportunities, and the direction that makes sense for the situation.",
         deliverables: ["Prioritization", "Product and technology direction", "Transformation planning", "Solution options", "Roadmap definition"],
-        icon: Icons3D.ProcessShape
+        icon: "/Approach/The Framework/Strategize.svg"
     },
     {
         num: "03",
@@ -28,7 +29,7 @@ const methodologies = [
         subtitle: "Make the solution useful before making it real.",
         desc: "We translate direction into experiences, products, workflows, and solution concepts.",
         deliverables: ["User experience design", "Product definition", "Prototyping", "Interface design", "Solution design"],
-        icon: Icons3D.ProcessPrototype
+        icon: "/Approach/The Framework/Design.svg"
     },
     {
         num: "04",
@@ -36,7 +37,7 @@ const methodologies = [
         subtitle: "Turn direction into working technology.",
         desc: "We engineer and deliver the solution with appropriate technology, quality practices, and collaboration.",
         deliverables: ["Application development", "Integration", "Quality assurance", "Deployment", "Delivery management"],
-        icon: Icons3D.ProcessBuild
+        icon: "/Approach/The Framework/Build.svg"
     },
     {
         num: "05",
@@ -44,7 +45,7 @@ const methodologies = [
         subtitle: "Improve as the business changes.",
         desc: "We support, monitor, learn from, and improve technology after launch.",
         deliverables: ["Application support", "Infrastructure support", "Production support", "Cloud management", "Performance improvement", "Continuous enhancement"],
-        icon: Icons3D.Support
+        icon: "/Approach/The Framework/Evolve.svg"
     }
 ];
 
@@ -688,7 +689,7 @@ export default function ApproachPage() {
                             <div className="flex items-center gap-3.5 sm:gap-4">
                                 <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shrink-0 border shadow-sm group-hover:scale-105 transition-transform duration-300"
                                     style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
-                                    <step.icon className="w-7 h-7 sm:w-8 sm:h-8" />
+                                    <Image src={step.icon} alt={step.title} width={32} height={32} className="w-7 h-7 sm:w-8 sm:h-8 object-contain" />
                                 </div>
                                 <div>
                                     <span className="text-[11px] font-mono font-bold uppercase tracking-wider block opacity-75" style={{ color: "var(--t-accent)" }}>

@@ -1,0 +1,8 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.5 16.5H43.5" stroke="#0076CC" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="10.5" cy="12" r="1.5" fill="#0076CC"/>
+<circle cx="15" cy="12" r="1.5" fill="#0076CC"/>
+<circle cx="19.5" cy="12" r="1.5" fill="#0076CC"/>
+<path d="M13.2 40.5H4.5V7.5H43.5V40.5H34.8C35.25 40.35 35.7 40.35 36.15 40.35C36.3 39.45 36.45 38.4 36.45 37.5C36.45 36.45 36.3 35.55 36.15 34.65C34.65 34.8 33.15 34.2 32.4 32.7C31.65 31.35 31.8 29.7 32.7 28.5C31.35 27.15 29.55 26.1 27.6 25.5C27 26.85 25.65 27.9 24 27.9C22.35 27.9 21 26.85 20.4 25.5C18.45 26.1 16.8 27.15 15.3 28.5C16.2 29.7 16.35 31.35 15.6 32.7C14.85 34.05 13.2 34.8 11.85 34.65C11.7 35.55 11.55 36.6 11.55 37.5C11.55 38.55 11.7 39.45 11.85 40.35C12.3 40.35 12.75 40.35 13.2 40.5Z" stroke="#0076CC" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24 42C26.4853 42 28.5 39.9853 28.5 37.5C28.5 35.0147 26.4853 33 24 33C21.5147 33 19.5 35.0147 19.5 37.5C19.5 39.9853 21.5147 42 24 42Z" stroke="#0076CC" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

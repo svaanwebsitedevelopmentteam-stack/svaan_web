@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
 import { TechStack } from "@/components/TechStack";
@@ -66,26 +67,20 @@ function ModernizeHero() {
                     </motion.div>
                 </div>
 
-                {/* Right Content: Floating 3D Icon */}
-                <motion.div initial={{ opacity: 0, scale: 0.9, rotateY: -10 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 0.9, delay: 0.3 }}
+                {/* Right Content: Hero Graphic */}
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative flex justify-center lg:justify-end">
-                    <div className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex items-center justify-center transform-gpu border"
-                        style={{
-                            backgroundColor: "var(--t-bg-card)",
-                            borderColor: "var(--t-border)",
-                            boxShadow: "0 20px 40px -15px var(--t-shadow)"
-                        }}>
-                        {/* Rotating ring behind icon */}
-                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-6 rounded-full border border-dashed opacity-30 pointer-events-none"
-                            style={{ borderColor: "var(--t-accent)" }} />
-
-                        <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-                            <div className="w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] md:w-[300px] md:h-[300px] flex items-center justify-center">
-                                <Icons3D.Cloud className="w-full h-full relative z-10 filter drop-shadow-2xl" />
-                            </div>
-                        </motion.div>
-                    </div>
+                    <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+                        <Image
+                            src="/Modernize/hero/hero (1).webp"
+                            alt="Modernize Technology"
+                            fill
+                            priority
+                            sizes="(max-width: 640px) 340px, 420px"
+                            className="object-cover rounded-2xl sm:rounded-3xl"
+                        />
+                    </motion.div>
                 </motion.div>
 
             </div>
@@ -134,14 +129,14 @@ function TheProblem() {
    3. WHAT WE DO (Services Grid)
    ──────────────────────────────────────────────────────────── */
 const services = [
-    { title: "Legacy app modernization", desc: "Update or replace old applications without losing the rules they contain.", icon: <Icons3D.ProcessBuild className="w-full h-full" /> },
-    { title: "Cloud migration", desc: "Move systems to the cloud in planned stages with minimal downtime.", icon: <Icons3D.Cloud className="w-full h-full" /> },
-    { title: "Architecture modernization", desc: "Reshape how a system is built so it is resilient and easier to change.", icon: <Icons3D.ProcessShape className="w-full h-full" /> },
-    { title: "API and integration", desc: "Connect decoupled systems that do not talk to each other seamlessly.", icon: <Icons3D.ProcessDiscover className="w-full h-full" /> },
-    { title: "Database modernization", desc: "Move data to platforms that are faster and easier to scale.", icon: <Icons3D.Software className="w-full h-full" /> },
-    { title: "Performance improvement", desc: "Find and fix bottlenecks that make the current system slow.", icon: <Icons3D.Strategy className="w-full h-full" /> },
-    { title: "AI integration", desc: "Add intelligent features to existing systems where there is high ROI.", icon: <Icons3D.AI className="w-full h-full" /> },
-    { title: "Security & reliability", desc: "Close vulnerabilities and eliminate the threat of sudden outages.", icon: <Icons3D.Support className="w-full h-full" /> }
+    { title: "Legacy app modernization", desc: "Update or replace old applications without losing the rules they contain.", icon: "/Modernize/Scope & Deliverables/1. Legacy app modernization.svg" },
+    { title: "Cloud migration", desc: "Move systems to the cloud in planned stages with minimal downtime.", icon: "/Modernize/Scope & Deliverables/2. Cloud migration.svg" },
+    { title: "Architecture modernization", desc: "Reshape how a system is built so it is resilient and easier to change.", icon: "/Modernize/Scope & Deliverables/3. Architecture modernization.svg" },
+    { title: "API and integration", desc: "Connect decoupled systems that do not talk to each other seamlessly.", icon: "/Modernize/Scope & Deliverables/4. API and integration.svg" },
+    { title: "Database modernization", desc: "Move data to platforms that are faster and easier to scale.", icon: "/Modernize/Scope & Deliverables/5. Database modernization.svg" },
+    { title: "Performance improvement", desc: "Find and fix bottlenecks that make the current system slow.", icon: "/Modernize/Scope & Deliverables/6. Performance improvement.svg" },
+    { title: "AI integration", desc: "Add intelligent features to existing systems where there is high ROI.", icon: "/Modernize/Scope & Deliverables/7. AI inte8. gration.svg" },
+    { title: "Security & reliability", desc: "Close vulnerabilities and eliminate the threat of sudden outages.", icon: "/Modernize/Scope & Deliverables/8. Security & reliability.svg" }
 ];
 
 function WhatWeDo() {
@@ -171,9 +166,13 @@ function WhatWeDo() {
                             className="p-6 sm:p-7 rounded-2xl border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group flex flex-col justify-between"
                             style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
                             <div>
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 border [&>svg]:w-7 [&>svg]:h-7"
+                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 border"
                                     style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
-                                    {s.icon}
+                                    {typeof s.icon === "string" ? (
+                                        <Image src={s.icon} alt={s.title} width={28} height={28} className="w-7 h-7 object-contain" />
+                                    ) : (
+                                        s.icon
+                                    )}
                                 </div>
                                 <h3 className="font-display text-base sm:text-lg font-bold mb-2 group-hover:text-[var(--t-accent)] transition-colors duration-200 leading-snug"
                                     style={{ color: "var(--t-text)" }}>
@@ -195,12 +194,36 @@ function WhatWeDo() {
    4. WHEN YOU NEED IT (Triggers)
    ──────────────────────────────────────────────────────────── */
 const modernizeSignals: SignalItem[] = [
-    { tag: "Deployment Friction", text: "Releases are slow, stressful, and every small change feels risky." },
-    { tag: "Cost & Efficiency", text: "Hosting and cloud costs are rising while infrastructure is visibly ageing." },
-    { tag: "Integration Silos", text: "Your core applications and databases do not share data seamlessly." },
-    { tag: "Key-Person Risk", text: "One individual holds the unwritten tribal knowledge of how everything works." },
-    { tag: "Throughput Limit", text: "The legacy system struggles to handle peak concurrency as business grows." },
-    { tag: "Downtime Risk", text: "Deployments and releases require manual heroics and service interruption." }
+    {
+        tag: "Deployment Friction",
+        text: "Releases are slow, stressful, and every small change feels risky.",
+        icon: "/Modernize/Signals & Triggers/1. Releases are slow, stressful, and every small change feels risky..svg"
+    },
+    {
+        tag: "Cost & Efficiency",
+        text: "Hosting and cloud costs are rising while infrastructure is visibly ageing.",
+        icon: "/Modernize/Signals & Triggers/2. Hosting and cloud costs are rising while infrastructure is visibly ageing..svg"
+    },
+    {
+        tag: "Integration Silos",
+        text: "Your core applications and databases do not share data seamlessly.",
+        icon: "/Modernize/Signals & Triggers/3. Your core applications and databases do not share data seamlessly.svg"
+    },
+    {
+        tag: "Key-Person Risk",
+        text: "One individual holds the unwritten tribal knowledge of how everything works.",
+        icon: "/Modernize/Signals & Triggers/4. One individual holds the unwritten tribal knowledge of how everything works..svg"
+    },
+    {
+        tag: "Throughput Limit",
+        text: "The legacy system struggles to handle peak concurrency as business grows.",
+        icon: "/Modernize/Signals & Triggers/5. The legacy system struggles to handle peak concurrency as business grows..svg"
+    },
+    {
+        tag: "Downtime Risk",
+        text: "Deployments and releases require manual heroics and service interruption.",
+        icon: "/Modernize/Signals & Triggers/6. Deployments and releases require manual heroics and service interruption..svg"
+    }
 ];
 
 function WhenYouNeedIt() {

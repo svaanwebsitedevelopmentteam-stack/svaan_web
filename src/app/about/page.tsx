@@ -79,28 +79,20 @@ function AboutHero() {
                     </div>
                 </div>
 
-                {/* Right Content: Floating Illustration Card */}
-                <motion.div initial={{ opacity: 0, scale: 0.9, rotateY: -10 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 0.9, delay: 0.3 }}
+                {/* Right Content: Hero Image */}
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative flex justify-center lg:justify-end">
-                    <div className="relative w-full max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex items-center justify-center transform-gpu border"
-                        style={{
-                            backgroundColor: "var(--t-bg-card)",
-                            borderColor: "var(--t-border)",
-                            boxShadow: "0 20px 40px -15px var(--t-shadow)"
-                        }}>
-                        {/* Rotating ring behind icon */}
-                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-6 rounded-full border border-dashed opacity-30 pointer-events-none"
-                            style={{ borderColor: "var(--t-accent)" }} />
-
-                        <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                            className="w-full h-full relative z-10 flex items-center justify-center">
-                            <div className="w-[260px] h-[260px] sm:w-[280px] sm:h-[280px] rounded-2xl overflow-hidden border shadow-xl"
-                                style={{ borderColor: "var(--t-border)", backgroundColor: "var(--t-bg-surface)" }}>
-                                <Illustrations.PropTech className="w-full h-full" />
-                            </div>
-                        </motion.div>
-                    </div>
+                    <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+                        <Image
+                            src="/about/Hero Section/We started with one application.webp"
+                            alt="We started with one application"
+                            fill
+                            priority
+                            sizes="(max-width: 640px) 340px, 420px"
+                            className="object-cover rounded-2xl sm:rounded-3xl"
+                        />
+                    </motion.div>
                 </motion.div>
 
             </div>
@@ -125,8 +117,8 @@ function StorySection() {
                             className="relative w-full h-[360px] sm:h-[450px] lg:h-[520px] rounded-2xl sm:rounded-3xl overflow-hidden border shadow-xl"
                             style={{ borderColor: "var(--t-border)" }}>
                             <Image
-                                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200"
-                                alt="SVaaN Origin"
+                                src="/about/Our Origin/How SVaaN started.webp"
+                                alt="How SVaaN started"
                                 fill
                                 sizes="(max-width: 1024px) 100vw, 50vw"
                                 loading="lazy"
@@ -284,7 +276,13 @@ function OwnershipSection() {
                                 style={{ backgroundColor: "var(--t-accent)" }} />
                             
                             <div className="mb-10 sm:mb-14 relative z-10">
-                                <Icons3D.Strategy className="w-16 h-16 sm:w-20 sm:h-20 filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 origin-top-left" />
+                                <Image
+                                    src="/about/The Long Game/We don_t hand a system over at launch and disappear..svg"
+                                    alt="We don't hand a system over at launch and disappear"
+                                    width={80}
+                                    height={80}
+                                    className="w-16 h-16 sm:w-20 sm:h-20 object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-500 origin-top-left"
+                                />
                             </div>
                             <div className="relative z-10">
                                 <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-5 leading-tight" style={{ color: "var(--t-text)" }}>

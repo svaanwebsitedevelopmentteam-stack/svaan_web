@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { CTASection } from "@/components/CTASection";
 import { allProjectsList } from "@/data/projectsData";
@@ -59,13 +60,19 @@ export default function WorkPage() {
                                     style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                                 >
                                     <div className="flex flex-col justify-between h-full">
-                                        {/* Image Container with SVG illustration */}
-                                        <div className="relative w-full aspect-[16/10] overflow-hidden border-b"
+                                        {/* Image Container with GIF */}
+                                        <div className="relative w-full aspect-[16/10] overflow-hidden border-b bg-slate-950"
                                             style={{ borderColor: "var(--t-border)" }}>
-                                            <div className="absolute inset-0 w-full h-full pointer-events-none">
-                                                <project.Illustration className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                            <div className="absolute inset-0 w-full h-full">
+                                                <Image
+                                                    src={project.gif}
+                                                    alt={project.title}
+                                                    fill
+                                                    unoptimized
+                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                />
                                             </div>
-                                            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-50`} />
+                                            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-25 pointer-events-none`} />
 
                                             {/* Scope pill badge on top left */}
                                             <div className="absolute top-4 left-4 z-10">

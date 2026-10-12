@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
-import { Icons3D } from "@/components/ui/Icons3D";
 import { allProjectsList } from "@/data/projectsData";
 
 /* ────────────────────────────────────────────────────────────
@@ -190,7 +189,7 @@ const problems = [
         badge: "New Product Development",
         title: "You have a product to build.",
         desc: "You know what the business needs. You need a team that can turn it into working software - from MVP to enterprise-grade product.",
-        icon: <Icons3D.Software className="w-10 h-10 md:w-12 md:h-12" />,
+        icon: "/Build.svg",
         accent: "#6366f1",
         href: "/solutions/build"
     },
@@ -199,7 +198,7 @@ const problems = [
         badge: "Legacy & Cloud Migration",
         title: "You have a system that is hard to change.",
         desc: "It is slow, costly to run or risky to touch. Legacy architecture is holding the business back from moving quickly.",
-        icon: <Icons3D.Cloud className="w-10 h-10 md:w-12 md:h-12" />,
+        icon: "/Modernize.svg",
         accent: "#06b6d4",
         href: "/solutions/modernize"
     },
@@ -208,7 +207,7 @@ const problems = [
         badge: "Live Applications & Support",
         title: "You have live applications that need looking after.",
         desc: "Someone has to own the fixes, the updates, and the users who depend on them - day after day.",
-        icon: <Icons3D.Support className="w-10 h-10 md:w-12 md:h-12" />,
+        icon: "/Operation.svg",
         accent: "#f59e0b",
         href: "/solutions/operate"
     },
@@ -217,7 +216,7 @@ const problems = [
         badge: "Automation & Continuous AI",
         title: "You have work that should be automated.",
         desc: "Your people repeat manual steps that technology could handle - costing time, money and focus.",
-        icon: <Icons3D.AI className="w-10 h-10 md:w-12 md:h-12" />,
+        icon: "/Evolve.svg",
         accent: "#ec4899",
         href: "/solutions/evolve"
     }
@@ -375,8 +374,18 @@ function ProblemFraming() {
 
                                     <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center relative shrink-0 shadow-sm"
                                         style={{ backgroundColor: problems[active].accent + "12", border: `1px solid ${problems[active].accent}30` }}>
-                                        <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.35 }} className="scale-75 sm:scale-100">
-                                            {problems[active].icon}
+                                        <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.35 }} className="scale-75 sm:scale-100 flex items-center justify-center">
+                                            {typeof problems[active].icon === "string" ? (
+                                                <Image
+                                                    src={problems[active].icon}
+                                                    alt={problems[active].label}
+                                                    width={48}
+                                                    height={48}
+                                                    className="w-8 h-8 md:w-10 md:h-10 object-contain"
+                                                />
+                                            ) : (
+                                                problems[active].icon
+                                            )}
                                         </motion.div>
                                     </div>
                                 </div>
@@ -495,10 +504,17 @@ function SolutionPillarsSection() {
                                 style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
 
                                 {/* Illustration Area */}
-                                <div className={`relative h-[180px] sm:h-[220px] md:h-[240px] w-full bg-gradient-to-br ${project.gradient} overflow-hidden`}>
-                                    <div className="absolute inset-0 opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
-                                        <project.Illustration className="w-full h-full object-cover" />
+                                <div className="relative h-[180px] sm:h-[220px] md:h-[240px] w-full bg-slate-950 overflow-hidden">
+                                    <div className="absolute inset-0 group-hover:scale-105 transition-all duration-700">
+                                        <Image
+                                            src={project.gif}
+                                            alt={project.title}
+                                            fill
+                                            unoptimized
+                                            className="w-full h-full object-cover"
+                                        />
                                     </div>
+                                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-25 pointer-events-none`} />
                                     <div className="absolute top-4 left-4 z-10">
                                         <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase backdrop-blur-md border shadow-sm"
                                             style={{
@@ -566,11 +582,11 @@ function SolutionPillarsSection() {
    ──────────────────────────────────────────────────────────── */
 
 const reasons = [
-    { num: "01", title: "We stay accountable beyond go-live.", desc: "We keep supporting and improving what we build.", icon: <Icons3D.ProcessBuild className="w-10 h-10" /> },
-    { num: "02", title: "We work from the business problem.", desc: "We ask why before we decide what to build.", icon: <Icons3D.ProcessDiscover className="w-10 h-10" /> },
-    { num: "03", title: "One partner from build to operation.", desc: "You do not need a new vendor at every stage.", icon: <Icons3D.ProcessShape className="w-10 h-10" /> },
-    { num: "04", title: "Long-term relationships matter.", desc: "We measure ourselves by how the technology performs a year later.", icon: <Icons3D.ProcessPrototype className="w-10 h-10" /> },
-    { num: "05", title: "Engineering depth, business-first view.", desc: "Our leadership looks at the whole business, not only the code.", icon: <Icons3D.Strategy className="w-10 h-10" /> },
+    { num: "01", title: "We stay accountable beyond go-live.", desc: "We keep supporting and improving what we build.", icon: "/We stay accountable beyond go-live.svg" },
+    { num: "02", title: "We work from the business problem.", desc: "We ask why before we decide what to build.", icon: "/We work from the business problem..svg" },
+    { num: "03", title: "One partner from build to operation.", desc: "You do not need a new vendor at every stage.", icon: "/One partner from build to operation..svg" },
+    { num: "04", title: "Long-term relationships matter.", desc: "We measure ourselves by how the technology performs a year later.", icon: "/Long-term relationships matter..svg" },
+    { num: "05", title: "Engineering depth, business-first view.", desc: "Our leadership looks at the whole business, not only the code.", icon: "/Engineering depth, business-first view..svg" },
 ];
 
 function WhySvaaNSection() {
@@ -625,9 +641,19 @@ function WhySvaaNSection() {
                                             </h3>
                                             <p className="text-xs sm:text-sm leading-relaxed opacity-70" style={{ color: "var(--t-text-muted)" }}>{r.desc}</p>
                                         </div>
-                                        <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:shadow-md [&>svg]:w-6 [&>svg]:h-6 sm:[&>svg]:w-8 sm:[&>svg]:h-8 md:[&>svg]:w-10 md:[&>svg]:h-10"
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:shadow-md"
                                             style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: "var(--t-accent)" }}>
-                                            {r.icon}
+                                            {typeof r.icon === "string" ? (
+                                                <Image
+                                                    src={r.icon}
+                                                    alt={r.title}
+                                                    width={40}
+                                                    height={40}
+                                                    className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 object-contain"
+                                                />
+                                            ) : (
+                                                r.icon
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -1190,7 +1216,7 @@ function LeadershipPreview() {
                         <div className="relative w-full h-[260px] sm:h-[360px] lg:h-[440px] rounded-2xl overflow-hidden"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
                             <Image
-                                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
+                                src="/The people behind SVaaN.webp"
                                 alt="SVaaN leadership team"
                                 fill
                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"

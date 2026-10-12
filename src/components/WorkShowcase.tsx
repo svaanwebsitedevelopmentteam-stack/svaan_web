@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { allProjectsList } from "@/data/projectsData";
@@ -10,7 +11,7 @@ const projects = allProjectsList.map(p => ({
     tags: p.scope,
     desc: p.summary,
     href: p.href,
-    Illustration: p.Illustration,
+    gif: p.gif,
     gradient: p.gradient,
 }));
 
@@ -111,9 +112,15 @@ export function WorkShowcase() {
                                 className="group block relative rounded-[var(--t-radius-card)] overflow-hidden transition-all duration-300 h-full flex flex-col border hover:border-[var(--t-accent)] hover:shadow-md cursor-pointer"
                                 style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}
                             >
-                                <div className="relative h-56 md:h-64 flex-shrink-0 overflow-hidden bg-[var(--t-bg-card)]">
-                                    <project.Illustration className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-60 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none`} />
+                                <div className="relative h-56 md:h-64 flex-shrink-0 overflow-hidden bg-slate-950">
+                                    <Image
+                                        src={project.gif}
+                                        alt={project.title}
+                                        fill
+                                        unoptimized
+                                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    />
+                                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} mix-blend-overlay opacity-25 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none`} />
                                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.08),transparent)] pointer-events-none" />
                                 </div>
                                 <div className="p-8 flex-grow flex flex-col justify-between">

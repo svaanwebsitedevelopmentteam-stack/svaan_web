@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Icons3D } from "@/components/ui/Icons3D";
 import { TechStack } from "@/components/TechStack";
@@ -66,26 +67,20 @@ function EvolveHero() {
                     </motion.div>
                 </div>
 
-                {/* Right Content: Floating 3D Icon */}
-                <motion.div initial={{ opacity: 0, scale: 0.9, rotateY: -10 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ duration: 0.9, delay: 0.3 }}
+                {/* Right Content: Hero Graphic */}
+                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative flex justify-center lg:justify-end">
-                    <div className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex items-center justify-center transform-gpu border"
-                        style={{
-                            backgroundColor: "var(--t-bg-card)",
-                            borderColor: "var(--t-border)",
-                            boxShadow: "0 20px 40px -15px var(--t-shadow)"
-                        }}>
-                        {/* Rotating ring behind icon */}
-                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-6 rounded-full border border-dashed opacity-30 pointer-events-none"
-                            style={{ borderColor: "var(--t-accent)" }} />
-
-                        <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}>
-                            <div className="w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] md:w-[300px] md:h-[300px] flex items-center justify-center">
-                                <Icons3D.AI className="w-full h-full relative z-10 filter drop-shadow-2xl" />
-                            </div>
-                        </motion.div>
-                    </div>
+                    <motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+                        <Image
+                            src="/Evolve/hero/hero.webp"
+                            alt="Evolve Technology"
+                            fill
+                            priority
+                            sizes="(max-width: 640px) 340px, 420px"
+                            className="object-cover rounded-2xl sm:rounded-3xl"
+                        />
+                    </motion.div>
                 </motion.div>
 
             </div>
@@ -134,12 +129,12 @@ function TheProblem() {
    3. WHAT WE DO (Services Grid)
    ──────────────────────────────────────────────────────────── */
 const services = [
-    { title: "AI and automation", desc: "Apply AI to defined business tasks, from document handling to decision support.", icon: <Icons3D.AI className="w-full h-full" /> },
-    { title: "Workflow automation", desc: "Replace repeated manual steps with automated ones.", icon: <Icons3D.ProcessShape className="w-full h-full" /> },
-    { title: "Product enhancement", desc: "Add features and fix friction in products already live.", icon: <Icons3D.Software className="w-full h-full" /> },
-    { title: "Operational optimization", desc: "Find and remove waste in how technology supports operations.", icon: <Icons3D.Strategy className="w-full h-full" /> },
-    { title: "Analytics & decision support", desc: "Turn your data into reports people can act on.", icon: <Icons3D.ProcessDiscover className="w-full h-full" /> },
-    { title: "Technology roadmaps", desc: "A clear plan for what to improve next and why.", icon: <Icons3D.ProcessBuild className="w-full h-full" /> }
+    { title: "AI and automation", desc: "Apply AI to defined business tasks, from document handling to decision support.", icon: "/Evolve/Scope & Deliverables/1. AI and automation.svg" },
+    { title: "Workflow automation", desc: "Replace repeated manual steps with automated ones.", icon: "/Evolve/Scope & Deliverables/2. Workflow automation.svg" },
+    { title: "Product enhancement", desc: "Add features and fix friction in products already live.", icon: "/Evolve/Scope & Deliverables/3. Product enhancement.svg" },
+    { title: "Operational optimization", desc: "Find and remove waste in how technology supports operations.", icon: "/Evolve/Scope & Deliverables/4. Operational optimization.svg" },
+    { title: "Analytics & decision support", desc: "Turn your data into reports people can act on.", icon: "/Evolve/Scope & Deliverables/5. Analytics & decision support.svg" },
+    { title: "Technology roadmaps", desc: "A clear plan for what to improve next and why.", icon: "/Evolve/Scope & Deliverables/6. Technology roadmaps.svg" }
 ];
 
 function WhatWeDo() {
@@ -169,9 +164,13 @@ function WhatWeDo() {
                             className="p-6 sm:p-7 rounded-2xl border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group flex flex-col justify-between"
                             style={{ backgroundColor: "var(--t-bg-card)", borderColor: "var(--t-border)" }}>
                             <div>
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 border [&>svg]:w-7 [&>svg]:h-7"
+                                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 border"
                                     style={{ backgroundColor: "var(--t-bg-surface)", borderColor: "var(--t-border)", color: "var(--t-accent)" }}>
-                                    {s.icon}
+                                    {typeof s.icon === "string" ? (
+                                        <Image src={s.icon} alt={s.title} width={28} height={28} className="w-7 h-7 object-contain" />
+                                    ) : (
+                                        s.icon
+                                    )}
                                 </div>
                                 <h3 className="font-display text-base sm:text-lg font-bold mb-2 group-hover:text-[var(--t-accent)] transition-colors duration-200 leading-snug"
                                     style={{ color: "var(--t-text)" }}>
@@ -193,12 +192,36 @@ function WhatWeDo() {
    4. WHEN YOU NEED IT (Triggers)
    ──────────────────────────────────────────────────────────── */
 const evolveSignals: SignalItem[] = [
-    { tag: "Automation Deficit", text: "Your staff spend valuable hours repeating the same manual tasks every single day." },
-    { tag: "Data Fragmentation", text: "Executive reports are assembled manually by cross-referencing disjointed tools." },
-    { tag: "Applied AI Strategy", text: "You want to adopt AI capabilities but need clear direction on where it fits practically." },
-    { tag: "Continuous Velocity", text: "Your product needs a steady cadence of incremental enhancements, not monolithic releases." },
-    { tag: "Strategic Roadmap", text: "You need an actionable, engineering-aligned transformation roadmap your leadership team can execute on." },
-    { tag: "Operational Ceiling", text: "Spreadsheets and patchwork tools are holding back leadership decision-making." }
+    {
+        tag: "Automation Deficit",
+        text: "Your staff spend valuable hours repeating the same manual tasks every single day.",
+        icon: "/Evolve/Signals & Triggers/1. Your staff spend valuable hours repeating the same manual tasks every single day..svg"
+    },
+    {
+        tag: "Data Fragmentation",
+        text: "Executive reports are assembled manually by cross-referencing disjointed tools.",
+        icon: "/Evolve/Signals & Triggers/2. Executive reports are assembled manually by cross-referencing disjointed tools..svg"
+    },
+    {
+        tag: "Applied AI Strategy",
+        text: "You want to adopt AI capabilities but need clear direction on where it fits practically.",
+        icon: "/Evolve/Signals & Triggers/3. You want to adopt AI capabilities but need clear direction on where it fits practically..svg"
+    },
+    {
+        tag: "Continuous Velocity",
+        text: "Your product needs a steady cadence of incremental enhancements, not monolithic releases.",
+        icon: "/Evolve/Signals & Triggers/4. Your product needs a steady cadence of incremental enhancements, not monolithic releases..svg"
+    },
+    {
+        tag: "Strategic Roadmap",
+        text: "You need an actionable, engineering-aligned transformation roadmap your leadership team can execute on.",
+        icon: "/Evolve/Signals & Triggers/5. You need an actionable, engineering-aligned transformation roadmap your leadership team can execute on..svg"
+    },
+    {
+        tag: "Operational Ceiling",
+        text: "Spreadsheets and patchwork tools are holding back leadership decision-making.",
+        icon: "/Evolve/Signals & Triggers/6. Spreadsheets and patchwork tools are holding back leadership decision-making..svg"
+    }
 ];
 
 function WhenYouNeedIt() {

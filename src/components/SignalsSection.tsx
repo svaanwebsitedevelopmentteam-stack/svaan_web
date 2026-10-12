@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Icons3D } from "@/components/ui/Icons3D";
 
 export interface SignalItem {
@@ -14,6 +15,7 @@ export interface SignalItem {
     diagnosis?: string;
     solution?: string;
     accent?: string;
+    icon?: string;
 }
 
 interface SignalsSectionProps {
@@ -37,6 +39,7 @@ interface EnrichedSignal extends SignalItem {
     diagnosisText: string;
     solutionText: string;
     IconComponent: React.ComponentType<{ className?: string }>;
+    icon?: string;
 }
 
 const PALETTE = [
@@ -383,7 +386,11 @@ export function SignalsSection({
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                                     className="scale-90 sm:scale-100"
                                 >
-                                    <ActiveIcon className="w-8 h-8 sm:w-12 sm:h-12" />
+                                    {activeSignal.icon ? (
+                                        <Image src={activeSignal.icon} alt={activeSignal.tag} width={48} height={48} className="w-8 h-8 sm:w-12 sm:h-12 object-contain" />
+                                    ) : (
+                                        <ActiveIcon className="w-8 h-8 sm:w-12 sm:h-12" />
+                                    )}
                                 </motion.div>
                             </div>
 
@@ -672,7 +679,11 @@ export function SignalsSection({
                                         color: activeSignal.accentColor,
                                     }}
                                 >
-                                    <ActiveIcon className="w-5 h-5" />
+                                    {activeSignal.icon ? (
+                                        <Image src={activeSignal.icon} alt={activeSignal.tag} width={24} height={24} className="w-5 h-5 object-contain" />
+                                    ) : (
+                                        <ActiveIcon className="w-5 h-5" />
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -804,7 +815,11 @@ export function SignalsSection({
                                                         color: isSelected ? sig.accentColor : "var(--t-text-muted)",
                                                     }}
                                                 >
-                                                    <IconComp className="w-6 h-6 sm:w-7 sm:h-7" />
+                                                    {sig.icon ? (
+                                                        <Image src={sig.icon} alt={sig.tag} width={28} height={28} className="w-6 h-6 sm:w-7 sm:h-7 object-contain" />
+                                                    ) : (
+                                                        <IconComp className="w-6 h-6 sm:w-7 sm:h-7" />
+                                                    )}
                                                 </div>
                                             </div>
                                         </div>
