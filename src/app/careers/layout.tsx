@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraphImage } from "../shared-metadata";
 
 export const metadata: Metadata = {
   title: "Careers - Join Our Engineering & Product Team",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     title: "Careers - Join Our Engineering & Product Team | SVaaN Global Tech",
     description:
       "Join SVaaN in Chennai and globally. Build impactful technology across strategy, design, and full-stack engineering.",
+    ...sharedOpenGraphImage,
   },
 };
 

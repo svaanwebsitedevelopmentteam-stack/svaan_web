@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraphImage } from "../shared-metadata";
 
 export const metadata: Metadata = {
   title: "Contact Us - Start a Project or Technical Consultation",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     title: "Contact Us - Start a Project or Technical Consultation | SVaaN Global Tech",
     description:
       "Get in touch with SVaaN. Share your technology challenge and let's explore practical solutions together.",
+    ...sharedOpenGraphImage,
   },
 };
 

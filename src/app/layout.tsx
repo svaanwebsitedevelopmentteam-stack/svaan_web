@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { FooterV2 } from "@/components/FooterV2";
 import { CustomCursor } from "@/components/CustomCursor";
 import { GlobalFloatActions } from "@/components/GlobalFloatActions";
+import { sharedOpenGraphImage } from "./shared-metadata";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -43,20 +44,13 @@ export const metadata: Metadata = {
     siteName: "SVaaN Global Tech",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/herosection.webp",
-        width: 1200,
-        height: 630,
-        alt: "SVaaN Global Tech",
-      },
-    ],
+    ...sharedOpenGraphImage,
   },
   twitter: {
     card: "summary_large_image",
     title: "SVaaN Global Tech - Technology & Strategy Partner",
     description: "SVaaN Global Tech connects strategy, design, and technology to help organizations solve complex challenges and build practical digital solutions.",
-    images: ["/herosection.webp"],
+    images: ["/Primary_logo.svg"],
   },
   icons: {
     icon: [

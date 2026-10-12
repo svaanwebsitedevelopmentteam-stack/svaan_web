@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraphImage } from "../shared-metadata";
 
 export const metadata: Metadata = {
   title: "Our Approach - Engineering Methodology & Delivery Lifecycle",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     title: "Our Approach - Engineering Methodology & Delivery Lifecycle | SVaaN Global Tech",
     description:
       "Understand before deciding. Build with discipline. Stay accountable after go-live. Explore SVaaN's engineering delivery process.",
+    ...sharedOpenGraphImage,
   },
 };
 

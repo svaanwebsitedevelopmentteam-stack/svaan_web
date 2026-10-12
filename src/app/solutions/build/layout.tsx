@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraphImage } from "../../shared-metadata";
 
 export const metadata: Metadata = {
   title: "Build Custom Software & Enterprise Platforms",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     title: "Build Custom Software & Enterprise Platforms | SVaaN Global Tech",
     description:
       "From proof of concept to enterprise systems, SVaaN builds custom software around real business problems.",
+    ...sharedOpenGraphImage,
   },
 };
 

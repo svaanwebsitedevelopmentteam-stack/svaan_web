@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraphImage } from "../../shared-metadata";
 
 export const metadata: Metadata = {
   title: "Evolve Workflows, Automation & Strategic AI",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     title: "Evolve Workflows, Automation & Strategic AI | SVaaN Global Tech",
     description:
       "Keep improving after launch. SVaaN helps organizations automate work, leverage targeted AI, and continuously advance operational technology.",
+    ...sharedOpenGraphImage,
   },
 };
 

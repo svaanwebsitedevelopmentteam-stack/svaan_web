@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraphImage } from "../shared-metadata";
 
 export const metadata: Metadata = {
   title: "Leadership",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     title: "Leadership | SVaaN Global Tech",
     description:
       "The people shaping how SVaaN thinks, builds, and grows. Dinesh Natarajan (Founder) and Sai Ramamurthy (CEO) bring deep technology and a business-first approach to transformation and growth.",
+    ...sharedOpenGraphImage,
   },
 };
 
