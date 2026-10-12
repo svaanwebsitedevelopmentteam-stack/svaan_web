@@ -149,7 +149,7 @@ function HeroV2() {
                 {/* Right Image */}
                 <div className="relative w-full h-[240px] sm:h-[380px] md:h-[460px] lg:h-[540px] mt-2 sm:mt-6 lg:mt-0">
                     <Image
-                        src="/Hero Section (1).webp"
+                        src="/hero-section.webp"
                         alt="SVaaN Hero"
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
@@ -510,6 +510,8 @@ function SolutionPillarsSection() {
                                             src={project.gif}
                                             alt={project.title}
                                             fill
+                                            loading="lazy"
+                                            sizes="(max-width: 640px) 84vw, (max-width: 1024px) 45vw, 33vw"
                                             unoptimized
                                             className="w-full h-full object-cover"
                                         />

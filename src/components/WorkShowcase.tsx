@@ -117,6 +117,8 @@ export function WorkShowcase() {
                                         src={project.gif}
                                         alt={project.title}
                                         fill
+                                        loading="lazy"
+                                        sizes="(max-width: 768px) 90vw, (max-width: 1024px) 50vw, 33vw"
                                         unoptimized
                                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                     />
