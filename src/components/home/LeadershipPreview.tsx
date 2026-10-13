@@ -15,7 +15,7 @@ export function LeadershipPreview() {
                         <div className="relative w-full h-[260px] sm:h-[360px] lg:h-[440px] rounded-2xl overflow-hidden"
                             style={{ backgroundColor: "var(--t-bg-card)", border: "1px solid var(--t-border)" }}>
                             <Image
-                                src="/The people behind SVaaN.webp"
+                                src="/home_leadership.webp"
                                 alt="SVaaN leadership team"
                                 fill
                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"

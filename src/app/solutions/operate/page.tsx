@@ -132,7 +132,7 @@ const services = [
     { title: "Application support", desc: "Keep business-critical applications stable, monitored and useful.", icon: "/Operate/Scope & Deliverables/1. Application support.svg" },
     { title: "Production support", desc: "Protect the reliability and uptime of live business environments.", icon: "/Operate/Scope & Deliverables/2. Production support.svg" },
     { title: "Helpdesk & end-user", desc: "Keep teams productive with rapid resolution when technology gets in the way.", icon: "/Operate/Scope & Deliverables/3. Helpdesk & end-user.svg" },
-    { title: "Infrastructure support", desc: "Keep foundational servers, networks and databases dependable.", icon: <Icons3D.ProcessBuild className="w-full h-full" /> },
+    { title: "Infrastructure support", desc: "Keep foundational servers, networks and databases dependable.", icon: "/Operate/Scope & Deliverables/9. Infrastructure support.svg" },
     { title: "Cloud managed services", desc: "Manage AWS, Azure and GCP environments for cost, performance and growth.", icon: "/Operate/Scope & Deliverables/5. Cloud managed services.svg" },
     { title: "DevOps support", desc: "Make software deployments consistent, automated and low-risk.", icon: "/Operate/Scope & Deliverables/6. DevOps support.svg" },
     { title: "Monitoring & incident response", desc: "Spot bottlenecks early and resolve issues before users notice.", icon: "/Operate/Scope & Deliverables/7. Monitoring & incident response.svg" },
