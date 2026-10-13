@@ -80,10 +80,11 @@ export function SolutionPillarsSection() {
                                 <div className="relative h-[180px] sm:h-[220px] md:h-[240px] w-full bg-slate-950 overflow-hidden">
                                     <div className="absolute inset-0 group-hover:scale-105 transition-all duration-700">
                                         <Image
-                                            src={project.poster || project.gif}
+                                            src={project.gif}
                                             alt={project.title}
                                             fill
                                             loading="lazy"
+                                            unoptimized
                                             sizes="(max-width: 640px) 360px, (max-width: 1024px) 45vw, 400px"
                                             className="w-full h-full object-cover"
                                         />

@@ -55,8 +55,7 @@ export const projectsData: Record<string, ProjectData> = {
         techStack: ["Next.js", "React Native", "TypeScript", "Node.js", "PostgreSQL", "Mapbox SDK", "AWS S3"],
         href: "/work",
         gradient: "from-amber-600/60 to-slate-900/60",
-        gif: "/Client Story/Touring.webp",
-        poster: "/Client Story/Touring-poster.webp",
+        gif: "/Client Story/Touring.gif",
         Illustration: Illustrations.Touring,
     },
     "fareeda-homecare": {
@@ -90,8 +89,7 @@ export const projectsData: Record<string, ProjectData> = {
         techStack: ["Next.js", "React Native", "TypeScript", "PostgreSQL", "Tailwind CSS", "Twilio", "AWS"],
         href: "/work",
         gradient: "from-emerald-600/60 to-teal-900/60",
-        gif: "/Client Story/home care.webp",
-        poster: "/Client Story/home care-poster.webp",
+        gif: "/Client Story/home care.gif",
         Illustration: Illustrations.HomeCare,
     },
     siloam: {
@@ -125,8 +123,7 @@ export const projectsData: Record<string, ProjectData> = {
         techStack: ["Next.js", "Flutter", "WebRTC", "Python / FastAPI", "PostgreSQL", "Redis", "Docker"],
         href: "/work",
         gradient: "from-teal-600/60 to-cyan-950/60",
-        gif: "/Client Story/healthcare.webp",
-        poster: "/Client Story/healthcare-poster.webp",
+        gif: "/Client Story/healthcare.gif",
         Illustration: Illustrations.Healthcare,
     },
     mmu: {
@@ -160,8 +157,7 @@ export const projectsData: Record<string, ProjectData> = {
         techStack: ["Next.js", "React Native", "TypeScript", "Python", "PostgreSQL", "Redis", "Docker"],
         href: "/work",
         gradient: "from-indigo-600/60 to-slate-950/60",
-        gif: "/Client Story/Real Estate Asset Management.webp",
-        poster: "/Client Story/Real Estate Asset Management-poster.webp",
+        gif: "/Client Story/Real Estate Asset Management.gif",
         Illustration: Illustrations.PropTech,
     },
     havendeeds: {
@@ -195,8 +191,7 @@ export const projectsData: Record<string, ProjectData> = {
         techStack: ["Next.js", "React Native", "TypeScript", "Node.js", "PostgreSQL", "Stripe Connect", "AWS"],
         href: "/work",
         gradient: "from-orange-600/60 to-amber-950/60",
-        gif: "/Client Story/Real Estate PropTech.webp",
-        poster: "/Client Story/Real Estate PropTech-poster.webp",
+        gif: "/Client Story/Real Estate PropTech.gif",
         Illustration: Illustrations.PropTech,
     },
 };
