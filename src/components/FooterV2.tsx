@@ -17,11 +17,191 @@ export function FooterV2() {
 
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 pt-10 pb-12 lg:pt-10 lg:pb-8">
 
-                {/* Main Content Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10 lg:gap-y-12 mb-8">
+                {/* Mobile View Only: Logo Centered at Top */}
+                <div className="flex justify-center mb-8 md:hidden">
+                    <Link
+                        href="/"
+                        className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-white shadow-md border border-slate-200/60 hover:bg-slate-50 transition-all group focus:outline-none"
+                    >
+                        <div className="relative w-[160px] h-[40px]">
+                            <Image
+                                src="/Primary_logo.svg"
+                                alt="SVaaN Global Tech"
+                                fill
+                                sizes="160px"
+                                className="object-contain object-center transition-opacity group-hover:opacity-90"
+                            />
+                        </div>
+                    </Link>
+                </div>
 
-                    {/* Column 1: Solutions + Site Logo (col-reverse on mobile) */}
-                    <div className="lg:col-span-3 flex flex-col-reverse md:flex-col justify-between gap-8">
+                {/* Mobile View Only: 2-Column Menus Layout */}
+                {/* 1 row -> solutions and company */}
+                {/* 2 row -> work and resources */}
+                {/* 3 row -> legal */}
+                {/* 4 row -> contact */}
+                <div className="grid grid-cols-2 gap-x-6 gap-y-8 mb-10 md:hidden">
+                    {/* Row 1, Col 1: Solutions */}
+                    <div>
+                        <h3 className="font-bold text-xs uppercase tracking-wider text-white mb-4">
+                            Solutions
+                        </h3>
+                        <ul className="flex flex-col gap-3 text-sm text-slate-300">
+                            <li>
+                                <Link href="/solutions/build" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Build
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/solutions/modernize" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Modernize
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/solutions/operate" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Operate
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/solutions/evolve" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Evolve
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Row 1, Col 2: Company */}
+                    <div>
+                        <h3 className="font-bold text-xs uppercase tracking-wider text-white mb-4">
+                            Company
+                        </h3>
+                        <ul className="flex flex-col gap-3 text-sm text-slate-300">
+                            <li>
+                                <Link href="/about" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    About
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/leadership" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Leadership
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/why-svaan" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Why SVaaN
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="#" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Careers
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Row 2, Col 1: Work */}
+                    <div>
+                        <h3 className="font-bold text-xs uppercase tracking-wider text-white mb-4">
+                            Work
+                        </h3>
+                        <ul className="flex flex-col gap-3 text-sm text-slate-300">
+                            <li>
+                                <Link href="/work" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Client Stories
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Row 2, Col 2: Resources */}
+                    <div>
+                        <h3 className="font-bold text-xs uppercase tracking-wider text-white mb-4">
+                            Resources
+                        </h3>
+                        <ul className="flex flex-col gap-3 text-sm text-slate-300">
+                            <li>
+                                <Link href="#!" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Insights
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="#" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Security & Trust
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Row 3: Legal */}
+                    <div className="col-span-2">
+                        <h3 className="font-bold text-xs uppercase tracking-wider text-white mb-4">
+                            Legal
+                        </h3>
+                        <ul className="flex flex-col gap-3 text-sm text-slate-300">
+                            <li>
+                                <Link href="/privacy-policy" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Privacy Policy
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/terms-conditions" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Terms & Conditions
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/cookie-policy" className="hover:text-[#38BDF8] inline-block transition-colors">
+                                    Cookie Policy
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Row 4: Contact */}
+                    <div className="col-span-2 flex flex-col gap-4 pt-2">
+                        <h3 className="font-bold text-xs uppercase tracking-wider text-white">
+                            Contact
+                        </h3>
+
+                        <div className="space-y-5 text-sm text-slate-300">
+                            <div>
+                                <span className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Email</span>
+                                <a href="mailto:hello@svaan.in" className="font-medium text-slate-200 hover:text-[#38BDF8] transition-colors">
+                                    hello@svaan.in
+                                </a>
+                            </div>
+
+                            <div>
+                                <span className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Telephone</span>
+                                <div className="flex flex-col gap-1">
+                                    <a href="tel:+919677522812" className="text-slate-200 hover:text-[#38BDF8] transition-colors">
+                                        India: +91 96775 22812
+                                    </a>
+                                    <a href="tel:+13322447372" className="text-slate-200 hover:text-[#38BDF8] transition-colors">
+                                        USA: +1 (332) 244-7372
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Headquarters</span>
+                                <a
+                                    href="https://maps.app.goo.gl/XxuGxdB5bkzpNDop8"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-slate-300 hover:text-[#38BDF8] leading-relaxed text-sm transition-colors inline-block"
+                                >
+                                    295, 13th St, S. Kolathur, Viduthalai Nagar, Kovilambakkam, Chennai 600129, India
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Desktop Grid (Tablet & Desktop md+) */}
+                <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10 lg:gap-y-12 mb-8">
+
+                    {/* Column 1: Solutions + Site Logo */}
+                    <div className="lg:col-span-3 flex flex-col justify-between gap-8">
                         <div>
                             <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white mb-5">
                                 Solutions
@@ -199,15 +379,15 @@ export function FooterV2() {
                 </div>
 
                 {/* Bottom Bar: Divider, Copyright & Socials */}
-                <div className="pt-6 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                    <div className="flex flex-col gap-1.5">
+                <div className="pt-6 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-center gap-5">
+                    <div className="w-full md:w-auto text-center md:text-left">
                         <p className="text-xs sm:text-sm font-medium text-slate-400">
                             © {new Date().getFullYear()} SVaaN Global Tech. All rights reserved.
                         </p>
                     </div>
 
                     {/* Social Media Links */}
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center justify-center md:justify-end w-full md:w-auto gap-2.5">
                         <a
                             href="https://www.linkedin.com/company/2021-svaan-tech/"
                             target="_blank"
