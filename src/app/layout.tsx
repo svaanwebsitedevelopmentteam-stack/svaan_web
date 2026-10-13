@@ -4,8 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
 import { FooterV2 } from "@/components/FooterV2";
-import { CustomCursor } from "@/components/CustomCursor";
 import { GlobalFloatActions } from "@/components/GlobalFloatActions";
+import { CustomCursor } from "@/components/CustomCursor";
 import { sharedOpenGraphImage } from "./shared-metadata";
 
 const sora = Sora({
@@ -67,9 +67,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sora.variable} ${inter.variable}`}>
       <head>
-        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        <link rel="preload" as="image" href="/hero-section.webp" type="image/webp" fetchPriority="high" />
+        <link rel="preload" as="image" href="/hero-mobile.avif" type="image/avif" media="(max-width: 640px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/hero-section.webp" type="image/webp" media="(min-width: 641px)" fetchPriority="high" />
       </head>
       <body className="min-h-screen font-sans antialiased">
         <ThemeProvider>

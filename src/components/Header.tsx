@@ -4,13 +4,12 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/components/ThemeProvider";
 
 const menuItems = [
     {
         label: "Solutions",
-        href: "/solutions/build", // Fallback to first item or a general page
+        href: "/solutions/build",
         subMenu: [
             { label: "Build", href: "/solutions/build" },
             { label: "Modernize", href: "/solutions/modernize" },
@@ -27,7 +26,6 @@ const menuItems = [
         subMenu: [
             { label: "About", href: "/about" },
             { label: "Leadership", href: "/leadership" },
-            // { label: "Insights", href: "/insights" },
         ],
     },
 ];
@@ -160,44 +158,34 @@ export function Header() {
                                     </Link>
 
                                     {/* Submenu Dropdown */}
-                                    <AnimatePresence>
-                                        {hoveredMenu === link.label && link.subMenu && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 10 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                exit={{
-                                                    opacity: 0,
-                                                    y: 10,
-                                                    transition: { duration: 0.1 },
-                                                }}
-                                                transition={{ duration: 0.2 }}
-                                                className="absolute top-[72px] left-1/2 -translate-x-1/2 min-w-[240px] rounded-[var(--t-radius-md)] shadow-xl p-2 border"
-                                                style={{
-                                                    backgroundColor: "var(--t-bg-card)",
-                                                    borderColor: "var(--t-border)",
-                                                }}
-                                            >
-                                                {link.subMenu.map((sub) => {
-                                                    const isSubActive =
-                                                        pathname === sub.href ||
-                                                        (sub.href !== "/" && pathname.startsWith(`${sub.href}/`));
-                                                    return (
-                                                        <Link
-                                                            key={sub.label}
-                                                            href={sub.href}
-                                                            onClick={() => setHoveredMenu(null)}
-                                                            className={`block px-4 py-2.5 text-sm font-medium rounded-[var(--t-radius-md)] hover:bg-[var(--t-bg-surface)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 ${isSubActive
-                                                                ? "text-[var(--t-accent)] font-semibold bg-[var(--t-bg-surface)]"
-                                                                : "text-[var(--t-text)]"
-                                                                }`}
-                                                        >
-                                                            {sub.label}
-                                                        </Link>
-                                                    );
-                                                })}
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                    {hoveredMenu === link.label && link.subMenu && (
+                                        <div
+                                            className="absolute top-[72px] left-1/2 -translate-x-1/2 min-w-[240px] rounded-[var(--t-radius-md)] shadow-xl p-2 border transition-all duration-200 animate-in fade-in slide-in-from-top-2"
+                                            style={{
+                                                backgroundColor: "var(--t-bg-card)",
+                                                borderColor: "var(--t-border)",
+                                            }}
+                                        >
+                                            {link.subMenu.map((sub) => {
+                                                const isSubActive =
+                                                    pathname === sub.href ||
+                                                    (sub.href !== "/" && pathname.startsWith(`${sub.href}/`));
+                                                return (
+                                                    <Link
+                                                        key={sub.label}
+                                                        href={sub.href}
+                                                        onClick={() => setHoveredMenu(null)}
+                                                        className={`block px-4 py-2.5 text-sm font-medium rounded-[var(--t-radius-md)] hover:bg-[var(--t-bg-surface)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 ${isSubActive
+                                                            ? "text-[var(--t-accent)] font-semibold bg-[var(--t-bg-surface)]"
+                                                            : "text-[var(--t-text)]"
+                                                            }`}
+                                                    >
+                                                        {sub.label}
+                                                    </Link>
+                                                );
+                                            })}
+                                        </div>
+                                    )}
                                 </div>
                             );
                         })}
@@ -301,120 +289,106 @@ export function Header() {
                             onClick={() => setMobileOpen(!mobileOpen)}
                             aria-label="Toggle mobile menu"
                         >
-                            <motion.span animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }} className="block w-4 h-[2px] origin-center" style={{ backgroundColor: "var(--t-text)" }} />
-                            <motion.span animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }} className="block w-4 h-[2px]" style={{ backgroundColor: "var(--t-text)" }} />
-                            <motion.span animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }} className="block w-4 h-[2px] origin-center" style={{ backgroundColor: "var(--t-text)" }} />
+                            <span
+                                className={`block w-4 h-[2px] origin-center transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-[8px]" : ""}`}
+                                style={{ backgroundColor: "var(--t-text)" }}
+                            />
+                            <span
+                                className={`block w-4 h-[2px] transition-all duration-200 ${mobileOpen ? "opacity-0" : "opacity-100"}`}
+                                style={{ backgroundColor: "var(--t-text)" }}
+                            />
+                            <span
+                                className={`block w-4 h-[2px] origin-center transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-[8px]" : ""}`}
+                                style={{ backgroundColor: "var(--t-text)" }}
+                            />
                         </button>
                     </div>
                 </div>
             </header>
 
             {/* Fullscreen Mobile Menu */}
-            <AnimatePresence>
-                {mobileOpen && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-40 flex flex-col pt-24 px-6 pb-6 overflow-y-auto backdrop-blur-2xl"
-                        style={{ backgroundColor: "color-mix(in srgb, var(--t-bg) 95%, transparent)" }}
-                    >
-                        <div className="flex flex-col w-full max-w-lg mx-auto mt-4">
-                            {menuItems.map((link, i) => {
-                                const isActive = isItemActive(link);
-                                return (
-                                    <motion.div key={link.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
+            {mobileOpen && (
+                <div
+                    className="fixed inset-0 z-40 flex flex-col pt-24 px-6 pb-6 overflow-y-auto backdrop-blur-2xl transition-opacity duration-300 animate-in fade-in"
+                    style={{ backgroundColor: "color-mix(in srgb, var(--t-bg) 95%, transparent)" }}
+                >
+                    <div className="flex flex-col w-full max-w-lg mx-auto mt-4">
+                        {menuItems.map((link) => {
+                            const isActive = isItemActive(link);
+                            return (
+                                <div key={link.label}>
+                                    {link.subMenu ? (
+                                        <div className="border-b" style={{ borderColor: "var(--t-border)" }}>
+                                            <button
+                                                className="w-full flex items-center justify-between text-3xl font-display font-medium py-5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-md)]"
+                                                style={{ color: isActive ? "var(--t-accent)" : "var(--t-text)" }}
+                                                onClick={() => setExpandedMobile(expandedMobile === link.label ? null : link.label)}
+                                            >
+                                                <span>{link.label}</span>
+                                                <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-transform duration-300 ${expandedMobile === link.label ? 'rotate-180 bg-[var(--t-bg-surface)]' : 'border border-[var(--t-border)] opacity-60'}`}>
+                                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                                                    </svg>
+                                                </div>
+                                            </button>
 
-                                        {link.subMenu ? (
-                                            // Parent item with toggle
-                                            <div className="border-b" style={{ borderColor: "var(--t-border)" }}>
-                                                <button
-                                                    className="w-full flex items-center justify-between text-3xl font-display font-medium py-5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-md)]"
-                                                    style={{ color: isActive ? "var(--t-accent)" : "var(--t-text)" }}
-                                                    onClick={() => setExpandedMobile(expandedMobile === link.label ? null : link.label)}
-                                                >
-                                                    <span>{link.label}</span>
-                                                    <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-transform duration-300 ${expandedMobile === link.label ? 'rotate-180 bg-[var(--t-bg-surface)]' : 'border border-[var(--t-border)] opacity-60'}`}>
-                                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-                                                        </svg>
+                                            {expandedMobile === link.label && (
+                                                <div className="overflow-hidden transition-all duration-300 animate-in fade-in">
+                                                    <div className="flex flex-col gap-4 pt-2 pb-6 px-1">
+                                                        <div className="flex flex-col gap-2">
+                                                            {link.subMenu.map((sub) => {
+                                                                const isSubActive =
+                                                                    pathname === sub.href ||
+                                                                    (sub.href !== "/" && pathname.startsWith(`${sub.href}/`));
+                                                                return (
+                                                                    <Link
+                                                                        key={sub.label}
+                                                                        href={sub.href}
+                                                                        onClick={() => setMobileOpen(false)}
+                                                                        className={`text-xl font-medium px-4 py-3 rounded-[var(--t-radius-md)] transition-colors hover:bg-[var(--t-bg-surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 ${isSubActive
+                                                                            ? "text-[var(--t-accent)] bg-[var(--t-bg-surface)]"
+                                                                            : "text-[var(--t-text)]"
+                                                                            }`}
+                                                                    >
+                                                                        {sub.label}
+                                                                    </Link>
+                                                                );
+                                                            })}
+                                                        </div>
                                                     </div>
-                                                </button>
+                                                </div>
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <div className="border-b" style={{ borderColor: "var(--t-border)" }}>
+                                            <Link
+                                                href={link.href}
+                                                onClick={() => setMobileOpen(false)}
+                                                className="flex items-center justify-between text-3xl font-display font-medium py-5 w-full transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-md)]"
+                                                style={{ color: isActive ? "var(--t-accent)" : "var(--t-text)" }}
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
 
-                                                {/* Mobile Expanded List */}
-                                                <AnimatePresence>
-                                                    {expandedMobile === link.label && (
-                                                        <motion.div
-                                                            initial={{ opacity: 0, height: 0 }}
-                                                            animate={{ opacity: 1, height: "auto" }}
-                                                            exit={{ opacity: 0, height: 0 }}
-                                                            className="overflow-hidden"
-                                                        >
-                                                            <div className="flex flex-col gap-4 pt-2 pb-6 px-1">
-                                                                <div className="flex flex-col gap-2">
-                                                                    {link.subMenu.map((sub) => {
-                                                                        const isSubActive =
-                                                                            pathname === sub.href ||
-                                                                            (sub.href !== "/" && pathname.startsWith(`${sub.href}/`));
-                                                                        return (
-                                                                            <Link
-                                                                                key={sub.label}
-                                                                                href={sub.href}
-                                                                                onClick={() => setMobileOpen(false)}
-                                                                                className={`text-xl font-medium px-4 py-3 rounded-[var(--t-radius-md)] transition-colors hover:bg-[var(--t-bg-surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 ${isSubActive
-                                                                                    ? "text-[var(--t-accent)] bg-[var(--t-bg-surface)]"
-                                                                                    : "text-[var(--t-text)]"
-                                                                                    }`}
-                                                                            >
-                                                                                {sub.label}
-                                                                            </Link>
-                                                                        );
-                                                                    })}
-                                                                </div>
-                                                            </div>
-                                                        </motion.div>
-                                                    )}
-                                                </AnimatePresence>
-                                            </div>
-                                        ) : (
-                                            // Standard Link
-                                            <div className="border-b" style={{ borderColor: "var(--t-border)" }}>
-                                                <Link
-                                                    href={link.href}
-                                                    onClick={() => setMobileOpen(false)}
-                                                    className="flex items-center justify-between text-3xl font-display font-medium py-5 w-full transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-md)]"
-                                                    style={{ color: isActive ? "var(--t-accent)" : "var(--t-text)" }}
-                                                >
-                                                    {link.label}
-                                                </Link>
-                                            </div>
-                                        )}
-
-                                    </motion.div>
-                                );
-                            })}
-                        </div>
-
-                        {/* Mobile Footer / CTA */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4 }}
-                            className="w-full max-w-lg mx-auto mt-auto pt-12 flex flex-col gap-4"
+                    <div className="w-full max-w-lg mx-auto mt-auto pt-12 flex flex-col gap-4">
+                        <Link
+                            href="/contact"
+                            onClick={() => setMobileOpen(false)}
+                            className="w-full h-12 rounded-[var(--t-radius-btn)] flex items-center justify-center text-base font-semibold transition-all duration-200 shadow-sm active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--t-bg)]"
+                            style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}
                         >
-                            <Link
-                                href="/contact"
-                                onClick={() => setMobileOpen(false)}
-                                className="w-full h-12 rounded-[var(--t-radius-btn)] flex items-center justify-center text-base font-semibold transition-all duration-200 shadow-sm active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--t-bg)]"
-                                style={{ backgroundColor: "var(--t-btn-bg)", color: "var(--t-btn-text)" }}
-                            >
-                                Let&apos;s Talk
-                            </Link>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                            Let&apos;s Talk
+                        </Link>
+                    </div>
+                </div>
+            )}
         </>
     );
 }
+

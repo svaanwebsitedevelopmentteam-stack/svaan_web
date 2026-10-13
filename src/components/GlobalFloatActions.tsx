@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Phone, MessageCircle, X, ArrowUp } from "lucide-react";
 
 export function GlobalFloatActions() {
     const [isOpen, setIsOpen] = useState(false);
@@ -37,9 +35,13 @@ export function GlobalFloatActions() {
     const actions = [
         {
             name: "Call Us",
-            icon: <Phone className="w-5 h-5" />,
+            icon: (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+            ),
             href: "tel:+919677522812",
-            color: "" // Default to accent/text mapping
+            color: ""
         },
         {
             name: "WhatsApp",
@@ -49,7 +51,7 @@ export function GlobalFloatActions() {
                 </svg>
             ),
             href: "https://wa.me/919677522812",
-            color: "#25D366" // Whatsapp green
+            color: "#25D366"
         },
         {
             name: "Instagram",
@@ -59,7 +61,7 @@ export function GlobalFloatActions() {
                 </svg>
             ),
             href: "https://www.instagram.com/svaanglobaltech",
-            color: "#E1306C" // Instagram pink
+            color: "#E1306C"
         },
         {
             name: "Facebook",
@@ -69,113 +71,75 @@ export function GlobalFloatActions() {
                 </svg>
             ),
             href: "https://www.facebook.com/people/SVaaN-Global-Tech-PVT-LTD/61557652132908/?mibextid=ZbWKwL",
-            color: "#1877F2" // Facebook blue
+            color: "#1877F2"
         }
     ];
 
     return (
-        <motion.div layout className="fixed bottom-16 right-6 z-[999] flex flex-col items-end gap-3 font-sans">
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        layout
-                        initial={{ opacity: 0, y: 15, scale: 0.9 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 15, scale: 0.9, transition: { duration: 0.2 } }}
-                        className="flex flex-col gap-3 mb-2"
-                    >
-                        {actions.map((action, i) => (
-                            <motion.a
-                                key={action.name}
-                                href={action.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: 20 }}
-                                transition={{ delay: i * 0.05, duration: 0.2 }}
-                                className="group relative flex items-center justify-end gap-3 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-card)]"
+        <div className="fixed bottom-16 right-6 z-[999] flex flex-col items-end gap-3 font-sans">
+            {isOpen && (
+                <div className="flex flex-col gap-3 mb-2 animate-in fade-in slide-in-from-bottom-2 duration-200">
+                    {actions.map((action) => (
+                        <a
+                            key={action.name}
+                            href={action.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative flex items-center justify-end gap-3 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 rounded-[var(--t-radius-card)]"
+                        >
+                            <span
+                                className="whitespace-nowrap px-3 py-1.5 rounded-[var(--t-radius-card)] text-sm font-medium shadow-sm transition-transform duration-300 origin-right hover:scale-105"
+                                style={{ backgroundColor: "var(--t-bg-card)", color: "var(--t-text)", border: "1px solid var(--t-border)" }}
                             >
-                                <span
-                                    className="whitespace-nowrap px-3 py-1.5 rounded-[var(--t-radius-card)] text-sm font-medium shadow-sm transition-transform duration-300 origin-right hover:scale-105"
-                                    style={{ backgroundColor: "var(--t-bg-card)", color: "var(--t-text)", border: "1px solid var(--t-border)" }}
-                                >
-                                    {action.name}
-                                </span>
-                                <div
-                                    className="w-12 h-12 rounded-full backdrop-blur shadow-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-                                    style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: action.color || "var(--t-text)" }}
-                                >
-                                    {action.icon}
-                                </div>
-                            </motion.a>
-                        ))}
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                                {action.name}
+                            </span>
+                            <div
+                                className="w-12 h-12 rounded-full backdrop-blur shadow-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                                style={{ backgroundColor: "var(--t-bg-surface)", border: "1px solid var(--t-border)", color: action.color || "var(--t-text)" }}
+                            >
+                                {action.icon}
+                            </div>
+                        </a>
+                    ))}
+                </div>
+            )}
 
-            <motion.button
-                layout
+            <button
                 onClick={toggleMenu}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-14 h-14 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center text-white relative overflow-hidden z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
+                className="w-14 h-14 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-center text-white relative overflow-hidden z-10 transition-transform hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
                 style={{ backgroundColor: "var(--t-accent)" }}
                 aria-label={isOpen ? "Close contact options" : "Open contact options"}
             >
-                {/* Ping animation when closed */}
                 {!isOpen && (
                     <span className="absolute inset-0 rounded-full animate-ping opacity-30 bg-white" />
                 )}
 
-                {/* Crossfade icon component */}
                 <div className="relative w-6 h-6 flex items-center justify-center">
-                    <AnimatePresence mode="wait">
-                        {!isOpen ? (
-                            <motion.div
-                                key="open"
-                                initial={{ rotate: -90, opacity: 0 }}
-                                animate={{ rotate: 0, opacity: 1 }}
-                                exit={{ rotate: 90, opacity: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="absolute"
-                            >
-                                <MessageCircle className="w-6 h-6 text-white" />
-                            </motion.div>
-                        ) : (
-                            <motion.div
-                                key="close"
-                                initial={{ rotate: -90, opacity: 0 }}
-                                animate={{ rotate: 0, opacity: 1 }}
-                                exit={{ rotate: 90, opacity: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="absolute"
-                            >
-                                <X className="w-6 h-6 text-white" />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                    {!isOpen ? (
+                        <svg className="w-6 h-6 text-white transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                    ) : (
+                        <svg className="w-6 h-6 text-white transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    )}
                 </div>
-            </motion.button>
+            </button>
 
-            <AnimatePresence>
-                {showScroll && (
-                    <motion.button
-                        layout
-                        initial={{ opacity: 0, scale: 0, y: 10 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0, y: 10 }}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={scrollToTop}
-                        className="hidden md:flex w-14 h-14 rounded-full shadow-lg items-center justify-center transition-colors relative z-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2"
-                        style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-text)", border: "1px solid var(--t-border)" }}
-                        aria-label="Scroll to top"
-                    >
-                        <ArrowUp className="w-5 h-5 opacity-70" />
-                    </motion.button>
-                )}
-            </AnimatePresence>
-        </motion.div>
+            {showScroll && (
+                <button
+                    onClick={scrollToTop}
+                    className="hidden md:flex w-14 h-14 rounded-full shadow-lg items-center justify-center transition-all hover:scale-110 active:scale-90 relative z-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--t-accent)] focus-visible:ring-offset-2 animate-in fade-in"
+                    style={{ backgroundColor: "var(--t-bg-surface)", color: "var(--t-text)", border: "1px solid var(--t-border)" }}
+                    aria-label="Scroll to top"
+                >
+                    <svg className="w-5 h-5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                    </svg>
+                </button>
+            )}
+        </div>
     );
 }
+

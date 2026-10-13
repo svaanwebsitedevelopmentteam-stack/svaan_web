@@ -7,7 +7,7 @@
   --color-border: #E2E8F0;
   --color-text: #0F172A;
   --color-text-secondary: #334155;
-  --color-text-muted: #64748B;
+  --color-text-muted: #475569;
   --color-accent: #0076CC;
   --color-accent-light: #3D9FE0;
 
@@ -43,7 +43,7 @@
   --t-border: #E2E8F0;
   --t-text: #0F172A;
   --t-text-secondary: #334155;
-  --t-text-muted: #64748B;
+  --t-text-muted: #475569;
   --t-accent: #0076CC;
   --t-accent-hover: #005fa3;
   --t-marquee: #C8D0DC;
@@ -298,6 +298,21 @@ header {
 
 .animate-marquee {
   animation: marquee 25s linear infinite;
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes floatOrb1 {
+  0%, 100% { transform: translate3d(-50%, -50%, 0) scale(1); }
+  50% { transform: translate3d(-46%, -48%, 0) scale(1.04); }
+}
+
+@keyframes floatOrb2 {
+  0%, 100% { transform: translate3d(-30%, -30%, 0) scale(1); }
+  50% { transform: translate3d(-34%, -32%, 0) scale(0.96); }
 }
 
 /* Custom scrollbar */

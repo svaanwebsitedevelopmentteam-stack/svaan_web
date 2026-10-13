@@ -20,17 +20,14 @@ export function useTheme() {
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
     const [theme, setTheme] = useState<Theme>("light");
-    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setMounted(true);
         const saved = localStorage.getItem("svaan-theme") as Theme | null;
-        if (saved) {
+        if (saved && saved !== theme) {
             setTheme(saved);
             document.documentElement.classList.toggle("dark", saved === "dark");
         }
-    }, []);
+    }, [theme]);
 
     const toggleTheme = () => {
         const next = theme === "light" ? "dark" : "light";
@@ -38,10 +35,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         localStorage.setItem("svaan-theme", next);
         document.documentElement.classList.toggle("dark", next === "dark");
     };
-
-    if (!mounted) {
-        return <>{children}</>;
-    }
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>

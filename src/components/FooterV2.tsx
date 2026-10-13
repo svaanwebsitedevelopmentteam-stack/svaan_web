@@ -23,9 +23,9 @@ export function FooterV2() {
                     {/* Column 1: Solutions + Site Logo (col-reverse on mobile) */}
                     <div className="lg:col-span-3 flex flex-col-reverse md:flex-col justify-between gap-8">
                         <div>
-                            <h4 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white mb-5">
+                            <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white mb-5">
                                 Solutions
-                            </h4>
+                            </h3>
                             <ul className="flex flex-col gap-3.5 text-sm text-slate-300">
                                 <li>
                                     <Link href="/solutions/build" className="hover:text-[#38BDF8] hover:translate-x-0.5 inline-block transition-all">
@@ -72,9 +72,9 @@ export function FooterV2() {
                     {/* Column 2: Company & Work */}
                     <div className="lg:col-span-3 flex flex-col gap-9">
                         <div>
-                            <h4 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white mb-5">
+                            <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white mb-5">
                                 Company
-                            </h4>
+                            </h3>
                             <ul className="flex flex-col gap-3.5 text-sm text-slate-300">
                                 <li>
                                     <Link href="/about" className="hover:text-[#38BDF8] hover:translate-x-0.5 inline-block transition-all">
@@ -100,9 +100,9 @@ export function FooterV2() {
                         </div>
 
                         <div>
-                            <h4 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white mb-4">
+                            <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white mb-4">
                                 Work
-                            </h4>
+                            </h3>
                             <ul className="flex flex-col gap-3.5 text-sm text-slate-300">
                                 <li>
                                     <Link href="/work" className="hover:text-[#38BDF8] hover:translate-x-0.5 inline-block transition-all">
@@ -116,9 +116,9 @@ export function FooterV2() {
                     {/* Column 3: Resources & Legal */}
                     <div className="lg:col-span-3 flex flex-col gap-9">
                         <div>
-                            <h4 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white mb-5">
+                            <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white mb-5">
                                 Resources
-                            </h4>
+                            </h3>
                             <ul className="flex flex-col gap-3.5 text-sm text-slate-300">
                                 <li>
                                     <Link href="#!" className="hover:text-[#38BDF8] hover:translate-x-0.5 inline-block transition-all">
@@ -134,9 +134,9 @@ export function FooterV2() {
                         </div>
 
                         <div>
-                            <h4 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white mb-4">
+                            <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white mb-4">
                                 Legal
-                            </h4>
+                            </h3>
                             <ul className="flex flex-col gap-3.5 text-sm text-slate-300">
                                 <li>
                                     <Link href="/privacy-policy" className="hover:text-[#38BDF8] hover:translate-x-0.5 inline-block transition-all">
@@ -159,9 +159,9 @@ export function FooterV2() {
 
                     {/* Column 4: Contact & Office Info */}
                     <div className="lg:col-span-3 flex flex-col gap-5">
-                        <h4 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white">
+                        <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-white">
                             Contact
-                        </h4>
+                        </h3>
 
                         <div className="space-y-6 text-sm text-slate-300">
                             <div>
